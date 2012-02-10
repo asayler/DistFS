@@ -1,0 +1,1776 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0045)http://www.informationweek.com/blog/231003002 -->
+<HTML lang=en xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>How to Choose A Cloud Storage Provider: Availability - Storage - Data protection - Informationweek</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<SCRIPT 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/jquery.min.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/checkauth.js"></SCRIPT>
+
+<META name=pagecaching content=809>
+<META name=server_addr content=192.155.49.83>
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/detect.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+	var mfp_url='http://mobile.informationweek.com/';
+	var mfp_host_name=document.location.hostname;
+	var mfp_request_uri=document.location.pathname;
+	var mfp_no_mobile=location.search;
+	var mfp_cookie=document.cookie;
+	function mf_detect()
+	{
+		var mfp_ua=navigator.userAgent.toLowerCase();
+		var mfp_devices=['vnd.wap.xhtml+xml','sony','symbian','nokia','samsung','mobile','windows ce','epoc','opera mini','nitro','j2me','midp-','cldc-','netfront','mot','up.browser','up.link','audiovox','blackberry','ericsson','panasonic','philips','sanyo','sharp','sie-','portalmmm','blazer','avantgo','danger','palm','series60','palmsource','pocketpc','smartphone','rover','ipaq','au-mic','alcatel','ericy','vodafone','wap1','wap2','teleca','playstation','lge','lg-','iphone','ipod','android','htc','dream','webos','bolt','nintendo'];
+		var nottablet=true;
+		if((mfp_ua.indexOf('android')!=-1&&mfp_ua.indexOf('mobile')==-1)||mfp_ua.indexOf('ipad')!=-1)
+		{
+			nottablet=false				
+		}
+		for(var i in mfp_devices)
+		{
+			if(mfp_ua.indexOf(mfp_devices[i])!=-1&&!((mfp_ua.indexOf('android')!=-1&&mfp_ua.indexOf('mobile')==-1)||mfp_ua.indexOf('ipad')!=-1))
+				{						
+					return true
+				}
+		}
+	}
+	if(mfp_no_mobile!='?nomobile=1'&&mfp_cookie.indexOf('mfp_no_mobile')==-1)
+	{
+		mfp_is_mobile=mf_detect();
+		if(mfp_is_mobile)
+		{	
+			window.location=mfp_url;
+		}
+	}else
+	{
+		if(mfp_cookie.indexOf('mfp_no_mobile')!=-1)
+		{
+		
+		}else
+		{			
+			mfp_cookie_expires=new Date();
+			mfp_cookie_expires.setTime(mfp_cookie_expires.getTime()+1000*60*60*24);
+			document.cookie="mfp_no_mobile=-1; expires="+mfp_cookie_expires.toGMTString()+"; path=/;"
+			window.location=mfp_url+"?h="+mfp_host_name+"&r="+mfp_request_uri;
+		}
+	}
+</SCRIPT>
+
+<META name=description 
+content="Access varies across cloud storage providers. Here's how to make sure you get what you need, when you need it.">
+<META name=headline 
+content="How to Choose A Cloud Storage Provider: Availability">
+<META name=keywords 
+content="cloud, NAS, backup, redundancy, SLA, storage, access, availability">
+<META name=created content="August 01, 2011">
+<META name=y_key content=15bba51c08c024d1>
+<META name=robots content=index,follow>
+<META name=google-site-verification 
+content=0AR2TotTLaMmNGWUJJwZLPgbgJbcUHa-rYaIMRPch64>
+<META name=original-source 
+content=http://www.informationweek.com/news/storage/data_protection/231003002><LINK 
+rel=canonical 
+href="http://www.informationweek.com/news/storage/data_protection/231003002"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/tabs.css" 
+media=screen><LINK rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/footer.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/reset-fonts-grids.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/iw-base.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/default.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/sidebar.css"><LINK 
+rel=icon type=image/x-icon href="http://twimgs.com/infoweek/favicon.ico"><LINK 
+rel="shortcut icon" type=image/x-icon 
+href="http://twimgs.com/infoweek/favicon.ico"><LINK rel=apple-touch-icon 
+href="http://twimgs.com/infoweek/apple-touch-icon.png"><LINK rel=publisher 
+href="https://plus.google.com/108720492902396433722/">
+<SCRIPT 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/jquery.min.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/sidebar.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/popup.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/tabbed-content.jquery.js"></SCRIPT>
+<LINK rel=image_src href=" http://twimgs.com/infoweek/share_iwk_80.jpg">
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/h_s_code_remote.js"></SCRIPT>
+
+<SCRIPT 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/node.js"></SCRIPT>
+<!-- newly added css and js files for header navigation changes --><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/contentslider.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/iw-base-v1.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/iw-sidebar-v1.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/iwk-default-v1.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/iwk-nav.css"><!--[if lte IE 8]><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/iwk-nav.ie.css"><![endif]-->
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/iwk-nav.jquery.js"></SCRIPT>
+
+<STYLE>#subnav LI {
+	LINE-HEIGHT: 1.6em; MARGIN-TOP: 0px; TEXT-INDENT: 0px; PADDING-LEFT: 10px; BACKGROUND: url(http://twimgs.com/infoweek/seo/bullet_round_4px_003bb0.gif) no-repeat left center
+}
+UNKNOWN {
+	FONT: bold 11px arial,helvetica,sans-serif; COLOR: #971c10
+}
+#videoBoxOuter {
+	BORDER-RIGHT-WIDTH: 0px; WIDTH: 200px; PADDING-RIGHT: 0px; FLOAT: left; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px
+}
+#videoBox {
+	BORDER-BOTTOM: #d8d8d8 0.02em solid; BORDER-LEFT: #d8d8d8 0.02em solid; WIDTH: 172px; FLOAT: left; BORDER-TOP: #d8d8d8 0.02em solid; BORDER-RIGHT: #d8d8d8 0.02em solid
+}
+#videoBoxTitle {
+	PADDING-BOTTOM: 7px; BACKGROUND-COLOR: #d8d8d8; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-FAMILY: geneva, arial, helvetica; COLOR: #c00000; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 7px
+}
+#videoBoxDisplayArea {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; MARGIN-LEFT: 0px; PADDING-TOP: 5px
+}
+#videoBoxDisplayArea IMG {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 44px; PADDING-RIGHT: 2px; HEIGHT: 40px; MARGIN-RIGHT: 3px; PADDING-TOP: 2px
+}
+#videoBoxDisplayAreaText {
+	FONT-FAMILY: arial; COLOR: #153e7e; FONT-SIZE: 11px
+}
+#videoBoxDisplayAreaSponsor {
+	TEXT-ALIGN: right; FONT-FAMILY: geneva, arial, helvetica; FONT-SIZE: 0px
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5009925-16']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackEvent']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/jquery.colorbox-min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/disqusHints.js"></SCRIPT>
+<LINK rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/colorbox.css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/disqusHints.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16440"></HEAD>
+<BODY>
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1199874/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Welcome_Ad_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT>
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/2146744/0/0/ADTECH;alias=InformationWeek_Blog_Storage_Skin_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT>
+<DIV id=custom-doc class="container yui-t6">
+<DIV id=hd>
+<SCRIPT language=JavaScript>
+<!--
+function ValidateNo(NumStr, String) 
+{ 
+    for(var Idx=0; Idx<NumStr.length; Idx++) 
+    { 
+        var Char = NumStr.charAt(Idx); 
+        var Match = false; 
+
+        for(var Idx1=0; Idx1<String.length; Idx1++) 
+        { 
+            if(Char == String.charAt (Idx1)) 
+                Match = true; 
+        } 
+
+        if (!Match) 
+            return false; 
+    } 
+    return true; 
+} 
+
+
+function ValidateDetail() 
+{
+    if(document.examplepost.mobilenumber.value == "") 
+    { 
+       alert("Please specify phone number"); 
+       document.examplepost.mobilenumber.focus(); 
+       return false; 
+    } 
+
+    if(!ValidateNo(document.examplepost.mobilenumber.value,"1234567890- ")) 
+    { 
+        alert("Please Enter Only Number"); 
+        document.examplepost.mobilenumber.focus(); 
+        return false; 
+    } 
+
+    return true; 
+} 
+
+//-->
+</SCRIPT>
+
+<H1 class=masthead>InformationWeek: The Business Value of Technology</H1><A 
+id=home-link class=image-map 
+title="InformationWeek: The Business Value of Technology" 
+href="http://www.informationweek.com/">InformationWeek: The Business Value of 
+Technology</A> 
+<DIV class=meta-menu><!-- main section indicator -->
+<UL class=sections>
+  <LI class=first><A title=Home 
+  href="http://www.informationweek.com/?itc=iwk-header-navbar-home"><SPAN>Home</SPAN></A> 
+  </LI>
+  <LI><A title=News 
+  href="http://www.informationweek.com/news?itc=iwk-header-navbar-news"><SPAN>News</SPAN></A> 
+  </LI>
+  <LI><A title=Columns 
+  href="http://www.informationweek.com/columns?itc=iwk-header-navbar-columns"><SPAN>Commentary</SPAN></A> 
+  </LI>
+  <LI><A title=Video 
+  href="http://www.informationweek.com/video?itc=iwk-rc-video"><SPAN>Video</SPAN></A> 
+  </LI>
+  <LI><A title=Slideshows 
+  href="http://www.informationweek.com/galleries?itc=iwk-header-navbar-slideshows"><SPAN>Slideshows</SPAN></A> 
+  </LI>
+  <LI class=more><A title="Tech Centers" 
+  href="http://www.informationweek.com/blog/231003002#" 
+  rel=dropmenuTC><SPAN>Tech Centers</SPAN></A>
+  <UL class=sub-menu>
+    <LI><A href="http://www.informationweek.com/government/cloud">Government 
+    Cloud Computing</A><SPAN class=sponsor> - Sponsored by Intel / HP</SPAN> 
+    </LI>
+    <LI><A 
+    href="http://www.informationweek.com/tech-center/mobile-security">Mobile 
+    Security</A> </LI>
+    <LI><A 
+    href="http://www.informationweek.com/tech-center/collaboration-technology">UC 
+    Collaboration Technology</A><SPAN class=sponsor> - Sponsored by Avaya</SPAN> 
+    </LI>
+    <LI><A 
+    href="http://www.informationweek.com/tech-center/storage-virtualization">Virtual 
+    Infrastructure</A> </LI></UL></LI></UL><!-- / main section indicator --><!-- right nav -->
+<UL class=resources>
+  <LI class=first><A 
+  href="http://www.informationweek.com/ipad?cid=iwk-header-spot-ipad">IW 
+  Mobile</A> </LI>
+  <LI><A 
+  href="http://www.informationweek.com/rss?itc=iwk-header-rss-feeds">RSS</A> 
+  </LI>
+  <LI><A 
+  href="https://www.informationweeksubscriptions.com/ars/informationweekforward.do?mode=pageforward&amp;forward=welcome" 
+  target=_blank>Subscribe</A> </LI>
+  <LI><A 
+  href="http://www.informationweek.com/newsletters/index?itc=iwk-header-newsletter">Newsletters</A> 
+  </LI>
+  <LI><A 
+  href="http://www.informationweek.com/events?itc=iwk-header-events">Events</A> 
+  </LI>
+  <LI><A title="Digital White Papers, Case Studies, Webcasts, and Presentations" 
+  href="http://www.informationweek.com/whitepaper?itc=iwk-header-twdl">Digital 
+  Library</A> </LI></UL><!-- / right nav --></DIV>
+<DIV class=main-menu>
+<UL>
+  <LI class=first><A title=Software 
+  href="http://www.informationweek.com/software?itc=iwk-header-navbar-software"><SPAN>Software</SPAN></A> 
+  </LI>
+  <LI><A title=Security 
+  href="http://www.informationweek.com/security?itc=iwk-header-navbar-security"><SPAN>Security</SPAN></A> 
+  </LI>
+  <LI><A title=Cloud 
+  href="http://www.informationweek.com/cloud-computing?itc=iwk-header-navbar-cloud"><SPAN>Cloud</SPAN></A> 
+  </LI>
+  <LI><A title=Mobility 
+  href="http://www.informationweek.com/mobility?itc=iwk-header-navbar-mobility"><SPAN>Mobility</SPAN></A> 
+  </LI>
+  <LI><A title="Social Business" 
+  href="http://www.informationweek.com/social-business?itc=iwk-header-navbar-socialbusiness"><SPAN>Social 
+  Business</SPAN></A> </LI>
+  <LI><A title="Personal Tech" 
+  href="http://www.informationweek.com/personal-tech?itc=iwk-header-navbar-personaltech"><SPAN>Personal 
+  Tech</SPAN></A> </LI>
+  <LI><A title=Hardware 
+  href="http://www.informationweek.com/hardware?itc=iwk-header-navbar-hardware"><SPAN>Hardware</SPAN></A> 
+  </LI>
+  <LI><A title=Windows 
+  href="http://www.informationweek.com/windows?itc=iwk-header-navbar-windows"><SPAN>Windows</SPAN></A> 
+  </LI>
+  <LI class=highlight><A title="Global CIO" 
+  href="http://www.informationweek.com/global-cio?itc=iwk-header-navbar-globalcio"><SPAN>Global 
+  CIO</SPAN></A> </LI>
+  <LI class=highlight><A title=Government 
+  href="http://www.informationweek.com/government?itc=iwk-header-navbar-gov"><SPAN>Government</SPAN></A> 
+  </LI>
+  <LI class=highlight><A title=Healthcare 
+  href="http://www.informationweek.com/healthcare?itc=iwk-header-navbar-healthcare"><SPAN>Healthcare</SPAN></A> 
+  </LI>
+  <LI class=highlight><A title=Financial 
+  href="http://www.informationweek.com/financialservices?itc=iwk-header-navbar-financial"><SPAN>Financial</SPAN></A> 
+  </LI>
+  <LI class=highlight><A title=SMB 
+  href="http://www.informationweek.com/smb?itc=iwk-header-navbar-smb"><SPAN>SMB</SPAN></A> 
+  </LI>
+  <LI class=more><A 
+  href="http://www.informationweek.com/blog/231003002#"><SPAN>More</SPAN></A>
+  <UL class=sub-menu>
+    <LI><A class=c title=Internet 
+    href="http://www.informationweek.com/internet?itc=iwk-header-navbar-internet">Internet</A> 
+    </LI></UL></LI></UL></DIV>
+<DIV class=account>
+<DIV class=welcome><!-- dynamically loaded from /welcome.php --></DIV></DIV>
+<SCRIPT 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/jquery.min.js"></SCRIPT>
+<!-- This JQuery noConflict should apply other than the project edit pages -->
+<SCRIPT>jQuery.noConflict();</SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/welcome.js"></SCRIPT>
+
+<FORM class=site-search role=search method=get action=/sitesearch>
+<DIV class=overlabel-container><INPUT name=sort value="publishDate desc" 
+type=hidden> <INPUT name=site_id value=300001 type=hidden> <LABEL 
+class=overlabel for=queryText>Search</LABEL> <INPUT id=queryText class=text 
+name=queryText> </DIV><INPUT class=button type=submit> </FORM><!-- header promo area --><!-- IW iPad App Promo -->
+<DIV class=promo><A 
+href="http://www.informationweek.com/ipad?cid=iwk-header-spot-ipad"><IMG 
+class=ad title="InformationWeek - Our New iPad App" border=0 hspace=0 
+alt="InformationWeek - Our New iPad App" 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/placeholder-ad-app.png" 
+width=201 height=48></A> </DIV><!-- / IW iPad App Promo -->
+<DIV class=banner-ad>
+<P></P>
+<CENTER>
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1200349/0/225/ADTECH;alias=InformationWeek_Blog_Storage_Top_728x90;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT></CENTER></DIV>
+<DIV class=h_bannerBottom></DIV></DIV>
+<DIV id=bd class="article content">
+<SCRIPT>
+function emailLauncher(filePath,storyURL) {
+	uri = filePath + encodeURIComponent(storyURL);		
+	window.open(uri,"","toolbar=no,scrollbars=auto,location=no,status=no,width=733,height=590,resizable=1");
+}
+</SCRIPT>
+
+<DIV id=yui-main>
+<DIV class="main-content yui-b"><!-- Commentary Page -->
+<H2 class=first><SPAN>Commentary</SPAN> </H2>
+<DIV id=authorArea_Article><IMG class=authorImage 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/6668.jpg" 
+width=80 height=97> <!-- Display Author Details -->
+<DIV class=authorInfoContainer><SPAN class=authorName><!--Author Name-->George 
+Crump <!--Author Name--></SPAN><BR><SPAN class=authorTitle>&nbsp; </SPAN>
+<DIV class=seeMoreFromAuthor><A 
+href="http://www.informationweek.com/authors/6668">See more from this author</A> 
+</DIV></DIV><!-- Display Author Details --><!-- Social Icons -->
+<SCRIPT language=javascript>
+<!--
+function launcher(art_id) {
+uri = "/email?articleUrl=" + '/news/storage/' + art_id;
+window.open(uri,"","toolbar=no,scrollbars=auto,location=no,status=no,width=733,height=590,resizable=1")
+}
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>.share-facebook-likes {
+	POSITION: relative; WIDTH: 75px; DISPLAY: inline
+}
+.share-tweet {
+	POSITION: relative; WIDTH: 60px; DISPLAY: inline
+}
+.share-linkedin {
+	POSITION: relative; DISPLAY: inline
+}
+.share-googleplusone {
+	POSITION: relative; WIDTH: 75px; DISPLAY: inline
+}
+.article .social-tools {
+	MARGIN-TOP: 0px; PADDING-LEFT: 4px; WIDTH: 600px; FLOAT: left
+}
+.article #IWK_IG .social-tools {
+	MARGIN-TOP: 0px; PADDING-LEFT: 0px; WIDTH: 590px; FLOAT: left
+}
+.FBConnectButton_Simple .FBConnectButton_Text_Simple {
+	PADDING-BOTTOM: 1px; MARGIN: 0px 0px 0px 15px
+}
+.addthis_permalink {
+	FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; FLOAT: left; MARGIN-LEFT: 6px; FONT-SIZE: 0.8em; FONT-WEIGHT: bold
+}
+.article .article-tools {
+	FLOAT: left
+}
+#li_ui_li_gen_0 {
+	POSITION: relative; DISPLAY: block; OVERFLOW: visible
+}
+#li_ui_li_gen_0 #li_ui_li_gen_0-link {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline-block; HEIGHT: 18px; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+* HTML #li_ui_li_gen_0-link {
+	HEIGHT: 1%
+}
+#li_ui_li_gen_0 #li_ui_li_gen_0-link:after {
+	LINE-HEIGHT: 0; DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; CONTENT: "."
+}
+#li_ui_li_gen_0 #li_ui_li_gen_0-logo {
+	Z-INDEX: 1; BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; TEXT-INDENT: -9999em; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 18px; PADDING-RIGHT: 0px; DISPLAY: block; BACKGROUND: url(http://static02.linkedin.com/scds/common/u/img/sprite/sprite_connect_v4.png?v=) no-repeat 0px 0px; FLOAT: left; HEIGHT: 18px; OVERFLOW: hidden; BORDER-TOP: 0px; CURSOR: pointer; BORDER-RIGHT: 0px; PADDING-TOP: 0px; TOP: 0px; LEFT: 0px
+}
+.hovered#li_ui_li_gen_0 #li_ui_li_gen_0-logo {
+	BACKGROUND-POSITION: -30px -40px
+}
+.clicked#li_ui_li_gen_0 #li_ui_li_gen_0-logo {
+	BACKGROUND-POSITION: -50px -40px
+}
+.down#li_ui_li_gen_0 #li_ui_li_gen_0-logo {
+	BACKGROUND-POSITION: -50px -40px
+}
+#li_ui_li_gen_0 #li_ui_li_gen_0-title {
+	BORDER-BOTTOM: 1px solid; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 18px; BACKGROUND-COLOR: #ececec; PADDING-LEFT: 23px; PADDING-RIGHT: 4px; DISPLAY: block; FONT-FAMILY: Arial,sans-serif; FLOAT: left; HEIGHT: 16px; COLOR: #333333; FONT-SIZE: 10px; BORDER-TOP: 1px solid; CURSOR: pointer; FONT-WEIGHT: bold; BORDER-RIGHT: 1px solid; PADDING-TOP: 0px; -moz-border-radius: 0 2px 2px 0; text-shadow: -1px 1px 0 #FFFFFF
+}
+.hovered#li_ui_li_gen_0 #li_ui_li_gen_0-title {
+	BORDER-BOTTOM: 1px solid; BORDER-LEFT: 0px; BACKGROUND-COLOR: #dedede; COLOR: #000000; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid
+}
+.clicked#li_ui_li_gen_0 #li_ui_li_gen_0-title {
+	BORDER-BOTTOM: 1px solid; BORDER-LEFT: 0px; BACKGROUND-COLOR: #dedede; COLOR: #666666; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid
+}
+.down#li_ui_li_gen_0 #li_ui_li_gen_0-title {
+	BORDER-BOTTOM: 1px solid; BORDER-LEFT: 0px; BACKGROUND-COLOR: #dedede; COLOR: #666666; BORDER-TOP: 1px solid; BORDER-RIGHT: 1px solid
+}
+</STYLE>
+
+<DIV class=article-tools>
+<DIV class=social-tools>
+<DIV style="FLOAT: left; MARGIN-RIGHT: 44px" class=share-tweet><!-- BEGIN TWEET BUTTON -->
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/widgets.js"></SCRIPT>
+<IFRAME style="WIDTH: 110px; HEIGHT: 20px" 
+class="twitter-share-button twitter-count-horizontal" 
+title="Twitter For Websites: Tweet Button" tabIndex=0 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/sh72.htm" 
+frameBorder=0 allowTransparency 
+scrolling=no></IFRAME><!-- END TWEET BUTTON --></DIV><!-- BEGIN FB LIKE -->
+<DIV style="FLOAT: left; MARGIN-RIGHT: 6px" class=share-facebook-likes><IFRAME 
+style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 90px; HEIGHT: 25px; OVERFLOW: hidden; BORDER-TOP: medium none; BORDER-RIGHT: medium none; PADDING-TOP: 0px" 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/hub.1326407570.htm" 
+frameBorder=0 allowTransparency scrolling=no></IFRAME></DIV><!-- END FB LIKE --><!-- BEGIN LINKEDIN -->
+<DIV style="FLOAT: left; MARGIN-RIGHT: 7px" class=share-linkedin>
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/in.js"></SCRIPT>
+
+<SCRIPT type=in/share></SCRIPT>
+</DIV><!-- END LINKEDIN --><!-- BEGIN Google +1 -->
+<DIV style="FLOAT: left; MARGIN-RIGHT: 6px" class=share-googleplusone>
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/plusone.js"></SCRIPT>
+<G:PLUSONE count="true" size="medium"></G:PLUSONE></DIV><!-- END Google +1 -->
+<DIV class="addthis_toolbox addthis_pill_combo_style"><!-- AddThis Button BEGIN --><A 
+style="CURSOR: pointer" class="addthis_button_stumbleupon at300b" 
+title="Send to StumbleUpon" 
+href="http://www.addthis.com/bookmark.php?v=250&amp;winname=addthis&amp;pub=InformationWeek&amp;source=tbx-250&amp;lng=en-US&amp;s=stumbleupon&amp;url=www.informationweek.com/blog/231003002&amp;title=How to Choose A Cloud Storage Provider: Availability -- InformationWeek&amp;ate=AT-InformationWeek/-/-/4d22a657185bdbc2/1&amp;sms_ss=1&amp;at_xt=1&amp;CXNID=2000001.5215456080540439074NXC&amp;pre=www.informationweek.com&amp;tt=0" 
+target=_blank><SPAN class="at300bs at15t_stumbleupon"></SPAN></A><A 
+style="TEXT-DECORATION: none" class=addthis_default_style 
+href="http://www.facebook.com/sharer.php?u=http://www.informationweek.com/blog/231003002&amp;t=How to Choose A Cloud Storage Provider: Availability -- InformationWeek&amp;src=sp" 
+type=icon name=fb_share share_url=""><SPAN class=FBConnectButton_Simple><SPAN 
+class=FBConnectButton_Text_Simple>?</SPAN></SPAN></A>
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/FB.js"></SCRIPT>
+ <A class=addthis_default_style title="Send as Email" 
+href="javascript:launcher(231003002)"><IMG border=0 hspace=0 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/share_email_icon.gif"></A> 
+<A class=addthis_default_style title=Title 
+href="http://www.informationweek.com/blog/231003002?printer_friendly=this-page"><IMG 
+border=0 hspace=4 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/share_print_icon.gif"></A> 
+<A class=addthis_permalink title=Title 
+href="http://www.informationweek.com/blog/231003002#">Permalink</A> <SPAN 
+style="MARGIN-BOTTOM: 3px; FLOAT: right" id=rss><A class=addthis_default_style 
+title=Title href="http://www.informationweek.com/rss"><IMG alt=RSS 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/icon-rss-md.png"></A></SPAN> 
+
+<DIV class=atclear></DIV></DIV>
+<SCRIPT 
+type=text/javascript>var addthis_config = {"data_track_clickback":true};</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/addthis_widget.js"></SCRIPT>
+<!-- AddThis Button END --></DIV><!-- END: social-tools --></DIV><!-- END: article-tools -->
+<DIV style="CLEAR: both"></DIV><!-- Social Icons --></DIV>
+<H1>How to Choose A Cloud Storage Provider: Availability</H1><STRONG>Access 
+varies across cloud storage providers. Here's how to make sure you get what you 
+need, when you need it.</STRONG> 
+<DIV id=commentary_byline class=article-byline>
+<P class=comments><A 
+href="http://www.informationweek.com/news/storage/data_protection/231003002#disqus_thread" 
+data-disqus-identifier="article_231003002"></A><SPAN id=byline>|</SPAN> <A 
+href="http://www.informationweek.com/authors/6668"><STRONG>George 
+Crump</STRONG></A> <SPAN id=byline>|</SPAN> August 01, 2011 11:47 AM </P></DIV><!--ARTICLE BODY--><SPAN id=articleBody>
+<DIV class=IntelliTXT>
+<P class=firstP>In a <A 
+href="http://www.informationweek.com/blog/storage/231002298">recent entry</A> we 
+discussed what security capabilities you should look for in a cloud storage 
+provider. While security is important, being able to get to your data is equally 
+imperative. To make matters worse, many cloud storage providers are somewhat 
+sketchy in what level of availability they will commit to. Knowing what you can 
+expect from your provider--and how you have to augment that--is critical. 
+<P>Understanding the availability you need is important because in most cases 
+the level of availability you get directly impacts the price you pay. Typically, 
+the more copies of data that you store in different parts of the cloud, the more 
+it's going to cost. </P>
+<DIV class="article-resources wrap"><BR clear=all>
+<H2 class=first><SPAN>More Storage Insights</SPAN></H2><!--cahe Key : 1d4ac495b9b4110acf05782f4e54f794-->
+<H3>White Papers</H3>
+<UL class=archive>
+  <LI><A 
+  href="http://www.informationweek.com/whitepaper/Hardware/Virtualization-Hardware/what-is-desktop-virtualization-it-handboo-wp1298056460577?articleID=180600003&amp;cid=iwk_well_wp_Data_protection&amp;itc=iwk_well_wp_Data_protection">What 
+  Is Desktop Virtualization? IT Handbook </A>
+  <LI><A 
+  href="http://www.informationweek.com/whitepaper/Security/Vulnerabilities-and-Threats/media-tablets-in-the-enterpris-wp1299706519797?articleID=182600003&amp;cid=iwk_well_wp_Data_protection&amp;itc=iwk_well_wp_Data_protection">Media 
+  Tablets in the Enterprise </A></LI></UL><A class=continue 
+title="More White Papers" 
+href="http://informationweek.com/whitepaper?cid=iwk_well_wp_more&amp;itc=iwk_well_wp_more">More 
+<SPAN>&gt;&gt;</SPAN></A><!--cahe Key : 6defa0600e83708a22d894b0ec498625-->
+<H3>Reports</H3>
+<UL class=archive>
+  <LI><A 
+  href="http://reports.informationweek.com/abstract/21/8533/Security/strategy-database-access.html?cid=iwk_well_Analytics_Data_protection&amp;itc=iwk_well_Analytics_Data_protection">Ensuring 
+  Secure Database Access </A>
+  <LI><A 
+  href="http://reports.informationweek.com/abstract/25/8496/Virtualization/four-steps-to-virtualization-security.html?cid=iwk_well_Analytics_Data_protection&amp;itc=iwk_well_Analytics_Data_protection">Four 
+  Steps to Virtualization Security </A></LI></UL><A class=continue 
+title="More Reports" 
+href="http://reports.informationweek.com/?cid=iwk_well_analytics_more&amp;itc=iwk_well_analytics_more">More 
+<SPAN>&gt;&gt;</SPAN></A><!--cahe Key : 91e08e87190768941976de0820d91aed-->
+<H3>Webcasts</H3>
+<UL class=archive>
+  <LI><A 
+  href="https://www.techwebonlineevents.com/ars/eventregistration.do?mode=eventreg&amp;F=1003942&amp;K=6IK&amp;cid=iwk_well_Webcast_Data_protection&amp;itc=iwk_well_Webcast_Data_protection">Maximize 
+  ROI with Database Consolidation onto Private Clouds </A></LI></UL><A 
+class=continue title="More Webcast" 
+href="http://informationweek.com/whitepaper/viewallasset?start=1&amp;contentType=4&amp;cid=iwk_well_webcasts_more&amp;itc=iwk_well_webcasts_more">More 
+<SPAN>&gt;&gt;</SPAN></A></DIV>
+<P>To a large extent, how available you need cloud storage to be depends on how 
+you are going to use it. If you're using cloud storage as an offsite vault for 
+your backups and you are also keeping some or most of your backups onsite, then 
+100% availability may not be that big of a concern. If you're using cloud 
+storage as the primary destination for your backups, even with a local cache of 
+some sort, then access to that data for recovery may be critical. 
+<P>If you're going to use cloud storage for primary storage, then availability 
+is more important, especially with block-based storage solutions. NAS or 
+file-based solutions tend to keep the most recently accessed files in a local, 
+on-premises cache. That means that if the cache is of adequate size you can 
+still get to your most recently accessed files until the cloud service is backed 
+up. Block is more random in nature, so it's harder to predict exactly where the 
+next access will be and, if an old block of data can't be accessed, the 
+application may crash. 
+<P>The two situations where availability is critical are probably going to be: 
+when you're counting on cloud storage as your primary backup storage area and 
+when you're using cloud storage to store primary block-based storage. Cloud 
+storage as a NAS storage area could be a close third. 
+<P>Increased availability can come in two forms. The first can be to use the 
+basic services from two different cloud suppliers. This gives you redundancy, 
+not only in a cloud storage failure, but also protects you in case one of the 
+organizations goes out of business. This means your cloud storage software or 
+application needs to be able to support writing to two clouds simultaneously. 
+For most organizations, though, the cost is not going to be practical to have 
+two cloud storage providers. 
+<P>The next option is to invest in a cloud storage provider that can provide 
+some level of redundancy. This is not limited to just redundant copies of 
+storage spread around the Internet, but also a redundant means of accessing that 
+data. As stated above, extra copies will typically mean extra money. The pricing 
+for these extra copies can vary greatly, so check out the details. 
+<P>Many providers can deliver a multi-copy level of redundancy, but the key is 
+to make sure that they will provide a service level agreement to stand behind 
+that commitment. Beyond the SLA, make sure that the organization has the 
+capabilities to fulfill the commitments in that SLA, otherwise they are just 
+words on a page. Look to make sure they have quality storage systems, quality 
+data centers, and quality network connections--and of course the financial 
+wherewithal to stand behind all that. 
+<P>Also understand exactly what is being committed to. Some providers offer a 
+complete, full-service responsibility; others still put much of the burden on 
+you. Several cloud vendors are now providing a turnkey service where they will 
+manage the redundancy and connectivity for you. Of course there is a fee for 
+this service, but it may be well worth it, especially if your IT resources are 
+already stretched thin. 
+<P>The final step in availability is to know what you will do when a failure 
+occurs. Don't wait for a network or cloud storage failure to figure out your 
+strategy. Plan for it. Make sure that you know how you will connect to the 
+redundant copies or how you will switch to a local copy if you decide to go that 
+route. 
+<P><EM>Follow Storage Switzerland on <A 
+href="http://twitter.com/storageswiss">Twitter</A> 
+<P>George Crump is lead analyst of <A 
+href="http://www.storage-switzerland.com/">Storage Switzerland</A>, an IT 
+analyst firm focused on the storage and virtualization segments. Storage 
+Switzerland's <A 
+href="http://www.storage-switzerland.com/Disclosure.html">disclosure 
+statement</A>.</EM> 
+<P><BR clear=all></P></DIV></SPAN>
+<P><!--ARTICLE BODY--></P>
+<DIV class=article-pagination>
+<DIV class=controls></DIV></DIV><!--  Related Reading Box -->
+<DIV id=disqusCommentsBubble class=article-meta-bottom>
+<P class=comments><A 
+href="http://www.informationweek.com/news/storage/data_protection/231003002#disqus_thread" 
+data-disqus-identifier="article_231003002"></A>, <A 
+href="http://www.informationweek.com/blog/231003002#comments">join the 
+conversation</A> </P></DIV>
+<H3 class=resources>Related Reading</H3>
+<DIV style="MARGIN-BOTTOM: 10px" class="related-resources first tabs">
+<UL class="toc clearfix">
+  <LI class=first><A title=News 
+  href="http://www.informationweek.com/blog/231003002#toc-news">News</A> 
+  <LI><A title="Most Popular" 
+  href="http://www.informationweek.com/blog/231003002#toc-most-popular">Most 
+  Popular</A> </LI></UL>
+<DIV class="tab-content clearfix">
+<H3 class=tab><A name=toc-news>News</A></H3><!--cahe Key : 294f89b1bae3a2ecb7e9905f30b53628-->
+<UL class=events>
+  <LI><A title="Dell Expands Storage Options With New Appliances" 
+  href="http://www.informationweek.com/news/storage/systems/232301440?cid=iwk_related_news_Data_protection&amp;itc=iwk_related_news_Data_protection">Dell 
+  Expands Storage Options With New Appliances</A>
+  <LI><A title="Hard Drive Prices Rise Due To Thai Floods" 
+  href="http://www.informationweek.com/news/storage/data_protection/232301534?cid=iwk_related_news_Data_protection&amp;itc=iwk_related_news_Data_protection">Hard 
+  Drive Prices Rise Due To Thai Floods</A>
+  <LI><A title="Box.net Adds Android, RIM Tablet Support, HTML5 Site" 
+  href="http://www.informationweek.com/news/mobility/business/231400081?cid=iwk_related_news_Data_protection&amp;itc=iwk_related_news_Data_protection">Box.net 
+  Adds Android, RIM Tablet Support, HTML5 Site</A>
+  <LI><A title="EMC Gives Storage Management A Cloud Facelift" 
+  href="http://www.informationweek.com/news/storage/data_protection/231001750?cid=iwk_related_news_Data_protection&amp;itc=iwk_related_news_Data_protection">EMC 
+  Gives Storage Management A Cloud Facelift</A> </LI></UL><A class=continue 
+title="More News" 
+href="http://www.informationweek.com/news?cid=iwk_related_news_more&amp;itc=iwk_related_news_more">More 
+News<SPAN>»</SPAN></A> </DIV>
+<DIV class="tab-content clearfix">
+<H3 class=tab><A name=toc-most-popular>Most Popular</A></H3><!--cahe Key : 70bde71d465340bb40f5fb818d2f63dc-->
+<UL class=events>
+  <LI><A title="Open Source Data Recovery Tools To The Rescue" 
+  href="http://www.informationweek.com/news/storage/disaster_recovery/208403254?cid=iwk_related_mostpopular_Data_protection&amp;itc=iwk_related_mostpopular_Data_protection">Open 
+  Source Data Recovery Tools To The Rescue</A>
+  <LI><A title="How to Choose A Cloud Storage Provider: Security" 
+  href="http://www.informationweek.com/news/storage/data_protection/231002298?cid=iwk_related_mostpopular_Data_protection&amp;itc=iwk_related_mostpopular_Data_protection">How 
+  to Choose A Cloud Storage Provider: Security</A>
+  <LI><A title="How Long Will Flash SSD Last?" 
+  href="http://www.informationweek.com/news/storage/systems/229403122?cid=iwk_related_mostpopular_Data_protection&amp;itc=iwk_related_mostpopular_Data_protection">How 
+  Long Will Flash SSD Last?</A>
+  <LI><A title="Total Cost Of Lead Generation" 
+  href="http://www.informationweek.com/news/storage/data_protection/229213314?cid=iwk_related_mostpopular_Data_protection&amp;itc=iwk_related_mostpopular_Data_protection">Total 
+  Cost Of Lead Generation</A> </LI></UL><A class=continue title="More Popular" 
+href="http://www.informationweek.com/news/breakingnews?cid=iwk_related_mostpopular_more&amp;itc=iwk_related_mostpopular_more">More 
+Popular<SPAN>»</SPAN></A> </DIV></DIV>
+<DIV style="MARGIN-BOTTOM: 10px" class="related-resources tabs">
+<UL class="toc clearfix">
+  <LI class=first><A title=Commentary 
+  href="http://www.informationweek.com/blog/231003002#toc-commentary">Commentary</A> 
+
+  <LI><A title="On the Web" 
+  href="http://www.informationweek.com/blog/231003002#toc-web">On the Web</A> 
+  </LI></UL>
+<DIV class="tab-content clearfix">
+<H3 class=tab><A name=toc-commentary>Commentary</A></H3><!--cahe Key : c8ee3146108de2d93a506966de9c581d-->
+<UL class=events>
+  <LI><A title="Will RAID Die In 2012?" 
+  href="http://www.informationweek.com/news/storage/disaster_recovery/232301095?cid=iwk_related_commentary_Data_protection&amp;itc=iwk_related_commentary_Data_protection">Will 
+  RAID Die In 2012?</A>
+  <LI><A title="The Death Of DRAM?" 
+  href="http://www.informationweek.com/news/storage/data_protection/231300579?cid=iwk_related_commentary_Data_protection&amp;itc=iwk_related_commentary_Data_protection">The 
+  Death Of DRAM?</A>
+  <LI><A title="How Long Will Flash SSD Last?" 
+  href="http://www.informationweek.com/news/storage/systems/229403122?cid=iwk_related_commentary_Data_protection&amp;itc=iwk_related_commentary_Data_protection">How 
+  Long Will Flash SSD Last?</A>
+  <LI><A title="Collecting The SSD Garbage" 
+  href="http://www.informationweek.com/news/storage/data_protection/229400980?cid=iwk_related_commentary_Data_protection&amp;itc=iwk_related_commentary_Data_protection">Collecting 
+  The SSD Garbage</A> </LI></UL><A class=continue title="More Commentary" 
+href="http://www.informationweek.com/news/columns?cid=iwk_related_commentary_more&amp;itc=iwk_related_commentary_more">More 
+Commentary<SPAN>»</SPAN></A> </DIV>
+<DIV class="tab-content clearfix">
+<H3 class=tab><A name=toc-web>On the Web</A></H3><!--cahe Key : 1112eace720f1ac838f2a992513ba019-->
+<UL class=events>
+  <LI><A title="Quantum PageRank Algorithm Outperforms Classical Version" 
+  href="http://www.technologyreview.com/blog/arxiv/27407/?p1=blogs&amp;cid=iwk_related_elsewhere_Data_protection&amp;itc=iwk_related_elsewhere_Data_protection" 
+  target=_blank>Quantum PageRank Algorithm Outperforms Classical Version</A>
+  <LI><A title="Amazon's Jungle Logic" 
+  href="http://www.nytimes.com/2011/12/13/opinion/amazons-jungle-logic.html?_r=2&amp;cid=iwk_related_elsewhere_Data_protection&amp;itc=iwk_related_elsewhere_Data_protection" 
+  target=_blank>Amazon's Jungle Logic</A>
+  <LI><A title="How Much Will AT&amp;T Divest for T-Mobile? " 
+  href="http://www.lightreading.com/blog.asp?blog_sectionid=958&amp;doc_id=207817&amp;&amp;cid=iwk_related_elsewhere_Data_protection&amp;itc=iwk_related_elsewhere_Data_protection" 
+  target=_blank>How Much Will AT&amp;T Divest for T-Mobile? </A>
+  <LI><A title="Sprint battles against AT&amp;T/T-Mobile deal at state level" 
+  href="http://www.fiercewireless.com/story/sprint-battles-against-attt-mobile-deal-state-level/2011-05-04?cid=iwk_related_elsewhere_Data_protection&amp;itc=iwk_related_elsewhere_Data_protection" 
+  target=_blank>Sprint battles against AT&amp;T/T-Mobile deal at state level</A> 
+  </LI></UL><A class=continue title="More On The Web" 
+href="http://www.informationweek.com/archives/weblinks/224903?cid=iwk_related_elsewhere_more&amp;itc=iwk_related_elsewhere_more">More 
+On The Web<SPAN>»</SPAN></A> </DIV></DIV>
+<DIV style="MARGIN-BOTTOM: 10px" class="related-resources tabs">
+<UL class="toc clearfix">
+  <LI class=first><A title=Video 
+  href="http://www.informationweek.com/blog/231003002#toc-video">Video</A> 
+  <LI><A title=Slideshow 
+  href="http://www.informationweek.com/blog/231003002#toc-slideshow">Slideshow</A> 
+  </LI></UL>
+<DIV class="tab-content clearfix">
+<H3 class=tab><A name=toc-video>Video</A></H3><!--cahe Key : 98c2ba716831f331213aac5f314eaa70-->
+<UL class=events>
+  <LI><A title="Rocstor's Ultra Secure SmartCard-Based Portable Hard Drive" 
+  href="http://www.informationweek.com/video/storage/security/232400121?cid=iwk_related_video_Data_protection&amp;itc=iwk_related_video_Data_protection">Rocstor's 
+  Ultra Secure SmartCard-Based Portable Hard Drive</A>
+  <LI><A title="How OpenFlow Changes Networking" 
+  href="http://www.informationweek.com/video/storage/virtualization/232301148?cid=iwk_related_video_Data_protection&amp;itc=iwk_related_video_Data_protection">How 
+  OpenFlow Changes Networking</A>
+  <LI><A title="ReviewCam: Sychron's Virtual Desktop Management" 
+  href="http://www.informationweek.com/video/232100003?cid=iwk_related_video_Data_protection&amp;itc=iwk_related_video_Data_protection">ReviewCam: 
+  Sychron's Virtual Desktop Management</A>
+  <LI><A 
+  title="iBike: Why You Don't Need No Stinkin' Dedicated Cycling Comptuer" 
+  href="http://www.informationweek.com/video/personal-tech/health-fitness/232400312?cid=iwk_related_video_Data_protection&amp;itc=iwk_related_video_Data_protection">iBike: 
+  Why You Don't Need No Stinkin' Dedicated Cycling Comptuer</A> </LI></UL><A 
+class=continue title="More Videos" 
+href="http://www.informationweek.com/archives/video/224903?cid=iwk_related_video_more&amp;itc=iwk_related_video_more">More 
+Videos<SPAN>»</SPAN></A> </DIV>
+<DIV class="tab-content clearfix">
+<H3 class=tab><A name=toc-slideshow>Slideshow</A></H3><!--cahe Key : 1e4845a02e3d75c785cfb005710c9659-->
+<UL class=events>
+  <LI><A title="Analytics Slideshow: Expanding Profile Of Data Deduplication" 
+  href="http://www.informationweek.com/news/galleries/storage/data_protection/225702708?cid=iwk_related_slideshow_Data_protection&amp;itc=iwk_related_slideshow_Data_protection">Analytics 
+  Slideshow: Expanding Profile Of Data Deduplication</A>
+  <LI><A title="15 Budget Busting Technology Projects" 
+  href="http://www.informationweek.com/news/galleries/hardware/reviews/227500060?cid=iwk_related_slideshow_Data_protection&amp;itc=iwk_related_slideshow_Data_protection">15 
+  Budget Busting Technology Projects</A>
+  <LI><A title="Slideshow: Network-Attached Storage" 
+  href="http://www.informationweek.com/news/galleries/storage/systems/226400045?cid=iwk_related_slideshow_Data_protection&amp;itc=iwk_related_slideshow_Data_protection">Slideshow: 
+  Network-Attached Storage</A>
+  <LI><A title="Image Gallery: Top 10 Google Videos" 
+  href="http://www.informationweek.com/news/galleries/software/soa_webservices/225300166?cid=iwk_related_slideshow_Data_protection&amp;itc=iwk_related_slideshow_Data_protection">Image 
+  Gallery: Top 10 Google Videos</A> </LI></UL><A class=continue 
+title="More Slideshows" 
+href="http://www.informationweek.com/galleries?cid=iwk_related_slideshow_more&amp;itc=iwk_related_slideshow_more">More 
+Slideshows<SPAN>»</SPAN></A> </DIV></DIV>
+<HR style="MARGIN-BOTTOM: 10px">
+<!-- /  Related Reading Box --><!--  Commenting -->
+<DIV id=mc_jive>
+<SCRIPT type=text/javascript>
+	var brainyardDomain  = 'www.informationweek.com';
+</SCRIPT>
+
+<SCRIPT>
+	$(document).ready(function(){
+		$(".commentingPolicy").colorbox({width:"420px",height:"300px",inline:true,href:"#inlineCommenting"});//end .htmlTags
+	});
+</SCRIPT>
+
+<DIV style="DISPLAY: none" align=left>
+<DIV 
+style="PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px" 
+id=inlineModal align=left>
+<DIV class=newsletterHeader><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/IW_logo_disqus_popbox.jpg"></DIV><BR><BR>
+<DIV class=markdown>
+<H3>Currently we allow the following HTML tags in comments:</H3>
+<H3>Single tags</H3>
+<P><I>These tags can be used alone and don't need an ending tag. </I></P>
+<P><CODE>&lt;br&gt;</CODE> Defines a single line break 
+<BR><BR><CODE>&lt;hr&gt;</CODE> Defines a horizontal line</P>
+<H3>Matching tags</H3>
+<P><I>These require an ending tag - e.g. <CODE>&lt;i&gt;italic 
+text&lt;/i&gt;</CODE> </I></P>
+<P><CODE>&lt;a&gt;</CODE> Defines an anchor<BR><BR><CODE>&lt;b&gt;</CODE> 
+Defines bold text<BR><BR><CODE>&lt;big&gt;</CODE> Defines big 
+text<BR><BR><CODE>&lt;blockquote&gt;</CODE> Defines a long 
+quotation<BR><BR><CODE>&lt;caption&gt;</CODE> Defines a table 
+caption<BR><BR><CODE>&lt;cite&gt;</CODE> Defines a 
+citation<BR><BR><CODE>&lt;code&gt;</CODE> Defines computer code 
+text<BR><BR><CODE>&lt;em&gt;</CODE> Defines emphasized 
+text<BR><BR><CODE>&lt;fieldset&gt;</CODE> Defines a border around elements in a 
+form<BR><BR><CODE>&lt;h1&gt;</CODE> This is heading 
+1<BR><BR><CODE>&lt;h2&gt;</CODE> This is heading 
+2<BR><BR><CODE>&lt;h3&gt;</CODE> This is heading 
+3<BR><BR><CODE>&lt;h4&gt;</CODE> This is heading 
+4<BR><BR><CODE>&lt;h5&gt;</CODE> This is heading 
+5<BR><BR><CODE>&lt;h6&gt;</CODE> This is heading 6<BR><BR><CODE>&lt;i&gt;</CODE> 
+Defines italic text<BR><BR><CODE>&lt;p&gt;</CODE> Defines a 
+paragraph<BR><BR><CODE>&lt;pre&gt;</CODE> Defines preformatted 
+text<BR><BR><CODE>&lt;q&gt;</CODE> Defines a short 
+quotation<BR><BR><CODE>&lt;samp&gt;</CODE> Defines sample computer code 
+text<BR><BR><CODE>&lt;small&gt;</CODE> Defines small 
+text<BR><BR><CODE>&lt;span&gt;</CODE> Defines a section in a 
+document<BR><BR><CODE>&lt;s&gt;</CODE> Defines strikethrough 
+text<BR><BR><CODE>&lt;strike&gt;</CODE> Defines strikethrough text 
+<BR><BR><CODE>&lt;strong&gt;</CODE> Defines strong text 
+<BR><BR><CODE>&lt;sub&gt;</CODE> Defines subscripted text 
+<BR><BR><CODE>&lt;sup&gt;</CODE> Defines superscripted text 
+<BR><BR><CODE>&lt;u&gt;</CODE> Defines underlined text<BR><BR></P></DIV></DIV><!-- /end  inline_mailinglist--><!--  Commenting Policy contents -->
+<DIV 
+style="TEXT-ALIGN: justify; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px" 
+id=inlineCommenting class=markdown>
+<P>InformationWeek encourages readers to engage in spirited, healthy debate, 
+including taking us to task. However, InformationWeek moderates all comments 
+posted to our site, and reserves the right to modify or remove any content that 
+it determines to be derogatory, offensive, inflammatory, vulgar, 
+irrelevant/off-topic, racist or obvious marketing/SPAM. InformationWeek further 
+reserves the right to disable the profile of any commenter participating in said 
+activities.</P></DIV></DIV>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width=626 bgColor=#f3f3f3>
+  <TBODY>
+  <TR>
+    <TD width=34><IMG border=0 alt="Disqus Tips" align=left 
+      src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/hintbox_info.jpg" 
+      height=34></TD>
+    <TD><FONT 
+      style="FONT-FAMILY: Arial, Helvetica, Geneva, SunSans-Regular, sans-serif; COLOR: #000000; FONT-SIZE: 11px"><STRONG>To 
+      upload an avatar photo,</STRONG> first <A 
+      style="FONT-FAMILY: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif; COLOR: #003bb0; FONT-SIZE: 11px" 
+      href="http://disqus.com/dashboard/" target=_blank>complete your Disqus 
+      profile.</A> | <A 
+      style="FONT-FAMILY: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif; COLOR: #003bb0; FONT-SIZE: 11px" 
+      class=htmlTags href="http://www.informationweek.com/blog/231003002#">View 
+      the list</A> of <STRONG>supported HTML tags</STRONG> you can use to style 
+      comments. | Please read our <A 
+      style="FONT-FAMILY: Arial,Helvetica,Geneva,SunSans-Regular,sans-serif; COLOR: #003bb0; FONT-SIZE: 11px" 
+      class=commentingPolicy 
+      href="http://www.informationweek.com/blog/231003002#"><STRONG>commenting 
+      policy.</STRONG></A> </FONT></TD></TR>
+  <TR>
+    <TD></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD width=34><IMG border=0 alt="T-Shirt Giveaway" align=left 
+      src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/hintbox_gift.jpg" 
+      height=34> </TD>
+    <TD><FONT 
+      style="FONT-FAMILY: Arial, Helvetica, Geneva, SunSans-Regular, sans-serif; COLOR: #000000; FONT-SIZE: 11px"><STRONG>T-Shirt 
+      Giveaway:</STRONG> Each week we're selecting one great comment from our 
+      readers. The author of the comment will receive an InformaitonWeek 
+      Community t-shirt. So get posting! </FONT></TD></TR></TBODY></TABLE>
+<SCRIPT language=JavaScript type=text/javascript>
+<!--
+var jmessage = '';
+	var jtimestamp = '';
+	var jhmac = '';
+	var jmessage = '';
+	$.ajax({
+	   type: "GET",
+	   url: "/disqussetting",
+	   data: "referer="+encodeURIComponent(window.location.href),
+	   success: function(data){		   
+		   if (data != null)
+			{
+			   jmessage = data.jmessage;
+			   jtimestamp = data.jtimestamp;
+			   jhmac = data.jhmac;					
+			}
+	   },
+	   dataType: "json",
+	   async: false,
+	   cache: false
+	 }	
+	 );
+	-->
+	 
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+var disqus_config = function () {
+
+	var hmac1 = jhmac;
+	var htimestamp = jtimestamp;
+	var hmessage = jmessage;	
+	if(hmac1 != null){		
+			this.page.remote_auth_s3 = hmessage + ' ' + hmac1 + ' ' + htimestamp;
+			this.page.api_key = "PZCFWiOQHimfoBuGrfHW2puPbtIC2kW5N1ep3fCBt9A9fIQWRLfAfWI21yUe1S9m";			
+	}
+	this.page.author_s3 = "eyJ1c2VybmFtZSI6Ikdlb3JnZSBDcnVtcCJ9 03af4630720aab14e632a3f310240348d953c702 1328052065";		
+    this.sso = {
+          name:    "UBM TechWeb",
+          button:  "http://i.techweb.com/informationweek/images/ubm-techweb-logo.gif",
+          icon:    "http://i.cmpnet.com/brainyard/images/favicon.ico",
+          url:     "http://www.informationweek.com/login?url=http%3A%2F%2Fwww.informationweek.com%2Fblog%2F231003002%3Fat%3Dvalidate%26actionType%3Dform1&actionType=form1",
+          logout:  "http://www.informationweek.com/logout?url=http%3A%2F%2Fwww.informationweek.com%2Fblog%2F231003002",
+          width:   "800",
+          height:  "400"
+    };
+
+    this.callbacks.onNewComment = [function() {trackComment();}];
+};
+</SCRIPT>
+
+<STYLE type=text/css>.dsq-post-tools .dsq-post-as .dsq-button {
+	BACKGROUND: url(none) #c90000
+}
+.dsq-post-tools .dsq-post-as .dsq-button:active {
+	BACKGROUND: url(none) #ed0404
+}
+.dsq-post-tools .dsq-post-as .dsq-button:hover {
+	BACKGROUND: url(none) #e00000
+}
+.dsq-post-tools .dsq-post-as .dsq-button {
+	COLOR: white; text-shadow: none
+}
+.dsq-comment-text BLOCKQUOTE {
+	BORDER-LEFT: #555555 1px solid; PADDING-BOTTOM: 5px; FONT-STYLE: italic; MARGIN: 15px 15px 10px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; COLOR: #999999; FONT-SIZE: 15px; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+</STYLE>
+<A name=comments></A>
+<DIV id=disqus_thread></DIV>
+<SCRIPT type=text/javascript>
+		
+    var disqus_shortname = 'iwk';
+    var disqus_domain = 'disqus.com';
+    var disqus_identifier = 'article_231003002';
+	var disqus_url = 'http://www.informationweek.com/blog/231003002';
+		var disqus_title = '"How to Choose A Cloud Storage Provider: Availability"';
+		/* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+   
+    
+</SCRIPT>
+</DIV><!-- /  Commenting --><!-- Commentary Page -->
+<CENTER><A href="http://www.informationweek.com/rss/all"><IMG 
+style="PADDING-RIGHT: 4px" 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/xml.gif"> 
+Subscribe to RSS</A><BR><BR>
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1256092/0/0/ADTECH;alias=InformationWeek_Blog_Storage_IMU3_300x250_or_336x280;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT></CENTER>
+<H2>Resource Links</H2>
+<UL class=resources>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1200309/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_1_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1201178/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_2_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1201087/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_3_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1201129/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_4_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1200026/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_5_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1249703/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_6_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1250049/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_7_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1249881/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_8_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1249958/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_9_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG>
+  <LI><STRONG>
+  <SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1249838/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Marketplace_link_10_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+  <NOSCRIPT></NOSCRIPT></STRONG></LI></UL><BR>
+<P><BR></P></DIV></DIV>
+<DIV class="secondary-content yui-b"><!-- author "business card" -->
+<DIV id=authorBizCard><!-- authorBizCard -->
+<DIV class=nameField><A 
+href="http://www.informationweek.com/authors/6668">George Crump</A> 
+<UL>
+  <LI><A href="http://www.informationweek.com/authors/6668#bio">Bio</A> </LI>
+  <LI><A href="mailto:georgeacrump@mac.com">Contact</A> </LI>
+  <LI class=last><A 
+  href="http://www.informationweek.com/authors/6668#archive">Archive</A> 
+</LI></UL></DIV>
+<DIV class=icons><A href="http://www.informationweek.com/authors/rss/6668"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/rss_icon_lg.gif" 
+width=32 height=32></A> <A href="mailto:georgeacrump@mac.com"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/mail_icon_lg.gif" 
+width=32 height=32></A> </DIV></DIV><!-- / author "business card" --><!-- newsletter promo -->
+<DIV id=newsletterPromo>
+<H2 class=first><SPAN>Get InformationWeek Daily</SPAN></H2>
+<DIV class=resources>
+<P>Don't miss each day's hottest technology news, sent directly to your inbox, 
+including occasional breaking news alerts.</P>
+<DIV><A id=subscribeNow class="htmlTags subscribe1 button" title=Subscribe 
+onclick="var s=s_gi('cmpinformationweekcom'); s.evar26='InformationWeek Newsletter Subscription Short Promo Form'; s.products=';InformationWeek Newsletter Subscription;;'; s.events='event6'; s.tl(this,'o','InformationWeek Newsletter Subscription Subscribe Click');" 
+href="http://www.informationweek.com/blog/231003002#">Subscribe Now</A> 
+</DIV></DIV></DIV>
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/newsletter.js"></SCRIPT>
+<LINK rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/newsletter.css" 
+media=all><LINK rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/footer(1).css"><LINK 
+rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/colorbox.css" 
+media=screen><LINK rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/newsletterPromoPopupForm.css" 
+media=all>
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/newsletterpromo.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+	var brainyardDomain  = 'www.informationweek.com';
+</SCRIPT>
+
+<SCRIPT>
+	$(document).ready(function(){
+		$("#subscribeNow").colorbox({width:"620px",height:"600px",inline:true,href:"#inlineModalNews"});//end .htmlTags
+	});
+</SCRIPT>
+
+<DIV style="DISPLAY: none">
+<DIV 
+style="PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px" 
+id=inlineModalNews><!--  Starts here -->
+<DIV 
+style="PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px" 
+id=inline_mailinglist>
+<DIV id=newsletterHeader><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/NL_popup_daily_logo.gif"></DIV>
+<DIV id=inline_mailinglist_body>
+<H1>Sign up for the InformationWeek Daily email newsletter </H1>
+<DIV id=process_class></DIV>
+<DIV id=mailingList>
+<DIV id=mailingListTop></DIV>
+<DIV id=mailingListBody>
+<FORM id=quickMailingList onsubmit="return false;" name=quickMailingList>
+<TABLE id=mainnameaddress class=formtable cellSpacing=0>
+  <TBODY>
+  <TR class="formrow required">
+    <TD class=label><LABEL for="First Name">First Name*:</LABEL></TD>
+    <TD class=input><INPUT id=firstname name=firstname maxLength=20 
+  size=30></TD></TR>
+  <TR class="formrow required">
+    <TD class=label><LABEL for="Last Name">Last Name*:</LABEL></TD>
+    <TD class=input><INPUT id=lastname name=lastname maxLength=25 size=30></TD>
+  <TR class="formrow required">
+    <TD class=label><LABEL for=EMAIL>Email Address*: </LABEL></TD>
+    <TD class=input><INPUT id=email name=email maxLength=50 size=30></TD></TR>
+  <TR class=formrow>
+    <TD class=label><LABEL for="Job Title">Job Title:</LABEL></TD>
+    <TD class=input><INPUT id=jobtitle name=jobtitle maxLength=50 
+  size=30></TD></TR>
+  <TR class=formrow>
+    <TD class=label><LABEL 
+      for="Employees in Organization">Company/Organization/Gov't 
+    Dept.:</LABEL></TD>
+    <TD class=input><INPUT id=employeesinorganization 
+      name=employeesinorganization maxLength=50 size=30></TD></TR>
+  <TR>
+    <TD class="label required hint">*Required field </TD>
+    <TD align=right><INPUT onclick=frmcheck(); value=subscribe 
+      src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/button-subscribe-input.png" 
+      type=image> </TD></TR>
+  <TR>
+    <TD class=label colSpan=2>
+      <P class=fineText><A 
+      href="http://legal.us.ubm.com/privacy-notice-highlights/" 
+      target=_blank>Privacy Statement</A> </P></TD></TR></TBODY></TABLE></FORM></DIV>
+<DIV id=mailingListBottom></DIV></DIV><!-- /end  mailingList--></DIV><!-- /end  inline_mailinglist_body--></DIV></DIV></DIV>
+<DIV class="align-center padded">
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/2296942/0/0/ADTECH;alias=InformationWeek_Blog_Storage_Modal_336x70;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT></DIV>
+<DIV class="align-center padded">
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1199253/0/0/ADTECH;alias=InformationWeek_Blog_Storage_IMU1_300x250_or_336x280;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT></DIV><BR><BR>
+<H2><SPAN>This Week's Issue</SPAN></H2>
+<DIV class="issue resources clearfix">
+<DIV class=cover><IMG title="This Week's Issue" alt="This Week's Issue" 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/smallcov.jpg" 
+width=110> 
+<DIV class=caption><A title=Title 
+href="http://www.informationweek.com/maindocs/archive.htm">Back 
+Issues</A></DIV></DIV>
+<UL class=assets>
+  <LI><A title=Title 
+  href="http://informationweek.com/gogreen/011612?cid=article_axxe_os&amp;k=axxe">Subscribe 
+  to Digital</A> 
+  <LI><A title=Title 
+  href="http://www.informationweek.com/news/telecom/collaboration/232500086?ct=1022">Read 
+  the Cover Story</A> 
+  <LI><A title=Title href="http://www.informationweek.com/thisweek">Read This 
+  Week's Issue</A> 
+  <LI><A title=Title 
+  href="http://reports.informationweek.com/abstract/7/8657/Enterprise-Software/informationweek-january-30-2012.html?cid=onedit_ds_iwright&amp;k=axxe">Download 
+  Current Issue</A> </LI></UL>
+<H5>Free Print Subscription</H5><A class="subscribe button" title=Subscribe 
+href="https://www.cmpadministration.com/ars/gettemplate.do?mode=gettemplate&amp;P=1&amp;F=1002296&amp;K=WZIWRSB">Subscribe</A> 
+</DIV><!-- Current Healthcare Issue -->
+<H2><SPAN>Current Healthcare Issue</SPAN></H2>
+<DIV class="issue resources clearfix">
+<DIV class=cover><A 
+href="http://www.informationweek.com/gogreen/013012hc/?cid=article_axxe_os&amp;k=axxe?k=iwka&amp;cid=onedit_ds_iwka"><IMG 
+title="InformationWeek Healthcare - Nov 2011" border=0 
+alt="InformationWeek Healthcare - Feb 2012" 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/smallcov(1).jpg" 
+width=106 height=106></A><!-- largecov cover WAS width="125" height="169" --> 
+<DIV class=caption><A title=">Back Issues" 
+href="http://www.informationweek.com/maindocs/archive.htm">Back 
+Issues</A></DIV></DIV>
+<DIV class=issueInfo><SPAN class=inThisIssueText>In this issue:</SPAN> 
+<UL class=inThisIssue_assets><!-- list the 2 main features only -->
+  <LI><STRONG>Mobile Medical Apps:</STRONG> mobile apps need the FDA's approval. 
+
+  <LI><STRONG>Medical Error Reporting:</STRONG>Electronic health record system 
+  vendors back use of anonymous error-reporting system. <!-- END: list the 2 main features only -->
+  <LI class=assets2><A title="Read the Current Issue" 
+  href="http://www.informationweek.com/gogreen/013012hc/?cid=article_axxe_os&amp;k=axxe?k=iwka&amp;cid=onedit_ds_iwka" 
+  target=_blank>And much more!</A> 
+  <LI class=assets2><A title="Read the Current Issue" 
+  href="http://www.informationweek.com/gogreen/013012hc/?k=axxe&amp;cid=article_axxe_os" 
+  target=_blank>Read the Current Issue</A> </LI></UL></DIV><A 
+class="subscribe button" title=Subscribe 
+href="https://www.cmpadministration.com/ars/gettemplate.do?mode=gettemplate&amp;P=1&amp;F=1002707&amp;K=WZHCCGI&amp;cid=dig_sub_WZHCCGI" 
+target=_blank>Subscribe Now</A> </DIV><!-- / Current Healthcare Issue --><!-- Technology Whitepapers displays Smart Box Content -->
+<H2><SPAN>Technology Whitepapers</SPAN></H2>
+<DIV class=resources><!-- <h3>Technology Whitepapers</h3> -->
+<UL class=assets><!--cahe Key : 403e4f0736ad086a2c38b75baee872ec-->
+  <UL class=archive>
+    <LI><A 
+    href="http://www.informationweek.com/whitepaper/Hardware/Virtualization-Hardware/an-expert-guide-to-desktop-virtualization-impleme-wp1298056956175?articleID=180600012&amp;cid=iwk_fture_wp_Data_protection&amp;itc=iwk_fture_wp_Data_protection">An 
+    Expert Guide to Desktop Virtualization Implementation </A>
+    <LI><A 
+    href="http://informationweek.com/whitepaper/Software/Server-Virtualization/desktopvirtualization-made-easy-wp1308685067?articleID=191702371&amp;cid=iwk_fture_wp_Data_protection&amp;itc=iwk_fture_wp_Data_protection">Desktop 
+    Virtualization Made Easy </A>
+    <LI><A 
+    href="http://www.informationweek.com/whitepaper/Hardware/Virtualization-Hardware/what-is-desktop-virtualization-it-handboo-wp1298056460577?articleID=180600003&amp;cid=iwk_fture_wp_Data_protection&amp;itc=iwk_fture_wp_Data_protection">What 
+    Is Desktop Virtualization? IT Handbook </A>
+    <LI><A 
+    href="http://www.informationweek.com/whitepaper/Hardware/Desktops-PCs/increasing-productivity-with-mobile-business-pc-wp1298675316567?articleID=181300027&amp;cid=iwk_fture_wp_Data_protection&amp;itc=iwk_fture_wp_Data_protection">Increasing 
+    Productivity with Mobile Business PCs </A>
+    <LI><A 
+    href="http://www.informationweek.com/whitepaper/Security/Vulnerabilities-and-Threats/media-tablets-in-the-enterpris-wp1299706519797?articleID=182600003&amp;cid=iwk_fture_wp_Data_protection&amp;itc=iwk_fture_wp_Data_protection">Media 
+    Tablets in the Enterprise </A></LI></UL></UL></DIV>
+<H2><SPAN>Featured Resource</SPAN></H2>
+<DIV class=resources><A 
+href="http://www.business-at-the-speed-of-virtualization.techweb.com/?cid=fture_wp__stor" 
+target=_blank><STRONG>Business at the Speed of 
+Virtualization</STRONG></A><BR>Visit AMD's Business at the Speed of 
+Virtualization Briefing Center, and discover all you need to know about 
+virtualization. Click here for exclusive access to white papers,webcasts, 
+videos, and more. <BR><A 
+href="http://www.business-at-the-speed-of-virtualization.techweb.com/?cid=fture_wp__stor" 
+target=_blank>Read Now</A> </DIV>
+<H2 class=first><SPAN>Featured Reports</SPAN></H2>
+<DIV class="resources clearfix">
+<UL class=assets><!--cahe Key : ff013af2e0d56150503d20a6c61015e2-->
+  <UL class=archive>
+    <LI><A 
+    href="http://reports.informationweek.com/abstract/21/8533/Security/strategy-database-access.html?cid=iwk_fture_Analytics_Data_protection&amp;itc=iwk_fture_Analytics_Data_protection">Ensuring 
+    Secure Database Access </A>
+    <LI><A 
+    href="http://reports.informationweek.com/abstract/25/8496/Virtualization/four-steps-to-virtualization-security.html?cid=iwk_fture_Analytics_Data_protection&amp;itc=iwk_fture_Analytics_Data_protection">Four 
+    Steps to Virtualization Security </A>
+    <LI><A 
+    href="http://reports.informationweek.com/abstract/24/8595/Storage-Server/3-paths-to-network-convergence.html?cid=iwk_fture_Analytics_Data_protection&amp;itc=iwk_fture_Analytics_Data_protection">3 
+    Paths to Network Convergence </A>
+    <LI><A 
+    href="http://reports.informationweek.com/abstract/18/8608/Mobility-Wireless/strategy-education-s-technology-dilemma.html?cid=iwk_fture_Analytics_Data_protection&amp;itc=iwk_fture_Analytics_Data_protection">Strategy: 
+    Education's Technology Dilemma </A>
+    <LI><A 
+    href="http://analytics.informationweek.com/abstract/5/5674/Cloud-Computing/research-saas-2011.html?cid=iwk_fture_Analytics_Data_protection&amp;itc=iwk_fture_Analytics_Data_protection">SaaS 
+    2011: Adoption Soars, Yet Deployment Concerns Linger </A></LI></UL></UL></DIV>
+<SCRIPT language=Javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/e2_radio_ad_js.js"></SCRIPT>
+<BR>
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1257924/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Promo1_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT><BR><BR>
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1257925/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Promo2_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT><BR clear=all><BR><BR>
+<H2><SPAN>Video</SPAN></H2>
+<DIV id=xc>
+<DIV id=xc2>
+<DIV class="box video">
+<DIV class=box_wrap>
+<DIV class=box_third><A 
+href="http://www.informationweek.com/video/mastermix1324093291001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1325634451001_ari-origin29-arc-176-1323797619570.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1324093291001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>Box.net CEO Aaron Levie Takes On Microso 
+...</A><BR></DIV>
+<DIV class=box_third><A 
+href="http://www.informationweek.com/video/mastermix1324073803001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1325634472001_ari-origin29-arc-144-1323798100830.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1324073803001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>HP Chairman Ray Lane: Focus On Innovatio 
+...</A><BR></DIV>
+<DIV class=last_float_third><A 
+href="http://www.informationweek.com/video/mastermix1324071283001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1325634466001_ari-origin29-arc-168-1323797971582.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1324071283001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>How OpenFlow Changes Networking</A><BR></DIV></DIV>
+<DIV style="DISPLAY: none" class=box_wrap>
+<DIV class=box_third><A 
+href="http://www.informationweek.com/video/mastermix1324135863001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1325634469001_ari-origin29-arc-141-1323798051401.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1324135863001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>Holiday Gift Guide For Tech Gadget Lover 
+...</A><BR></DIV>
+<DIV class=box_third><A 
+href="http://www.informationweek.com/video/mastermix1322146125001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1322359498001_ari-origin29-arc-148-1323660639403.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1322146125001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>Valley View: Hot Trends, Cool Toys</A><BR></DIV>
+<DIV class=last_float_third><A 
+href="http://www.informationweek.com/video/mastermix1231139458001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1231173848001_th-1231161582001.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1231139458001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>ï¿½ï¿½ï¿½Big Data, Big Decisions, Big Im 
+...</A><BR></DIV></DIV>
+<DIV style="DISPLAY: none" class=box_wrap>
+<DIV class=box_third><A 
+href="http://www.informationweek.com/video/mastermix1229382657001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1229460802001_ari-origin29-arc-130-1319141493851.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1229382657001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>Solar-Powered Mobile Device Charging Goe 
+...</A><BR></DIV>
+<DIV class=box_third><A 
+href="http://www.informationweek.com/video/mastermix1227292489001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1227206446001_ari-origin29-arc-135-1319069740748.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1227292489001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>Q&amp;A: Reid Hoffman, Partner at Greylock, 
+...</A><BR></DIV>
+<DIV class=last_float_third><A 
+href="http://www.informationweek.com/video/mastermix1227328678001?cid=iwhome_vid__mast"><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/1568176135_1227206444001_ari-origin29-arc-135-1319069726806.jpg" 
+width=95 height=63></A><BR><A 
+href="http://www.informationweek.com/video/mastermix/1227328678001?cid=iwhome_vid__mast"><SPAN 
+class=red>WATCH: </SPAN>High Order Bit: PepsiCo Inc. -- Frank Co 
+...</A><BR></DIV></DIV>
+<DIV class=slide_controls><A 
+href="http://www.informationweek.com/video/"><STRONG>View All 
+Videos</STRONG></A> 
+<DIV class=controls><A class=slide_left 
+href="http://www.informationweek.com/blog/231003002#"><SPAN>Previous 
+Page</SPAN></A> <IMG alt="First Page" 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/slide_dot_red.jpg"> 
+<IMG alt="Second Page" 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/slide_dot_gray.jpg"> 
+<IMG alt="Third Page" 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/slide_dot_gray.jpg"> 
+<A class=slide_right 
+href="http://www.informationweek.com/blog/231003002#"><SPAN>Next Page</SPAN></A> 
+</DIV></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
+<STYLE>#subnav #tw_superfooter_936 LI {
+	TEXT-INDENT: 0px; PADDING-LEFT: 0px; BACKGROUND: none transparent scroll repeat 0% 0%
+}
+</STYLE>
+<!-- ========== --><!-- = FOOTER = --><!-- ========== --><!-- research tag -->
+<SCRIPT 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/nodetag.js"></SCRIPT>
+<!-- AD tag -->
+<DIV id=footer>
+<DIV id=footer-ad class=ad><!--  check cloud_footer == true in production then dont display this add -->
+<P align=center><BR clear=all>
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1200449/0/225/ADTECH;alias=InformationWeek_Blog_Storage_Bottom_728x90;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT></P></DIV><LINK rel=stylesheet type=text/css 
+href="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/superfooter_936.css">
+<DIV align=center>
+<DIV id=tw_superfooter_936>
+<DIV id=tw_superfooter_top>
+<DIV id=tw_superfooter_bottom_bg>
+<DIV id=tw_superfooter_header>
+<DIV id=tw_superfooter_left_header_logo><A 
+href="http://www.techweb.com/aboutus?itc=footer" target=_blank><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/ubmtechweb_logo_sm.gif"></A> 
+</DIV>
+<DIV id=tw_superfooter_tagline>
+<H3>Enabling People and Organizations to Harness the Transformative Power of 
+Technology</H3></DIV></DIV>
+<DIV id=tw_superfooter_mid>
+<DIV id=tw_superfooter_links>
+<UL class=tw_superfooter_links_column>
+  <H4>CIOs &amp; IT Professionals</H4>
+  <LI><A href="http://www.blackhat.com/" target=_blank>Black Hat</A> 
+  <LI><A href="http://www.byte.com/?itc=footer" target=_blank>BYTE</A> 
+  <LI><A href="http://www.cloudconnectevent.com/?itc=footer" target=_blank>Cloud 
+  Connect</A> 
+  <LI><A href="http://www.darkreading.com/?itc=footer" target=_blank>Dark 
+  Reading</A> 
+  <LI><A href="http://www.enterprise2conf.com/?itc=footer" 
+  target=_blank>Enterprise 2.0</A> 
+  <LI><A href="http://www.voicecon.com/?itc=footer" target=_blank>Enterprise 
+  Connect</A> 
+  <LI><A href="http://www.enterpriseefficiency.com/?itc=footer" 
+  target=_blank>Enterprise Efficiency</A> 
+  <LI><A href="http://www.thinkhdi.com/?itc=footer" target=_blank>HDI</A> 
+  <LI><A href="http://www.informationweek.com/?itc=footer" 
+  target=_blank>InformationWeek</A> 
+  <LI><A href="http://www.informationweek.com/iw500?itc=footer" 
+  target=_blank>InformationWeek 500</A> 
+  <LI><A href="http://www.informationweekconference.com/?itc=footer" 
+  target=_blank>InformationWeek 500 Conference</A> 
+  <LI><A href="http://www.informationweek.com/events/?itc=footer" 
+  target=_blank>InformationWeek Events</A> 
+  <LI><A href="http://www.informationweek.com/global-cio/?itc=footer" 
+  target=_blank>InformationWeek Global CIO</A> 
+  <LI><A href="http://www.informationweek.com/healthcare/?itc=footer" 
+  target=_blank>InformationWeek Healthcare</A> 
+  <LI><A href="http://www.informationweek.in/?itc=footer" 
+  target=_blank>InformationWeek India</A> 
+  <LI><A href="http://reports.informationweek.com/?itc=footer" 
+  target=_blank>InformationWeek Reports</A> 
+  <LI><A href="http://smb.informationweek.com/?itc=footer" 
+  target=_blank>InformationWeek SMB</A> 
+  <LI><A href="http://www.interop.com/?itc=footer" target=_blank>Interop</A> 
+  <LI><A href="http://www.mobileconnectevent.com/?itc=footer" 
+  target=_blank>Mobile Connect</A> 
+  <LI><A href="http://www.networkcomputing.com/?itc=footer" 
+  target=_blank>Network Computing</A> 
+  <LI><A href="http://www.nojitter.com/?itc=footer" target=_blank>No Jitter</A> 
+  <LI><A href="http://www.techweb.com/?itc=footer" target=_blank>TechWeb.com</A> 
+
+  <LI><A href="http://www.thebrainyard.com/?itc=footer" target=_blank>The 
+  BrainYard</A> </LI></UL>
+<UL class=tw_superfooter_links_column>
+  <H4>Software Developers</H4>
+  <LI><A href="http://drdobbs.com/?itc=footer" target=_blank>Dr. Dobb's</A> 
+  <LI><A href="http://drdobbs.com/windows/?itc=footer" target=_blank>Dr. Dobb's 
+  M-Dev</A> 
+  <LI><A href="http://www.drdobbs.com/digital?itc=footer" target=_blank>Dr. 
+  Dobb's Journal</A> 
+  <LI><A href="http://www.drdobbs.com/newsletters/?itc=footer" target=_blank>Dr. 
+  Dobb's Update</A> 
+  <LI><A href="http://www.techweb.com/?itc=footer" target=_blank>TechWeb.com</A> 
+
+  <H4>Web &amp; Digital Professionals</H4>
+  <LI><A href="http://www.internetevolution.com/?itc=footer" 
+  target=_blank>Internet Evolution</A> 
+  <LI><A href="http://www.onlinemarketingsummit.com/?itc=footer" 
+  target=_blank>Online Marketing Summit</A> 
+  <LI><A href="http://www.techweb.com/?itc=footer" target=_blank>TechWeb.com</A> 
+
+  <H4>Government Officials</H4>
+  <LI><A href="http://www.gtec.ca/?itc=footer" target=_blank>GTEC Ottawa</A> 
+  <LI><A href="http://www.informationweek.com/government/?itc=footer" 
+  target=_blank>InformationWeek Government</A> 
+  <LI><A href="http://www.techweb.com/?itc=footer" target=_blank>TechWeb.com</A> 
+  </LI></UL>
+<UL class=tw_superfooter_links_column>
+  <H4>Vertical Markets</H4>
+  <LI><A href="http://www.advancedtrading.com/?itc=footer" 
+  target=_blank>Advanced Trading</A> 
+  <LI><A href="http://www.banktech.com/?itc=footer" target=_blank>Bank Systems 
+  &amp; Technology</A> 
+  <LI><A href="http://www.createyournextcustomer.com/?itc=footer" 
+  target=_blank>CreateYourNextCustomer</A> 
+  <LI><A href="http://www.informationweek.com/government/?itc=footer" 
+  target=_blank>InformationWeek Government</A> 
+  <LI><A href="http://www.informationweek.com/healthcare/?itc=footer" 
+  target=_blank>InformationWeek Healthcare</A> 
+  <LI><A href="http://www.insurancetech.com/?itc=footer" target=_blank>Insurance 
+  &amp; Technology</A> 
+  <LI><A href="http://www.lightreading.com/?itc=footer" target=_blank>Light 
+  Reading / Telecom</A> 
+  <LI><A href="http://www.thecmosite.com/?itc=footer" target=_blank>The CMO 
+  Site</A> 
+  <LI><A href="http://www.wallstreetandtech.com/?itc=footer" target=_blank>Wall 
+  Street &amp; Technology</A> 
+  <H4>Game Industry Professionals</H4>
+  <LI><A href="http://gamasutra.com/?itc=footer" target=_blank>Gamasutra.com</A> 
+
+  <LI><A href="http://www.gdconf.com/?itc=footer" target=_blank>Game Developers 
+  Conference (GDC)</A> 
+  <LI><A href="http://www.igf.com/?itc=footer" target=_blank>Independent Games 
+  Festival</A> 
+  <LI><A href="http://www.gdmag.com/?itc=footer" target=_blank>Game Developer 
+  Magazine</A> 
+  <LI><A href="http://www.gdceurope.com/?itc=footer" target=_blank>GDC 
+  Europe</A> 
+  <LI><A href="http://www.china.gdconf.com/?itc=footer" target=_blank>GDC 
+  China</A> 
+  <LI><A href="http://www.gamecareerguide.com/?itc=footer" target=_blank>Game 
+  Career Guide</A> 
+  <LI><A href="http://www.game-advertising-online.com/?itc=footer" 
+  target=_blank>Game Advertising Online</A> </LI></UL>
+<UL class=tw_superfooter_links_column>
+  <H4>Global Communications <BR>Service Providers</H4>
+  <LI><A href="http://www.heavyreading.com/?itc=footer" target=_blank>Heavy 
+  Reading</A> 
+  <LI><A href="http://www.heavyreading.com/research/?itc=footer" 
+  target=_blank>Heavy Reading Insiders</A> 
+  <LI><A href="http://www.pyr.com/" target=_blank>Pyramid Research</A> 
+  <LI><A href="http://www.lightreading.com/?itc=footer" target=_blank>Light 
+  Reading</A> 
+  <LI><A href="http://www.lightreading.in/?itc=footer" target=_blank>Light 
+  Reading India</A> 
+  <LI><A href="http://www.lightreading.com/lr-mobile/?itc=footer" 
+  target=_blank>Light Reading Mobile</A> 
+  <LI><A href="http://www.lightreading.com/lr-cable/?itc=footer" 
+  target=_blank>Light Reading Cable</A> 
+  <LI><A href="http://www.lightreading.com/europe/?itc=footer" 
+  target=_blank>Light Reading Europe</A> 
+  <LI><A href="http://www.lightreading.com/asia/?itc=footer" target=_blank>Light 
+  Reading Asia</A> 
+  <LI><A href="http://www.ethernetexpo.com/" target=_blank>Ethernet Expo</A> 
+  <LI><A href="http://www.telcotvonline.com/" target=_blank>TelcoTV</A> 
+  <LI><A href="http://www.towersummit.com/" target=_blank>Tower Summit</A> 
+  <LI><A href="http://www.lightreading.com/live/?itc=footer" target=_blank>Light 
+  Reading Live &amp; Virtual Events</A> 
+  <LI><A 
+  href="http://www.lightreading.com/calendar_webinars.asp?site=lightreading?itc=footer" 
+  target=_blank>Webinars</A> </LI></UL>
+<UL class=tw_superfooter_links_column>
+  <H4>Most Popular</H4>
+  <LI><A 
+  href="http://www.lightreading.com/blog.asp?blog_sectionid=419&amp;doc_id=180545&amp;site=cdn&amp;?itc=footer" 
+  target=_blank>Cable Catchup</A> 
+  <LI><A href="http://blog.cloudconnectevent.com/?itc=footer" 
+  target=_blank>Cloud Connect Blog</A> 
+  <LI><A href="http://www.informationweek.com/blogs/digital_life?itc=footer" 
+  target=_blank>Digital Life</A> 
+  <LI><A 
+  href="http://www.darkreading.com/blog/archives/evil_bytes/index.html?itc=footer" 
+  target=_blank>Evil Bytes</A> 
+  <LI><A href="http://reports.informationweek.com/?itc=footer" 
+  target=_blank>InformationWeek Reports</A> 
+  <LI><A href="http://blog.interop.com/?itc=footer" target=_blank>Interop 
+  Blog</A> 
+  <LI><A href="http://www.lightreading.com/archives.asp?section_id=222" 
+  target=_blank>Monkey Bidness</A> 
+  <LI><A href="http://www.informationweek.com/blogs/mobility?itc=footer" 
+  target=_blank>Over the Air</A> 
+  <LI><A href="http://www.informationweek.com/personal-tech/?itc=footer" 
+  target=_blank>Personal Tech</A> 
+  <LI><A href="http://www.lightreading.com/archives.asp?section_id=217" 
+  target=_blank>The Philter</A> 
+  <LI><A href="http://www.lightreading.com/archives.asp?section_id=388" 
+  target=_blank>Valley Wonk</A> </LI></UL>
+<DIV style="CLEAR: both"></DIV></DIV></DIV></DIV></DIV>
+<DIV id=tw_superfooter_bottom>
+<DIV id=tw_superfooter_tw>
+<H4>UBM TechWeb Reader Services</H4>
+<UL>
+  <LI><A href="http://www.techweb.com/aboutus/?itc=footer" target=_blank>About 
+  UBM TechWeb</A> </LI>
+  <LI><A href="http://createyournextcustomer.com/contact-us/?itc=footer" 
+  target=_blank>Advertising Contacts</A> </LI>
+  <LI><A href="http://www.createyournextcustomer.com/?itc=footer" 
+  target=_blank>Technology Marketing Solutions</A> </LI>
+  <LI><A href="http://www.ubmtechweb.com/contact/?itc=footer" 
+  target=_blank>Contact Us</A> </LI>
+  <LI><A href="mailto:feedback@techweb.com" target=_blank>Feedback</A> </LI></UL>
+<DIV style="CLEAR: both"></DIV>
+<UL>
+  <LI><A href="http://www.wrightsreprints.com/reprints/?magid=techweb" 
+  target=_blank>Reprints</A> </LI>
+  <LI><A href="http://www.informationweek.com/whitepaper/?itc=footer" 
+  target=_blank>TechWeb Digital Library / White Papers</A> </LI>
+  <LI><A href="http://events.techweb.com/?itc=footer" target=_blank>TechWeb 
+  Events Calendar</A> </LI>
+  <LI><A href="http://www.techweb.com/?itc=footer" target=_blank>TechWeb.com</A> 
+  </LI></UL></DIV></DIV>
+<DIV id=tw_superfooter_tos>
+<UL>
+  <LI><A href="http://legal.us.ubm.com/terms-of-service/?itc=footer" 
+  target=_blank>Terms of Service</A> 
+  <LI>| 
+  <LI><A href="http://legal.us.ubm.com/privacy-notice/?itc=footer" 
+  target=_blank>Privacy Statement</A> 
+  <LI>| 
+  <LI><A href="http://legal.us.ubm.com/copyright-notice/?itc=footer" 
+  target=_blank>Copyright © 2012 UBM TechWeb, All rights reserved.</A> 
+</LI></UL><BR></DIV></DIV></DIV><BR>
+<SCRIPT language=JavaScript type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/elqCfg.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/elqImg.js"></SCRIPT>
+
+<STYLE>#footer #footer2 LI {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+</STYLE>
+
+<DIV id=footer2>
+<DIV id=footer-a>
+<CENTER>
+<UL>
+  <LI><A class=first href="http://www.informationweek.com/">InformationWeek 
+  Home</A> 
+  <LI><A href="http://www.informationweek.com/news">News</A> 
+  <LI><A href="http://www.informationweek.com/columns">Commentary</A> 
+  <LI><A href="http://www.informationweek.com/video">Video</A> 
+  <LI><A href="http://www.informationweek.com/galleries">Slideshows</A> 
+  <LI><A href="http://www.informationweek.com/software">Software</A> 
+  <LI><A href="http://www.informationweek.com/security">Security</A> 
+  <LI><A href="http://www.informationweek.com/cloud-computing">Cloud</A> 
+  <LI><A href="http://www.informationweek.com/mobility">Mobility</A> 
+  <LI><A href="http://www.informationweek.com/social-business">Social 
+  Business</A><BR>
+  <LI><A href="http://www.informationweek.com/personal-tech">Personal Tech</A> 
+  <LI><A href="http://www.informationweek.com/hardware">Hardware</A> 
+  <LI><A href="http://www.informationweek.com/windows">Windows</A> 
+  <LI><A href="http://www.informationweek.com/internet">Internet</A> 
+  <LI><A href="http://www.informationweek.com/global-cio">Global CIO</A> 
+  <LI><A href="http://www.informationweek.com/government">Government</A> 
+  <LI><A href="http://www.informationweek.com/healthcare">Healthcare</A> 
+  <LI><A href="http://www.informationweek.com/financialservices">Financial</A> 
+  <LI><A href="http://www.informationweek.com/smb">SMB</A> <!-- <li><a href="http://www.techcareers.com/?affiliate=iwk">Careers</a></li> --></LI></UL></CENTER></DIV>
+<DIV id=footer-b>
+<CENTER>
+<UL><!-- <li><a href="http://www.informationweek.com/GLOBAL/misc/member.jhtml" class="first">Become A Member/Membership Benefits</a></li> -->
+  <LI><A class=first href="http://www.informationweek.com/aboutus">About Us</A> 
+  <LI><A href="http://www.informationweek.com/contactus">Contact Us</A> 
+  <LI><A href="http://www.informationweek.com/thisweek">Current Issue</A> 
+  <LI><A href="http://www.informationweek.com/maindocs/archive.htm">Back 
+  Issues</A> 
+  <LI><A href="http://www.informationweek.com/sitemap/index.html">Site Map</A> 
+  <LI><A href="http://www.wrightsreprints.com/reprints/?magid=2196" 
+  target=_blank>Reprints</A> <!-- <li><a href="http://briefingcenters.techweb.com/">Briefing Centers</a></li> -->
+  <LI><A href="http://www.informationweek.com/edcal/default.html">Editorial 
+  Calendar</A> <!-- <li><a href="http://www.informationweek.com/whitepaper/">White Papers</a></li> --><!-- <li><a href="http://createyournextcustomer.com/contact-us/" target="_blank">Advertising Contacts</a></li> --><!-- <li><a href="http://createyournextcustomer.com/" target="_blank">Technology Marketing Solutions</a></li> --></LI></UL></CENTER></DIV><!--   
+	<div id="footer-c">
+		<center>
+		<ul>
+	        <li><a href="http://www.cmp.com/onlinelist" class="first">Other Techweb Sites:</a></li>
+	        <li><a href="http://www.informationweek.de/">Informationweek Germany</a></li>
+	        <li><a href="http://www.networkcomputing.com/">Network Computing</a></li>
+	        <li><a href="http://www.techweb.com/">TechWeb</a></li>
+	        <li><a href="http://www.intelligententerprise.com/">Intelligent Enterprise</a></li><BR>
+	
+	
+	        <li><a href="http://www.darkreading.com/" class="first">Dark Reading</a></li>
+	        <li><a href="http://www.lightreading.com/">Light Reading</a></li>
+	        <li><a href="http://www.byteandswitch.com/">Byte & Switch</a></li>
+	        <li><a href="http://www.internetevolution.com/">Internet Evolution</a></li>
+	        <li><a href="http://www.bmighty.com/">bMighty</a></li>
+	<java>
+	out.println("<li><a href=\"http://www.smallbizresource.com/\" rel=\"cm8\">Small Biz Resource</a></li>");
+	</java>
+	<BR>
+	
+	        <li><a href="http://www.insuranceandtech.com/" class="first">Insurance & Technology</a></li>
+	        <li><a href="http://www.wallstreetandtech.com/">Wall Street & Technology</a></li>
+	        <li><a href="http://www.banktech.com/">Bank Systems & Technology</a></li>
+	        <li><a href="http://www.advancedtrading.com/">Advanced Trading</a></li>
+		
+		</ul>
+		</center>
+	</div> --><!-- <div id="copyright">
+        <p><a href="http://ubmtechnology.com/united-business-media-llc-terms-of-service/" rel="nofollow" target="_blank">Terms of Service</a> | <a href="http://ubmtechnology.com/united-business-media-llc-privacy-statement/" rel="nofollow" target="_blank">Privacy Statement</a> | <a href="http://www.cmp.com/delivery/copyright.html" rel="nofollow" target="_blank">Copyright &copy; 2010 United Business Media LLC, All rights reserved.</a></p>
+      </div> --></DIV><!-- END: Footer2 --></DIV><!-- END: Footer -->
+<DIV></DIV><!-- END: Footer -->
+<SCRIPT language=javascript>
+<!--
+document.write('<scr'+'ipt language="javascript1.1" charset="utf-8" src="http://adserver.adtechus.com/addyn/3.0/5242.1/1200533/0/16/ADTECH;alias=InformationWeek_Blog_Storage_Pagepeel_1x1;key=231003002+storage+/blog/231003002;kvarticleid=231003002;kauthor=George Crump;loc=100;target=_blank;grp=659075922;misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT><IMG 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/atc2.%60request.gif" 
+width=1 height=1 ? atc3. section?)`> <!-- Default Insight Tag -->
+<SCRIPT type=text/javascript>
+  var _bizo_data_partner_id = "590";
+  </SCRIPT>
+
+<SCRIPT type=text/javascript>
+  var _bizo_p = (("https:" == document.location.protocol) ? "https://sjs." : "http://js.");
+  document.write(unescape("%3Cscript src='" + _bizo_p + "bizographics.com/convert_data.js?partner_id=" + _bizo_data_partner_id + "' type='text/javascript'%3E%3C/script%3E"));
+</SCRIPT>
+<!--   Disqus related changes.  -->
+<SCRIPT type=text/javascript>
+                           
+                var disqus_shortname = 'iwk';
+                                /* * * DON'T EDIT BELOW THIS LINE * * */
+                 (function () {
+                var s = document.createElement('script'); s.async = true;
+                  s.type = 'text/javascript';
+                 s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+                 (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                 }());
+</SCRIPT>
+<!-- SiteCatalyst code version: H.16.
+Copyright 1997-2008 Omniture, Inc. More info available at
+http://www.omniture.com -->
+<SCRIPT type=text/javascript 
+src="How%20to%20Choose%20A%20Cloud%20Storage%20Provider%20Availability%20-%20Storage%20-%20Data%20protection%20-%20Informationweek_files/h_s_code_remote.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>
+	var referer = '';
+	var eVar23 = '';
+	$.ajax({
+	   type: "GET",
+	   url: "/omniture",
+	   data: "referer="+encodeURIComponent(document.referrer),
+	   success: function(data){		   
+		   if (data != null)
+			{
+				referer = data.referer;
+				eVar23 = data.eVar23;					
+			}
+	   },
+	   dataType: "json",
+	   async: false,
+	   cache: false
+	 }	
+	 );
+	
+	 
+</SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>
+<!--	
+s.pageName="";
+s.referrer=referer;
+s.server="";
+s.channel="informationweek.com/blog";
+s.pageType="";
+s.prop1="";
+s.prop2="231003002";
+s.prop3="InformationWeek | 231003002 | How to Choose A Cloud Storage Provider: Availability";
+s.prop4="How to Choose A Cloud Storage Provider: Availability";
+s.prop5="blog";
+s.prop6="";
+s.prop7="George Crump";
+s.prop8="128.138.177.69 | Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)";
+s.prop9="";
+s.prop10="complete";
+s.prop11="Blog";
+s.prop12="";
+s.prop14="";
+s.prop15="";
+s.prop16="";
+s.prop19="False";
+s.prop20="20110801";
+s.prop21="";
+
+/* Conversion Variables */
+s.campaign="";
+s.state="";
+s.zip="";
+s.events="event5";
+s.products="";
+s.purchaseID="";
+s.eVar1="";
+s.eVar2="";
+s.eVar3="";
+s.eVar4="";
+s.eVar5="";
+s.eVar21="";
+s.eVar22="";
+s.eVar23=eVar23;
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//-->	
+</SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>
+
+   function trackComment(){
+    	        var s=s_gi('cmpglobalvista'); 
+                s.evar24=s.prop7 +" | "+ s.prop4;  
+  			    s.events='event5,event9';
+  			    s.tl(this,'o','Article Comment Posted');
+          
+   }
+</SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></SCRIPT>
+<NOSCRIPT></NOSCRIPT><!--/DO NOT REMOVE/--><!-- End SiteCatalyst code version: H.16 --><!-- START Nielsen Online SiteCensus V6.0 --><!-- COPYRIGHT 2010 Nielsen Online -->
+<SCRIPT type=text/javascript>
+  (function () {
+    var d = new Image(1, 1);
+    d.onerror = d.onload = function () {
+      d.onerror = d.onload = null;
+    };
+    d.src = ["//secure-us.imrworldwide.com/cgi-bin/m?ci=us-bpaww&cg=0&cc=1&si=", escape(window.location.href), "&rp=", escape(document.referrer), "&ts=compact&rnd=", (new Date()).getTime()].join('');
+  })();
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT><!-- END Nielsen Online SiteCensus V6.0 --></BODY></HTML>
