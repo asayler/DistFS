@@ -1,0 +1,1648 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0110)http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html -->
+<HTML lang=en xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Cloud Storage Providers Need Sharper Billing Metrics | PCWorld Business Center</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=content-type>
+<META name=viewport content=width=device-width>
+<META content=IE=8 http-equiv=X-UA-Compatible>
+<META name=title content="Cloud Storage Providers Need Sharper Billing Metrics">
+<META name=description 
+content="Cloud storage providers should bill by disk usage, not I/O a group of Usenix researchers contend">
+<META name=DC.date.issued content=2011-06-17T13:10:23-07:00>
+<META name=date content=2011-06-17>
+<META name=PrimCategoryID content=1766>
+<META name=PrimCategory content=Virtualization>
+<META name=creator content="Joab Jackson"><LINK rel="SHORTCUT ICON" 
+href="http://zapp3.staticworld.net/shared/graphics/favicon.ico"><LINK 
+rel=canonical 
+href="http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html">
+<META name=syndication-source 
+content=http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html>
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/jquery-1.3.2.min.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/jquery.taconite.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/jquery.jcarousel.pack.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/socialize.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/main.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+	<!--
+	/* Logon namespace */
+	var Logon = new Object();
+	Logon.userEmail = pcw_readCookie('userEmail');
+	Logon.isValid = '' != Logon.userEmail;
+
+	/* Namespace RememberURI */
+	var RememberURI = new Object();
+	RememberURI.referer = '';
+	if (!RememberURI.referer.match('^/logo') && !RememberURI.referer.match('^/register')) {
+		RememberURI.query = '';
+		RememberURI.referer += RememberURI.query;
+		document.cookie = "pcw.last_uri=" + escape(RememberURI.referer) + "; path=/" + "; domain=.pcworld.com";
+	}
+	// -->
+	</SCRIPT>
+<LINK rel=stylesheet type=text/css 
+href="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/new-smb.css" 
+media=all><!--[if IE 6]><link href="/style/new-smb-IE6.css" rel="stylesheet" type="text/css" /><![endif]--><!--[if IE 7]><link href="/style/new-smb-IE7.css" rel="stylesheet" type="text/css" /><![endif]--><LINK 
+rel=stylesheet type=text/css 
+href="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/now.css" 
+media=all>
+<SCRIPT type=text/javascript>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-739745-1']);
+  _gaq.push(['_setDomainName', '.pcworld.com']);
+  _gaq.push(['_setAllowHash', 'false']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</SCRIPT>
+<LINK rel=publisher href="https://plus.google.com/110047318887201790750">
+<SCRIPT type=text/javascript>
+	PCWAds.DisplayAdManager.init();
+	</SCRIPT>
+
+<SCRIPT type=text/javascript>
+    var deferredAdCallback = function(DB_params) {
+        if (null != PCWAds.DisplayAdManager.getDeferredAds() && PCWAds.DisplayAdManager.getDeferredAds().length > 0) {
+    		var adParams = new Object();
+    		if (DB_params && DB_params.forbes_2000 == true) {
+    			adParams.f2k=1;
+    		}
+        	for (var i=0; i<PCWAds.DisplayAdManager.getDeferredAds().length; i++) {
+        		var url = PCWAds.DisplayAdManager.getDeferredAds()[i].url;
+        		var adId = PCWAds.DisplayAdManager.getDeferredAds()[i].adId;
+        		PCWAds.DisplayAdManager.callDeferredAd(adId,url,adParams);
+        	}
+        }
+    };
+  </SCRIPT>
+
+<META name=GENERATOR content="MSHTML 9.00.8112.16440"></HEAD>
+<BODY id=smb class=c1766>
+<SCRIPT type=text/javascript>
+		var _jsCustomArg = "";
+		var _jsAdIsIpad = false;
+		
+		if ((null != navigator && null != navigator.userAgent) && navigator.userAgent.indexOf("iPad")>-1) {
+			_jsAdIsIpad = true;
+		}
+		
+		//
+		if ((null != navigator && null != navigator.userAgent) && navigator.userAgent.indexOf("Windows NT 6.1")>-1) {
+			_jsCustomArg = ";c=win7";
+		}
+		//
+	</SCRIPT>
+
+<SCRIPT type=text/javascript>if(!_jsAdIsIpad){document.write('<sc'+'ript type="text/javascript" id="ad1interstitial" class="scriptAdSrc" src="http://ad.doubleclick.net/adj/pcw.bc/virtualization/article;pg=article;aid=230652;c=1730;c=1766;c=1731;c=1730;pos=1interstitial;sz=1x1;ord='+ord+''+_jsCustomArg+'"></sc'+'ript>');}</SCRIPT>
+
+<DIV id=fireplaceunit>
+<DIV id=headerWrapper>
+<DIV id=miniHeader>
+<DIV id=metaNav class=radius_3>
+<SCRIPT type=text/javascript>
+					<!--
+					if (Logon.isValid) {
+						/*var sUserEmail = pcwabbreviate(Logon.userEmail, 10);
+						document.write('<span class="hdUserName">' + sUserEmail + '</span> ');*/
+						document.write('<a href="/logoff" title="Sign out" onclick="s_objectID=\'uber nav signout\'">Sign Out</a> | ');
+						document.write('<a href="/myaccount" title="My Account" onclick="s_objectID=\'uber nav myaccount\'">My Account</a> | ');
+					} else {
+						document.write('<a href="javascript:void(0);" title="Sign in" onclick="s_objectID=\'uber nav signin\'">Sign in</a> | ');
+						document.write('<a href="javascript:void(0);" title="Register" onclick="s_objectID=\'uber nav register\'">Join Us</a> | ');
+						document.write('<a href="/newsletters/index" title="Free Newsletters" onclick="s_objectID=\'uber nav newsletters\'">Newsletters</a> | ');
+					}
+					$('a[title=Register]').click(function() {
+                        PCWSocial.loadRegoSignInPop();
+                        logUserRegistration("header");
+                    });
+					$('a[title=Sign in]').click(function() {
+						PCWSocial.loadSignInPop();
+					});
+					// -->
+				</SCRIPT>
+<A href="http://www.pcworld.com/resource/rss.html"><IMG alt=RSS 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/rss.gif"></A> 
+</DIV><!-- END metaNav --><A href="http://www.pcworld.com/"><IMG 
+id=miniHeaderLogo class=png alt=PCWorld 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/miniHeader-logo-transparent.png" 
+width=91 height=42></A> 
+<DIV id=mainNav>
+<UL>
+  <LI class=first><A onclick="s_objectID='top mini nav news'" 
+  href="http://www.pcworld.com/news.html">News</A></LI>
+  <LI id=miniReviews><A onclick="s_objectID='top mini nav reviews'" 
+  href="http://www.pcworld.com/reviews.html">Reviews</A></LI>
+  <LI><A onclick="s_objectID='top mini nav howto'" 
+  href="http://www.pcworld.com/howto.html">How-To's</A></LI>
+  <LI><A onclick="s_objectID='top mini nav downloads'" 
+  href="http://www.pcworld.com/downloads.html">Downloads</A></LI>
+  <LI><A onclick="s_objectID='top mini nav shop'" 
+  href="http://www.pcworld.com/shopping/">Shop &amp; Compare</A></LI>
+  <LI><A title="Android, iPad and iPhone Apps" 
+  onclick="s_objectID='top mini nav apps'" 
+  href="http://www.pcworld.com/appguide/index.html?platform=2">Apps</A></LI>
+  <LI class=last><A onclick="s_objectID='top mini nav businesscenter'" 
+  href="http://www.pcworld.com/businesscenter/">Business 
+Center</A></LI></UL></DIV></DIV><!-- END miniHeader --></DIV><!-- END headerWrapper -->
+<SCRIPT type=text/javascript>
+$(document).ready(function(){
+	var siteMapIsOpen = false;
+	var siteMapWasOpened = false;
+	$("#topicNavSiteMapOpener").click(function(){
+		if (!siteMapIsOpen) {			
+			if (siteMapWasOpened) {
+				$("#topicNavSitemapTarget").slideDown(400);
+				siteMapIsOpen = true;
+			} else {
+				$.get("/nav/expand.html", function(data) {
+					$("#topicNavSitemapTarget").html(data);
+					$("#topicNavSitemapTarget").slideDown(400);					
+					siteMapIsOpen = true;
+					siteMapWasOpened = true;
+				});
+			}
+			$("#topicNavSiteMapOpener").addClass("moreSelected");
+		} else {
+			$("#topicNavSitemapTarget").slideUp(300);
+			$("#topicNavSiteMapOpener").removeClass("moreSelected");
+			siteMapIsOpen = false;
+		}
+	});
+});
+</SCRIPT>
+
+<DIV id=topicNavWrapper>
+<DIV id=topicNav><SPAN class=label>Trending:</SPAN> <A 
+onclick="s_objectID='trending nav phones'" 
+href="http://www.pcworld.com/products/phones.html">Phones</A> <SPAN 
+class=topicnavDelimiter>|</SPAN> <A onclick="s_objectID='trending nav security'" 
+href="http://www.pcworld.com/topics/security.html">Security</A> <SPAN 
+class=topicnavDelimiter>|</SPAN> <A onclick="s_objectID='trending nav tablets'" 
+href="http://www.pcworld.com/products/tablets.html">Tablets</A> <SPAN 
+class=topicnavDelimiter>|</SPAN> <A 
+onclick="s_objectID='trending nav antivirus &amp; security'" 
+href="http://www.pcworld.com/products/software/antivirus_and_security.html">Antivirus 
+&amp; Security</A> <SPAN class=topicnavDelimiter>|</SPAN> <A 
+onclick="s_objectID='trending nav laptops'" 
+href="http://www.pcworld.com/products/computers/laptops.html">Laptops</A> <SPAN 
+class=topicnavDelimiter>|</SPAN> <A 
+onclick="s_objectID='trending nav social media'" 
+href="http://www.pcworld.com/products/web/social_media.html">Social Media</A> 
+<SPAN class=topicnavDelimiter>|</SPAN> <A 
+onclick="s_objectID='trending nav web'" 
+href="http://www.pcworld.com/products/web.html">Web</A> <SPAN 
+class=topicnavDelimiter>|</SPAN> <A 
+onclick="s_objectID='trending nav productivity'" 
+href="http://www.pcworld.com/businesscenter/index/software_services/productivity.html">Productivity</A> 
+<SPAN class=topicnavDelimiter>|</SPAN> <A 
+onclick="s_objectID='trending nav games'" 
+href="http://www.pcworld.com/products/software/games.html">Games</A> <SPAN 
+class=topicnavDelimiter>|</SPAN> <A 
+onclick="s_objectID='trending nav operating systems'" 
+href="http://www.pcworld.com/products/software/operating_systems.html">Operating 
+Systems</A> <SPAN class=topicnavDelimiter>|</SPAN> <A id=topicNavSiteMapOpener 
+class="moreTrends radius_3" href="javascript:void(0)">MORE</A> </DIV>
+<DIV id=topicNavSitemapTarget></DIV></DIV>
+<DIV id=navBtmRule></DIV>
+<DIV id=smbHeader class=wrapper>
+<DIV id=topAd>
+<DIV id=leaderboardAd class=ad728x90>
+<DIV class=leaderboardAd><IFRAME style="z-zindex: 200" id=ad728leader height=90 
+marginHeight=0 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/article;pg=article;aid=230652;c=1730;c=1766;c=1731;c=1730;pos=728leader;tile=1;sz=728x90;ord=82114156.htm" 
+frameBorder=0 width=728 allowTransparency name=ad728leader marginWidth=0 
+scrolling=no></IFRAME>
+<SCRIPT type=text/javascript>PCWAds.DisplayAdManager.addDeferredAd('ad728leader','http://ad.doubleclick.net/adi/pcw.bc/virtualization/article;pg=article;aid=230652;c=1730;c=1766;c=1731;c=1730;pos=728leader;tile=1;sz=728x90;');</SCRIPT>
+</DIV></DIV>
+<DIV id=subscription class=ad225x90>
+<DIV class=subscription><A title="Subscribe to magazine" 
+href="http://ad.doubleclick.net/clk;241069682;28159734;q?https://w1.buysub.com/servlet/OrdersGateway?cds_mag_code=PCW&amp;cds_page_id=840" 
+target=_blank><IMG title="Subscribe to magazine" alt="Subscribe to magazine" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/MagazineSubAd_Leaderboard.jpg"></A> 
+
+<UL>
+  <LI class=circfirstitem>MAGAZINE</LI>
+  <LI><A title="Subscribe to magazine" 
+  href="http://ad.doubleclick.net/clk;241069682;28159734;q?https://w1.buysub.com/servlet/OrdersGateway?cds_mag_code=PCW&amp;cds_page_id=840" 
+  target=_blank>Subscribe &amp; Get a Bonus CD</A> </LI>
+  <LI><A title="PCWorld Digital Edition" 
+  href="http://ad.doubleclick.net/clk;241256313;28159734;f?https://w1.buysub.com/servlet/OrdersGateway?cds_mag_code=pcd&amp;cds_page_id=99714">Digital 
+  Edition</A></LI>
+  <LI><A title="Customer service &amp; subscriptions" 
+  href="http://ad.doubleclick.net/clk;241069688;28159734;w?http://www.pcworld.com/resource/circ_subservices.html">Customer 
+  Service</A></LI></UL></DIV></DIV>
+<DIV class=spacer></DIV></DIV>
+<DIV id=bcHead><A href="http://www.pcworld.com/businesscenter/"><IMG id=smbLogo 
+class=png alt="PCWorld: Small Business Center" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/smb-logo.png" 
+width=314 height=68></A> 
+<DIV id=smbSearchBox>
+<DIV id=simplyhiredheaderlink><A href="http://research.pcworld.com/"><IMG 
+alt="Research Directory" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/whitePaperLink.gif"></A></DIV>
+<FORM method=get action=/search><INPUT name=bc value=true type=hidden> <INPUT 
+id=smbSearch onclick="this.value='';" name=qt type=text> <INPUT name=tk 
+value=srch_top_smb type=hidden> <INPUT id=smbSubmit class=roundedcorners value=Search type=submit> </FORM>
+<P>Discover <A href="http://www.pcworld.com/businesscenter/news.html">news</A>, 
+<A href="http://www.pcworld.com/businesscenter/buying_guides.html">guides</A>, 
+and <A href="http://www.pcworld.com/businesscenter/reviews.html">products</A> 
+for your business</P></DIV></DIV>
+<UL id=smbNav>
+  <LI id=softwareServices class=firstitem><A 
+  href="http://www.pcworld.com/businesscenter/index/software_services.html">Software 
+  &amp; Services</A></LI>
+  <LI id=officeHardware><A 
+  href="http://www.pcworld.com/businesscenter/index/office_hardware.html">Office 
+  Hardware</A></LI>
+  <LI id=security><A 
+  href="http://www.pcworld.com/businesscenter/index/security.html">Security</A></LI>
+  <LI id=serversStorage><A 
+  href="http://www.pcworld.com/businesscenter/index/servers_storage.html">Servers 
+  &amp; Storage</A></LI>
+  <LI id=cellMobile><A 
+  href="http://www.pcworld.com/businesscenter/index/cell_phones_voip.html">Cell 
+  Phones &amp; Mobile</A></LI>
+  <LI id=operatingSystems><A 
+  href="http://www.pcworld.com/businesscenter/index/operating_systems.html">Operating 
+  Systems</A></LI>
+  <LI id=networkingVOIP><A 
+  href="http://www.pcworld.com/businesscenter/index/networking.html">Networking 
+  &amp; VOIP</A></LI>
+  <LI id=virtualization class=lastitem><A 
+  href="http://www.pcworld.com/businesscenter/index/virtualization.html">Virtualization</A></LI></UL>
+<DIV id=socialBarWrapper>
+<DIV id=socialBar>
+<DIV style="DISPLAY: none" id=socialBarContentsMini>
+<DIV class=toggleSocialBar><A id=social-maximize-link 
+href="javascript:void(0)">Show More</A></DIV><IMG style="DISPLAY: none" 
+class="icon social-bar-badge" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/cloud_storage_providers_need_sharper_billing_metrics.htm">&nbsp; 
+<STRONG>Hi <SPAN class=socialBarUserName></SPAN></STRONG>&nbsp;&nbsp; <A 
+title="My Account" href="http://www.pcworld.com/myaccount">My Account</A> </DIV>
+<DIV style="DISPLAY: none" id=socialBarContentsMaxi>
+<DIV class=toggleSocialBar><A id=social-minimize-link 
+href="javascript:void(0)">Minimize</A></DIV>
+<DIV id=SocialBarText><IMG style="DISPLAY: none" class=social-bar-thumb 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/cloud_storage_providers_need_sharper_billing_metrics.htm"><IMG 
+style="DISPLAY: none" class="gravatar social-bar-badge" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/cloud_storage_providers_need_sharper_billing_metrics.htm">&nbsp; 
+<STRONG>Hi <SPAN class=socialBarUserName></SPAN></STRONG>&nbsp;&nbsp; <A 
+title="My Account" href="http://www.pcworld.com/myaccount">My Account</A> | <A 
+href="http://www.pcworld.com/myaccount/newsletters">Newsletters</A> | Add 
+Connections</DIV><SPAN id=connectComponentGigya></SPAN></DIV>
+<DIV style="DISPLAY: none" id=socialBarContentsUnlogged><SPAN>Sign in with 
+</SPAN><SPAN id=socailBarComponentDiv></SPAN><SPAN class=social-bar-logo><A 
+title=PCWorld href="javascript:void(0);"><IMG 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/pcw-logo-20.png"></A></SPAN> 
+<SPAN>or <A id=create-new-account-link href="javascript:void(0)">Create a New 
+Account</A>.</SPAN> 
+<DIV class=spacer></DIV></DIV></DIV></DIV>
+<DIV style="DISPLAY: none" id=rego_signin_pop class="popWrapper radius_5"></DIV>
+<SCRIPT>
+$('#social-maximize-link').click(function() {
+	PCWSocial.setSocialBarView("maxi");
+});
+$('#social-minimize-link').click(function() {
+	PCWSocial.setSocialBarView("mini");
+});
+$('#create-new-account-link').click(function() {
+	PCWSocial.loadRegoSignInPop();
+	logUserRegistration("social bar");
+});
+$('.social-bar-logo > a').click(function() {
+    PCWSocial.loadSignInPop();
+});
+SocialBadgePath = {};
+SocialBadgePath.facebook20 = "http://zapp3.staticworld.net/images/common/social_badge/facebook_20.png";
+SocialBadgePath.twitter20 = "http://zapp2.staticworld.net/images/common/social_badge/twitter_20.png";
+SocialBadgePath.yahoo20 = "http://zapp0.staticworld.net/images/common/social_badge/yahoo_20.png";
+SocialBadgePath.google20 = "http://zapp1.staticworld.net/images/common/social_badge/google_20.png";
+SocialBadgePath.linkedin20 = "http://zapp3.staticworld.net/images/common/social_badge/linkedin_20.png";
+PCWSocial.initSocialBar();
+SocialConf.socialBarConnectParams['onClose'] = PCWSocial.checkGigyaLoginState;  
+gigya.services.socialize.showAddConnectionsUI(SocialConf.main, SocialConf.socialBarConnectParams);
+gigya.services.socialize.showLoginUI(SocialConf.main, SocialConf.socialBarLoginParams);
+gigya.services.socialize.addEventHandlers(SocialConf.main, {
+    context : {
+        str : ''
+    },
+    onLogin : PCWSocial.gigyaGetUserInfoHandler,
+    onConnectionAdded : PCWSocial.gigyaGetUserInfoHandler
+});
+function doGigyaAjax(res) {
+    var gUid = new String(res.user.UID);
+    var nickname = new String(res.user.nickname);
+    var firstName = new String(res.user.firstName);
+    var lastName = new String(res.user.lastName);
+    var email = new String(res.user.email);
+    var proxiedEmail = new String(res.user.proxiedEmail);
+    var provider = new String(res.user.loginProvider);
+    var signatureTimestamp = new String(res.user.signatureTimestamp);
+    var signature = new String(res.user.UIDSignature);
+    var comment = "";
+    try {comment = $('textarea[name=comment_text_reg]').val();}catch(e){comment = "";};
+    var threadId = 0;
+    try {threadId=ArticleComments.threadId;}catch(e){threadId = 0;};
+    $('#rego_signin_pop').css({"top": $(window).scrollTop() + 200});
+    $.post("/pcworldconnect/ajax.html", {
+        gUid : gUid,
+        nickname : nickname,
+        firstName : firstName,
+        lastName : lastName,
+        email : email,
+        proxiedEmail : proxiedEmail,
+        provider : provider,
+        signatureTimestamp : signatureTimestamp,
+        signature : signature,
+        comment : comment,
+        threadId : threadId
+    }, function(data) {
+        try {
+    	   var resObj = eval('(' + data + ')');
+        } catch (e) {
+            var badResponse = "Oops something went wrong connecting you to your social service, try again later";
+            $('#rego_signin_pop').fadeIn(1000);
+            $('#rego_signin_pop').html('<div class="popContent radius_5 clearfix" id="social-bar-only-popContnet">'+ badResponse +'</div>');
+            $('#social-bar-only-popContnet').before('<div class="close"><a href="javascript:PCWSocial.closeRegoSignInPop();"><img src="http://zapp0.staticworld.net/images/common/close-icon-clear.gif"/></a></div>');
+            return false;
+        }
+        if (!resObj.sigVerification) {
+            /*
+            var badSigMessage = "Oops something went wrong connecting you to your social service, try again later";
+            $('#rego_signin_pop').fadeIn(1000);
+            $('#rego_signin_pop').html('<div class="popContent radius_5 clearfix" id="social-bar-only-popContnet">'+ badSigMessage +'</div>');
+            $('#social-bar-only-popContnet').before('<div class="close"><a href="javascript:PCWSocial.closeRegoSignInPop();"><img src="http://zapp0.staticworld.net/images/common/close-icon-clear.gif"/></a></div>');
+            */
+            return false;
+        }
+        if (resObj.isNewReg) {
+            $('#regForm').hide();
+            $.post('/pcworldconnect/mergeStart', {
+                gUid : resObj.gUid,
+                pid : resObj.pid   
+            }, function(data) {
+                if ($('input[name=from-social-create]').val() == "true") {
+                    $('#regContentContainer').html(data);
+                }  else {
+                    $('#rego_signin_pop').fadeIn(1000);
+                    $('#rego_signin_pop').html('<div class="popContent radius_5 clearfix" id="social-bar-only-popContnet">'+ data +'</div>');
+                    $('#social-bar-only-popContnet').before('<div class="close"><a href="javascript:PCWSocial.closeRegoSignInPop();"><img src="http://zapp0.staticworld.net/images/common/close-icon-clear.gif"/></a></div>');
+                }
+                $('input[name=merge_email]').focus();
+            });
+        } else {
+            reload();
+        }
+   });
+}
+</SCRIPT>
+
+<DIV style="DISPLAY: none" class=spacer></DIV></DIV><!-- END #header -->
+<DIV id=content class="wrapper clearfix">
+<DIV class=smbWhiteHR>
+<HR>
+</DIV>
+<DIV id=leftColumn><LINK rel=stylesheet type=text/css 
+href="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/video.player.css" 
+media=all>
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/swfobject.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/jwplayer.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/video.js"></SCRIPT>
+
+<STYLE type=text/css>#videoPlayer {
+	BACKGROUND-IMAGE: url(http://zapp4.staticworld.net/ads/PlayButton.gif); WIDTH: 426px !important
+}
+.videoPlayer {
+	BACKGROUND-IMAGE: url(http://zapp4.staticworld.net/ads/PlayButton.gif); WIDTH: 426px !important
+}
+</STYLE>
+
+<SCRIPT type=text/javascript><!--
+
+function embedAjaxVideo(ajaxOptions) {
+	var myVidInfo = {
+			title : 'pcworld:' + ajaxOptions.vidTitle,
+			playerId : ajaxOptions.id
+	};
+	attachOmniTrack(myVidInfo);
+
+	var params = { allowfullscreen:'true', allowscriptaccess:'always', wmode:'opaque' };
+	var attributes = { id:ajaxOptions.id, name:ajaxOptions.id };
+	var flashvars = {
+		ok:'ok',
+		provider:'rtmp',
+		streamer:'rtmp://flashstream.pcworld.com',
+		file:ajaxOptions.file,
+		autostart:'false',
+		controlbar:'bottom',
+		image:ajaxOptions.image,
+		skin:'http://www.pcworld.com/video/pcworld.zip',
+		'viral.allowmenu':'true',
+		'viral.onpause':'false',
+		'viral.functions':'link,embed',
+		'allownetworking':'all'
+	};
+	flashvars.plugins='http://flash.pcworld.com/jw/tweetit-1.swf,http://flash.pcworld.com/jw/viral-2.swf,http://flash.pcworld.com/jw/fbit-1.swf';
+
+	if ('true' == ajaxOptions.showPrerolls) {
+		flashvars.plugins='http://flash.pcworld.com/jw/googima.swf,'+flashvars.plugins;
+		flashvars['googima.admessagedynamic']='This ad will close in XX seconds';
+		flashvars['googima.admessagedynamickey']='XX';
+		flashvars['googima.click_tracking']='true';
+		flashvars['googima.scaled_ads']='false';
+		flashvars['googima.allowvolumeslider']='true';
+		flashvars['googima.ad.pcw.tag']=ajaxOptions['googima.ad.pcw.tag'];
+		flashvars['googima.ad.pcw.position']='pre';
+		flashvars['googima.ad.pcw.bandwidth']='high';
+	}
+
+	swfobject.embedSWF('http://www.pcworld.com/video/player.swf',ajaxOptions.id,'426','270','9.0.115','false',flashvars, params, attributes, handleJWevents);
+
+	function handleJWevents(e) {
+		jwplayer(e.ref).onReady(function() {
+			s.prop17=myVidInfo.title; //video name - source:name
+			s.events="event1,event2,event10,event11";
+			s.eVar27="1:M:0-"+jwplayer(myVidInfo.playerId).getDuration(); //segments
+			s.eVar47=myVidInfo.title; //video name - source:name
+ 			myVidInfo.omniTrack.isOpen = true;
+		});
+	    jwplayer(e.ref).onPlay(function() {
+			s.eVar27="1:M:0-"+jwplayer(myVidInfo.playerId).getDuration(); //segments
+	    	myVidInfo.omniTrack.omniEvents.push('n'+jwplayer(e.ref).getPosition());
+	    	if (!myVidInfo.omniTrack.isOpen) {myVidInfo.omniTrack.isOpen = true;}
+		});
+	    jwplayer(e.ref).onPause(function() {
+			s.eVar27="1:M:0-"+jwplayer(myVidInfo.playerId).getDuration(); //segments
+	    	myVidInfo.omniTrack.omniEvents.push('y'+jwplayer(e.ref).getPosition());
+	    });
+		jwplayer(e.ref).onComplete(function() {
+			s.eVar27="1:M:0-"+jwplayer(myVidInfo.playerId).getDuration(); //segments
+			myVidInfo.omniTrack.isOpen = false;
+		});
+	}
+}
+
+function showVideoPlayer(videoId){
+	document.write('<div id="inlinePlayerContainer' + videoId + '"></div><br clear="all" />');
+	var inlineAid = "aid:230652";
+	if ('' == inlineAid) {
+		/* XXX: Fix for capsules */
+		inlineAid = 'aid:';
+	}
+	$('#inlinePlayerContainer' + videoId).load('/inlineVideo/' + inlineAid + '/' + videoId + '.html');
+}
+
+/* wxu:fix for ticket #2177 */
+var popupads = document.getElementById("sponsorAdDiv");
+if(popupads) {
+	popupads.style.zIndex = 999;
+}
+//--></SCRIPT>
+
+<UL class="tools clearfix">
+  <LI>Recommend:</LI>
+  <LI class="tool share">
+  <DIV id=social-share-component></DIV>
+  <SCRIPT>
+       	PCWSocial.gigyaSocialShareHandler('social-share-component');
+       	</SCRIPT>
+  </LI>
+  <LI class="tool comments"><A class=comment 
+  href="http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html#commentsjump"><SPAN 
+  id=artCommentCountTop>0 Comments</SPAN></A></LI>
+  <LI class="tool print"><A 
+  href="http://www.pcworld.com/printable/article/id,230652/printable.html">Print</A></LI></UL><!-- END .tools -->
+<DIV id=articleHead>
+<DIV class=articleCategoryTop><SPAN><A 
+href="http://www.pcworld.com/businesscenter/index/software_services.html">Software 
+/ Services</A></SPAN> <SMALL>
+<SCRIPT type=text/javascript>timestamp(1308341423000,'longDateTime')</SCRIPT>
+</SMALL></DIV>
+<H1>Cloud Storage Providers Need Sharper Billing Metrics</H1>
+<P class=byline>By <A href="http://www.pcworld.com/author/Joab-Jackson">Joab 
+Jackson</A>, <A href="http://www.idgnews.net/" target=_blank>IDG News</A> 
+</P></DIV><!-- END #articleHead -->
+<DIV id=articleText class=spacer>
+<DIV class=articleBodyContent>
+<P>Purveyors of cloud storage services may be doing their customers, or 
+themselves, a disservice by relying on imprecise metrics for billing, argued a 
+researcher at a Usenix conference.</P>
+<DIV id=similarContent class=module>
+<DIV class=modTitle>Similar Articles:</DIV>
+<UL class=storyList>
+  <LI class="clearfix ">
+  <DIV class=image><A 
+  href="http://www.pcworld.com/businesscenter/article/244425/the_cloud_day_10_storing_data_in_the_cloud.html#tk.mod_stln"><IMG 
+  alt="" 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/30d_cloud-180-5232936.jpg"></A></DIV>
+  <DIV class=similarContent_itemtitle><A 
+  href="http://www.pcworld.com/businesscenter/article/244425/the_cloud_day_10_storing_data_in_the_cloud.html#tk.mod_stln">The 
+  Cloud, Day 10: Storing Data in the Cloud</A></DIV></LI>
+  <LI class="clearfix ">
+  <DIV class=image><A 
+  href="http://www.pcworld.com/businesscenter/article/247669/digisafe_diskcrypt_does_ultrasecure_notebook_disk_encryptionat_a_price.html#tk.mod_stln"><IMG 
+  alt="" 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/digisafe20diskcrypt20image_606-8608382.jpg"></A></DIV>
+  <DIV class=similarContent_itemtitle><A 
+  href="http://www.pcworld.com/businesscenter/article/247669/digisafe_diskcrypt_does_ultrasecure_notebook_disk_encryptionat_a_price.html#tk.mod_stln">DigiSafe 
+  DiskCrypt Does Ultra-secure Notebook Disk Encryption--At a 
+Price</A></DIV></LI>
+  <LI class="clearfix ">
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/239888/bitcasa_will_offer_unlimited_cloud_storage_for_10_a_month.html#tk.mod_stln"><IMG 
+  alt="" 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/bitcasa-logo-5215780.png"></A></DIV>
+  <DIV class=similarContent_itemtitle><A 
+  href="http://www.pcworld.com/article/239888/bitcasa_will_offer_unlimited_cloud_storage_for_10_a_month.html#tk.mod_stln">Bitcasa 
+  Will Offer Unlimited Cloud Storage for $10 a Month</A></DIV></LI>
+  <LI class="clearfix ">
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/239834/microsoft_and_google_suffer_outages_can_you_trust_the_cloud.html#tk.mod_stln"><IMG 
+  alt="" 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/205551-virtualization_cloud_180_original.jpg"></A></DIV>
+  <DIV class=similarContent_itemtitle><A 
+  href="http://www.pcworld.com/article/239834/microsoft_and_google_suffer_outages_can_you_trust_the_cloud.html#tk.mod_stln">Microsoft 
+  and Google Suffer Outages: Can You Trust the Cloud?</A></DIV></LI>
+  <LI class="clearfix ">
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/221025/google_gmail_snafu_lesson_back_up_back_up_back_up.html#tk.mod_stln"><IMG 
+  alt="" 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/220244-cloud_istock_000012466771small_thumb230_180.jpg"></A></DIV>
+  <DIV class=similarContent_itemtitle><A 
+  href="http://www.pcworld.com/article/221025/google_gmail_snafu_lesson_back_up_back_up_back_up.html#tk.mod_stln">Google 
+  Gmail Snafu Lesson: Back Up, Back Up, Back Up</A></DIV></LI>
+  <LI class="clearfix ">
+  <DIV class=image><A 
+  href="http://www.pcworld.com/businesscenter/article/237673/lessons_from_amazon_cloud_lightning_strike_outage.html#tk.mod_stln"><IMG 
+  alt="" 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/143272-lightning-storm-a.jpg"></A></DIV>
+  <DIV class=similarContent_itemtitle><A 
+  href="http://www.pcworld.com/businesscenter/article/237673/lessons_from_amazon_cloud_lightning_strike_outage.html#tk.mod_stln">Lessons 
+  from Amazon Cloud Lightning Strike Outage</A></DIV></LI>
+  <LI class="clearfix ">
+  <DIV class=image><A 
+  href="http://www.pcworld.com/businesscenter/article/228018/dropbox_drops_the_ball_on_data_security.html#tk.mod_stln"><IMG 
+  alt="" 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/199074-dropbox_180_original.jpg"></A></DIV>
+  <DIV class=similarContent_itemtitle><A 
+  href="http://www.pcworld.com/businesscenter/article/228018/dropbox_drops_the_ball_on_data_security.html#tk.mod_stln">Dropbox 
+  Drops the Ball on Data Security</A></DIV></LI></UL></DIV>
+<P>"Disk time is what costs, not I/Os or bytes, and that is what should be the 
+metric in cloud storage systems," said Matthew Wachs, a researcher at Carnegie 
+Mellon University, in a talk at the Usenix HotCloud workshop this week in 
+Portland, Oregon.</P>
+<P>Wachs, along with other researchers at Carnegie Mellon and VMware, 
+investigated the topic in their Usenix paper, "Exertion-based billing for cloud 
+storage access."</P>
+<P>"Cloud storage access billing should be exertion-based, charging tenants for 
+the costs actually induced by their I/O activities rather than an inaccurate 
+proxy (e.g., byte or I/O count) for those costs," the paper said.</P>
+<P>Today, IaaS (Infrastructure-as-a-Service) cloud storage providers such as 
+Amazon or Google typically bill on two factors, the amount of data being stored 
+and the amount of data that is transferred to and from the cloud, or I/O.</P>
+<P>While charging based on the amount of data stored is a reasonable metric, 
+Wachs contended, the amount charged for I/O is flawed, given the work expended 
+to read that data from disk or write that data to disk. The cost of handling 
+those bits on disk may vary widely from one instance to another, Wachs pointed 
+out.</P>
+<P>"As a result, tenant bills for storage access may bear little to no 
+relationship to the actual costs," the paper said.</P>
+<P>Wachs mentioned a number of factors that can lead to this variance, the most 
+prominent being the difference between random and sequential access on the 
+disk.</P>
+<P>In sequential access, data is written to or read from one portion of the disk 
+in a continual stream of bits. In random access, the disk head must jump around 
+to different parts of the disk to read or write data.</P>
+<P>The difference between these two types of workloads can be immense, Wachs 
+said.</P>
+<P>For instance, sequential access can achieve a throughput on an average disk 
+of up to 63.5MB/s (megabits per second), whereas random access can only be 
+executed at 1.5MB/s.</P>
+<P>In practical terms, this disparity means that one customer executing lots of 
+random reads and writes is using a lot more of the system's resources than 
+another customer who may be accessing the same amount of data through sequential 
+accesses, even though both customers are charged the same amount.</P>
+<P>In the long run, this practice would provide no incentive for customers to 
+establish more efficient data transfer practices, and fiscally penalize those 
+customers who do have such practices in place. It could also erode the profit 
+margins of storage providers, who may not have accounted for these 
+inefficiencies in their original plans.</P>
+<P>Other factors may heighten this disparity between workloads even further, 
+Wachs said. For instance, disk caching may eliminate the need to access the disk 
+at all. In cases where caching is used, the customer may actually be severely 
+overcharged. Also, excessive metadata lookups to find the appropriate data 
+location may consume an inordinate amount of resources.</P>
+<P>"This is an unsustainable approach because either the client or the provider 
+will be unhappy," Wachs said. "The clients with the easy requests will pay too 
+much and the clients with the difficult requests will pay too little."</P>
+<P>Wachs suggested an alternative billing mechanism, one based on disk time, or 
+the amount of time it actually takes the disk to read or write the material.</P>
+<P>"When we charge for disk time, and chose a rate for disk time that matches 
+the cost for the provider, the costs are being recovered fairly," Wachs 
+said.</P>
+<P>Attendees brought up various issues with this approach. One noted that 
+clients may be willing to pay a bit more overall to get a more predictable and 
+easily understandable bill, mentioning as an example how the cellular phone 
+industry charges on a simple flat rate and per-minute basis rather than how much 
+the actual cell phone towers are used by each customer.</P>
+<P>Wachs countered that the disparity between the costs of running a cloud 
+service and what is being charged can be a significant difference, and not just 
+a subtle averaging of the costs.</P>
+<P>Cell phone customers probably "aren't losing sleep over whether they are 
+paying $40 a month instead of $30 a month," he said. Businesses that are paying 
+$40 million a month rather than $30 million a month, on the other hand, may want 
+"the accounting and pricing to be a lot closer to the actual cost," he said.</P>
+<P>Andrew Warfield, the session chairman for the economics track that Wachs' 
+talk was part of, noted that the presentation was one aspect of a larger 
+challenge now being faced by cloud providers, namely the task of examining 
+current operational practices in a deeper, more complex way in order to offer 
+simpler, less expensive services to their customers.</P>
+<P>Existing cloud storage metrics "are appealing from a customer-facing 
+standpoint as the right way to market the whole system," Wachs said. "But you 
+need to have something in the long term that will actually match the cost for 
+the provider," he said.</P>
+<P>Joab Jackson covers enterprise software and general technology breaking news 
+for The IDG News Service. Follow Joab on Twitter at <A 
+href="http://twitter.com/Joab_Jackson" target=_blank>@Joab_Jackson</A>. Joab's 
+e-mail address is <A href="mailto:Joab_Jackson@idg.com" 
+target=_blank>Joab_Jackson@idg.com</A></P></DIV>
+<DIV class="pagination clearfix">
+<UL class=pages></UL></DIV>
+<DIV class=recommend><SMALL>Was this article useful?</SMALL> <SPAN 
+class="usefulYesNo usefulThanksYes"><A 
+onclick="ArticleVote.submitVote('yes');return false;" 
+href="http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html#">Yes</A></SPAN> 
+<SPAN id=usefulYesTop class=usefulYes><A id=usefulYesTopA 
+onclick="ArticleVote.submitVote('yes');return false;" 
+href="http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html#">0</A></SPAN> 
+<SPAN class="usefulYesNo usefulThanksNo"><A 
+onclick="ArticleVote.submitVote('no');return false;" 
+href="http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html#">No</A></SPAN> 
+<SPAN id=usefulNoTop class=usefulNo><A 
+onclick="ArticleVote.submitVote('no');return false;" 
+href="http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html#">0</A></SPAN> 
+</DIV>
+<SCRIPT type=text/javascript>
+	var voteTally = $("#usefulYesTopA").html();
+	$(".tool.recommends #voteTallyYes").html(voteTally);
+	</SCRIPT>
+
+<STYLE type=text/css>#resourceLinks LI {
+	DISPLAY: none
+}
+</STYLE>
+
+<UL id=resourceLinks>
+  <LI><STRONG>Sponsored Resource:</STRONG> <A 
+  title="Do-it-yourself guide to home networking" 
+  href="http://www.pcworld.com/rc/dlink/index.html#tk.mod_bcsr_dlink">Do-it-yourself 
+  guide to home networking.</A></LI>
+  <LI><STRONG>Sponsored Resource:</STRONG> <A 
+  title="How to choose the right server for your business" 
+  href="http://www.pcworld.com/rc/trendmicro/index.html#tk.mod_bcsr_trend">How 
+  to choose the right server for your business.</A></LI>
+  <LI><STRONG>Sponsored Resource:</STRONG> <A 
+  title="How to protect your PCs and servers in minutes" 
+  href="http://www.pcworld.com/rc/trendmicro/index.html#tk.mod_bcsr_trend">How 
+  to protect your PCs and servers in minutes.</A></LI></UL>
+<SCRIPT type=text/javascript>
+randomlyShowOneItem(document.getElementById('resourceLinks'));
+</SCRIPT>
+
+<DIV class=clearme></DIV>
+<DIV class=sponsoredLinks>
+<DIV id=msTextAds class="msftOpt textAds">
+<SCRIPT type=text/javascript> 
+		 	<!--
+	    function microsoft_adunit_render(adArray) {
+	        if (adArray.length > 0) {
+	            var adsBody = "<strong>Sponsored Links</strong><ul>";
+	            for (var i = 1; i < adArray.length; i++) {
+	                var ad = "<li>";
+	                ad += "<a href='" + adArray[i].url + "' class='linkInline' rel='nofollow' target='_blank'>" + adArray[i].title + "</a>";
+	                ad += "<span>"+adArray[i].line1+"</span>";
+	                ad += "<a href='" + adArray[i].url + "' class='siteLink' rel='nofollow' target='_blank'>" + adArray[i].display_url + "</a>";
+	                ad += "</li>";
+	                adsBody += ad;
+	            }
+	            adsBody += "</ul>";
+	            document.getElementById("msTextAds").innerHTML = adsBody;
+	        }
+	    };
+
+	    microsoft_adunitid = "12360";
+	    microsoft_adunitformat = "js"; 
+		 	//--> 
+	 	</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/getads.js"></SCRIPT>
+
+<DIV class=clear><!-- for IE --></DIV></DIV></DIV>
+<DIV id=comments class="module section"><A id=commentsjump 
+name=commentsjump></A>
+<H3>Comments <SPAN id=artCommentCountCommentNav></SPAN></H3>
+<DIV id=commentFormContainer class="userAction radius_5"><SPAN 
+class=tail></SPAN><IMG class="png astrisk" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/astrisk-blue.png"> 
+
+<FORM class="commentForm rego_signin default">
+<DIV class="image gravatar"><IMG style="DISPLAY: none" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/cloud_storage_providers_need_sharper_billing_metrics.htm"></DIV><TEXTAREA id=forum_comment class=formField name=comment_text>Leave a comment</TEXTAREA> 
+<SPAN class="btn blue big"><A id=submitCommentButton 
+href="javascript:void(0);">Submit Comment</A></SPAN> 
+<P class=caption><SMALL class=sign-in-reg-note>Once you click submit you will be 
+asked to sign in or register an account if you are not already a member.</SMALL> 
+<SPAN id=commentConfirmTime></SPAN></P><INPUT name=from-comment value=false 
+type=hidden> </FORM>
+<DIV class=spacer></DIV></DIV>
+<P style="DISPLAY: none" id=postingMessage align=right><EM 
+style="COLOR: #00f">Posting comment ...</EM></P>
+<DIV id=reg_comment_form_wrapper></DIV>
+<SCRIPT type=text/javascript>
+    $(document).ready(function(){
+        $("#forum_comment").val('Leave a comment');
+        $('#submitCommentButton').click(function() {
+            PCWSocial.handleCommentSubmit();
+        });
+        if (Logon.isValid) {
+            gigya.services.socialize.getUserInfo(SocialConf.main, { callback: PCWSocial.setCommentAvatar });
+            $('p.caption > small.sign-in-reg-note').hide();
+        } else {
+        	PCWSocial.loadCommentRegForm();
+        }
+    });
+
+    $("#forum_comment").click(function(){
+    	if ($("#forum_comment").val() == 'Leave a comment') {
+            $("#forum_comment").addClass('expanded');
+            $("#forum_comment").val('');
+        }
+    });
+    
+</SCRIPT>
+</DIV>
+<DIV style="DISPLAY: none" id=commentsNav class="clearfix top_radius_5">
+<DIV id=commentsNavTopContainer>Sort by:<A id=commentsNavCron 
+href="javascript://">Oldest First</A><SPAN class=pipeDivider>|</SPAN><A 
+id=commentsNavReverseCron href="javascript://">Newest First</A><SPAN 
+style="DISPLAY: none" class="pipeDivider commentsNavTopSeparator">|</SPAN><A 
+style="DISPLAY: none" id=commentsNavTopRecommended href="javascript://">Most 
+Recommended</A></DIV>
+<DIV id=commentsSortLoader>Resorting</DIV></DIV>
+<DIV id=commentContainer></DIV>
+<DIV><A style="DISPLAY: none" id=commentsNavLoadMore href="javascript://">Show 
+More Comments<SPAN id=commentsNavLoadMoreCont><SPAN 
+id=commentsNavLoadMoreClick></SPAN></SPAN></A></DIV>
+<DIV id=commentSpacer></DIV><SPAN style="DISPLAY: none" 
+id=commentsTotal></SPAN><SPAN style="DISPLAY: none" 
+id=showRecommends></SPAN><SPAN style="DISPLAY: none" id=commentsSortedBy></SPAN>
+<SCRIPT type=text/javascript>
+$(document).ready(function(){
+	$("#forum_comment").val('Leave a comment');
+    if (/\S/.test($('#commentList').html())) { //anything not whitespace
+    	$('#commentsNav').show();
+    }
+});
+$("#forum_comment").click(function(){
+	if ($("#forum_comment").val() == 'Leave a comment') {
+	   $("#forum_comment").addClass('expanded');
+	   $("#forum_comment").val('');
+	}
+});	
+$("#commentsNavCron").click(function(){
+	$("#commentsSortLoader").show();
+    ArticleComments.sort = "cron";
+    ArticleComments.pagination = "0-" + ArticleComments.paginationLoad;
+	ArticleComments.getComments();
+});
+$("#commentsNavReverseCron").click(function(){
+	$("#commentsSortLoader").show();
+    ArticleComments.sort = "reverse";
+    ArticleComments.pagination = "0-" + ArticleComments.paginationLoad;
+	ArticleComments.getComments();
+});
+$("#commentsNavTopRecommended").click(function(){
+	$("#commentsSortLoader").show();
+    ArticleComments.sort = "recommends";
+	ArticleComments.pagination = "0-" + ArticleComments.paginationLoad;
+	ArticleComments.getComments();
+});
+$("#commentsNavLoadMore").click(function(){
+	$("#commentsNavLoadMoreClick").show();
+	var oldPagination = ArticleComments.pagination;
+	var oldPaginationA = oldPagination.split('-');
+	ArticleComments.pagination = '0-' + ((oldPaginationA[1] * 1) + (ArticleComments.paginationLoad * 1));
+	ArticleComments.getComments();
+});
+ArticleComments.subject = 'Re: Cloud Storage Providers Need Sharper Billing Metrics';
+ArticleComments.threadId = 121107;
+ArticleComments.communityId = 2023;
+ArticleComments.getComments();
+</SCRIPT>
+</DIV><!-- END #articleText -->
+<SCRIPT type=text/javascript>
+<!--
+ArticleVote.aid = 230652;
+ArticleVote.style = "smb";
+ArticleVote.getVotes();
+// -->
+</SCRIPT>
+</DIV><!-- END #leftColumn -->
+<DIV id=rightColumn>
+<DIV id=syndication class=clearfix>
+<SCRIPT type=text/javascript>
+
+		var showFollowBarUI_params=
+		{ 
+		    containerID: 'componentDiv',
+		    iconSize: 22,
+		    buttons: [
+		    { 
+		        provider: 'facebook',
+		        actionURL: 'http://www.facebook.com/pcworld',
+		        action: 'dialog'
+		    },
+		    { 
+		        provider: 'twitter',
+		        followUsers: 'pcworld',
+		        action: 'dialog'
+		    },
+		    { 
+		        provider: 'googleplus',
+		        actionURL: 'https://plus.google.com/110047318887201790750/posts',
+		        action: 'window'
+		    }
+		    ]
+		}
+		</SCRIPT>
+
+<DIV class=gigyaFollowSite>Follow us on:</DIV>
+<DIV id=componentDiv class=clearfix></DIV>
+<SCRIPT type=text/javascript>
+		   gigya.services.socialize.showFollowBarUI(showFollowBarUI_params);
+		</SCRIPT>
+</DIV><!-- END #syndication -->
+<DIV id=bizPromo class=tout><!-- blx blox3.tout #226 -->
+<UL>
+  <LI class="col ">
+  <P class=headline>Lenovo IdeaPad</P>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/sc/lenovo/#tk.tout_lenovo"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/bizdev_013112_lenovotout2.jpg"></A> 
+  </DIV>
+  <P>See why the IdeaPad tablet is optimized for ultimate entertainment.</P>
+  <P class=moreLink><A 
+  href="http://www.pcworld.com/sc/lenovo/#tk.tout_lenovo"><STRONG>Visit the 
+  Lenovo showcase.</STRONG></A></P></LI></UL></DIV>
+<DIV id=smbTopBoxAd class=ad336x280>
+<DIV class=showcaseAd><IFRAME style="z-zindex: 200" id=ad336showcase height=280 
+marginHeight=0 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/like.htm" 
+frameBorder=0 width=336 allowTransparency name=ad336showcase marginWidth=0 
+scrolling=no></IFRAME>
+<SCRIPT type=text/javascript>PCWAds.DisplayAdManager.addDeferredAd('ad336showcase','http://ad.doubleclick.net/adi/pcw.bc/virtualization/article;pg=article;aid=230652;c=1730;c=1766;c=1731;c=1730;pos=336showcase;tile=2;sz=336x280;');</SCRIPT>
+</DIV></DIV>
+<DIV id=smbRightSubscribe>
+<H6>Business News Daily</H6>
+<P>Get the latest technology news that's important to you and your business, 
+fresh seven days a week.</P>
+<FORM id=newsletterModuleForm method=post name=newslettermodule 
+action=/newsletters/pcw_module_processor><INPUT name=sourceid value=1 
+type=hidden> <INPUT name=subsource value=BUS_MODULE_ARTICLE type=hidden> <INPUT 
+name=prodid value=605 type=hidden> <INPUT id=caller name=caller 
+value=bcdailynews type=hidden> <INPUT id=submitted name=submitted value=show 
+type=hidden> <INPUT style="MARGIN: 0px; WIDTH: 230px" onfocus=clearFld(this); 
+name=email value="Enter e-mail address" type=text> <INPUT style="BORDER-BOTTOM: #193b59 1px solid; BORDER-LEFT: #193b59 1px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #1c61a1; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #fff; BORDER-TOP: #193b59 1px solid; BORDER-RIGHT: #193b59 1px solid; PADDING-TOP: 3px" onclick=" submitNewsletterSubscription();" value=Subscribe type=button> 
+</FORM>
+<SCRIPT>
+		function submitNewsletterSubscription(){
+			var postData=$("#newsletterModuleForm").serialize();
+			var requestOptions={
+						url: '/newsletters/pcw_module_processor',
+						data: postData,
+						success: function(data,textStatus){
+								$("#smbRightSubscribe").fadeOut("slow",function(){
+										$(this).html(data).fadeIn("slow");
+									})
+							}
+				
+				};
+			$.ajax(requestOptions)
+		}	
+	</SCRIPT>
+</DIV>
+<DIV id=shoppingMod class="module tabbed">
+<DIV class=modTitle>Best Prices on B&amp;W Lasers</DIV>
+<UL class="tabs clearfix">
+  <LI class="tab selected"><A 
+  onclick="tabSwap('shoppingMod',this);return false;" 
+  href="http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html#">Most 
+  Popular</A></LI>
+  <LI class=tab><A onclick="tabSwap('shoppingMod',this);return false;" 
+  href="http://www.pcworld.com/businesscenter/article/230652/cloud_storage_providers_need_sharper_billing_metrics.html#">All 
+  Categories</A></LI></UL>
+<DIV class="tabContentGroup clearfix btm_radius_3">
+<DIV class=TabbedPanelsContent>
+<UL class=storyList>
+  <LI class=clearfix>
+  <DIV class=image><A style="BACKGROUND-COLOR: white" 
+  title="Get the latest prices on the LaserJet Pro M1217nfw All-in-One Laser Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,866918364-sortby,retailer/pricing.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/866918364_75.jpg" 
+  width=75 height=75></A></DIV><A class=title 
+  title="Get the latest prices on the LaserJet Pro M1217nfw All-in-One Laser Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,866918364-sortby,retailer/pricing.html">LaserJet 
+  Pro M1217nfw All-in-One Laser Printer</A> <LABEL class=price>$173.00 and 
+  up</LABEL> <SPAN class="btn red small"><A 
+  title="Get the latest prices on the LaserJet Pro M1217nfw All-in-One Laser Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,866918364-sortby,retailer/pricing.html">See 
+  All Prices</A></SPAN> </LI>
+  <LI class=clearfix>
+  <DIV class=image><A style="BACKGROUND-COLOR: white" 
+  title="Get the latest prices on the LaserJet Pro P1102w Laser Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,758891027-sortby,retailer/pricing.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/758891027_75.jpg" 
+  width=75 height=75></A></DIV><A class=title 
+  title="Get the latest prices on the LaserJet Pro P1102w Laser Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,758891027-sortby,retailer/pricing.html">LaserJet 
+  Pro P1102w Laser Printer</A> <LABEL class=price>$94.99 and up</LABEL> <SPAN 
+  class="btn red small"><A 
+  title="Get the latest prices on the LaserJet Pro P1102w Laser Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,758891027-sortby,retailer/pricing.html">See 
+  All Prices</A></SPAN> </LI>
+  <LI class=clearfix>
+  <DIV class=image><A style="BACKGROUND-COLOR: white" 
+  title="Get the latest prices on the LaserJet P2035N Laser Printer (30 PPM, 1200x600 dpi, B&amp;W, PC/Mac)" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,94739310-sortby,retailer/pricing.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/94739310_75.jpg" 
+  width=75 height=75></A></DIV><A class=title 
+  title="Get the latest prices on the LaserJet P2035N Laser Printer (30 PPM, 1200x600 dpi, B&amp;W, PC/Mac)" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,94739310-sortby,retailer/pricing.html">LaserJet 
+  P2035N Laser Printer (30 PPM, 1200x600 dpi, B&amp;W, PC/Mac)</A> <LABEL 
+  class=price>$169.99 and up</LABEL> <SPAN class="btn red small"><A 
+  title="Get the latest prices on the LaserJet P2035N Laser Printer (30 PPM, 1200x600 dpi, B&amp;W, PC/Mac)" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,94739310-sortby,retailer/pricing.html">See 
+  All Prices</A></SPAN> </LI>
+  <LI class=clearfix>
+  <DIV class=image><A style="BACKGROUND-COLOR: white" 
+  title="Get the latest prices on the LaserJet Enterprise P3015DN Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,736463792-sortby,retailer/pricing.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/736463792_75.jpg" 
+  width=75 height=75></A></DIV><A class=title 
+  title="Get the latest prices on the LaserJet Enterprise P3015DN Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,736463792-sortby,retailer/pricing.html">LaserJet 
+  Enterprise P3015DN Printer</A> <LABEL class=price>$570.00 and up</LABEL> <SPAN 
+  class="btn red small"><A 
+  title="Get the latest prices on the LaserJet Enterprise P3015DN Printer" 
+  href="http://www.pcworld.com/shopping/detail/prtprdid,736463792-sortby,retailer/pricing.html">See 
+  All Prices</A></SPAN> </LI></UL>
+<DIV class=moreLink><A 
+href="http://www.pcworld.com/shopping/browse/category.html?id=11103&amp;filter=popup1[],205:273">See 
+all Best Prices on B&amp;W Lasers »</A></DIV>
+<DIV class="moreLink moreExtra">See also: <A 
+href="http://www.pcworld.com/shopping/browse/category.html?id=10010">Best Prices 
+on Laptops</A>, <A 
+href="http://www.pcworld.com/shopping/browse/category.html?id=10529">Best Prices 
+on Network Storage</A>, <A 
+href="http://www.pcworld.com/shopping/browse/category.html?id=10165">Best Prices 
+on VOIP Phones</A>, <A 
+href="http://www.pcworld.com/shopping/browse/category.html?id=11110">Best Prices 
+on Monitors</A>, <A 
+href="http://www.pcworld.com/shopping/browse/category.html?id=10183&amp;filter=popup1[],10:241|popup1[],20:241|popup1[],25:241">Best 
+Prices on Smartphones</A>, <A 
+href="http://www.pcworld.com/shopping/browse/category.html?id=10091">Best Prices 
+on Wireless Networking</A> </DIV></DIV>
+<DIV style="DISPLAY: none" class=TabbedPanelsContent>
+<DIV class="categories columns cols_2 clearfix">
+<UL class="linkList col">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10010">Laptops</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10010&amp;lo_p=0&amp;hi_p=500">Under 
+  $500</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10010&amp;lo_p=500&amp;hi_p=1000">$500 
+  to $1000</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10010&amp;lo_p=1000&amp;hi_p=2000">$1000 
+  to $2000</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10010&amp;lo_p=2000&amp;hi_p=3000">$2000 
+  to $3000</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10010&amp;lo_p=3000&amp;hi_p=">Over 
+  $3000</A></LI></UL>
+<UL class="linkList col even">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10006">Desktops</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10006&amp;lo_p=0&amp;hi_p=500">Under 
+  $500</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10006&amp;lo_p=500&amp;hi_p=1000">$500 
+  to $1000</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10006&amp;lo_p=1000&amp;hi_p=2000">$1000 
+  to $2000</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10006&amp;lo_p=2000&amp;hi_p=">Over 
+  $2000</A></LI></UL>
+<UL class="linkList col">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10061">Printers</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10061&amp;filter=popup5[],101:273">Inkjet</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10061&amp;filter=popup5[],205:273">B&amp;W 
+  Laser</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10061&amp;filter=popup5[],200:273">Color 
+  Laser</A></LI></UL>
+<UL class="linkList col even">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10131">Portable 
+  Audio</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10135">MP3 
+  Players</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10138">Accessories</A></LI></UL>
+<UL class="linkList col">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10252">Digital 
+  Cameras</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10253">Cameras</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10254">Lenses</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10255">Accessories</A></LI></UL>
+<UL class="linkList col even">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10211">Software</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10226">Design 
+  &amp; Multimedia</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10212">Business 
+  Productivity</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10245">Utilities</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10230">Operating 
+  Systems</A></LI></UL>
+<UL class="linkList col">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10020">Monitors</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10020&amp;filter=popup1[],170:1039">18 
+  to 19 Inches</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10020&amp;filter=popup1[],160:1039">20 
+  to 21 Inches</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10020&amp;filter=popup1[],150:1039">21 
+  Inches &amp; Up</A></LI></UL>
+<UL class="linkList col even">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=11080">Camcorders</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=11082">Camcorders</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=11086">Batteries 
+  &amp; Power</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=11083">Bags 
+  &amp; Cases</A></LI></UL>
+<UL class="linkList col">
+  <LI><A class=level1 
+  href="http://macworld.pricegrabber.com/home_catpage.php/catzero=19">Televisions</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10129">Plasma 
+  &amp; LCD </A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10128">Projection</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10130">TV 
+  Accessories &amp; Mounts</A></LI></UL>
+<UL class="linkList col even">
+  <LI><A class=level1 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=11137">Storage</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=11142">Hard 
+  Drives</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=10034">Flash 
+  Memory</A></LI>
+  <LI><A class=level2 
+  href="http://www.pcworld.com/shopping/browse/category.html?id=11139">DVD-ROM/DVD 
+  Writers</A></LI></UL></DIV><!-- END #categories --></DIV></DIV><!-- END .tabContentGroup --></DIV><!-- END shoppingMod -->
+<DIV id=smbBlogLinks class=spacer>
+<H5>Latest in Business Center Blogs</H5>
+<DIV class=smbBlogList>
+<UL>
+  <LI><A href="http://www.pcworld.com/businesscenter/blogs/network.html"><IMG 
+  class=blogListIcon border=0 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/tonybradley_51x48.gif" 
+  width=50 height=50></A> <SMALL><A 
+  href="http://www.pcworld.com/businesscenter/blogs/network.html">Net Work</A> - 
+  January 31, 2012 2:27 PM</SMALL> 
+  <P><A 
+  href="http://www.pcworld.com/businesscenter/article/249070/rim_regains_mojo_with_blackberry_cloud_service_and_office_365_integration.html">RIM 
+  Regains Mojo with BlackBerry Cloud Service and Office 365 Integration</A> RIM 
+  has been having issues getting back on track, but BlackBerry Cloud Service and 
+  Office 365 for BlackBerry are the kinds of services that put RIM on top in the 
+  first place. </P></LI>
+  <LI><A href="http://www.pcworld.com/businesscenter/blogs/bizfeed.html"><IMG 
+  class=blogListIcon border=0 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/bizSm.png" 
+  width=50 height=50></A> <SMALL><A 
+  href="http://www.pcworld.com/businesscenter/blogs/bizfeed.html">BizFeed</A> - 
+  January 31, 2012 9:48 AM</SMALL> 
+  <P><A 
+  href="http://www.pcworld.com/businesscenter/article/249032/firefox_10_arrives_today_with_extended_support_for_businesses.html">Firefox 
+  10 Arrives Today with Extended Support for Businesses</A> Mozilla's next 
+  browser release for corporate users won't come out until November. </P></LI>
+  <LI><A href="http://www.pcworld.com/businesscenter/blogs/bizfeed.html"><IMG 
+  class=blogListIcon border=0 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/bizSm.png" 
+  width=50 height=50></A> <SMALL><A 
+  href="http://www.pcworld.com/businesscenter/blogs/bizfeed.html">BizFeed</A> - 
+  January 31, 2012 8:00 AM</SMALL> 
+  <P><A 
+  href="http://www.pcworld.com/businesscenter/article/248958/five_ways_to_mix_business_and_personal_data_on_your_smartphone.html">Five 
+  Ways to Mix Business and Personal Data on Your Smartphone</A> Many people use 
+  their personal smartphones to do work. Here are five ways to access your work 
+  and personal data without carrying two handsets. </P></LI>
+  <LI><A href="http://www.pcworld.com/businesscenter/blogs/network.html"><IMG 
+  class=blogListIcon border=0 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/tonybradley_51x48.gif" 
+  width=50 height=50></A> <SMALL><A 
+  href="http://www.pcworld.com/businesscenter/blogs/network.html">Net Work</A> - 
+  January 31, 2012 6:01 AM</SMALL> 
+  <P><A 
+  href="http://www.pcworld.com/businesscenter/article/249021/office_15_beta_slated_for_summer_time_to_move_to_office_2010.html">Office 
+  15 Beta Slated for Summer, Time to Move to Office 2010</A> The next generation 
+  of the Microsoft Office productivity suite is looming on the horizon--a cue 
+  for those clinging to legacy versions to finally switch to Office 2010. 
+  </P></LI>
+  <LI><A 
+  href="http://www.pcworld.com/businesscenter/blogs/security_alert.html"><IMG 
+  class=blogListIcon border=0 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/alert_80x68.png" 
+  width=50 height=50></A> <SMALL><A 
+  href="http://www.pcworld.com/businesscenter/blogs/security_alert.html">Security 
+  Alert</A> - January 31, 2012 5:00 AM</SMALL> 
+  <P><A 
+  href="http://www.pcworld.com/businesscenter/article/248997/norton_wants_to_help_you_remember_your_password.html">Norton 
+  Wants To Help You Remember Your Password</A> Norton's new Identity Safe 
+  Service can make managing passwords easier. </P></LI>
+  <LI><A 
+  href="http://www.pcworld.com/businesscenter/blogs/security_alert.html"><IMG 
+  class=blogListIcon border=0 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/alert_80x68.png" 
+  width=50 height=50></A> <SMALL><A 
+  href="http://www.pcworld.com/businesscenter/blogs/security_alert.html">Security 
+  Alert</A> - January 30, 2012 4:51 PM</SMALL> 
+  <P><A 
+  href="http://www.pcworld.com/businesscenter/article/248994/five_ways_to_protect_your_email_at_work.html">Five 
+  Ways to Protect Your Email at Work</A> Hackers can exploit email to hack into 
+  your work accounts. But these simple techniques can help protect your email 
+  account and company data. </P></LI></UL>
+<DIV class=more><A href="http://www.pcworld.com/businesscenter/blogs.html">All 
+Blogs »</A></DIV></DIV></DIV>
+<DIV id=industryWebcasts>
+<H6>Featured Webcasts</H6>
+<UL>
+  <LI>
+  <DIV class=image><IMG align=left 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/wheelhouse_2__use.jpg" 
+  width=82 height=59></DIV><A 
+  href="http://pcworld.insight24.com/clients/insight24/pcworld/register.html?wcid=227246_1">Top 
+  10 Concerns of Buying a VoIP Business Phone System</A> 
+  <P><STRONG>Type:</STRONG> whitepaper</P>
+  <P><STRONG>Company:</STRONG> CompareBusinessProducts.com</P>
+  <P><STRONG>Categories:</STRONG> VOIP </P>
+  <DIV class=spacer></DIV></LI>
+  <LI>
+  <DIV class=image><IMG align=left 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/wheelhouse_2__use(1).jpg" 
+  width=82 height=59></DIV><A 
+  href="http://pcworld.insight24.com/clients/insight24/pcworld/register.html?wcid=227245_1">Buying 
+  a Phone System? Compare the 94 Business Phone Systems in One Chart</A> 
+  <P><STRONG>Type:</STRONG> whitepaper</P>
+  <P><STRONG>Company:</STRONG> CompareBusinessProducts.com</P>
+  <P><STRONG>Categories:</STRONG> VOIP </P>
+  <DIV class=spacer></DIV></LI></UL>
+<DIV class=more><A 
+href="http://www.pcworld.com/businesscenter/webcasts.html">More webcasts 
+»</A></DIV></DIV>
+<SCRIPT type=text/javascript> var vglnk_api_key = "2b0adaafa9ad8a29fede7758fada1730"; var vglnk_domain = (("https:" == document.location.protocol) ? "https://" : "http://") + "api.viglink.com"; document.write(unescape("%3Cscript src='" + vglnk_domain + "/api/vglnk.js?key=" + vglnk_api_key + "' type='text/javascript'%3E%3C/script%3E")); </SCRIPT>
+
+<SCRIPT type=text/javascript> try { vglnk(vglnk_domain, vglnk_api_key); } catch(err) {} </SCRIPT>
+</DIV><!-- END #rightColumn -->
+<DIV class=smbWhiteHR>
+<HR>
+</DIV></DIV><!--  / fireplaceunit --></DIV><!-- END #content -->
+<DIV id=smbWhitepaperWrap class=wrapper>
+<DIV id=smbWhitepaperInner>
+<H3 id=smbWhitePaperHed>Free Whitepapers<IMG alt="" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/bg_greenribbon.gif" 
+width=16 height=36></H3>
+<DIV id=smbWhitepaperLeft>
+<H4 id=smbWhitePaperSubHed>Software and Services Whitepapers from PCWorld</H4>
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/jsc.js"></SCRIPT>
+
+<DIV class=clearme></DIV><A id=smbWhitepaperMore 
+href="http://research.pcworld.com/">More whitepapers »</A> </DIV>
+<DIV id=smbWhitepaperRight>
+<DIV id=smbWhitepaperAlert class=roundedcorners>
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/jsc(1).js"></SCRIPT>
+
+<H4>Whitepaper Alerts</H4>
+<P>Get updates on white papers, case studies, and spotlights on tech products 
+and solutions for your business. </P>
+<FORM id=newsletterModuleFormWhitepaper method=post name=newslettermodule 
+action=/newsletters/pcw_module_processor><INPUT name=sourceid value=1 
+type=hidden> <INPUT name=subsource value=BUS_MODULE_WHITEPAPER type=hidden> 
+<INPUT name=prodid value=596 type=hidden> <INPUT id=caller name=caller 
+value=bcwhitepaper type=hidden> <INPUT id=submitted name=submitted value=show 
+type=hidden> <INPUT style="MARGIN: 0px; WIDTH: 130px" onfocus=clearFld(this); 
+name=email value="Enter e-mail address" type=text> <INPUT style="BORDER-BOTTOM: #193b59 1px solid; BORDER-LEFT: #193b59 1px solid; PADDING-BOTTOM: 3px; BACKGROUND-COLOR: #1c61a1; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #fff; BORDER-TOP: #193b59 1px solid; BORDER-RIGHT: #193b59 1px solid; PADDING-TOP: 3px" onclick=" submitNewsletterSubscriptionWhitepaper();" value=Subscribe type=button> 
+</FORM>
+<SCRIPT>
+				function submitNewsletterSubscriptionWhitepaper(){
+					var postData=$("#newsletterModuleFormWhitepaper").serialize();
+					var requestOptions={
+								url: '/newsletters/pcw_module_processor',
+								data: postData,
+								success: function(data,textStatus){
+										$("#smbWhitepaperAlert").fadeOut("slow",function(){
+												$(this).html(data).fadeIn("slow");
+											})
+									}
+						
+						};
+					$.ajax(requestOptions)
+				}	
+			</SCRIPT>
+</DIV></DIV>
+<DIV class=spacer></DIV></DIV></DIV>
+<DIV style="PADDING-BOTTOM: 20px" id=footerWrapper>
+<DIV id=footer class=clearfix>
+<DIV id=footerLeft>
+<DIV id=smbCarouselWrapper>
+<DIV id=smbCarousel>
+<DIV id=wrapper></DIV><!-- storyCarousel -->
+<SCRIPT type=text/javascript>
+	 	function storyCarousel_initCallback(carousel) {
+	 		jQuery('.carouselNav a').bind('click', function() {
+		    	var myClass = jQuery(this).attr('class');
+		    	if(myClass.indexOf("thumb")!=-1){
+		    		var index = myClass.substring(myClass.length-1);
+		        	carousel.scroll(jQuery.jcarousel.intval(index));
+		        } else if(myClass.indexOf("next")!=-1){
+			        	carousel.next();
+		        } else {
+			        	carousel.prev();
+		        }
+		        return false;
+		    });
+		};
+	
+		function storyCarousel_init(){
+			if(jQuery("#wrapper").is(":visible")){
+				jQuery("#storyCarousel").show(1,function(){
+					jQuery("#storyCarousel #contentPanel").jcarousel({
+		        		scroll: 3,
+		        		visible:3,
+		        		initCallback: storyCarousel_initCallback,
+		        		buttonNextHTML: null,
+		        		buttonPrevHTML: null
+		    		});
+				});
+		    } else {
+		    	setTimeout(storyCarousel_init,100);
+		    }		
+		}
+	
+		jQuery(document).ready(function() {
+				setTimeout(storyCarousel_init,500);
+		});
+	
+	 </SCRIPT>
+
+<DIV id=storyCarousel>
+<H2>More from the PCWorld BusinessCenter</H2>
+<UL class=carouselNav>
+  <LI class=left><A class=carouselNav-prev href="javascript:void(0);"></A></LI>
+  <LI class=right><A class=carouselNav-next 
+href="javascript:void(0);"></A></LI></UL>
+<DIV class=spacer></DIV>
+<DIV class=contentPanel>
+<UL id=contentPanel class=footerArticleCarousel>
+  <LI>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/businesscenter/article/248979/2012_the_year_storage_becomes_a_celebrity.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/storage_thumb180-5227233.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/businesscenter/article/248979/2012_the_year_storage_becomes_a_celebrity.html">2012: 
+  The Year Storage Becomes a Celebrity</A> </LI>
+  <LI>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/248968/microsoft_office_15_begins_technical_preview_tablet_readiness_questioned.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/windows8_tablet-5212194-5237707.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/article/248968/microsoft_office_15_begins_technical_preview_tablet_readiness_questioned.html">Microsoft 
+  Office 15 Begins Technical Preview: Tablet Readiness Questioned</A> </LI>
+  <LI class=third>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/248934/root_your_android_phone_tips_and_tricks.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/android-root-10793846.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/article/248934/root_your_android_phone_tips_and_tricks.html">Root 
+  Your Android Phone: Tips and Tricks </A></LI>
+  <LI>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/248719/open_source_google_chrome_remixes_6_browsers_worth_trying.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/google_chrome_hp-10291327.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/article/248719/open_source_google_chrome_remixes_6_browsers_worth_trying.html">Open 
+  Source Google Chrome Remixes: 6 Browsers Worth Trying</A> </LI>
+  <LI>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/248560/megaupload_dotcom_a_flight_risk_prosecutor_says.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/kim_dotcom-10033653.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/article/248560/megaupload_dotcom_a_flight_risk_prosecutor_says.html">MegaUpload: 
+  Dotcom a 'Flight Risk', Prosecutor Says</A> </LI>
+  <LI class=third>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/248454/megauploads_owner_faces_charges_in_court.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/kim20dotcomb-9785726.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/article/248454/megauploads_owner_faces_charges_in_court.html">MegaUpload's 
+  Owner Faces Charges in Court </A></LI>
+  <LI>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/248381/can_anyone_beat_apple_at_its_own_game.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/appleassault-180-9578140.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/article/248381/can_anyone_beat_apple_at_its_own_game.html">Can 
+  Anyone Beat Apple at Its Own Game?</A> </LI>
+  <LI>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/article/248296/how_to_defend_your_android_phone_from_annoying_mobile_ads.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/android_ad_blockers_promo-9565450.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/article/248296/how_to_defend_your_android_phone_from_annoying_mobile_ads.html">How 
+  to Defend Your Android Phone From Annoying Mobile Ads</A> </LI>
+  <LI class=third>
+  <DIV class=image><A 
+  href="http://www.pcworld.com/businesscenter/article/248306/cyber_crime_in_2025_new_threats_mingle_with_old_risks.html"><IMG 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/156067-Webcrime_thumb_original.jpg"> 
+  </A></DIV><A 
+  href="http://www.pcworld.com/businesscenter/article/248306/cyber_crime_in_2025_new_threats_mingle_with_old_risks.html">Cyber 
+  Crime in 2025: New Threats Mingle with Old Risks</A> </LI></UL></DIV>
+<DIV class=spacer></DIV></DIV><!-- End storyCarousel --></DIV></DIV>
+<UL id=footerAbout>
+  <LI id=smbAboutText><IMG class=png alt=PCWorld 
+  src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/pcw-logo-78px.png" 
+  width=78 height=18> 
+  <UL style="MARGIN-TOP: 5px">
+    <LI><A href="http://www.pcworld.com/resource/aboutus.html">About Us</A> 
+</LI>
+    <LI><A href="http://www.pcworld.com/resource/contactus.html">Contact 
+    Us</A></LI>
+    <LI><A href="http://www.pcworld.com/resource/site_faq.html">FAQ</A></LI>
+    <LI><A href="http://www.pcworld.com/resource/circ_subservices.html">Magazine 
+    Customer Service</A></LI></UL></LI>
+  <LI id=smbAboutResources>
+  <H5>Resources</H5>
+  <UL>
+    <LI><A href="http://www.twitter.com/pcworld">Twitter</A></LI>
+    <LI><A href="http://www.pcworld.com/resource/rss.html">RSS</A></LI>
+    <LI><A 
+    href="http://www.pcworld.com/newsletters/index.html">Newsletters</A></LI>
+    <LI><A 
+    href="http://www.pcworldmacworld.com/contact/advertise">Advertise</A></LI>
+    <LI><A 
+    href="http://ad.doubleclick.net/clk;238886167;13346828;x?http://www.pcworld.com/resource/privacy.html"><IMG 
+    style="MARGIN-RIGHT: 4px" alt="Ad Choices" 
+    src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/ad_choices_icon.png" 
+    width=8>Ad Choices</A></LI></UL></LI>
+  <LI id=smbAboutNetwork>
+  <H5>Network</H5>
+  <UL>
+    <LI><A href="http://www.pcworld.com/">PCWorld</A></LI>
+    <LI><A href="http://www.pcworld.com/businesscenter/">PCWorld Business 
+    Center</A></LI>
+    <LI><A href="http://jobs.pcworld.com/">Search for Tech Jobs</A></LI>
+    <LI><A href="http://careers.idg.com/">Careers at IDG</A></LI>
+    <LI><A href="http://www.macworld.com/">Macworld</A></LI>
+    <LI><A href="http://www.macuser.com/">MacUser</A></LI>
+    <LI><A href="http://www.osxhints.com/">Mac OS X Hints</A></LI>
+    <LI><A href="http://iphone.macworld.com/">iPhone Central</A></LI></UL></LI></UL>
+<DIV class=spacer></DIV></DIV>
+<DIV id=footerRight>
+<DIV id=smbFooterAd><IMG title="Try 2 risk-free issues of PCWorld" 
+alt="Try 2 risk-free issues of PCWorld" 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/PCWMagAd_Footer.png" 
+width=317 height=210> 
+<FORM method=post name=form 
+action=https://w1.buysub.com/servlet/PrePopGateway?cds_mag_code=PCW&amp;cds_page_id=38892>
+<TABLE border=0 cellSpacing=2 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top>Name</TD>
+    <TD class=10></TD>
+    <TD vAlign=top colSpan=3>City</TD></TR>
+  <TR>
+    <TD vAlign=top><INPUT style="WIDTH: 140px" tabIndex=501 name=cds_name 
+      maxLength=2147483647 size=23 type=text></TD>
+    <TD class=10></TD>
+    <TD vAlign=top colSpan=3><INPUT style="WIDTH: 140px" tabIndex=504 
+      name=cds_city maxLength=2147483647 size=23 type=text></TD></TR>
+  <TR>
+    <TD vAlign=top>Address 1</TD>
+    <TD class=10></TD>
+    <TD vAlign=top width=40>State</TD>
+    <TD class=10></TD>
+    <TD vAlign=top>Zip</TD></TR>
+  <TR>
+    <TD vAlign=top><INPUT style="WIDTH: 140px" tabIndex=502 name=cds_address_1 
+      maxLength=2147483647 size=23 type=text></TD>
+    <TD class=10></TD>
+    <TD vAlign=top width=40><INPUT style="WIDTH: 25px" tabIndex=505 
+      name=cds_state maxLength=2147483647 size=5 type=text></TD>
+    <TD class=10></TD>
+    <TD vAlign=top><INPUT style="WIDTH: 100px" tabIndex=506 name=cds_zip 
+      maxLength=2147483647 size=15 type=text></TD></TR>
+  <TR>
+    <TD vAlign=top>Address 2</TD>
+    <TD class=10></TD>
+    <TD vAlign=top colSpan=3>E-mail (optional)</TD></TR>
+  <TR>
+    <TD vAlign=top><INPUT style="WIDTH: 140px" tabIndex=503 name=cds_address_2 
+      maxLength=2147483647 size=23 type=text></TD>
+    <TD class=10></TD>
+    <TD vAlign=top colSpan=3><INPUT style="WIDTH: 140px" tabIndex=507 
+      name=cds_email maxLength=2147483647 size=23 type=text></TD></TR></TBODY></TABLE>
+<DIV align=center><SPAN class="btn red"><A tabIndex=508 
+href="javascript:document.form.submit()">Click Here</A></SPAN> </DIV></FORM>
+<DIV class=subLinks><A 
+href="https://w1.buysub.com/servlet/OrdersGateway?cds_mag_code=PCW&amp;cds_page_id=11664">Canadian 
+Residents</A> | <A 
+href="https://w1.buysub.com/servlet/OrdersGateway?cds_mag_code=PCW&amp;cds_page_id=757">Foreign 
+Residents</A> | <A 
+href="https://w1.buysub.com/servlet/GiftsGateway?cds_mag_code=PCW">Gift 
+Subscriptions</A><BR><A 
+href="https://w1.buysub.com/servlet/CSGateway?cds_mag_code=PCW">Customer 
+Service</A> | <A href="http://www.pcworld.com/resource/privacy.html">Privacy 
+Policy</A> </DIV></DIV></DIV>
+<DIV class=smbGrayHR>
+<HR>
+</DIV><SMALL><A href="http://www.pcworld.com/resource/copyright.html">© 
+1998-2012, PCWorld Communications, Inc.</A> <A 
+href="http://www.pcworld.com/resource/termsofservice.html">Terms of Service 
+Agreement</A> <A 
+href="http://www.pcworld.com/resource/privacy.html#privacypolicy">Privacy 
+Policy</A> <A href="http://www.pcworld.com/resource/community.html">Community 
+Standards</A></SMALL> </DIV><!-- END #footer --></DIV><!-- END #footerWrapper -->
+<SCRIPT type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/ip.js"></SCRIPT>
+<!--
+ts:Tue Jan 31 15:17:36 PST 2012
+ad:<iframe name="ad336showcase" id="ad336showcase" src="" width="336" height="280" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" allowTransparency="true" style="z-zindex:200"></iframe><script type="text/javascript">PCWAds.DisplayAdManager.addDeferredAd('ad336showcase','http://ad.doubleclick.net/adi/pcw.bc/virtualization/article;pg=article;aid=230652;c=1730;c=1766;c=1731;c=1730;pos=336showcase;tile=2;sz=336x280;');</script>
+mlc: 
+pn: 
+--><!-- START Nielsen Online SiteCensus V6.0 --><!-- COPYRIGHT 2010 Nielsen Online -->
+<SCRIPT type=text/javascript>
+  (function () {
+    var d = new Image(1, 1);
+    d.onerror = d.onload = function () {
+      d.onerror = d.onload = null;
+    };
+    d.src = ["//secure-us.imrworldwide.com/cgi-bin/m?ci=us-203426h&cg=0&cc=1&si=", escape(window.location.href), "&rp=", escape(document.referrer), "&ts=compact&rnd=", (new Date()).getTime()].join('');
+  })();
+</SCRIPT>
+<NOSCRIPT></NOSCRIPT><!-- END Nielsen Online SiteCensus V6.0 --><!-- SiteCatalyst code version: H.20.3.
+Copyright 1997-2009 Omniture, Inc. More info available at
+http://www.omniture.com -->
+<SCRIPT language=JavaScript type=text/javascript><!-- 
+var g_sOmnitureReportSuite = "pcwmw-pcworld";
+var g_bOmnitureTrackMedia = false;
+if (typeof(trackMedia)=="boolean") {
+	g_bOmnitureTrackMedia = trackMedia;
+}
+// --></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/s_code.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript><!--
+
+
+s.pageName="business center:virtualization:article:cloud storage providers need sharper billing metrics:230652";
+s.server="";
+s.channel="business center";
+s.pageType="";
+s.prop1="source:idg news";
+s.prop2="content type:news";
+s.prop3="display type:article";
+s.prop4="6 months";
+s.prop5="";
+s.prop6="";
+s.prop7="";
+s.prop8="";
+s.prop9="category:businesscenter:virtualization";
+s.prop10="";
+s.prop11="published:17-jun-11";
+s.prop12="aid:230652";
+s.prop13="";
+s.prop14="author:joab jackson";
+s.prop15="page:1";
+s.prop16=s.getTimeParting('d','-8');
+s.prop17=s.getTimeParting('w','-8');
+s.prop18="";
+s.prop19="";
+s.prop20=s.getTimeParting('h','-8');
+s.prop21="";
+s.prop22="";
+s.prop23="";
+s.prop24=getLoginStatusForOmniture();
+s.prop25="editorial content";
+s.prop26="";
+s.prop27="";
+s.prop28=getTrackingToken('tk') ? "tokens:"+getTrackingToken('tk') : "";
+s.prop29="";
+s.prop30="";
+s.prop31="";
+s.prop32="";
+s.prop33="";
+s.prop34="";
+s.prop37="D=pageName";
+s.prop38="";
+s.prop39="";
+s.prop40="";
+s.prop44="";
+s.prop47="";
+/* Conversion Variables */
+s.campaign=getTrackingToken('tk');
+/* Hierarchy Variables */
+s.hier1="business center~article~cloud storage providers need sharper billing metrics";
+s.hier2="";
+s.hier3="";
+s.hier4="";
+s.hier5="Business Center~Virtualization";
+var s_code=s.t();
+if(s_code)document.write(s_code);//--></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></SCRIPT>
+<NOSCRIPT></NOSCRIPT><!--/DO NOT REMOVE/--><!-- End SiteCatalyst code version: H.20.3. --><IFRAME 
+id=adsb height=0 marginHeight=0 
+src="Cloud%20Storage%20Providers%20Need%20Sharper%20Billing%20Metrics%20%20PCWorld%20Business%20Center_files/fastbutton.htm" 
+frameBorder=0 width=0 marginWidth=0></IFRAME>
+<SCRIPT type=text/javascript>
+(function() {
+var cs = document.createElement('script'); cs.type = 'text/javascript';
+cs.async = true; cs.src = ('https:' == document.location.protocol ? ' https://secure-' : ' http://') + 'static.crowdscience.com/start-c3c3ad468e.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cs,s);
+})();
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+  (function () {
+    var p = new Image(1, 1);
+    p.onerror = p.onload = function () {
+      p.onerror = p.onload = null;
+    };
+    p.src = ["//p.staticworld.net/pixel.gif?aid=230652&d=", (new Date()).getTime()].join('');
+  })();
+</SCRIPT>
+</BODY></HTML>
