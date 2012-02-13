@@ -1,0 +1,112 @@
+% Bryan Dixon
+% Brendan Kelly
+% Mark Lewis-Prazen
+% Andy Sayler
+% University of Colorado
+% Distributed Systems
+% Spring 2012
+
+\documentclass[11pt]{article}
+
+\usepackage[text={6.5in, 9in}, centering]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\bibliographystyle{plain}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\newenvironment{packed_item}{
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\begin{document}
+
+\title{
+  Distributed File Storage Systems\\
+  Project Proposal
+}
+\author{
+  Bryan Dixon \and Brendan Kelly \and Mark Lewis-Prazen \and Andy Sayler\\
+  \and University of Colorado\\
+  \texttt{first.last@colorado.edu}
+}
+\date{\today}
+
+\maketitle
+
+\newpage
+
+\section{Problem Statement}
+Modern applications require the
+processing of terabytes and petabytes of data. This processing has
+largely been achieved by distributed architectures and
+methodologies, driving the rise of companies such as Google, Amazon
+and Yahoo. The increased importance of large scale data processing and a
+corresponding explosion in alternative storage architectures
+requires computer science researchers and
+professionals to be well versed in the available technologies.
+Yet, while the technology has evolved
+significantly over the past five years, a deep understanding of both
+technical and business storage issues has lagged behind.
+
+The intent of our project is to examine the current state of distributed
+storage systems and services on both a
+technical and business level to understand
+(1) what is technically available,
+(2) what are current research and developmental directions,
+and (3) what business cases and values different technologies bring to
+the table.
+
+We believe that performing this analysis and a subsequent implementation of
+a distributed proof-of-concept storage model, we will gain a better
+understanding of distributed storage technologies and the nature
+of implementing these systems and services in a production environment.
+
+\section{Project Approach}
+Our project approach will consist of three phases:
+\begin{packed_enum}
+\item Review the current research and technical literature
+  in order to gain an understanding of the state of the art in
+  distributed storage systems.
+\item Define an appropriate architecture for a proof-of-concept
+  distributed storage system that can be implemented and evaluated.
+\item Implement the proof-of-concept design and evaluate its performance.
+\end{packed_enum}
+
+We have requested EEF funding for the necessary hardware to build
+a proof-of-concept platform of our design.
+At the conclusion of the project these hardware
+resources can be used to enhance available computing resources for the
+graduate computer science program.
+
+\section{Evaluation Methodology}
+We will evaluate our implemented design by
+comparing its performance against popular storage processing and
+storage services metrics available in the literature.
+A complete list of criteria for evaluation and actual test parameters
+will be finalized at the conclusion of the literature review and then
+subsequently updated at each project status update.
+
+\nocite{*}
+\bibliography{refs}
+
+\end{document}
