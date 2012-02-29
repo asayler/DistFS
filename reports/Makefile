@@ -20,16 +20,16 @@ vpath %.png $(INCLUDE_DIR)
 vpath %.svg $(INCLUDE_DIR)
 vpath %.c   $(INCLUDE_DIR)
 
-.PHONY: all clean allclean
+.PHONY: all clean cleanall
 
-all: proposal.pdf clean
+all: proposal.pdf progress1.pdf clean
 
 clean:
 	$(RM) *.aux *.bbl *.blg *.dvi *.log *.out *.nav *.snm *.toc *.vrb *~
 	$(RM) $(INCLUDE_DIR)/*.png
 
-allclean: clean
-	$(RM) proposal.pdf
+cleanall: clean
+	$(RM) proposal.pdf progress1.pdf
 
 .PHONY: proposal
 
@@ -45,3 +45,18 @@ proposal.bbl: proposal.aux refs.bib
 
 proposal.aux: proposal.tex $(PAPER_INCLUDES)
 	$(LATEX) $(LATEXFIRST) proposal.tex
+
+.PHONY: progress1
+
+progress1: progress1.pdf clean
+
+progress1.pdf: progress1.aux progress1.bbl
+	$(LATEX) $(LATEXFIRST) progress1.tex
+	$(LATEX) $(LATEXLAST) progress1.tex
+	@touch $^ $@
+
+progress1.bbl: progress1.aux refs.bib
+	$(BIBTEX) progress1.aux
+
+progress1.aux: progress1.tex $(PAPER_INCLUDES)
+	$(LATEX) $(LATEXFIRST) progress1.tex
