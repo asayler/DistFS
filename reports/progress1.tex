@@ -355,6 +355,50 @@ systems \cite{tahoe-lafs.org}.
 Ceph is an object-based parallel file system with a scalable metadata implementation with data replication to allow for data recovery and recovery from hardware failures. Ceph is similar to that of many other distributed file systems in it has metadata servers that a client uses to determine where the file objects live. The key designs for Ceph are providing the ability to scale easily which make it great for use in cloud storage or in cases where hardware for the system may be added or removed. I see the upside of Ceph over Tahoe would be that ceph provides a FUSE based client for use in mounting a Ceph storage system instead of needing to access via a web interface. Additionally it is possible that encryption could be applied by the client prior to storing their files to add some level of security to Ceph that only uses NFS level security making use of uid or gid. 
 \cite{Weil:2012p1035,Weil:2012p1010,Weil:2006p1273}.
 
+\subsection{Dynamo Data Store}
+Amazon's Dynamo is a highly scalable distributed data store custom built 
+for Amazon’s business needs. Dynamo is a completely decentralized system 
+with minimal need for manual administration. Storage nodes can be added 
+and removed from Dynamo without requiring any manual partitioning or 
+redistribution. The system is used to manage a set of services with high 
+reliability requirements and tradeoffs between availability, consistency, 
+cost-effectiveness and performance. Dynamo uses a collection of well known 
+techniques to achieve scalability and availability. First, data is 
+partitioned and replicated using consistent hashing. The consistency among 
+replicas during updates is maintained by a decentralized replica 
+synchronization protocol. 
+
+Dynamo is designed to be an eventually consistent data store in the sense 
+that all updates reach all replicas ultimately. The challenge with such 
+an approach is that it can lead to conflicting changes that require 
+eventual resolution. This process of such a resolution event introduces 
+two subproblems: when to resolve them and who assumes the responsibility 
+for final resolution. Specific business requirements result in Dynamo 
+pushing the complexity of conflict resolution to the reads in order to 
+ensure that writes are never rejected.
+
+Other important design principles demonstrated in the Dynamo system 
+include: (1) incremental scalability which allows the system to scale 
+out one storage nodes one at a time, with minimal impact on both operators 
+of the system and the system itself, (2) symmetry whereby every node in 
+Dynamo has the same set of responsibilities as its peers with no node(s) 
+taking on special responsibilities and thereby simplifying both 
+provisioning and maintenance, (3) decentralization which leads to more 
+scalable and available system, and, (4) heterogeneity which allows the 
+system to make the work distribution more proportional to the capabilities 
+of each server.
+
+
+
+
+
+
+
+
+
+
+
+
 \nocite{*}
 \bibliography{refs}
 
