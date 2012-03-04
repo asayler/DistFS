@@ -154,7 +154,95 @@ tradeoffs that one must consider in designing and implementing a sensible organi
 wide storage solution.
 
 \section{Introduction}
+Distributed storage systems have evolved from providing a means to store data 
+remotely, to offering innovative services like publishing, federation, anonymity 
+and archival. To make this possible networks have also evolved, generally as a leading 
+indicator of storage evolution. With network infrastructure undergoing another quantum 
+leap recently, and outpacing the bandwidth capability of processors and hard-drives, 
+this provides a platform for future distributed storage systems to offer more services 
+yet again. 
 
+The emergence of Cloud Computing, one of the new variables in the storage arena, 
+requires organizations to move from server-attached storage to distributed storage. 
+Along with variant advantages, the distributed storage also poses new challenges in 
+creating both a secure and reliable data storage and access facility over insecure or 
+unreliable service providers. The security of data stored in the cloud is one of the 
+challenges to be addressed before the pay-as-you-go Storage as a Service (STaaS) model 
+can become widespread in the industry. In the enterprise, STaaS vendors are now targeting 
+secondary storage applications by promoting STaaS as a convenient way to manage backups. 
+The key advantage to STaaS in the enterprise is in cost savings -- in personnel, in 
+hardware and in physical storage space. For instance, instead of maintaining a large tape 
+library and arranging to vault (store) tapes offsite, a network administrator that used 
+STaaS for backups could specify what data was to be relegated to outsourced storage and 
+storage service providers would manage the data from that point. If the company's data 
+ever became corrupt or was lost, the network administrator could contact the STaaS 
+provider and request a copy of the data. For these reasons, STaaS is generally seen as a 
+good alternative for a small or mid-sized business that lacks the capital budget and/or 
+technical personnel to implement and maintain their own storage infrastructure. STaaS is 
+also being promoted as a way for all businesses to mitigate risks in disaster recovery, 
+provide long-term retention for records and enhance both business continuity and 
+availability. Obviously, for larger businesses, the movement to a STaaS model or a 
+partial such model is a longer term proposition as storage equipment reaches the end 
+of its useful life and storage agreements expire. The existence of long term contracts 
+and sizable amortization schedules often make movement to more flexible business storage 
+strategies less likely in the short term. Hence many large organizations are maintaining 
+tiered stage models; at least in the short term planning horizon. 
+
+Other trends are equally disruptive and compelling. Full provisioning, the practice of 
+provisioning all the capacity of an external disk to a given app has been accepted practice 
+in industry circles for some time. This practice ensures that a given application has 
+sufficient storage to meet projected growth potential. However, though it typically 
+results in poor utilization rates as noted above. So essentially, a surplus of storage 
+capacity is being acquired, which generally translates into more space and cooling costs 
+in addition to higher overhead costs since unused capacity still needs to be monitored 
+and managed. When applications reach capacity limits and re-provisioning is necessary, 
+the costs increase even more. In adding additional capacity, complex management tasks 
+can be involved. Finally, when an app is taken offline to re-provision capacity, it is 
+then unable to serve business needs and can lead to revenue loss. Thin provisioning has 
+been offered as a solution to address many of the issues noted above. By automatically 
+allocating system capacity to applications as needed, this technology can result in storage 
+utilizations levels of up to 90%, while simultaneously reducing power consumption. This 
+technique allows users to allocate a large amount of virtual capacity for an application, 
+regardless of the physical capacity actually available. This on-demand method not only 
+optimizes storage utilization, but also greatly simplifies capacity planning and management. 
+In order to help users easily monitor capacity utilization, storage systems automatically 
+notify when the capacity utilization is reaching some pre-defined limit. A decision to 
+expand capacity can be done seamlessly. 
+
+Under traditional provisioning practices, it is difficult to move data across logical 
+partitions in a storage architecture. When thin provisioning is used, storage capacity 
+from differentlogical partitions can be combined, enabling storage to be dynamically 
+allocated. Conversely, this means that the storage controller can move data dynamically 
+across logical partitions based on how resources are designed to function. Also, thin 
+provisioning allows other advances in storage design, including automated storage tiering. 
+Storage tiering involves grouping data into different categories and assigning these 
+categories to different types of storage media in order to optimize storage utilization. 
+Automated tiering ensures applications have access to the performance levels they need so 
+they can be properly paired up. For example, high performance applications can be assigned 
+to high performance storage tiers featuring drives such as SSDs or SAS, while applications 
+requiring less performance can be assigned to lower tiers featuring low performance drives 
+such as SATA. This ensures that storage resources are not squandered and that applications 
+function effectively. Finally, the new technology helps automatically migrate data based on 
+usage patterns. So, if data in higher storage tiers has not been used for an extended period 
+of time, it is demoted to lower storage tiers. Conversely, if data in lower tiers is 
+frequently accessed, it is promoted upward. Such techniques can greatly improve storage 
+efficiency.
+
+Obviously, the RDBMSs of today aren't going away, certainly not in the short term. However, 
+storage requirements for the new generation of applications are dramatically different. 
+The Semantic Web / Web 3.0 is going to be full of semi-structured data on an even larger 
+scale, so it's prudent for applications to take advantage of the upcoming technologies as 
+soon as possible. Future killer applications and appliances will have to connect to the 
+cloud and hence will be written with distributed storage in mind, whether the applications 
+run on the desktop or on the web. Undeniably, the design of distributed storage poses many 
+challenges - scalability, hardware requirements, query model, failure handling, data 
+consistency, durability, reliability, efficiency, etc. The landscape of storage 
+architectures/software we describe in this paper are helping address many of the concerns 
+raised with respect to current shortfalls in distributed storage architecture and methodology. 
+But, clearly, the future of data and storage is a virtyual model. Our project explores many 
+of these issues as well as the available options and tradeoffs inherent in these choices 
+which are currently shaping Distributed Storage Systems. In the next section we examine 
+the current literature on distributed storage.
 
 \section{Related Work}
 \subsection{Tahoe File System}
