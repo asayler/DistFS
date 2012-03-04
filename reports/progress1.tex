@@ -352,7 +352,7 @@ serves as the storage backend for several other
 systems \cite{tahoe-lafs.org}. 
 
 \subsection{Ceph}
-This section will be about the Ceph File System
+Ceph is an object-based parallel file system with a scalable metadata implementation with data replication to allow for data recovery and recovery from hardware failures. Ceph is similar to that of many other distributed file systems in it has metadata servers that a client uses to determine where the file objects live. The key designs for Ceph are providing the ability to scale easily which make it great for use in cloud storage or in cases where hardware for the system may be added or removed. I see the upside of Ceph over Tahoe would be that ceph provides a FUSE based client for use in mounting a Ceph storage system instead of needing to access via a web interface. Additionally it is possible that encryption could be applied by the client prior to storing their files to add some level of security to Ceph that only uses NFS level security making use of uid or gid. 
 \cite{Weil:2012p1035,Weil:2012p1010,Weil:2006p1273}.
 
 \nocite{*}
