@@ -54,25 +54,37 @@
 \maketitle
 
 \begin{abstract}
-The new generation of applications requires the processing of terabytes and petabytes of data. This processing has 
-largely been achieved by distributed processing architectures and methodologies, driving the rise of companies such as 
-Google, Amazon and Yahoo, which have embraced such technologies over the past decade and made them a central part of 
-their business models. The increased importance of large scale data processing and a corresponding explosion in 
-alternative storage architectures and service strategies requires computer science researchers and professionals to 
-become well versed in the available alternatives and trade-offs in making technological architectural choices these 
-areas. While storage technology has evolved significantly over the past five years, a deep understanding of both 
-technical and business storage issues has lagged behind as many in these fields still view data storage as a mundane 
-activity still the purview of back office technocrats. The current trend in distributed cloud storage and the focus of 
-delivering IT infrastructure and applications bundled with data storage has led to an “as a service” model being used 
-to promote such products.
+The new generation of applications requires the processing of
+terabytes and petabytes of data. This processing has largely been
+achieved by distributed processing architectures and methodologies,
+driving the rise of companies such as Google, Amazon and Yahoo, which
+have embraced such technologies over the past decade and made them a
+central part of their business models. The increased importance of
+large scale data processing and a corresponding explosion in
+alternative storage architectures and service strategies requires
+computer science researchers and professionals to become well versed
+in the available alternatives and trade-offs in making technological
+architectural choices these areas. While storage technology has
+evolved significantly over the past five years, a deep understanding
+of both technical and business storage issues has lagged behind as
+many in these fields still view data storage as a mundane activity
+still the purview of back office technocrats. The current trend in
+distributed cloud storage and the focus of delivering IT
+infrastructure and applications bundled with data storage has led to
+an “as a service” model being used to promote such products.
 
-The intent of our project is to examine the current state of both core storage and related service offerings on both a 
-technical and business level to understand (1) what is technically available, (2) what are current research and 
-developmental directions in storage technology, and (3) how core storage architectures are being coupled with associated
-services to produce bundled storage product offerings that purport to add value above and beyond core offerings. We 
-believe that by performing this analysis and the subsequent implementation of a distributed proof of concept storage 
-model, we will gain a better understanding of evolving storage technologies as well as the tradeoffs that need to be 
-made when implementing bundled storage services in a production environment.
+The intent of our project is to examine the current state of both core
+storage and related service offerings on both a technical and business
+level to understand (1) what is technically available, (2) what are
+current research and developmental directions in storage technology,
+and (3) how core storage architectures are being coupled with
+associated services to produce bundled storage product offerings that
+purport to add value above and beyond core offerings. We believe that
+by performing this analysis and the subsequent implementation of a
+distributed proof of concept storage model, we will gain a better
+understanding of evolving storage technologies as well as the
+tradeoffs that need to be made when implementing bundled storage
+services in a production environment.
 
 \end{abstract}
 
@@ -86,8 +98,29 @@ Text change
 
 \section{Related Work}
 \subsection{Tahoe File System}
-This section will be about the Tahoe File System
-\cite{WilcoxOHearn:2008p1275}.
+
+The Tahoe-LAFS (Tahoe Least-Authority Filesystem) is a secure,
+distributed filesystem designed by Zooko Wolcox-O'Hearn and Brain
+Warner of allmydata.com. Tahoe-LAFS (henceforth referred to as
+'Tahoe') is designed around the Principle of Least Authority, and aims
+to allow one to deploy a trusted distributed filesystem using
+untrusted, or even actively malicious, nodes. Tahoe is also designed
+to be fault-tolerant, and to run on commodity hardware where failures
+may occur frequently. Tahoe uses Reed-Solomon erasure coding to obtain
+redundancy across nodes. It uses convergent encryption in conjunction
+with a capability-based access control model, to obtain and maintain
+security \cite{WilcoxOHearn:2008p1275}.
+
+Tahoe presents a web-API to users of the system that can be used to
+administrate the system, as well as to read, write, or verify files
+and directories on the system. This web-based API makes Tahoe suitable
+for use as the backend for various services and applications in
+domains such as backup and cloud storage. Tahoe is still actively
+maintained and is Free Software under the GPL and TGPL. It served as the
+backend for allmydata.com until allmydata.com went out of business. It
+is currently deployed for personal use be a number of individuals, and
+serves as the storage backend for several other
+systems \cite{tahoe-lafs.org}. 
 
 \subsection{Ceph}
 This section will be about the Ceph File System
