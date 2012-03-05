@@ -413,17 +413,18 @@ more proportional to the capabilities of each server.
 
 \section{Design, Implementation, and Evaluation}
 From our review of the research literature we noted the following 
-design trends with respect to storage that we will consider in our 
-implementation:
-(1) System Function - A classification of DSS functionality uncovers 
-a wide array of behavior, well beyond typical store and retrieve.
+design characteristics with respect to storage that will be factored 
+into our storage system implementation:
+
+(1) System Function - DSS functionality displays a wide array 
+of behavior, often well beyond typical store and retrieve.
 (2) Storage Architecture: We examined various architectures
 employed by DSSs. Our investigation shows an evolution from 
 centralized to the more recently favored decentralized approach.
 (3) Operating Environment: We became aware of how various
 categories of operating environments influence design and
 architecture.
-(4) Usage Patterns: We werre made aware of classification of
+(4) Usage Patterns: We were made aware of classification of
 various workloads experienced by DSSs and how the operating 
 environment has a major influence on usage patterns.
 (5) Consistency: Distributing, replicating and supporting
@@ -451,10 +452,11 @@ what would otherwise be a myriad of heterogeneous interfaces
 and protocols. Federation enables the sharing of services,
 while attempting to reduce effort wasted on duplication.
 
-By incorporating these generalizations in our design and any
-services that we develop for implementation we believe our
+By incorporating these observations into our design and any
+services that we develop for implementation, we believe our
 system will better address and reflect current and evolving
-storage needs for the user community.
+storage needs and provide insights into the tradeoffs and 
+complexity involved in implementing today's storage technology.
 
 Going forward our plan is to build a parallel distributed file 
 system implementation. Currently, we are considering using 
