@@ -302,22 +302,22 @@ category would be classified as Parallel File Systems (PFSs).  PFSs
 typically are found within a computer cluster, satisfying storage
 requirements of large I/O-intensive parallel applications.  Systems
 which fall into this category include PVFS \cite{Carns:2002}, Lustre
-[Braam 2002] and GPFS \cite{Schmuck:2002}.
+\cite{Braam:LustreWhite} and GPFS \cite{Schmuck:2002}.
 
 Finally, the custom category has been created for storage systems that
 have come into vogue in the past few years, and typically possess a
 unique set of functional requirements generally customized for a
 particular environment.  Systems in this category may fit into a
 combination of the above system categories and exhibit unique
-behavior. Google File System (GFS) [Ghemawat et al. 2003] and
-OceanStore [Kubiatowicz et al. 2000; Rhea et al. 2003], are such
+behavior. Google File System (GFS) \cite{Ghemawat:2003p1274} and
+OceanStore \cite{Kubiatowicz:2000,Rhea:2003}, are such
 systems. GFS was designed and built with a particular functional
 purpose which is reflected in that design. Similarly, OceanStore
 presents itself as a global storage utility, providing many interfaces
 including a general purpose file system. To ensure scalability and
 robustness in the event a failure occurs, OceanStore employs P2P
 mechanisms to distribute and archive data. Likewise, Freeloader
-[Vazhkudai et al. 2005] combines storage scavenging and striping,
+\cite{Vazhkudai:2005} combines storage scavenging and striping,
 achieving good parallel bandwidth on shared resources. The collection
 of features available from Freeloader, OceanStore and GFS all exhibit
 unique qualities for a specific set of functional and technical
