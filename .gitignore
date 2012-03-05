@@ -1,0 +1,25 @@
+#Temporary Editor Files#
+*~
+\#*\#
+*.swp
+
+#Build Files#
+*.o
+
+
+#Paper/Presentation
+
+reports/*.pdf
+reports/inc/*.png
+reports/inc/*.pdf
+*.aux
+*.out
+*.aux
+*.bbl
+*.blg
+*.log
+*.dvi
+*.nav
+*.snm
+*.toc
+*.vrb

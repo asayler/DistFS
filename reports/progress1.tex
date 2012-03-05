@@ -54,276 +54,286 @@
 \maketitle
 
 \begin{abstract}
-The new generation of applications requires the processing of
-terabytes and petabytes of data. This processing has largely been
-achieved by distributed processing architectures and methodologies,
-driving the rise of companies such as Google, Amazon and Yahoo, which
-have embraced such technologies over the past decade and made them a
-central part of their business models. The increased importance of
-large scale data processing and a corresponding explosion in
-alternative storage architectures and service strategies requires
-computer science researchers and professionals to become well versed
-in the available alternatives and trade-offs in making technological
+Modern applications routinely process
+terabytes, and even petabytes, of data. This capability has largely been
+achieved by distributed processing architectures and methodologies.
+Companies such as Google, Amazon and Yahoo have embraced such
+technologies over the past decade and made them a
+central part of their business models. 
+Computer science researchers and professionals must become well versed
+in large scale data processing and alternative storage architectures
+and service strategies in order to make technological and
 architectural choices these areas. While storage technology has
 evolved significantly over the past five years, a deep understanding
-of both technical and business storage issues has lagged behind as
-many in these fields still view data storage as a mundane activity
-still the purview of back office technocrats. The current trend in
-distributed cloud storage and the focus of delivering IT
-infrastructure and applications bundled with data storage has led to
-an “as a service” model being used to promote such products.
+of both technical and business storage issues has lagged behind.
 
 The intent of our project is to examine the current state of both core
 storage and related service offerings on both a technical and business
 level to understand (1) what is technically available, (2) what are
 current research and developmental directions in storage technology,
 and (3) how core storage architectures are being coupled with
-associated services to produce bundled storage product offerings that
-purport to add value above and beyond core offerings. We believe that
+associated services to produce bundled storage product offerings.
+We believe that
 by performing this analysis and the subsequent implementation of a
 distributed proof of concept storage model, we will gain a better
-understanding of evolving storage technologies as well as the
-tradeoffs that need to be made when implementing bundled storage
-services in a production environment.
+understanding of evolving storage technologies and services.
 
 \end{abstract}
 
 \newpage
 
 \section{Problem Definition}
-Along with the infrastructure and network based applications, data 
-storage is recognized as one of the major components of information 
-technology systems.  Functionally, storage typically services a wide 
-range of requirements, spanning the spectrum from caching to archival 
-needs. Combining networking and storage has created a platform with 
-numerous possibilities allowing Distributed Storage Systems (DSS) to 
-adopt roles which can vary considerably and may fall well beyond 
-traditional data storage needs. Most DSSs as we understand them today 
-were in their inception known as Distributed File Systems (DFS). 
-Networking infrastructure and distributed computing share a close 
-relationship. Advances in networking are typically closely followed 
-by new distributed storage systems, which are designed to better 
-utilize the enhanced capabilities of the network. Currently, the next 
-generation Internet based systems are encountering numerous challenges, 
-among them longer delays, unreliability, unpredictability and the 
-potential for malicious behavior, all because of the need to operate 
-in a public shared environment. To address this new set of challenges, 
-innovative new storage architectures and algorithms are being 
-suggested and developed, offering a myriad of improvements in areas 
-such as security, consistency and routing. As storage systems continue 
-to evolve, they naturally increase in complexity. Hence, the requisite 
-expertise required to implement and operate them also increases 
-dramatically. 
+Along with the infrastructure and network based applications, data
+storage is recognized as one of the major components of information
+technology systems.  Functionally, storage typically services a wide
+range of requirements, spanning the spectrum from caching to archival
+needs. Combining networking and storage has created a platform with
+numerous possibilities allowing Distributed Storage Systems (DSS) to
+adopt roles which can vary considerably and may fall well beyond
+traditional data storage needs. Most DSSs as we understand them today
+were in their inception known as Distributed File Systems (DFS).
+Networking infrastructure and distributed computing share a close
+relationship. Advances in networking are typically closely followed by
+new distributed storage systems, which are designed to better utilize
+the enhanced capabilities of the network. Currently, the next
+generation Internet based systems are encountering numerous
+challenges, among them longer delays, unreliability, unpredictability
+and the potential for malicious behavior, all because of the need to
+operate in a public shared environment. To address this new set of
+challenges, innovative new storage architectures and algorithms are
+being suggested and developed, offering a myriad of improvements in
+areas such as security, consistency and routing. As storage systems
+continue to evolve, they naturally increase in complexity. Hence, the
+requisite expertise required to implement and operate them also
+increases dramatically.
 
-Industry storage practices have evolved considerably over the past 
-decade. The amount of data being actively managed continues to expand 
-at around 20% per year, with many firms dealing with growth rates 
-exceeding 50%. At these levels, most data centers will double storage 
-capacity every two to three years. Meanwhile, IT budgets are generally 
-in decline. Why isn’t industry-wide chaos rampant? In a word, this is 
-due to consolidation efforts. Consolidation is being aided by 
-continued evolution of high-density magnetic media as well as bigger, 
-faster, and less expensive solid-state drives. Virtualization is also 
-helping by easing management of aggregated storage pools that are using 
-available capacity more efficiently. Optimization technologies like data 
-reduction, thin provisioning, and automatic tiering are also providing 
-significant benefits.
+Industry storage practices have evolved considerably over the past
+decade. The amount of data being actively managed continues to expand
+at around 20\% per year, with many firms dealing with growth rates
+exceeding 50\%. At these levels, most data centers will double storage
+capacity every two to three years. Meanwhile, IT budgets are generally
+in decline. Why isn’t industry-wide chaos rampant? In a word, this is
+due to consolidation efforts. Consolidation is being aided by
+continued evolution of high-density magnetic media as well as bigger,
+faster, and less expensive solid-state drives. Virtualization is also
+helping by easing management of aggregated storage pools that are
+using available capacity more efficiently. Optimization technologies
+like data reduction, thin provisioning, and automatic tiering are also
+providing significant benefits.
 
-What has become increasingly apparent in production environments is 
-that the storage decision is no longer relegated to a back office 
-bureaucracy which manages an organization’s storage needs en masse. 
-Rather, as organizations increasingly decentralize and decouple 
-decision-making regarding many applications either in the development 
-or maintenance cycle, storage decisions are being made on a more ad hoc 
-basis. Also, as more organizations consider or adopt partial or full 
-cloud or virtualization storage strategies, storage decisions have 
-become more application-centric. Since full migrations to the cloud or 
-to virtual storage models are generally infeasible in the short term, 
-except in the case of smaller organizations, more firms are increasingly 
-managing a tiered storage model. Recent published research by 
-International Data Corporation (IDC) and others demonstrate that storage 
-utilization rates achieved by most U.S. companies are typically 40% or 
-lower. Hence there appears to be considerable room for improvement in 
-both storage management and implementation practices across the industry. 
+What has become increasingly apparent in production environments is
+that the storage decision is no longer relegated to a back office
+bureaucracy which manages an organization’s storage needs en masse.
+Rather, as organizations increasingly decentralize and decouple
+decision-making regarding many applications either in the development
+or maintenance cycle, storage decisions are being made on a more ad
+hoc basis. Also, as more organizations consider or adopt partial or
+full cloud or virtualization storage strategies, storage decisions
+have become more application-centric. Since full migrations to the
+cloud or to virtual storage models are generally infeasible in the
+short term, except in the case of smaller organizations, more firms
+are increasingly managing a tiered storage model. Recent published
+research by International Data Corporation (IDC) and others
+demonstrate that storage utilization rates achieved by most
+U.S. companies are typically 40\% or lower. Hence there appears to be
+considerable room for improvement in both storage management and
+implementation practices across the industry.
 
-The above noted disruptive forces in the storage industry are creating a 
-unique set of opportunities and challenges. New firms are appearing that 
-offer storage solutions and services bundled in ways which were virtually 
-unheard of five to seven years ago. At the same time organizations and IT 
-managements under increasing pressure to reduce storage costs, increase 
-storage utilization rates and provide both a secure and transparent 
-accessibility to their data users regardless of the ultimate location of a 
-particular data set. Our project is focussed on providing methods and 
-techniques to allow the computer science professionalto better understand 
-and navigate this new and complex storage landscape and to discover the 
-choices and tradeoffs that one must consider in designing and implementing 
-a sensible organization-wide storage solution.
+The above noted disruptive forces in the storage industry are creating
+a unique set of opportunities and challenges. New firms are appearing
+that offer storage solutions and services bundled in ways which were
+virtually unheard of five to seven years ago. At the same time
+organizations and IT managements under increasing pressure to reduce
+storage costs, increase storage utilization rates and provide both a
+secure and transparent accessibility to their data users regardless of
+the ultimate location of a particular data set. Our project is
+focussed on providing methods and techniques to allow the computer
+science professionalto better understand and navigate this new and
+complex storage landscape and to discover the choices and tradeoffs
+that one must consider in designing and implementing a sensible
+organization-wide storage solution.
 
 \section{Introduction}
-Distributed storage systems have evolved from providing a means to store 
-data remotely, to offering innovative services like publishing, federation, 
-anonymity and archival. To make this possible networks have also evolved, 
-generally as a leading indicator of storage evolution. With network 
-infrastructure undergoing another quantum leap recently, and outpacing the 
-bandwidth capability of processors and hard-drives, this provides a platform 
-for future distributed storage systems to offer more services yet again. 
+Distributed storage systems have evolved from providing a means to
+store data remotely, to offering innovative services like publishing,
+federation, anonymity and archival. To make this possible networks
+have also evolved, generally as a leading indicator of storage
+evolution. With network infrastructure undergoing another quantum leap
+recently, and outpacing the bandwidth capability of processors and
+hard-drives, this provides a platform for future distributed storage
+systems to offer more services yet again.
 
-The emergence of Cloud Computing, one of the new variables in the storage 
-arena, requires organizations to move from server-attached storage to 
-distributed storage. Along with variant advantages, the distributed storage 
-also poses new challenges in creating both a secure and reliable data 
-storage and access facility over insecure or unreliable service providers. 
-The security of data stored in the cloud is one of the challenges to be 
-addressed before the pay-as-you-go Storage as a Service (STaaS) model can 
-become widespread in the industry. In the enterprise, STaaS vendors are now 
-targeting secondary storage applications by promoting STaaS as a convenient 
-way to manage backups. The key advantage to STaaS in the enterprise is in 
-cost savings in personnel, in hardware and in physical storage space. For 
-instance, instead of maintaining a large tape library and arranging to vault 
-(store) tapes offsite, a network administrator that used STaaS for backups 
-could specify what data was to be relegated to outsourced storage and 
-storage service providers would manage the data from that point. If the 
-company's data ever became corrupt or was lost, the network administrator 
-could contact the STaaS provider and request a copy of the data. For these 
-reasons, STaaS is generally seen as a good alternative for a small or 
-mid-sized business that lacks the capital budget and/or technical personnel 
-to implement and maintain their own storage infrastructure. STaaS is also 
-being promoted as a way for all businesses to mitigate risks in disaster 
-recovery, provide long-term retention for records and enhance both business 
-continuity and availability. Obviously, for larger businesses, the movement 
-to a STaaS model or a partial such model is a longer term proposition as 
-storage equipment reaches the end of its useful life and storage agreements 
-expire. The existence of long term contracts and sizable amortization 
-schedules often make movement to more flexible business storage strategies 
-less likely in the short term. Hence many large organizations are maintaining 
-tiered stage models; at least in the short term planning horizon. 
+The emergence of Cloud Computing, one of the new variables in the
+storage arena, requires organizations to move from server-attached
+storage to distributed storage. Along with variant advantages, the
+distributed storage also poses new challenges in creating both a
+secure and reliable data storage and access facility over insecure or
+unreliable service providers.  The security of data stored in the
+cloud is one of the challenges to be addressed before the
+pay-as-you-go Storage as a Service (STaaS) model can become widespread
+in the industry. In the enterprise, STaaS vendors are now targeting
+secondary storage applications by promoting STaaS as a convenient way
+to manage backups. The key advantage to STaaS in the enterprise is in
+cost savings in personnel, in hardware and in physical storage
+space. For instance, instead of maintaining a large tape library and
+arranging to vault (store) tapes offsite, a network administrator that
+used STaaS for backups could specify what data was to be relegated to
+outsourced storage and storage service providers would manage the data
+from that point. If the company's data ever became corrupt or was
+lost, the network administrator could contact the STaaS provider and
+request a copy of the data. For these reasons, STaaS is generally seen
+as a good alternative for a small or mid-sized business that lacks the
+capital budget and/or technical personnel to implement and maintain
+their own storage infrastructure. STaaS is also being promoted as a
+way for all businesses to mitigate risks in disaster recovery, provide
+long-term retention for records and enhance both business continuity
+and availability. Obviously, for larger businesses, the movement to a
+STaaS model or a partial such model is a longer term proposition as
+storage equipment reaches the end of its useful life and storage
+agreements expire. The existence of long term contracts and sizable
+amortization schedules often make movement to more flexible business
+storage strategies less likely in the short term. Hence many large
+organizations are maintaining tiered stage models; at least in the
+short term planning horizon.
 
-Other trends are equally disruptive and compelling. Full provisioning, the 
-practice of provisioning all the capacity of an external disk to a given app 
-has been accepted practice in industry circles for some time. This practice 
-ensures that a given application has sufficient storage to meet projected 
-growth potential. However, though it typically results in poor utilization 
-rates as noted above. So essentially, a surplus of storage capacity is being 
-acquired, which generally translates into more space and cooling costs in 
-addition to higher overhead costs since unused capacity still needs to be 
-monitored and managed. When applications reach capacity limits and 
-re-provisioning is necessary, the costs increase even more. In adding 
-additional capacity, complex management tasks can be involved. Finally, when 
-an app is taken offline to re-provision capacity, it is then unable to serve 
-business needs and can lead to revenue loss. Thin provisioning has been 
-offered as a solution to address many of the issues noted above. By 
-automatically allocating system capacity to applications as needed, this 
-technology can result in storage utilizations levels of up to 90%, while 
-simultaneously reducing power consumption. This technique allows users to 
-allocate a large amount of virtual capacity for an application, regardless 
-of the physical capacity actually available. This on-demand method not only 
-optimizes storage utilization, but also greatly simplifies capacity planning 
-and management. In order to help users easily monitor capacity utilization, 
-storage systems automatically notify when the capacity utilization is reaching 
-some pre-defined limit. A decision to expand capacity can be done seamlessly. 
+Other trends are equally disruptive and compelling. Full provisioning,
+the practice of provisioning all the capacity of an external disk to a
+given app has been accepted practice in industry circles for some
+time. This practice ensures that a given application has sufficient
+storage to meet projected growth potential. However, though it
+typically results in poor utilization rates as noted above. So
+essentially, a surplus of storage capacity is being acquired, which
+generally translates into more space and cooling costs in addition to
+higher overhead costs since unused capacity still needs to be
+monitored and managed. When applications reach capacity limits and
+re-provisioning is necessary, the costs increase even more. In adding
+additional capacity, complex management tasks can be
+involved. Finally, when an app is taken offline to re-provision
+capacity, it is then unable to serve business needs and can lead to
+revenue loss. Thin provisioning has been offered as a solution to
+address many of the issues noted above. By automatically allocating
+system capacity to applications as needed, this technology can result
+in storage utilizations levels of up to 90\%, while simultaneously
+reducing power consumption. This technique allows users to allocate a
+large amount of virtual capacity for an application, regardless of the
+physical capacity actually available. This on-demand method not only
+optimizes storage utilization, but also greatly simplifies capacity
+planning and management. In order to help users easily monitor
+capacity utilization, storage systems automatically notify when the
+capacity utilization is reaching some pre-defined limit. A decision to
+expand capacity can be done seamlessly.
 
-Under traditional provisioning practices, it is difficult to move data 
-across logical partitions in a storage architecture. When thin provisioning 
-is used, storage capacity from differentlogical partitions can be combined, 
-enabling storage to be dynamically allocated. Conversely, this means that the 
-storage controller can move data dynamically across logical partitions based 
-on how resources are designed to function. Also, thin provisioning allows 
-other advances in storage design, including automated storage tiering. Storage 
-tiering involves grouping data into different categories and assigning these 
-categories to different types of storage media in order to optimize storage 
-utilization. Automated tiering ensures applications have access to the 
-performance levels they need so they can be properly paired up. For example, 
-high performance applications can be assigned to high performance storage 
-tiers featuring drives such as SSDs or SAS, while applications requiring less 
-performance can be assigned to lower tiers featuring low performance drives 
-such as SATA. This ensures that storage resources are not squandered and that 
-applications function effectively. Finally, the new technology helps 
-automatically migrate data based on usage patterns. So, if data in higher 
-storage tiers has not been used for an extended period of time, it is demoted 
-to lower storage tiers. Conversely, if data in lower tiers is frequently 
-accessed, it is promoted upward. Such techniques can greatly improve storage 
-efficiency.
+Under traditional provisioning practices, it is difficult to move data
+across logical partitions in a storage architecture. When thin
+provisioning is used, storage capacity from different logical
+partitions can be combined, enabling storage to be dynamically
+allocated. Conversely, this means that the storage controller can move
+data dynamically across logical partitions based on how resources are
+designed to function. Also, thin provisioning allows other advances in
+storage design, including automated storage tiering. Storage tiering
+involves grouping data into different categories and assigning these
+categories to different types of storage media in order to optimize
+storage utilization. Automated tiering ensures applications have
+access to the performance levels they need so they can be properly
+paired up. For example, high performance applications can be assigned
+to high performance storage tiers featuring drives such as SSDs or
+SAS, while applications requiring less performance can be assigned to
+lower tiers featuring low performance drives such as SATA. This
+ensures that storage resources are not squandered and that
+applications function effectively. Finally, the new technology helps
+automatically migrate data based on usage patterns. So, if data in
+higher storage tiers has not been used for an extended period of time,
+it is demoted to lower storage tiers. Conversely, if data in lower
+tiers is frequently accessed, it is promoted upward. Such techniques
+can greatly improve storage efficiency.
 
-Obviously, the RDBMSs of today aren't going away, certainly not in the short 
-term. However, storage requirements for the new generation of applications 
-are dramatically different. The Semantic Web / Web 3.0 is going to be full 
-of semi-structured data on an even larger scale, so it's prudent for 
-applications to take advantage of the upcoming technologies as soon as 
-possible. Future killer applications and appliances will have to connect to the 
-cloud and hence will be written with distributed storage in mind, whether the 
-applications run on the desktop or on the web. Undeniably, the design of 
-distributed storage poses many challenges - scalability, hardware requirements, 
-query model, failure handling, data consistency, durability, reliability, 
-efficiency, etc. The landscape of storage architectures/software we describe 
-in this paper are helping address many of the concerns raised with respect to 
-current shortfalls in distributed storage architecture and methodology. But, 
-clearly, the future of data and storage is a virtyual model. Our project 
-explores many of these issues as well as the available options and tradeoffs 
-inherent in these choices which are currently shaping Distributed Storage 
-Systems. In the next section we examine the current literature on distributed 
-storage.
+Obviously, the RDBMSs of today aren't going away, certainly not in the
+short term. However, storage requirements for the new generation of
+applications are dramatically different. The Semantic Web / Web 3.0 is
+going to be full of semi-structured data on an even larger scale, so
+it's prudent for applications to take advantage of the upcoming
+technologies as soon as possible. Future killer applications and
+appliances will have to connect to the cloud and hence will be written
+with distributed storage in mind, whether the applications run on the
+desktop or on the web. Undeniably, the design of distributed storage
+poses many challenges - scalability, hardware requirements, query
+model, failure handling, data consistency, durability, reliability,
+efficiency, etc. The landscape of storage architectures/software we
+describe in this paper are helping address many of the concerns raised
+with respect to current shortfalls in distributed storage architecture
+and methodology. But, clearly, the future of data and storage is a
+virtyual model. Our project explores many of these issues as well as
+the available options and tradeoffs inherent in these choices which
+are currently shaping Distributed Storage Systems. In the next section
+we examine the current literature on distributed storage.
 
 \section{Related Work}
-The literature on distributed storage is a long one dating back to the late 
-1980’s. Early works typically provide perspective as well as insight into 
-issues related to building toward the DSS of today. More recent works focus 
-on more cutting edge research generally in areas like peer-to-peer and data 
-grid systems. They also focus on some of the more important issues occurring 
-like routing, consistency, security, auto management and federation.
+The literature on distributed storage dates back to the
+late 1980’s. Early works typically provide perspective as well as
+insight into issues related to building toward the DSS of today. More
+recent works focus on more cutting edge research generally in areas
+like peer-to-peer and data grid systems. They also focus on some of
+the more important issues occurring like routing, consistency,
+security, auto management and federation.
 
-A number of studies over the past decade have designed and evaluated large-
-scale, peer-to-peer distributed storage systems. Redundancy management 
-strategies for such systems have also been well evaluated in prior works. 
-Among these, several compared replication with erasure codes in the bandwidth
--reliability tradeoff space. The analysis of Weatherspoon and Kubiatowicz 
-demonstrated that erasure codes could reduce bandwidth use by an order of 
-magnitude as compared with replication. The authors showed that in high-
-turnover scenarios erasure codes provide large storage benefits but the 
-bandwidth cost is too high to be practical for a P2P distributed storage 
-system. In low-churn environments, the reduction in bandwidth is fairly 
-small. In moderate-churn environments, there is some benefit, but this is 
-generally negated by the added architectural complexity that erasure codes 
-introduce into the overall architecture. Other types of systems with 
-publish/share features include NFS, Coda, xFS and Ivy 
-[Muthitacharoen et al. 2002]. Unlike pure archival systems where the storage 
-service aims to be persistent, the publish/share category is somewhat 
-volatile as the main objective here is to provide a capability to share or 
-publish files. The volatility of storage is usually dependent on the 
-popularity of the file. True DSSs in the performance category are typically 
-used by applications which require a high level of performance. The large 
-proportion of systems in this category would be classified as Parallel File 
-Systems (PFSs).  PFSs typically are found within a computer cluster, 
-satisfying storage requirements of large I/O-intensive parallel applications.  
-Systems which fall into this category include PVFS [Carns et al. 2000], 
-Lustre [Braam 2002] and GPFS [Schmuck and Haskin 2002.
+A number of studies over the past decade have designed and evaluated
+large- scale, peer-to-peer distributed storage systems. Redundancy
+management strategies for such systems have also been well evaluated
+in prior works.  Among these, several compared replication with
+erasure codes in the bandwidth -reliability tradeoff space. The
+analysis of Weatherspoon and Kubiatowicz demonstrated that erasure
+codes could reduce bandwidth use by an order of magnitude as compared
+with replication. The authors showed that in high- turnover scenarios
+erasure codes provide large storage benefits but the bandwidth cost is
+too high to be practical for a P2P distributed storage system. In
+low-churn environments, the reduction in bandwidth is fairly small. In
+moderate-churn environments, there is some benefit, but this is
+generally negated by the added architectural complexity that erasure
+codes introduce into the overall architecture. Other types of systems
+with publish/share features include NFS, Coda, xFS and Ivy
+\cite{Muthitacharoen:2002}. Unlike pure archival systems where the
+storage service aims to be persistent, the publish/share category is
+somewhat volatile as the main objective here is to provide a
+capability to share or publish files. The volatility of storage is
+usually dependent on the popularity of the file. True DSSs in the
+performance category are typically used by applications which require
+a high level of performance. The large proportion of systems in this
+category would be classified as Parallel File Systems (PFSs).  PFSs
+typically are found within a computer cluster, satisfying storage
+requirements of large I/O-intensive parallel applications.  Systems
+which fall into this category include PVFS \cite{Carns:2002}, Lustre
+[Braam 2002] and GPFS \cite{Schmuck:2002}.
 
-Finally, the custom category has been created for storage systems that have 
-come into vogue in the past few years, and typically possess a unique set 
-of functional requirements generally customized for a particular environment. 
-Systems in this category may fit into a combination of the above system 
-categories and exhibit unique behavior. Google File System (GFS) 
-[Ghemawat et al. 2003] and OceanStore [Kubiatowicz et al. 2000; Rhea 
-et al. 2003], are such systems. GFS was designed and built with a particular 
-functional purpose which is reflected in that design. Similarly, OceanStore 
-presents itself as a global storage utility, providing many interfaces 
-including a general purpose file system. To ensure scalability and robustness 
-in the event a failure occurs, OceanStore employs P2P mechanisms to distribute 
-and archive data. Likewise, Freeloader [Vazhkudai et al. 2005] combines 
-storage scavenging and striping, achieving good parallel bandwidth on shared 
-resources. The collection of features available from Freeloader, OceanStore 
-and GFS all exhibit unique qualities for a specific set of functional and 
-technical requirements.
+Finally, the custom category has been created for storage systems that
+have come into vogue in the past few years, and typically possess a
+unique set of functional requirements generally customized for a
+particular environment.  Systems in this category may fit into a
+combination of the above system categories and exhibit unique
+behavior. Google File System (GFS) [Ghemawat et al. 2003] and
+OceanStore [Kubiatowicz et al. 2000; Rhea et al. 2003], are such
+systems. GFS was designed and built with a particular functional
+purpose which is reflected in that design. Similarly, OceanStore
+presents itself as a global storage utility, providing many interfaces
+including a general purpose file system. To ensure scalability and
+robustness in the event a failure occurs, OceanStore employs P2P
+mechanisms to distribute and archive data. Likewise, Freeloader
+[Vazhkudai et al. 2005] combines storage scavenging and striping,
+achieving good parallel bandwidth on shared resources. The collection
+of features available from Freeloader, OceanStore and GFS all exhibit
+unique qualities for a specific set of functional and technical
+requirements.
 
-In the subsections below we summarize the recent literature with respect to 
-some individual storage system architectures. The architecture is important 
-as it determines the application’s operational boundaries, ultimately driving 
-both  behavior and functionality. As well as functional qualities, the 
-architecture also has an impact on the means a system may use to achieve 
-consistency, routing and security. One can from the systems discussed below 
-that the evolution of architectures adopted by DSSs have gradually moved away 
-from centralized to more decentralized approaches, primarily as a result of 
-the need for scalability as well as the challenges encountered in operating 
-across a dynamic global network.
+In the subsections below we summarize the recent literature with
+respect to some individual storage system architectures. The
+architecture is important as it determines the application’s
+operational boundaries, ultimately driving both behavior and
+functionality. As well as functional qualities, the architecture also
+has an impact on the means a system may use to achieve consistency,
+routing and security. One can from the systems discussed below that
+the evolution of architectures adopted by DSSs have gradually moved
+away from centralized to more decentralized approaches, primarily as a
+result of the need for scalability as well as the challenges
+encountered in operating across a dynamic global network.
 
 
 \subsection{Tahoe File System}
@@ -345,48 +355,61 @@ administrate the system, as well as to read, write, or verify files
 and directories on the system. This web-based API makes Tahoe suitable
 for use as the backend for various services and applications in
 domains such as backup and cloud storage. Tahoe is still actively
-maintained and is Free Software under the GPL and TGPL. It served as the
-backend for allmydata.com until allmydata.com went out of business. It
-is currently deployed for personal use be a number of individuals, and
-serves as the storage backend for several other
-systems \cite{tahoe-lafs.org}. 
+maintained and is Free Software under the GPL and TGPL. It served as
+the backend for allmydata.com until allmydata.com went out of
+business. It is currently deployed for personal use be a number of
+individuals, and serves as the storage backend for several other
+systems \cite{tahoe-lafs.org}.
 
 \subsection{Ceph}
-Ceph is an object-based parallel file system with a scalable metadata implementation with data replication to allow for data recovery and recovery from hardware failures. Ceph is similar to that of many other distributed file systems in it has metadata servers that a client uses to determine where the file objects live. The key designs for Ceph are providing the ability to scale easily which make it great for use in cloud storage or in cases where hardware for the system may be added or removed. I see the upside of Ceph over Tahoe would be that ceph provides a FUSE based client for use in mounting a Ceph storage system instead of needing to access via a web interface. Additionally it is possible that encryption could be applied by the client prior to storing their files to add some level of security to Ceph that only uses NFS level security making use of uid or gid. 
+Ceph is an object-based parallel file system with a scalable metadata
+implementation with data replication to allow for data recovery and
+recovery from hardware failures
 \cite{Weil:2012p1035,Weil:2012p1010,Weil:2006p1273}.
+Ceph is similar to that of many other
+distributed file systems in it has metadata servers that a client uses
+to determine where the file objects live. The key designs for Ceph are
+providing the ability to scale easily which make it great for use in
+cloud storage or in cases where hardware for the system may be added
+or removed. Unlike Tahoe, Ceph lacks strong encryption an a built-in
+option. It is
+possible that encryption could be applied by the client prior to
+storing their files to add a level of security over the default POSIX
+access control model.
 
 \subsection{Dynamo Data Store}
-Amazon's Dynamo is a highly scalable distributed data store custom built 
-for Amazon’s business needs. Dynamo is a completely decentralized system 
-with minimal need for manual administration. Storage nodes can be added 
-and removed from Dynamo without requiring any manual partitioning or 
-redistribution. The system is used to manage a set of services with high 
-reliability requirements and tradeoffs between availability, consistency, 
-cost-effectiveness and performance. Dynamo uses a collection of well known 
-techniques to achieve scalability and availability. First, data is 
-partitioned and replicated using consistent hashing. The consistency among 
-replicas during updates is maintained by a decentralized replica 
-synchronization protocol. 
+Amazon's Dynamo is a highly scalable distributed data store custom
+built for Amazon’s business needs. Dynamo is a completely
+decentralized system with minimal need for manual
+administration. Storage nodes can be added and removed from Dynamo
+without requiring any manual partitioning or redistribution. The
+system is used to manage a set of services with high reliability
+requirements and tradeoffs between availability, consistency,
+cost-effectiveness and performance. Dynamo uses a collection of well
+known techniques to achieve scalability and availability. First, data
+is partitioned and replicated using consistent hashing. The
+consistency among replicas during updates is maintained by a
+decentralized replica synchronization protocol.
 
-Dynamo is designed to be an eventually consistent data store in the sense 
-that all updates reach all replicas ultimately. The challenge with such 
-an approach is that it can lead to conflicting changes that require 
-eventual resolution. This process of such a resolution event introduces 
-two subproblems: when to resolve them and who assumes the responsibility 
-for final resolution. Specific business requirements result in Dynamo 
-pushing the complexity of conflict resolution to the reads in order to 
-ensure that writes are never rejected.
+Dynamo is designed to be an eventually consistent data store in the
+sense that all updates reach all replicas ultimately. The challenge
+with such an approach is that it can lead to conflicting changes that
+require eventual resolution. This process of such a resolution event
+introduces two subproblems: when to resolve them and who assumes the
+responsibility for final resolution. Specific business requirements
+result in Dynamo pushing the complexity of conflict resolution to the
+reads in order to ensure that writes are never rejected.
 
-Other important design principles demonstrated in the Dynamo system 
-include: (1) incremental scalability which allows the system to scale 
-out one storage nodes one at a time, with minimal impact on both operators 
-of the system and the system itself, (2) symmetry whereby every node in 
-Dynamo has the same set of responsibilities as its peers with no node(s) 
-taking on special responsibilities and thereby simplifying both 
-provisioning and maintenance, (3) decentralization which leads to more 
-scalable and available system, and, (4) heterogeneity which allows the 
-system to make the work distribution more proportional to the capabilities 
-of each server.
+Other important design principles demonstrated in the Dynamo system
+include: (1) incremental scalability which allows the system to scale
+out one storage nodes one at a time, with minimal impact on both
+operators of the system and the system itself, (2) symmetry whereby
+every node in Dynamo has the same set of responsibilities as its peers
+with no node(s) taking on special responsibilities and thereby
+simplifying both provisioning and maintenance, (3) decentralization
+which leads to more scalable and available system, and, (4)
+heterogeneity which allows the system to make the work distribution
+more proportional to the capabilities of each server.
 
 
 \nocite{*}
