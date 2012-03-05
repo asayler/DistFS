@@ -411,6 +411,29 @@ which leads to more scalable and available system, and, (4)
 heterogeneity which allows the system to make the work distribution
 more proportional to the capabilities of each server.
 
+\section{Design, Implementation, and Evaluation}
+Our plan is to build at least two parallel distributed file system
+implementation. Currently, we are considering using Tahoe and Ceph for
+this purpose. Once each system is in place, we will perform a
+performance and feature-set comparison between the two systems. This
+will allow use to create a report comparing the two systems and
+suggesting where each might be used to the greatest effect.
+
+As time allows, we would then like to build an application atop one
+of these systems to demonstrate how one might take advantage of the
+features each system provides. Alternatively, we may also chose to
+modify one of these systems to extend it's feature set or increase
+it's performance. Possible modifications may include increased security,
+increased ease of use, and/or increased robustness.
+A third option might be to add additional file
+system implementations to our deployment in order to allow us to
+generate further comparisons and metrics.
+
+Th immediate concern to fulfilling this plan is to secure the
+necessary hardware and resources for our testing. Ideally, we need a
+small collection of identical machines in order to facilitate neutral
+comparisons. We may also be able to utilize virtualized hardware. We are
+still exploring our options in this space.
 
 \nocite{*}
 \bibliography{refs}
