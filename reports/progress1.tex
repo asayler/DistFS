@@ -776,9 +776,75 @@ The chart below provides a feature comparison of the three systems.
 
 \section{Implementation}
 
+Environment Setup
+
+
+Tahoe - Installation and Configuration
+
+
+Ceph - Installation and Configuration
 
 
 
+Lustre - Installation and Configuration
+In building Lustre from source, one needs to ensure that they are using 
+Linux kernel 2.6.16 or greater. In all deployments of Lustre, the server 
+that runs on an MDS, MGS or OSS needs to utilize a patched kernel. 
+Running a patched kernel on a Lustre client is optional and required only 
+if the client will be used for multiple purposes, such as running as both 
+a client and an OST. The /boot/grub/grub.conf file needs to be reviewed 
+to validate that the newly installed kernel has been set as the default 
+kernel. Once all packages have been installed, a reboot is required to 
+load the new kernel image. Once the system has been rebooted, an invocation 
+of the uname command will reveal the currently booted kernel image. With 
+respect to the client side, the packages for the lustre client and lustre 
+client modules need to be installed on all desired client machines. Client 
+machines need to be within the same network as the host machine serving the 
+Lustre filesystem. After the packages are installed, a reboot must be 
+performed on all affected client machines.
+
+To configure the Lustre filesystem, one needs to configure Lustre Networking, 
+or LNET, which provides the communication infrastructure required by the 
+Lustre filesystem. LNET supports many commonly used network types, which 
+include IP  networks. It allows simultaneous availability across different 
+network types with routing between them. Note the role of the Management 
+Server or MGS. The MGS stores configuration information for all Lustre 
+filesystems in a clustered setup. An OST contacts the MGS to provide 
+information, while the client(s) contact the MGS to retrieve information. 
+The MGS requires its own disk for storage, but a provision exists to allow 
+the MGS to share a disk with a single MDT. If nothing is provided then the 
+default fsname is lustre. If one or more of these filesystems are created, 
+it is necessary to use unique names for each labeled volume. These names 
+become   important for when one accesses the target on the client system.
+The OST is created by executing a set command. When the target needs to 
+provide information to the MGS or when the client  accesses the target for 
+information lookup, one needs to be aware of where the MGS is, which is 
+defined for this target as the server's IP address followed by the network 
+interface for communication. At this point one can mount newly formatted 
+devices local to the host machine using a generic mount command. When one 
+mounts the volume over the network on the client node, one must 
+specify this name. This is done by following the network method by which 
+the remote volume is mounted. Once mounted, the file system can be accessed 
+by the client node. What that implies is that one cannot read or write from 
+or to files located on the mounted OST. 
+
+What is described above is a simple description of installing and 
+configuring the Lustre distributed filesystem;  a more full accounting 
+is beyond the scope of this paper. Suffice to say that much richer 
+implementations are possible. As one example, Lustre can be configured 
+for high availability to ensure that in the situation of failure, the 
+system's services continue without interruption. That is, the 
+accessibility between the client(s), server(s) and external target 
+storage is always made available through a process called failover. 
+Such high availability is provided through an implementation of disk 
+drive redundancy in some sort of RAID configuration for the event of 
+drive failures. In short, Lustre isn't a difficult technology to work 
+with; however, there is an entire community with excellent administrator 
+and developer resources ranging from articles, mailing lists and more 
+to aid one in installation and maintenance issues that may arise. Also, 
+commercial support for Lustre is provided by a large number of vendors 
+who sell bundled computing and Lustre storage systems. Many of these 
+vendors also contribute to the open source community's Lustre Project. 
 
 
 
