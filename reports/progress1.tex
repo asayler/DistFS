@@ -411,7 +411,382 @@ which leads to more scalable and available system, and, (4)
 heterogeneity which allows the system to make the work distribution
 more proportional to the capabilities of each server.
 
-\section{Design, Implementation, and Evaluation}
+
+\section{Design}
+
+Cloud storage services are examples of a fully distributed storage 
+facility. These services have a number of attractive features, such 
+as pay per usage and guarantees that data is safely stored via 
+redundant methods. Typically, though, they don't provide high speed 
+access and support for a wide range of different applications. This 
+is also true for storage solutions aimed at grid computing; in a grid 
+infrastructure, storage facilities are focused on supporting computation 
+at grid nodes, not on providing high-speed data access to applications at 
+the periphery  of the network.  Also, when data is stored in a distributed 
+system, it is advantageous to position data where it is most often used, 
+and migrate less important or less frequently accessed data to areas with 
+cheap capacity. Such a system is likely to have different storage level 
+(or tiers) that form a storage hierarchy. 
+
+Examining systems that offer general purpose functionality is useful. We 
+identified the following high level requirements as relevant for the 
+distributed storage system. They are typically qualitative requirements, 
+as these are sufficient to survey existing products and sufficient to make 
+initial product evaluations. We are aware that a WAN distributed storage 
+system may not be able to offer features in any combination, or that the 
+CAP theorem applies which states that only two out of the three properties 
+‘data consistency’, ‘system availability’, and ‘partition tolerance’ can be 
+supported by a distributed system. Ideally, though, products should be able 
+to explicitly balance these requirements, such that in a future system a 
+property trade-off is easy to configure and evaluate.
+
+- Scalable – The system must be scalable in terms of capacity, performance 
+and in terms of concurrent access. Hence, it should be easy to expand the 
+total amount of storage without degrading performance and concurrency. Also, 
+it should be relatively simple to configure the system such that a large 
+number of users concurrently can obtain access – also concurrently to 
+individual storage objects – without performance suffering markedly.
+
+- High Availability – The system should have high-availability functionality 
+that keeps data available to applications and clients, even in the event of 
+software or hardware errors. This implies that the system is capable of 
+replicating data at multiple locations. It also implies that capacity and 
+storage locations may be added or removed while the system is operating.
+- Durability – The system should support the storage of data in a durable 
+manner, so that if hardware or software failures occur, no data is lost. 
+Durability functionality includes maintenance to make sure that a minimum 
+number of replicas are available. 
+
+- Performance at Traditional SAN/NAS Level – The system should be able to 
+support a level of performance (bandwidth & latency) comparable to a 
+traditional non-distributed environment. Being a general purpose system, 
+it is clear that the supported performance for specific applications will 
+not match the performance of dedicated storage solution. However, by 
+offering different kinds of storage tiers within the distributed system, 
+it should be possible to offer different levels of performance. 
+
+- Dynamic Operation – The level of availability, durability and performance 
+should be configurable per application. This allows the system to always 
+run at the highest supported level of functionality, thereby reducing costs. 
+Moreover, it allows user, application developers and system administrators 
+to balance cost versus features. The system should also be self-configurable 
+and self-tunable, in the sense that it changes parameters to optimize its 
+own operation. The system should support the movement of  data between 
+different kinds of storage technologies – thus providing ‘tiered’ 
+functionality – so that data objects that are accessed frequently are 
+stored on the disks with highest performance and those that are infrequent 
+accessed are stored on slower disks. 
+
+- Cost Effective – It should be possible to build, configure, run, and 
+maintain the system in a cost-effective manner. The system should work with 
+commodity hardware. Configuration of the system, as well as the maintenance 
+should be easy and straightforward. 
+
+- Interfaces – The system should offer generic interfaces to applications 
+and clients. Preferably it supports the POSIX file system interface; this 
+implies that a wide range of different applications can be supported.  
+Alternatively, the system could support a block device interface, because 
+such an interface can be used to implement arbitrary file systems.
+
+- Protocols Based on Open Standards – The system should be built using 
+protocols based on open standards where possible. This reduce reduces the 
+possibility of vendor lock-in and improves extensibility. In many respects 
+this also relates to cost effectiveness since, in the long run it should 
+typically be more economical to maintain such a system than a proprietary 
+based alternative.
+
+- Multi-Party Access – The system should support access by multiple, 
+geographically dispersed parties at the same time. This enables 
+collaboration between these parties over long distances on the same data.
+
+In this project we wanted to understand competing products and to 
+implement two to three distributed storage systems with qualities as 
+described above in a networked environment and then execute a number of 
+tests to understand the performance characteristics of the individual 
+systems and their inherent trade-offs. For our systems we chose Tahoe, 
+Ceph and Lustre respectively, as they represent some of the relatively 
+new storage alternatives available and, yet, have divergent enough 
+features to provide an interesting dichotomy for our testing and 
+benchmarking purposes. In this section we provide a brief discussion 
+of each of the respective systems, their distinct architectural traits 
+and salient features and some comparative and contrasting of each of 
+the systems.  
+
+Tahoe
+Tahoe is an open source distributed file system that supports storing 
+files into a network of peers. All data in a Tahoe configuration is 
+written in an encrypted manner to the storage nodes. It uses erasure 
+coding to spread the pieces of a file over a number of nodes in a 
+redundant way and to improve data durability. It was originally 
+developed with funding from Allmydata, a company that provides Web 
+backup services. The company had some highly ambitious plans for 
+distributed storage. It initially offered a service through which 
+individual consumers could get cheap storage capacity on the 
+distributed grid in exchange for volunteering to let the grid use 
+some of their own local storage. The idea was that every user would 
+be able to get the benefits of distributed off-site backups by sharing 
+a portion of their local drive space with the rest of the network. The 
+company eventually moved away from that strategy and now self-hosts all 
+of their backup storage. The Tahoe source code, which is made available 
+under the terms of GNU's General Public License (GPL), can be used to 
+build distributed storage grids that function in much the same manner 
+as the company’s original concept.
+
+Tahoe Access Control
+Tahoe uses a capability-based access control model to manage access to 
+files and directories. Each file/directory in a Tahoe grid is identified 
+by a capability which is a short and unique string that designates the 
+file/directory and gives the user the authority to perform a specific 
+set of actions (reading or writing) on that file/directory. This access 
+scheme is known as "capability as keys" or "cryptographic capabilities". 
+The elements of the access model are files and directories and the 
+operations supported by the access model are sharing and revocation and 
+are described as follows: 
+
+File could be either Immutable which is created once in the grid and read 
+for multiple times or Mutable "slot" "container" which has a read and 
+write access. Immutable file has two capabilities, the read-cap for 
+reading the file and the verify-cap for checking the file and allows 
+untrusted nodes to preform checking/repairing on the file without having 
+the ability to read the content of the file. 
+
+Mutable file has three capabilities, the read-only cap for retrieving 
+last version of the file, the read-write cap for reading the file like 
+read-only cap and also to write a new version of the file , and the 
+verify cap. read-only cap could be derived from read-write cap and a 
+verify cap could be derived from a read-only cap. Directory is a mutable 
+file containing a list of entries, each entry defines a child by its name, 
+metadata, read-cap and read-write-cap. Directories have the property of 
+transitive read-only which enable users who have read-write access to a 
+directory to have a read-write access to its children, but users who have 
+read-only access to a directory will have a read-only access to its 
+children. Sharing is done simply by revealing the capability of the shared 
+file/directory, transitive read-only property will limit the access to 
+sub-directories according to the type of the revealed capability. 
+Revocation is done by deep-copying  of the shared folder to another 
+location and reveal the cap of the new location to the authorized users 
+only. The unauthorized users still will continue to have access to the 
+old directory but cannot see the new changes.
+
+Tahoe Architecture
+Tahoe's underlying architecture is similar to that of a peer-to-peer 
+network. Files are distributed across multiple nodes in a manner that 
+llows data integrity to be maintained in the event that individual nodes 
+are compromised or fail. The system uses AES encryption to protect file 
+contents from tampering and scrutiny. Tahoe can be used to establish a 
+relatively fault-tolerant storage pool that spans a number of conventional 
+computers over a local network or, conversely, over the Internet. This 
+approach to cloud storage is often described as "crowd" storage.
+
+Tahoe could be thought of quite simply as collection of three layers: 
+
+1). Key-Value store : in which each key "capability" identifies a 
+file/directory "value" on the grid. It provides PUT and GET operations. 
+
+key = PUT(data) 
+data = GET(key)
+
+2). Decentralized File System Layer:  The key-value store provides the 
+mapping from URI to data, decentralized file system layer turn this into 
+a graph of directories and files where files are leaves. It needs to keep 
+track of directory nodes to maintain a graph of files and directories. 
+
+3). Application Layer:  Application specific features that use the 
+underlying layers for example Allmydata.com used it for a backup service: 
+the application periodically copies files from the local disk onto the 
+decentralized file system. When a file is deployed to Tahoe, it is 
+encrypted and split into pieces that are spread out across ten separate 
+nodes. Using a variation of Reed-Solomon error correction, it can 
+reconstruct a file using only three of the original ten nodes. This helps 
+to ensure data integrity when some nodes are unavailable. This is a bit 
+similar to how RAID storage works. Tahoe uses a library called zfec that
+provides an efficient implementation of the error correction code and 
+exposes it through a Python API.
+
+Although Tahoe is a distributed file system, it is not entirely 
+decentralized in the strictest sense of the word. It needs a central node, 
+called an Introducer, which is responsible for getting new nodes connected 
+to existing nodes on the grid. Tahoe is designed to minimize its dependency 
+on the Introducer, but it's still a central point of failure. If the 
+Introducer fails for any reason, existing nodes will still be able to 
+communicate with each other and propagate data but the grid won't be able 
+to connect new nodes. The developers hope to address this limitation in a 
+future version.
+
+Tahoe is currently being used in a number of different ways. A common 
+configuration that is documented at the project's wiki is described as a 
+"friendnet", a group of roughly ten nodes that are connected over the 
+Internet and provide shared secure storage capacity with optional 
+filesharing. Another potential usage scenario is installing Tahoe on 
+individual workstations on an office network and using their excess disk 
+capacity as a storage pool. The Tahoe wiki describes that kind of setup 
+as a "hivecache".
+
+The Tahoe source code is primarily written in Python with the Twisted 
+framework. The code base is highly portable and can run on Windows, 
+Mac OS X, Linux, Solaris, and several flavors of BSD and is now part 
+of the Ubuntu Linux distribution. It runs entirely in user space and 
+doesn't require any kernel modules or other low-level components. It 
+works well on regular commodity hardware and doesn't have any particularly 
+special requirements. Installation instructions are available at the 
+project's web site.
+
+Tahoe provides very little control over on which nodes data is stored, 
+which makes it unsuitable for tiered functionality applications. 
+Furthermore, Tahoe assumes a ‘flat’, local network environment and 
+therefore is not suitable to run in a WAN. 
+
+
+Ceph
+Ceph is a distributed file system originally designed by the Storage 
+Systems Research Center at the University of California, Santa Cruz. 
+It is developed as an open source project, with code under the GNU LGPL 
+license, and, since May 2010, has its client integrated in the Linux 
+kernel. The objectives of Ceph are to provide a fully distributed file 
+system without a single point of failure, with a POSIX-style interface. 
+It claims high I/O performance and a high level of scalability. The 
+file system has three main components: the client, each instance of 
+which exposes a near-POSIX file system interface to a host or process; 
+a cluster of object storage devices, which collectively stores all 
+data and metadata; and a metadata server cluster, which manages the 
+namespace (file names and directories) while also coordinating 
+security, consistency and coherence.
+
+Ceph Architecture
+Ceph's architecture consists of two main components: an object storage 
+layer, and a distributed file system that is constructed on top of 
+this object store. The object store provides a generic, scalable 
+storage platform with support for snapshots and distributed computation. 
+This storage backend is used to provide a simple network block device  
+with thin provisioning and snapshots, or an S3 or Swift compatible RESTful 
+object storage interface. It also forms the basis for a distributed file 
+system, managed by a distributed metadata server cluster, which similarly 
+provides advanced features like per-directory granularity snapshots, and a 
+recursive accounting feature that provides a convenient view of how much 
+data is stored beneath any directory in the system.
+
+The primary goals of the architecture are scalability to hundreds of 
+petabytes and beyond, performance, and reliability. Scalability is 
+considered in a variety of dimensions, including the overall storage 
+capacity and throughput of the system, and performance in terms of 
+individual clients, directories, or files. Ceph directly addresses the 
+issue of scalability while simultaneously achieving high performance, 
+reliability and availability through three fundamental design features: 
+decoupled data and metadata, dynamic distributed metadata management, 
+and reliable autonomic distributed object storage.
+
+Ceph is based on an object storage paradigm, where file data is stored 
+by object storage devices (OSDs) and metadata is stored by metadata 
+servers (MDSs). Contrary to some distributed file systems relying on 
+‘dumb’ OSDs, the Ceph OSDs have responsibilities for data migration, 
+replication and failure handling and communicate between each other. 
+Metadata management is completely distributed, using a cluster of MDSs 
+to handle metadata request from clients. The operation is adapted 
+dynamically based on the workload generated by the clients (e.g., moving 
+and replicating metadata depending on how often a file is accessed).
+An MDS does not keep track of which OSDs store the data for a particular 
+file. Instead, Ceph uses a special function called CRUSH to determine the 
+location of objects on storage nodes: it first maps an object to a 
+placement group, and then calculates which OSDs belong to that placement 
+group. While doing so, it takes care of the replication of file data on 
+different OSDs. CRUSH automatically takes into account that the set of 
+storage nodes is dynamic over time. To clients, the data within a Ceph 
+configuration (potentially consisting of thousands of OSDs) is presented 
+as a single logical object store called RADOS. Replication of data is 
+organized by writing to the first OSD in the placement group, after which 
+this OSD replicates the data to others. The client receives an ack when 
+all data has reached the buffer caches on all OSDs, and receives a commit 
+when the data has been safely stored on all involved OSDs. RADOS has 
+mechanisms for failure detection and automatic re-replication. Furthermore, 
+Ceph implements a mechanism for recovery in case of system outages or 
+large configuration changes.
+
+A major drawback is the immaturity of Ceph as a platform: as far as we know, 
+it has not been widely used in a production environment, and the Ceph 
+documentation also explicitly warns of the beta state of the code. Another 
+issue is the uncertainty about the operation of Ceph in a WAN environment. 
+The placement of the file data at OSDs does not take into account that 
+links between storage nodes have variable quality (bandwidth, latency). 
+Additionally, the operation of the mechanisms for automatic adaptation 
+(adjustment of placement group to OSD mapping, and failure detection) 
+may be non-optimal or worse for a WAN Ceph configuration.
+
+Lustre
+Lustre is a massively parallel distributed file system running on Linux 
+and used at many high-performance computing (HPC) centers worldwide. 
+Originally developed at CMU in 1999, it is now owned by Oracle and the 
+software is available as open source under a GNU GPL license. The Lustre 
+architecture defines different kinds of roles and nodes, following an object 
+storage paradigm where metadata is separated from the file data. A typical 
+Lustre cluster can have tens of thousands of clients, thousands of object 
+storage servers (OSDs) and a failover pair of metadata servers (currently 
+still a work in progress, metadata servers will in the future be able to 
+form a cluster comprising of dozens of nodes). Lustre assumes that OSDs 
+are reliable, i.e., use such techniques as RAID to prevent data loss.
+
+Lustre Architecture
+Lustre has a somewhat unique architecture, comprised of three major 
+functional units. One is a single metadata server or MDS that contains 
+a single metadata target or MDT for each Lustre filesystem. This stores 
+namespace metadata, which includes filenames, directories, access 
+permissions and file layout. The MDT data is stored in a single disk 
+filesystem mapped locally to the serving node and is a dedicated 
+filesystem that controls file access and informs the client node(s) 
+which object(s) make up a file. Second are one or more object storage 
+servers (OSSes) that store file data on one or more object storage 
+targets or OST. An OST is a dedicated object-base filesystem exported 
+for read/write operations. The capacity of a Lustre filesystem is 
+determined by the sum of the total capacities of the OSTs. Finally, 
+there's the client(s) that accesses and uses the file data. 
+
+Lustre presents all clients with a unified namespace for all of the 
+files and data in the filesystem that allow concurrent and coherent 
+read and write access to the files in the filesystem. When a client 
+accesses a file, it completes a filename lookup on the MDS, and 
+either a new file is created or the layout of an existing file is 
+returned to the client. Locking the file on the OST, the client will 
+then run one or more read or write operations to the file but will 
+not directly modify the objects on the OST. Instead, it will delegate 
+tasks to the OSS. This approach will ensure scalability and improved 
+security and reliability, as it does not allow direct access to the 
+underlying storage, thus, increasing the risk of file system corruption 
+from misbehaving/defective clients. Although all three components 
+(MDT, OST and client) can run on the same node, they typically are 
+configured on separate nodes communicating over a network.
+
+Servers can currently be added dynamically and the file system is 
+POSIX compliant. Other features that Lustre provides are ADIO 
+interfaces, it can disable locking, and perform direct I/O that is 
+usable for databases. Lustre also has other tuneable settings. It can 
+currently be installed on Linux where it can interoperate amongst all 
+supported processor architectures. It is still being developed for 
+other operating systems.
+
+The main advantage of Lustre is that it has very high parallel 
+performance, it also has good file I/O and can handle requests for 
+thousands of files. Lustre does not seem to be deployed frequently 
+in clusters that stretch over large distances.
+
+The chart below provides a feature comparison of the three systems.
+
+
+
+
+
+
+\section{Implementation}
+
+
+
+
+
+
+
+
+
+
+
+\section{Evaluation}
 From our review of the research literature we noted the following 
 design characteristics with respect to storage that will be factored 
 into our storage system implementation:
