@@ -776,7 +776,32 @@ in clusters that stretch over large distances.
 
 The chart below provides a feature comparison of the three systems.
 
-
+\begin{center}
+    \begin{tabular}{ | l | p{3cm} | p{3cm} | p{3cm} |}
+    \hline
+    Attribute & Tahoe & Ceph & Lustre \\ \hline
+    License & GNU GPL & GNU LGPL & GNU GPL \\ \hline
+    Data Primitive & object (file) & object (file) &
+    object (file) \\ \hline\
+    Data Placement & random & placement groups, pseudo-random mapping &   
+    based on round robin and free space heuristics \\ \hline
+    Metadata Handling & flat & multiple metadata servers & 
+    max of two  metadata servers  \\ \hline
+    Storage Tiers & none & through CRUSH rules & pools of object storage
+    targets \\ \hline
+    Failure Handling & assuming unreliable nodes & assuming unreliable
+    nodes & assuming reliable nodes \\ \hline
+    Replication & server side & server side & server side \\ \hline
+    WAN Deployment & numerous & no known deployment & TeraGrid (scientific
+    data) \\ \hline
+    Client Interfacing &  The API exposes standard GET, PUT, POST, and
+    DELETE methods, supports JSON and HTML output & native client file
+    system, FUSE & native client file system, FUSE, clients may export
+    NFS, CIFS \\ \hline
+    Node Types & client/server, an introducer, a key generator & client,
+    metadata, object & client, metadata, object \\ \hline
+    \end{tabular}
+\end{center}
 
 
 
