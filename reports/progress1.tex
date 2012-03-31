@@ -789,8 +789,14 @@ The chart below provides a feature comparison of the three systems.
 
 \subsection{Tahoe - Installation and Configuration}
 %This section discusses installing/configuring Tahoe
+Using our environment setup of three computers all running Ubuntu 11.10 with a partition mounted for use by the Tahoe Filesystem at /Tahoe we could begin to setup the Tahoe Least Authority File System. 
 
-
+\begin{enumerate}
+\item The first step for deploying Tahoe was to acquire the latest version of the Tahoe LAFS from their website for each of the computers. \cite{tahoe-lafs.org} At the time this was version 1.9.1. Once we had downloaded the allmydata-tahoe-1.9.1.zip file from the Tahoe LAFS website, we could move onto the next step.
+\item The second step was to insure we had a compatible version of python installed on all the computers. \cite{python.org} For the installation of the Tahoe LAFS version 2.4.4 or greater is required. And Python v3 or greater would not work either. Python 2.7.2 was already installed on Ubuntu 11.10 so we could move onto the next step.
+\item We now extracted the Tahoe LAFS source files from the allmydata-tahoe-1.9.1.zip file we acquired from their website. This resulted in a folder in our home directory, which is where we downloaded the file on each computer, called allmydata-tahoe-1.9.1. 
+\item 
+\end{enumerate}
 \subsection{Ceph - Installation and Configuration}
 %This section discusses installing/configuring Ceph
 
