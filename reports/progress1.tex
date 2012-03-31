@@ -822,12 +822,54 @@ Using our environment setup of three computers all running Ubuntu 11.10 with a p
 \item We now extracted the Tahoe LAFS source files from the allmydata-tahoe-1.9.1.zip file we acquired from their website. This resulted in a folder in our home directory, which is where we downloaded the file on each computer, called allmydata-tahoe-1.9.1. 
 \item Now that we had the Tahoe LAFS source extracted we could build the tahoe executable using the following command inside the allmydata-tahoe-1.9.1 folder to build the source via the python setup file.
 \subitem python setup.py build
-\item After the build had finished we got a subdirectory called tahoe inside the source directory that contains the tahoe executable that is used to initialize and start, run, and stop the tahoe introducer and clients. We now repeated this build process on the remaining computers.
+\item After the build had finished we got a subdirectory called bin inside the source directory that contains the tahoe executable that is used to initialize and start, run, and stop the tahoe introducer and clients. We now repeated this build process on the remaining computers.
 \item Now that we have the tahoe executable created on all the computers we needed to decide which computer was best suited to be the introducer as it will have a slightly heavier load as it will act as the node the clients connect to and due to our limited number of computers we will also have a client node running on it as well. We chose to use computer XPC1 for this due to the observational behavior of it was significantly more responsive than the other two computers, eventually a performance benchmark will be run on each of the computers to determine that this was the correct choice. As we wanted to get something up and running we went ahead on this assumption to see if we could get the Tahoe LAFS working on these computers.
 \item The next step was to create subdirectories on XPC1 for the introducer and client to use as each will have their own configuration files. To this end an introducer and client directory were created in the /Tahoe directory. The creation of a client directory could be done on the other two computers could be done as well to make the commands used to get the Tahoe clients running consistent across all three computers; however, at this time this was not done. 
+\item The next step was to get our introducer node created as we need it running before we can properly setup the client nodes. To create the introducer node we used the following command from the ~/allmydata-tahoe-1.9.1/bin directory where the tahoe executable lives:
+\subitem tahoe create-introducer --node-directory=/tahoe/introducer
 
+This creates the introducer configuration files inside the /tahoe/introducer folder and will allow us to edit the tahoe.cfg file with the configuration tweaks we need to make for our small number of available nodes. 
+\item The next step is to edit the /tahoe/introducer/tahoe.cfg file to include the following changes:
+\subitem nickname = xpc1
+\subitem web.port = tcp:3457:interface=127.0.0.1
+\subitem shares.happy = 2
 
+These changes give the introducer a nickname that we can recognize and also provides us with a web interface port that is different from the default port for tahoe interfaces of 3456 so that eventually we will be able to see both the introducer and client's web interface for XPC1 with out them conflicting on the same port.
+
+\item After we had made the necessitated changes to the introducer's tahoe.cfg file we saved it and could start the introducer running. This is necessary for the clients to be able to connect to the introducer, but also because it needs to be started at least once before the introducer.furl file is created. This is needed in the client configuration as this is how the clients find the introducer and function as a group. To start the introducer running we use the following command assuming we have added the tahoe executable to the path:
+\subitem tahoe start --node-directory=/tahoe/introducer/
+
+\item Now that we have the introducer running on XPC1 we are ready to create the client nodes. Instead of creating clients, we opted to just create nodes that share their storage vs only replicate their files across the available nodes as we only have three working computers. To create a node we used the following command on XPC2 \& XPC3:
+\subitem tahoe create-node --node-directory=/tahoe/
+
+And we used this command on XPC1:
+
+\subitem tahoe create-node --node-directory=/tahoe/client/
+
+This created all the configuration files for the client nodes in their respective directories. 
+
+\item Now that we have the client directories created we want to open up the /tahoe/introducer/introducer.furl file and copy out the enclosed furl in the file so that we can put it in the client tahoe.cfg files. For our introducer we have the following contents for the introducer.furl file:
+\subitem pb://6n56ctw77txdhrc2455jnwe3zzouho6n@192.168.1.10:57307,127.0.0.1:57307/introducer
+
+\item We now open up the clients tahoe.cfg file and edit it to reflect the following changes, with what is in the [ ] indicating a value that varied between computers or is too long to fit below:
+\subitem nickname = [name of computer]
+\subitem introducer.furl = [contents of introducer.furl]
+\subitem shares.happy = 2
+
+With these changes our clients are ready to be started and have been configured to be able to work on our extremely small grid. 
+
+\item The final step is to start the client nodes. We are going to use the command to run the tahoe client nodes in the background; however, it is worth mentioning that there is a command that would run it in the foreground in a UNIX environment instead that was used during our initial test run to see if the Tahoe LAFS was working. To start the clients on XPC2 \& XPC3 the following command was used:
+\subitem tahoe start /tahoe/
+
+And on XPC1 the following command was used:
+
+\subitem tahoe start /tahoe/client/
+
+This started the client nodes running in the background and our Tahoe LAFS grid is now installed, configured, and running.
 \end{enumerate}
+
+Now that we had the Tahoe LAFS running we verified that it was working by navigating to 127.0.0.1:3457 on XPC1 to verify that the introducer was working and check on its status. It showed us that it was running and that the three client nodes were connected. We then went to the web interface for the client node on XPC1 located at 127.0.0.1:3456 that provided us with an interface to upload \& download files, create directories, and showed us the status of the available storage nodes. We then uploaded an image file to verify that we could upload a file and then download it again. We were able to successfully retrieve the image file back out of the Tahoe LAFS. This was done to insure that we had in fact installed, configured, and gotten the Tahoe LAFS working. Further testing will happen in another section later on. 
+
 \subsection{Ceph - Installation and Configuration}
 %This section discusses installing/configuring Ceph
 
