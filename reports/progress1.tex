@@ -820,7 +820,13 @@ Using our environment setup of three computers all running Ubuntu 11.10 with a p
 \item The first step for deploying Tahoe was to acquire the latest version of the Tahoe LAFS from their website for each of the computers. \cite{tahoe-lafs.org} At the time this was version 1.9.1. Once we had downloaded the allmydata-tahoe-1.9.1.zip file from the Tahoe LAFS website, we could move onto the next step.
 \item The second step was to insure we had a compatible version of python installed on all the computers. \cite{python.org} For the installation of the Tahoe LAFS version 2.4.4 or greater is required. And Python v3 or greater would not work either. Python 2.7.2 was already installed on Ubuntu 11.10 so we could move onto the next step.
 \item We now extracted the Tahoe LAFS source files from the allmydata-tahoe-1.9.1.zip file we acquired from their website. This resulted in a folder in our home directory, which is where we downloaded the file on each computer, called allmydata-tahoe-1.9.1. 
-\item 
+\item Now that we had the Tahoe LAFS source extracted we could build the tahoe executable using the following command inside the allmydata-tahoe-1.9.1 folder to build the source via the python setup file.
+\subitem python setup.py build
+\item After the build had finished we got a subdirectory called tahoe inside the source directory that contains the tahoe executable that is used to initialize and start, run, and stop the tahoe introducer and clients. We now repeated this build process on the remaining computers.
+\item Now that we have the tahoe executable created on all the computers we needed to decide which computer was best suited to be the introducer as it will have a slightly heavier load as it will act as the node the clients connect to and due to our limited number of computers we will also have a client node running on it as well. We chose to use computer XPC1 for this due to the observational behavior of it was significantly more responsive than the other two computers, eventually a performance benchmark will be run on each of the computers to determine that this was the correct choice. As we wanted to get something up and running we went ahead on this assumption to see if we could get the Tahoe LAFS working on these computers.
+\item The next step was to create subdirectories on XPC1 for the introducer and client to use as each will have their own configuration files. To this end an introducer and client directory were created in the /Tahoe directory. The creation of a client directory could be done on the other two computers could be done as well to make the commands used to get the Tahoe clients running consistent across all three computers; however, at this time this was not done. 
+
+
 \end{enumerate}
 \subsection{Ceph - Installation and Configuration}
 %This section discusses installing/configuring Ceph
