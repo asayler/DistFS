@@ -112,7 +112,7 @@ decade. The amount of data being actively managed continues to expand
 at around 20\% per year, with many firms dealing with growth rates
 exceeding 50\%. At these levels, most data centers will double storage
 capacity every two to three years. Meanwhile, IT budgets are generally
-in decline. Why isn’t industry-wide chaos rampant? In a word, this is
+in decline. Why isn't industry-wide chaos rampant? In a word, this is
 due to consolidation efforts. Consolidation is being aided by
 continued evolution of high-density magnetic media as well as bigger,
 faster, and less expensive solid-state drives. Virtualization is also
@@ -435,29 +435,30 @@ as these are sufficient to survey existing products and sufficient to make
 initial product evaluations. We are aware that a WAN distributed storage 
 system may not be able to offer features in any combination, or that the 
 CAP theorem applies which states that only two out of the three properties 
-‘data consistency’, ‘system availability’, and ‘partition tolerance’ can be 
+data consistency� system availability� and partition tolerance� can be 
 supported by a distributed system. Ideally, though, products should be able 
 to explicitly balance these requirements, such that in a future system a 
 property trade-off is easy to configure and evaluate.
 
-- Scalable – The system must be scalable in terms of capacity, performance 
+\begin{itemize}
+\item Scalable The system must be scalable in terms of capacity, performance 
 and in terms of concurrent access. Hence, it should be easy to expand the 
 total amount of storage without degrading performance and concurrency. Also, 
 it should be relatively simple to configure the system such that a large 
-number of users concurrently can obtain access – also concurrently to 
-individual storage objects – without performance suffering markedly.
+number of users concurrently can obtain access also concurrently to 
+individual storage objects without performance suffering markedly.
 
-- High Availability – The system should have high-availability functionality 
+\item High Availability The system should have high-availability functionality 
 that keeps data available to applications and clients, even in the event of 
 software or hardware errors. This implies that the system is capable of 
 replicating data at multiple locations. It also implies that capacity and 
 storage locations may be added or removed while the system is operating.
-- Durability – The system should support the storage of data in a durable 
+\item Durability The system should support the storage of data in a durable 
 manner, so that if hardware or software failures occur, no data is lost. 
 Durability functionality includes maintenance to make sure that a minimum 
 number of replicas are available. 
 
-- Performance at Traditional SAN/NAS Level – The system should be able to 
+\item Performance at Traditional SAN/NAS Level The system should be able to 
 support a level of performance (bandwidth & latency) comparable to a 
 traditional non-distributed environment. Being a general purpose system, 
 it is clear that the supported performance for specific applications will 
@@ -465,39 +466,41 @@ not match the performance of dedicated storage solution. However, by
 offering different kinds of storage tiers within the distributed system, 
 it should be possible to offer different levels of performance. 
 
-- Dynamic Operation – The level of availability, durability and performance 
+\item Dynamic Operation The level of availability, durability and performance 
 should be configurable per application. This allows the system to always 
 run at the highest supported level of functionality, thereby reducing costs. 
 Moreover, it allows user, application developers and system administrators 
 to balance cost versus features. The system should also be self-configurable 
 and self-tunable, in the sense that it changes parameters to optimize its 
 own operation. The system should support the movement of  data between 
-different kinds of storage technologies – thus providing ‘tiered’ 
-functionality – so that data objects that are accessed frequently are 
+different kinds of storage technologies thus providing tiered’ 
+functionality so that data objects that are accessed frequently are 
 stored on the disks with highest performance and those that are infrequent 
 accessed are stored on slower disks. 
 
-- Cost Effective – It should be possible to build, configure, run, and 
+\item Cost Effective It should be possible to build, configure, run, and 
 maintain the system in a cost-effective manner. The system should work with 
 commodity hardware. Configuration of the system, as well as the maintenance 
 should be easy and straightforward. 
 
-- Interfaces – The system should offer generic interfaces to applications 
+\item Interfaces The system should offer generic interfaces to applications 
 and clients. Preferably it supports the POSIX file system interface; this 
 implies that a wide range of different applications can be supported.  
 Alternatively, the system could support a block device interface, because 
 such an interface can be used to implement arbitrary file systems.
 
-- Protocols Based on Open Standards – The system should be built using 
+\item Protocols Based on Open Standards The system should be built using 
 protocols based on open standards where possible. This reduce reduces the 
 possibility of vendor lock-in and improves extensibility. In many respects 
 this also relates to cost effectiveness since, in the long run it should 
 typically be more economical to maintain such a system than a proprietary 
 based alternative.
 
-- Multi-Party Access – The system should support access by multiple, 
+\item Multi-Party Access The system should support access by multiple, 
 geographically dispersed parties at the same time. This enables 
 collaboration between these parties over long distances on the same data.
+
+\end{itemize}
 
 In this project we wanted to understand competing products and to 
 implement two to three distributed storage systems with qualities as 
@@ -512,7 +515,7 @@ of each of the respective systems, their distinct architectural traits
 and salient features and some comparative and contrasting of each of 
 the systems.  
 
-Tahoe
+\subsection{Tahoe}
 Tahoe is an open source distributed file system that supports storing 
 files into a network of peers. All data in a Tahoe configuration is 
 written in an encrypted manner to the storage nodes. It uses erasure 
@@ -532,7 +535,7 @@ under the terms of GNU's General Public License (GPL), can be used to
 build distributed storage grids that function in much the same manner 
 as the company’s original concept.
 
-Tahoe Access Control
+\subsubsection{Tahoe Access Control}
 Tahoe uses a capability-based access control model to manage access to 
 files and directories. Each file/directory in a Tahoe grid is identified 
 by a capability which is a short and unique string that designates the 
@@ -568,10 +571,10 @@ location and reveal the cap of the new location to the authorized users
 only. The unauthorized users still will continue to have access to the 
 old directory but cannot see the new changes.
 
-Tahoe Architecture
+\subsubsection{Tahoe Architecture}
 Tahoe's underlying architecture is similar to that of a peer-to-peer 
 network. Files are distributed across multiple nodes in a manner that 
-llows data integrity to be maintained in the event that individual nodes 
+allows data integrity to be maintained in the event that individual nodes 
 are compromised or fail. The system uses AES encryption to protect file 
 contents from tampering and scrutiny. Tahoe can be used to establish a 
 relatively fault-tolerant storage pool that spans a number of conventional 
@@ -580,18 +583,20 @@ approach to cloud storage is often described as "crowd" storage.
 
 Tahoe could be thought of quite simply as collection of three layers: 
 
-1). Key-Value store : in which each key "capability" identifies a 
+\begin{enumerate}
+\item Key-Value store : in which each key "capability" identifies a 
 file/directory "value" on the grid. It provides PUT and GET operations. 
 
-key = PUT(data) 
-data = GET(key)
+\subitem key = PUT(data) 
 
-2). Decentralized File System Layer:  The key-value store provides the 
+\subitem data = GET(key)
+
+\item Decentralized File System Layer:  The key-value store provides the 
 mapping from URI to data, decentralized file system layer turn this into 
 a graph of directories and files where files are leaves. It needs to keep 
 track of directory nodes to maintain a graph of files and directories. 
 
-3). Application Layer:  Application specific features that use the 
+\item Application Layer:  Application specific features that use the 
 underlying layers for example Allmydata.com used it for a backup service: 
 the application periodically copies files from the local disk onto the 
 decentralized file system. When a file is deployed to Tahoe, it is 
@@ -602,6 +607,8 @@ to ensure data integrity when some nodes are unavailable. This is a bit
 similar to how RAID storage works. Tahoe uses a library called zfec that
 provides an efficient implementation of the error correction code and 
 exposes it through a Python API.
+
+\end{enumerate}
 
 Although Tahoe is a distributed file system, it is not entirely 
 decentralized in the strictest sense of the word. It needs a central node, 
@@ -633,11 +640,11 @@ project's web site.
 
 Tahoe provides very little control over on which nodes data is stored, 
 which makes it unsuitable for tiered functionality applications. 
-Furthermore, Tahoe assumes a ‘flat’, local network environment and 
+Furthermore, Tahoe assumes a flat local network environment and 
 therefore is not suitable to run in a WAN. 
 
 
-Ceph
+\subsection{Ceph}
 Ceph is a distributed file system originally designed by the Storage 
 Systems Research Center at the University of California, Santa Cruz. 
 It is developed as an open source project, with code under the GNU LGPL 
@@ -652,7 +659,7 @@ data and metadata; and a metadata server cluster, which manages the
 namespace (file names and directories) while also coordinating 
 security, consistency and coherence.
 
-Ceph Architecture
+\subsubsection{Ceph Architecture}
 Ceph's architecture consists of two main components: an object storage 
 layer, and a distributed file system that is constructed on top of 
 this object store. The object store provides a generic, scalable 
@@ -678,7 +685,7 @@ and reliable autonomic distributed object storage.
 Ceph is based on an object storage paradigm, where file data is stored 
 by object storage devices (OSDs) and metadata is stored by metadata 
 servers (MDSs). Contrary to some distributed file systems relying on 
-‘dumb’ OSDs, the Ceph OSDs have responsibilities for data migration, 
+dumb’ OSDs, the Ceph OSDs have responsibilities for data migration, 
 replication and failure handling and communicate between each other. 
 Metadata management is completely distributed, using a cluster of MDSs 
 to handle metadata request from clients. The operation is adapted 
@@ -711,7 +718,7 @@ Additionally, the operation of the mechanisms for automatic adaptation
 (adjustment of placement group to OSD mapping, and failure detection) 
 may be non-optimal or worse for a WAN Ceph configuration.
 
-Lustre
+\subsection{Lustre}
 Lustre is a massively parallel distributed file system running on Linux 
 and used at many high-performance computing (HPC) centers worldwide. 
 Originally developed at CMU in 1999, it is now owned by Oracle and the 
@@ -724,7 +731,7 @@ still a work in progress, metadata servers will in the future be able to
 form a cluster comprising of dozens of nodes). Lustre assumes that OSDs 
 are reliable, i.e., use such techniques as RAID to prevent data loss.
 
-Lustre Architecture
+\subsubsection{Lustre Architecture}
 Lustre has a somewhat unique architecture, comprised of three major 
 functional units. One is a single metadata server or MDS that contains 
 a single metadata target or MDT for each Lustre filesystem. This stores 
@@ -857,41 +864,43 @@ From our review of the research literature we noted the following
 design characteristics with respect to storage that will be factored 
 into our storage system implementation:
 
-(1) System Function - DSS functionality displays a wide array 
+\begin{enumerate}
+\item  System Function - DSS functionality displays a wide array 
 of behavior, often well beyond typical store and retrieve.
-(2) Storage Architecture: We examined various architectures
+\item Storage Architecture: We examined various architectures
 employed by DSSs. Our investigation shows an evolution from 
 centralized to the more recently favored decentralized approach.
-(3) Operating Environment: We became aware of how various
+\item Operating Environment: We became aware of how various
 categories of operating environments influence design and
 architecture.
-(4) Usage Patterns: We were made aware of classification of
+\item Usage Patterns: We were made aware of classification of
 various workloads experienced by DSSs and how the operating 
 environment has a major influence on usage patterns.
-(5) Consistency: Distributing, replicating and supporting
+\item  Consistency: Distributing, replicating and supporting
 concurrent access are factors which challenge consistency. We
 took note of various approaches used to enforce consistency
 and the respective trade-offs in performance, availability and
 choice of architecture.
-(6) Security: With attention turning towards applications
+\item Security: With attention turning towards applications
 operating on the Internet, establishing a secure system is a
 challenging task which is made increasingly more difficult as
 DSSs adopt decentralized architectures. Our investigation
 covered traditional means as well as more recent approaches
 that have been developed for enforcing security in
 decentralized architectures.
-(7) Automated Management: Systems are increasing in
+\item Automated Management: Systems are increasing in
 complexity at an unsustainable rate. Features and services
 need to address this problem by automating and abstracting
 away system complexity, simplifying maintenance and
 administration.
-(8) Federation: Many different formats and protocols are now
+\item Federation: Many different formats and protocols are now
 used to store and access data, creating a difficult environment
 for easily sharing data and resources. Federation middleware is
 needed to provide a single uniform homogeneous interface to
 what would otherwise be a myriad of heterogeneous interfaces
 and protocols. Federation enables the sharing of services,
 while attempting to reduce effort wasted on duplication.
+\end{enumerate}
 
 By incorporating these observations into our design and any
 services that we develop for implementation, we believe our
