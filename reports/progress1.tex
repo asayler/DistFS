@@ -714,6 +714,35 @@ mechanisms for failure detection and automatic re-replication. Furthermore,
 Ceph implements a mechanism for recovery in case of system outages or 
 large configuration changes.
 
+\subsubsection{Ceph Design Considerations}
+A Ceph cluster consists of a few different pieces: the monitors (mons), 
+storage nodes (osds), and metadata servers (mds). One each is the minimum 
+requirement , but with one the system will have no  redundancy.
+The storage nodes will store the actual data on the disk. The minimum 
+requirement here is two if the system is to have any redundancy across 
+nodes. Each storage node is essentially an instance of the Ceph-OSD, 
+providing access to a local disk or set of disks. The simplest option is 
+to use one Ceph-OSD daemon per hardware node and then pool the disks. 
+Ceph generally is found to work best when using BTRFS, but other file 
+systems like ext3 and ext4 represent other viable choices. Btrfs provides 
+checksumming and the ability to pool disks together without RAID, can 
+internally handle data redundancy and facilitates Ceph journaling. 
+The Ceph Metadata Server functions as a distributed, cache of file system 
+metadata. It does not store data locally, rather all metadata is stored on 
+disk via the storage nodes. MDS daemons can be added into the cluster as 
+needed. Typically guidelines suggest starting with 1 or 2, then add more 
+as necessary.  The 'max mds' parameter controls how many cmds instances 
+are active. Additional running instances are put in standby mode. The 
+Ceph Monitor daemons administer central cluster management, configuration, 
+and state. Data is stored in a directory on the local host file system. 
+They must be deployed in odd-number sets. One daemon is acceptable; three 
+is ideal for most use cases. More may be required for extremely large 
+clusters. Other general cluster suggestions are: (1) For a few nodes,  
+put Ceph-MON, Ceph-MDS, and Ceph-OSD on the same node(s). (2) For more 
+nodes,  put Ceph-MDS and Ceph-MON together, and Ceph-OSD on the disk nodes. 
+(3) For even more nodes, separate Ceph-MDS, Ceph-MON, and Ceph-OSD all 
+onto dedicated machines.
+
 A major drawback is the immaturity of Ceph as a platform: as far as we know, 
 it has not been widely used in a production environment, and the Ceph 
 documentation also explicitly warns of the beta state of the code. Another 
