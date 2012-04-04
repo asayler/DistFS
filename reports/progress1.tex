@@ -1176,6 +1176,7 @@ who sell bundled computing and Lustre storage systems. Many of these
 vendors also contribute to the open source community's Lustre Project. 
 
 \section{Evaluation}
+\subsection{Introduction}
 Storage technology is developing rapidly, but the corresponding 
 measurement technology is seriously lagging behind. Interestingly enough, 
 this impedes the development of storage industry. The absence of uniform 
@@ -1191,7 +1192,7 @@ squandering the investments made in server infrastructure. Conversely,
 inappropriate use of fast storage translates into wasted dollars spent 
 on performance.
 
-The point is that performance testing for a distributed storage system 
+The issue is that performance testing for a distributed storage system 
 is an important and valuable undertaking. Also, though, storage system 
 performance testing is a very complex task, because it is affected by 
 a myriad of factors: such as block size, file size, queue depth, number 
@@ -1205,6 +1206,42 @@ of a distributed storage system, we fiollow the lead of others and
 choose a variety of benchmarks. The hope is that this approach will 
 make the test results more realistic, reliable and credible.
 
+The intent of the testing phase is to understand the tradeoffs that 
+the various systems under review make in architectural design and 
+observe how those design choices translate into performance and 
+resource usage in actual operation.
+
+\subsection{Test Implementation}
+The Linux test platform will test the file system IO performance, 
+including the aggregate bandwidth, the amount of concurrent access, 
+and the throughput of metadata. The user can set the file size, 
+transfer block size, file system API, and then select the test nodes 
+to start the testing task, which can measure the file system IO 
+performance. The test platform is also able to test the disk array 
+IO performance, including the IOPS and the DTR of disk array. The user 
+can set the queue depth, number of threads, transfer block size, 
+random/sequential ratio, read/write ratio, and then select the tested 
+disk and test nodes to start the testing task, which can measure the 
+IO performance of disk arrays.
+
+The following is the set of test steps for the distributed file system.
+The first is to select the test benchmarks. Recall that different 
+performance indicators, such as the aggregate bandwidth, the amount of 
+concurrent access and the metadata throughput have different benchmarks. 
+The second is to specify parameters for configuration. Each benchmark 
+has its own testing parameters. The third step is to select the tested 
+object (the target distributed file system) and the test nodes. The 
+fourth step is to start the test and display the corresponding test 
+results. The fifth step is to generate the reporter and display the 
+test result in graphics. Finally, all the test results and test 
+parameter configurations need to be stored in a database, so that the
+user can easily query and compare the test results.
+
+In addition, in order to manage and monitor the testing tasks in a 
+comprehensive manner, the test platform needs to be able to manage 
+all the test nodes, as well as monitor the performance of test nodes. 
+That is, users need to be able to dynamically add or remove test 
+nodes to meet the scale of testing task. 
 
 
 From our review of the research literature we noted the following 
@@ -1249,11 +1286,6 @@ and protocols. Federation enables the sharing of services,
 while attempting to reduce effort wasted on duplication.
 \end{enumerate}
 
-By incorporating these observations into our design and any
-services that we develop for implementation, we believe our
-system will better address and reflect current and evolving
-storage needs and provide insights into the tradeoffs and 
-complexity involved in implementing today's storage technologies.
 
 Going forward our plan is to build a parallel distributed file 
 system implementation. Currently, we are considering using 
@@ -1263,22 +1295,6 @@ the two systems. This will allow us to create a report comparing
 the two systems and suggesting where each might be used most 
 effectively.
 
-As time allows, we would then like to build an application atop one
-of these systems to demonstrate how one might take advantage of the
-features each system provides. Alternatively, we may also choose to
-modify one of these systems to extend its feature set or increase
-its performance. Possible modifications may include increased 
-security, increased ease of use, and/or increased robustness.
-A third option might be to add additional file system implementations 
-to our deployment in order to allow us to generate further comparisons 
-and metrics.
-
-Our immediate concern in meeting the schedule and requirements stated 
-above is to secure the necessary hardware and resources for our 
-testing platform. Ideally, we need a small collection of identical 
-machines in order to facilitate neutral comparisons. We may also be 
-able to utilize virtualized hardware. We are still exploring the options 
-available to us.
 
 \section{Conclusions}
 %section to be completed after testing is done
