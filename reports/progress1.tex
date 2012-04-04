@@ -1243,59 +1243,6 @@ all the test nodes, as well as monitor the performance of test nodes.
 That is, users need to be able to dynamically add or remove test 
 nodes to meet the scale of testing task. 
 
-
-From our review of the research literature we noted the following 
-design characteristics with respect to storage that will be factored 
-into our storage system implementation:
-
-\begin{enumerate}
-\item  System Function - DSS functionality displays a wide array 
-of behavior, often well beyond typical store and retrieve.
-\item Storage Architecture: We examined various architectures
-employed by DSSs. Our investigation shows an evolution from 
-centralized to the more recently favored decentralized approach.
-\item Operating Environment: We became aware of how various
-categories of operating environments influence design and
-architecture.
-\item Usage Patterns: We were made aware of classification of
-various workloads experienced by DSSs and how the operating 
-environment has a major influence on usage patterns.
-\item  Consistency: Distributing, replicating and supporting
-concurrent access are factors which challenge consistency. We
-took note of various approaches used to enforce consistency
-and the respective trade-offs in performance, availability and
-choice of architecture.
-\item Security: With attention turning towards applications
-operating on the Internet, establishing a secure system is a
-challenging task which is made increasingly more difficult as
-DSSs adopt decentralized architectures. Our investigation
-covered traditional means as well as more recent approaches
-that have been developed for enforcing security in
-decentralized architectures.
-\item Automated Management: Systems are increasing in
-complexity at an unsustainable rate. Features and services
-need to address this problem by automating and abstracting
-away system complexity, simplifying maintenance and
-administration.
-\item Federation: Many different formats and protocols are now
-used to store and access data, creating a difficult environment
-for easily sharing data and resources. Federation middleware is
-needed to provide a single uniform homogeneous interface to
-what would otherwise be a myriad of heterogeneous interfaces
-and protocols. Federation enables the sharing of services,
-while attempting to reduce effort wasted on duplication.
-\end{enumerate}
-
-
-Going forward our plan is to build a parallel distributed file 
-system implementation. Currently, we are considering using 
-Tahoe and Ceph for this purpose. Once each system is in place, 
-we will perform a performance and feature-set comparison between 
-the two systems. This will allow us to create a report comparing 
-the two systems and suggesting where each might be used most 
-effectively.
-
-
 \section{Conclusions}
 %section to be completed after testing is done
 
