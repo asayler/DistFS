@@ -587,29 +587,52 @@ approach to cloud storage is often described as "crowd" storage.
 Tahoe could be thought of quite simply as collection of three layers: 
 
 \begin{enumerate}
-\item Key-Value store : in which each key "capability" identifies a 
-file/directory "value" on the grid. It provides PUT and GET operations. 
+\item The lowest layer is effectively a Distributed Hash Table (DHT), 
+like a python dictionary, but spread across multiple machines. In this 
+DHT, there are a large number of "slots" which are filled with arbitrary 
+data. Tahoe has both mutable slots and immutable slots. Immutable slots 
+are write-once: after the slot has been closed, no more data can be written 
+to it. Mutable slots can be written multiple times. Capability discipline 
+is used to control access to the slots: if you hold a write-reference 
+(or "write-cap"), then you can modify the slot, if you don't hold such a 
+reference, then you cannot. Mutable slots have both write-caps and 
+read-caps (and the write-cap can be used to produce a read-cap, so really 
+it is a read+write-cap). Immutable slots have only read-caps. These read- 
+and write- caps can be expressed as short strings, containing encryption 
+keys, integrity hashes, and location information. In this form, they look 
+a lot like web URIs: a string that provides a reference to some piece of 
+data. The data for each DHT slot is distributed among some number of 
+storage servers, using encryption and erasure coding to provide 
+confidentiality and reliability. Key-Value store : in which each key 
+"capability" identifies a file/directory "value" on the grid. They provide 
+PUT and GET operations. 
 
 \subitem key = PUT(data) 
 
 \subitem data = GET(key)
 
-\item Decentralized File System Layer:  The key-value store provides the 
-mapping from URI to data, decentralized file system layer turn this into 
-a graph of directories and files where files are leaves. It needs to keep 
+\item The middle layer is the Virtual Drive, which organizes these slots 
+into directories. Each directory is just a table that maps a name to a 
+read-cap or write-cap of some child file or subdirectory. Each client 
+stores a specific "root directory" to use as a starting point. To visit 
+e.g. /projects/tahoe/README.txt, the client will look up "projects" in 
+the root directory, then look up "tahoe" in the results of that first 
+query, then look up "README.txt" in the results of the second query, and 
+finally present the contents of the file to the user. The table's child 
+entries can point to any file or directory object, even itself, therefore 
+allowing cycles. As a result, the virtual drive is shaped like an arbitrary 
+directed graph rather than being a strict tree. essentially, then, it keeps  
 track of directory nodes to maintain a graph of files and directories. 
 
-\item Application Layer:  Application specific features that use the 
-underlying layers for example Allmydata.com used it for a backup service: 
-the application periodically copies files from the local disk onto the 
-decentralized file system. When a file is deployed to Tahoe, it is 
-encrypted and split into pieces that are spread out across ten separate 
-nodes. Using a variation of Reed-Solomon error correction, it can 
-reconstruct a file using only three of the original ten nodes. This helps 
-to ensure data integrity when some nodes are unavailable. This is a bit 
-similar to how RAID storage works. Tahoe uses a library called zfec that
-provides an efficient implementation of the error correction code and 
-exposes it through a Python API.
+\item The top-most layer is an application or presentation service; 
+something that uses the virtual drive for some purpose. Tahoe currently 
+has two such interfaces. The most mature one is a RESTful HTTP interfaces, 
+in which PUT, GET, and POST are used to add and retrieve files and 
+directories. This interface provides HTML for the benefit of a human sitting 
+at a web browser, and JSON for the benefit of programs using httplib. The 
+other interface under development is a FUSE plugin, allowing all programs 
+on a host computer to use the Tahoe virtual filesystem as if it were a local 
+one. 
 
 \end{enumerate}
 
