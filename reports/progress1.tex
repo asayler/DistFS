@@ -740,15 +740,16 @@ nodes,  put Ceph-MDS and Ceph-MON together, and Ceph-OSD on the disk nodes.
 (3) For even more nodes, separate Ceph-MDS, Ceph-MON, and Ceph-OSD all 
 onto dedicated machines.
 
-A major drawback is the immaturity of Ceph as a platform: as far as we know, 
-it has not been widely used in a production environment, and the Ceph 
-documentation also explicitly warns of the beta state of the code. Another 
-issue is the uncertainty about the operation of Ceph in a WAN environment. 
-The placement of the file data at OSDs does not take into account that 
-links between storage nodes have variable quality (bandwidth, latency). 
-Additionally, the operation of the mechanisms for automatic adaptation 
-(adjustment of placement group to OSD mapping, and failure detection) 
-may be non-optimal or worse for a WAN Ceph configuration.
+A major drawback is the immaturity of Ceph as a platform: by all acccounts 
+in the published literature, it has not been widely used in a production 
+environment, and the Ceph documentation also explicitly warns of the beta 
+state of the code. Another issue is the uncertainty about the operation 
+of Ceph in a WAN environment. The placement of the file data at OSDs does 
+not take into account that links between storage nodes have variable 
+quality (bandwidth, latency). Additionally, the operation of the mechanisms 
+for automatic adaptation (adjustment of placement group to OSD mapping, 
+and failure detection) may be non-optimal or worse for a WAN Ceph 
+configuration.
 
 \subsection{Lustre}
 Lustre is a massively parallel distributed file system running on Linux 
