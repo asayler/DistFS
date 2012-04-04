@@ -899,6 +899,60 @@ to explore in our evaluation testing.
 
 
 \section{Implementation}
+Distributed storage systems may operate over a dedicated set of machines 
+or may be used to acquire storage on user workstations. Potential 
+implementation challenges typically result from changing conditions to 
+which such systems are exposed. This can include changes in the 
+available network performance, changes in the frequency at which users 
+connect/disconnect their machines from the distributed storage system, 
+and the frequency with which users access data. The perceived 
+characteristics of distributed storage systems depend on their 
+configuration parameters and on combinations of various dynamic 
+conditions.
+
+For a set of conditions, a particular configuration may be superior with 
+respect to measures such as performance and resource use. Performance in 
+this context is the average time required to retrieve or store data in the 
+distributed storage system. In many studies comparing distributed storage 
+systems, the focus is often on network resources which are consumed by the 
+distributed storage system. The ratiomnale is that network resources are 
+generally exhausted faster than storage or computational resources in many 
+usage scenarios. For example, it is assumed that network bandwidth is a 
+scarce resource in a wide-area distributed storage system. The overall 
+performance and resource consumption of a distributed storage system though, 
+generally depends on the performance of its individual components and, more 
+specifically, on individual parts of these components.
+
+One part of a distributed storage system whose performance and resource 
+consumption depends on a specific configuration parameter is the data 
+retrieval mechanism. This configuration parameter is the degree of 
+concurrency with which data is retrieved. The DOC controls the 
+aggressiveness with which multiple redundant replicas are retrieved. Two 
+unfavorable situations can be identified. One occurs when the degree of 
+concurrency is low and there is a large variation in the time taken to 
+retrieve replicas. In this case one should increase the degree of 
+concurrency, since, by doing so, more replicas can be tretrieved in 
+parallel and a result can be returned to the user more quickly. Similarly, 
+when the degree of concurrency is high, there is little variation in 
+retrieval time and there is a network bottleneck close to the requesting 
+client. In this case it is advantageous to decrease the degree of concurrency, 
+since the low variation negates the benefit from parallel retrieval, and the 
+bottleneck means that decreasing parallelism reduces both bandwidth 
+consumption and the elapsed time of the user.
+
+The above demonstrates a case where a specific configuration is beneficial 
+with respect to performance and resource consumption for a given set of 
+circumstances but ceases to be so as conditions vary. In such situations 
+a dynamic adjustment to the configuration may be more useful than a static 
+configuration driven by human intervention. Due to its complexity and 
+dynamic nature, this configuration adjustment of a distributed storage 
+system ideally occurs automatically. In the cases of systems we are 
+reviewing, this dynamic configuration adjustment capability exists in 
+each respective system to varying degrees. In the subsections below we 
+describe the initial test system setup as well as the initial 
+configuration setup for each of the systems being reviewed. Subsequent 
+parameter adjustments, made either dynamically or statically, are not 
+discussed.  
 
 \subsection{Environment Setup}
 
