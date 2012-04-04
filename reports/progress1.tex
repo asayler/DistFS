@@ -779,7 +779,12 @@ servers (OSSes) that store file data on one or more object storage
 targets or OST. An OST is a dedicated object-base filesystem exported 
 for read/write operations. The capacity of a Lustre filesystem is 
 determined by the sum of the total capacities of the OSTs. Finally, 
-there's the client(s) that accesses and uses the file data. 
+there's the client(s) that accesses and uses the file data. A diagram 
+which depicts the Lustre high level architecture is presented below.
+
+% diagram on Lustre architecture here
+
+
 
 Lustre presents all clients with a unified namespace for all of the 
 files and data in the filesystem that allow concurrent and coherent 
