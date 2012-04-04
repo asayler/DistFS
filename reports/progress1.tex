@@ -636,6 +636,16 @@ one.
 
 \end{enumerate}
 
+\subsubsection{Tahoe Design Considerations}
+Tahoe's primary goal is to provide safe, reliable storage of data. This comes 
+at a cost: redundant shares and periodic repair. There is a tradeoff between 
+cost and reliability as more redundancy requires more hard drives and more 
+servers, but reduces the likelihood of data loss. The task of the designer 
+is to make an educated decision between the costs and the benefits and 
+choose accordingly. In addition, there are some other shortcomings of the 
+system that need to be considered as part of the design process. They are 
+discussed below.
+
 Although Tahoe is a distributed file system, it is not entirely 
 decentralized in the strictest sense of the word. It needs a central node, 
 called an Introducer, which is responsible for getting new nodes connected 
@@ -646,6 +656,11 @@ communicate with each other and propagate data but the grid won't be able
 to connect new nodes. The developers hope to address this limitation in a 
 future version.
 
+Also, Tahoe provides very little control over on which nodes data is stored, 
+which makes it unsuitable for tiered functionality applications. 
+Furthermore, Tahoe assumes a flat local network environment and 
+therefore is not suitable to run in a WAN. 
+
 Tahoe is currently being used in a number of different ways. A common 
 configuration that is documented at the project's wiki is described as a 
 "friendnet", a group of roughly ten nodes that are connected over the 
@@ -653,21 +668,14 @@ Internet and provide shared secure storage capacity with optional
 filesharing. Another potential usage scenario is installing Tahoe on 
 individual workstations on an office network and using their excess disk 
 capacity as a storage pool. The Tahoe wiki describes that kind of setup 
-as a "hivecache".
-
-The Tahoe source code is primarily written in Python with the Twisted 
-framework. The code base is highly portable and can run on Windows, 
-Mac OS X, Linux, Solaris, and several flavors of BSD and is now part 
-of the Ubuntu Linux distribution. It runs entirely in user space and 
-doesn't require any kernel modules or other low-level components. It 
-works well on regular commodity hardware and doesn't have any particularly 
-special requirements. Installation instructions are available at the 
-project's web site.
-
-Tahoe provides very little control over on which nodes data is stored, 
-which makes it unsuitable for tiered functionality applications. 
-Furthermore, Tahoe assumes a flat local network environment and 
-therefore is not suitable to run in a WAN. 
+as a "hivecache". The Tahoe source code is primarily written in Python 
+with the Twisted framework. The code base is highly portable and can 
+run on Windows, Mac OS X, Linux, Solaris, and several flavors of BSD and 
+is now part of the Ubuntu Linux distribution. It runs entirely in user 
+space and doesn't require any kernel modules or other low-level components. 
+It works well on regular commodity hardware and doesn't have any 
+particularly special requirements. Installation instructions are available 
+at the project's web site.
 
 
 \subsection{Ceph}
