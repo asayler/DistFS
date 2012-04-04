@@ -1175,13 +1175,38 @@ commercial support for Lustre is provided by a large number of vendors
 who sell bundled computing and Lustre storage systems. Many of these 
 vendors also contribute to the open source community's Lustre Project. 
 
-
-
-
-
-
-
 \section{Evaluation}
+Storage technology is developing rapidly, but the corresponding 
+measurement technology is seriously lagging behind. Interestingly enough, 
+this impedes the development of storage industry. The absence of uniform 
+evaluation tools and evaluation methods, coupled with storage vendors who 
+do not make available all relevant metrics for an application and its
+environment creates a situation where a user can not accurately select 
+storage products to address a particular needs. Hence, firms and users 
+often spend significant amounts of money but often get a product which 
+exhibits low system performance, directly impacting firm profitability. 
+Since slow storage performance implies slow response times and longer 
+running queries, slow storage negatively impacts customers while 
+squandering the investments made in server infrastructure. Conversely, 
+inappropriate use of fast storage translates into wasted dollars spent 
+on performance.
+
+The point is that performance testing for a distributed storage system 
+is an important and valuable undertaking. Also, though, storage system 
+performance testing is a very complex task, because it is affected by 
+a myriad of factors: such as block size, file size, queue depth, number 
+of threads, read / write ratio, random / sequential ratio, in addition, 
+the disk’s speed, cache size, caching mechanism, cache algorithm, bus 
+bandwidth, the number of disks, RAID level, and storage protocol, all 
+of which will affect the performance of storage system. Therefore 
+relying on one benchmark to measure the performance of distributed 
+storage system has limitations. Rather, to fully test the performance 
+of a distributed storage system, we fiollow the lead of others and 
+choose a variety of benchmarks. The hope is that this approach will 
+make the test results more realistic, reliable and credible.
+
+
+
 From our review of the research literature we noted the following 
 design characteristics with respect to storage that will be factored 
 into our storage system implementation:
@@ -1254,6 +1279,10 @@ testing platform. Ideally, we need a small collection of identical
 machines in order to facilitate neutral comparisons. We may also be 
 able to utilize virtualized hardware. We are still exploring the options 
 available to us.
+
+\section{Conclusions}
+%section to be completed after testing is done
+
 
 \nocite{*}
 \bibliography{refs}
