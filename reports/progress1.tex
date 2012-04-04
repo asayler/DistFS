@@ -799,6 +799,7 @@ from misbehaving/defective clients. Although all three components
 (MDT, OST and client) can run on the same node, they typically are 
 configured on separate nodes communicating over a network.
 
+\subsubsection{Lustre Design Considerations}
 Servers can currently be added dynamically and the file system is 
 POSIX compliant. Other features that Lustre provides are ADIO 
 interfaces, it can disable locking, and perform direct I/O that is 
@@ -806,6 +807,24 @@ usable for databases. Lustre also has other tuneable settings. It can
 currently be installed on Linux where it can interoperate amongst all 
 supported processor architectures. It is still being developed for 
 other operating systems.
+
+A file system can have one MDS and one or more OSSs, and each OSS can 
+be connected to one or more OSTs. The networking layer of Luster can 
+support various network connections, including Elan, Myrinet, InfiniBand, 
+and TCP/IP.
+
+File data is striped across objects on different OSTs, and users can 
+configure parameters such as stripe size and stripe count to achieve 
+best performance. The capacity of a Lustre file system equals the sum 
+of the capacities of OSTs, and the aggregate available bandwidth equals 
+the sum of the bandwidth offered by OSSs to clients. Users can extend 
+storage capacity by dynamically adding more OSSs and OSTs. Data striping 
+balances work load among OSSs, leading to high I/O throughput and 
+excellent scalability as the number of client increases. MDSs and OSSs 
+can both be configured into failover pairs with shared storage, so that 
+when one node in a pair fails, the other one will take over its work load 
+until it recovers. OSTs can be configured as RAID to handle disk failures 
+better.
 
 The main advantage of Lustre is that it has very high parallel 
 performance, it also has good file I/O and can handle requests for 
