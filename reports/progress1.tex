@@ -744,7 +744,7 @@ storage nodes is dynamic over time. To clients, the data within a Ceph
 configuration (potentially consisting of thousands of OSDs) is presented 
 as a single logical object store called RADOS. Replication of data is 
 organized by writing to the first OSD in the placement group, after which 
-this OSD replicates the data to others. The client receives an ack when 
+this OSD replicates the data to others. The client receives a notice when 
 all data has reached the buffer caches on all OSDs, and receives a commit 
 when the data has been safely stored on all involved OSDs. RADOS has 
 mechanisms for failure detection and automatic re-replication. Furthermore, 
@@ -754,21 +754,22 @@ large configuration changes.
 \subsubsection{Ceph Design Considerations}
 A Ceph cluster consists of a few different pieces: the monitors (mons), 
 storage nodes (osds), and metadata servers (mds). One each is the minimum 
-requirement , but with one the system will have no  redundancy.
-The storage nodes will store the actual data on the disk. The minimum 
-requirement here is two if the system is to have any redundancy across 
-nodes. Each storage node is essentially an instance of the Ceph-OSD, 
-providing access to a local disk or set of disks. The simplest option is 
-to use one Ceph-OSD daemon per hardware node and then pool the disks. 
-Ceph generally is found to work best when using BTRFS, but other file 
-systems like ext3 and ext4 represent other viable choices. Btrfs provides 
-checksumming and the ability to pool disks together without RAID, can 
-internally handle data redundancy and facilitates Ceph journaling. 
+requirement, but with one the system will have no redundancy. The storage 
+nodes will store the actual data on the disk. The minimum requirement 
+here is two if the system is to have any redundancy across nodes. Each 
+storage node is essentially an instance of the Ceph-OSD, providing access 
+to a local disk or set of disks. The simplest option is to use one Ceph-
+OSD daemon per hardware node and then pool the disks. Ceph generally is 
+found to work best when using BTRFS, but other file systems like ext3 and 
+ext4 represent other viable choices. Btrfs provides checksumming and the 
+ability to pool disks together without RAID, can internally handle data 
+redundancy and facilitates Ceph journalling. 
+
 The Ceph Metadata Server functions as a distributed, cache of file system 
 metadata. It does not store data locally, rather all metadata is stored on 
 disk via the storage nodes. MDS daemons can be added into the cluster as 
 needed. Typically guidelines suggest starting with 1 or 2, then add more 
-as necessary.  The 'max mds' parameter controls how many cmds instances 
+as necessary. The 'max mds' parameter controls how many cmds instances 
 are active. Additional running instances are put in standby mode. The 
 Ceph Monitor daemons administer central cluster management, configuration, 
 and state. Data is stored in a directory on the local host file system. 
