@@ -1060,7 +1060,7 @@ sections and 'mon addr' option, so that the daemon knows how to join the
 cluster. Other monitor options can be omitted, except, of course, on the 
 hosts running the monitors themselves.
 
-Some other general configuration tips include: (1) ensure that the log 
+Some other general configuration tips include: (1) ensuring that the log 
 partition is on a fast disk as Ceph produces a large quantity of logs, 
 and, (2) enable noatime everywhere, particularly on the OSD store.
 In creating a new file system, the --mkbtrfs option will create a new 
@@ -1075,17 +1075,17 @@ When using ext4, you should disable the ext4 journal, because Ceph writes
 its own journals. This step can enhance performance.  Creating a new file 
 system on an ext4 partition that already contains data, will invoke rm -rf 
 to delete the data. If there is a lot of it, it might seem as if mkcephfs 
-is hanging when it actually is not. 
-The -k admin.keyring option lets you specify where mkcephfs puts your master 
-admin key file. This is needed to administer the cluster when authentication 
-is enabled. Various keys are generated even if authentication is disabled, 
-so that it can be enabled later. 
+is hanging when it actually is not. The -k admin.keyring option lets you 
+specify where mkcephfs puts your master admin key file. This is needed to 
+administer the cluster when authentication is enabled. Various keys are 
+generated even if authentication is disabled, so that it can be enabled 
+later. 
 
-Ssh keys need to be setup so that the machine running mkcephfs  (the master) 
-can ssh in to other nodes  as root. The usual way to do this, assuming  no 
+Ssh keys need to be setup so that the machine running mkcephfs (the master) 
+can ssh in to other nodes as root. The usual way to do this, assuming no 
 authorized_keys are set up, is to generated the public/private key pair and 
 then ssh it to other slaves as the root. Once the file system is created and 
-the Ceph daemon is running, it must be mounted. This done using  the kernel 
+the Ceph daemon is running, it must be mounted. This done using the kernel 
 driver or with fuse. The monitor is always mounted. From there, getting a 
 simple test cluster to start up out of your source directory is relatively 
 straightforward.
@@ -1095,19 +1095,19 @@ run out of space. To prevent even-more disastrous scenarios from occurring,
 once an OSD reaches pre-defined thresholds of disk usage the monitor will 
 set a full flag on the OSDMap. Once that flag is set’ the OSDs will reject  
 all client writes and all clients will pause writes. There are a few things 
-that can be done to improve things in this situation:  (1) Rebalance the data 
+that can be done to improve things in this situation: (1) Rebalance the data 
 by reweighting the OSDs, and (2) Increase the thresholds for the full flag.
 Since the Ceph MDSes are essentially a single point of failure, there is a 
 need to ensure that they recover quickly. To do this, Ceph supports the 
 standby-replay mode. Herein, an MDS in standby-replay will continuously 
 replay the journal of an active MDS. This does the following two things: 
 (1) ensures that the journal is tested. If there are problems with it, the 
-MDS will error out and a bug can be filed! (2) if the active MDS fails, the 
+MDS will error out and a bug can be filed. (2) If the active MDS fails, the 
 standby-replay takes over. Since it has already cached the appropriate 
 metadata, it doesn't need to replay the entire journal.
 
 Ceph is a complex project, with many independent components. Different parts 
-of the system are tested differently.  At the lowest level, functional and 
+of the system are tested differently. At the lowest level, functional and 
 minimal units of code are tested with unit tests. Unit tests are isolated 
 from the real world in the sense that they do not use networking, special 
 kernel features or such. This helps keep them fast, safe and easy to run.  
@@ -1116,7 +1116,7 @@ difficult to write and integration tests represent test overkill. This is
 where cli tests come handy. The idea is to write the command to run, the 
 expected output, and the expected exit code in a file. Organize tests based 
 on the command line tool they are (primarily) testing. The cli tests can be 
-run "./src/test/run-cli-tests", or just "make check".  Also check out the 
+run "./src/test/run-cli-tests", or just "make check". Also check out the 
 interactive mode of cram, that can helps you update tests when there are 
 trivial changes -- do take care to read carefully still, and not just 
 blindly accept the new output.  Additionally the tester should note that 
