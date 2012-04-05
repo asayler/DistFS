@@ -564,28 +564,28 @@ The elements of the access model are files and directories and the
 operations supported by the access model are sharing and revocation and 
 are described as follows: 
 
-File could be either Immutable which is created once in the grid and read 
-for multiple times or Mutable "slot" "container" which has a read and 
-write access. Immutable file has two capabilities, the read-cap for 
-reading the file and the verify-cap for checking the file and allows 
-untrusted nodes to preform checking/repairing on the file without having 
-the ability to read the content of the file. 
+A file can be either Immutable, which is created once in the grid and read 
+for multiple times, or Mutable, which has a read and write access. An 
+immutable file has two capabilities, the read-cap for reading the file and 
+the verify-cap for checking the file. This allows untrusted nodes to perform 
+checking/repairing on the file without having the ability to read the 
+content of the file. 
 
-Mutable file has three capabilities, the read-only cap for retrieving 
+A mutable file has three capabilities, the read-only cap for retrieving 
 last version of the file, the read-write cap for reading the file like 
 read-only cap and also to write a new version of the file , and the 
-verify cap. read-only cap could be derived from read-write cap and a 
-verify cap could be derived from a read-only cap. Directory is a mutable 
-file containing a list of entries, each entry defines a child by its name, 
+verify cap. A read-only cap can be derived from read-write cap and a 
+verify cap can be derived from a read-only cap. Directory is a mutable 
+file containing a list of entries; each entry defines a child by its name, 
 metadata, read-cap and read-write-cap. Directories have the property of 
-transitive read-only which enable users who have read-write access to a 
+transitive read-only, which enable users who have read-write access to a 
 directory to have a read-write access to its children, but users who have 
 read-only access to a directory will have a read-only access to its 
 children. Sharing is done simply by revealing the capability of the shared 
-file/directory, transitive read-only property will limit the access to 
+file/directory. The transitive read-only property will limit the access to 
 sub-directories according to the type of the revealed capability. 
 Revocation is done by deep-copying  of the shared folder to another 
-location and reveal the cap of the new location to the authorized users 
+location and revealing the cap of the new location to the authorized users 
 only. The unauthorized users still will continue to have access to the 
 old directory but cannot see the new changes.
 
