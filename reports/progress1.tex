@@ -936,19 +936,19 @@ specifically, on individual parts of these components.
 One part of a distributed storage system whose performance and resource 
 consumption depends on a specific configuration parameter is the data 
 retrieval mechanism. This configuration parameter is the degree of 
-concurrency with which data is retrieved. The DOC controls the 
-aggressiveness with which multiple redundant replicas are retrieved. Two 
-unfavorable situations can be identified. One occurs when the degree of 
-concurrency is low and there is a large variation in the time taken to 
-retrieve replicas. In this case one should increase the degree of 
-concurrency, since, by doing so, more replicas can be tretrieved in 
-parallel and a result can be returned to the user more quickly. Similarly, 
-when the degree of concurrency is high, there is little variation in 
-retrieval time and there is a network bottleneck close to the requesting 
-client. In this case it is advantageous to decrease the degree of concurrency, 
-since the low variation negates the benefit from parallel retrieval, and the 
-bottleneck means that decreasing parallelism reduces both bandwidth 
-consumption and the elapsed time of the user.
+concurrency with which data is retrieved. The degree of concurrency 
+controls the aggressiveness with which multiple redundant replicas 
+are retrieved. Two unfavorable situations can be identified. One occurs 
+when the degree of concurrency is low and there is a large variation in 
+the time taken to retrieve replicas. In this case one should increase the 
+degree of concurrency, since, by doing so, more replicas can be retrieved 
+in parallel and a result can be returned to the user more quickly. 
+Similarly, when the degree of concurrency is high, there is little 
+variation in retrieval time and there is a network bottleneck close to 
+the requesting client. In this case it is advantageous to decrease the 
+degree of concurrency, since the low variation negates the benefit from 
+parallel retrieval, and the bottleneck means that decreasing parallelism 
+reduces both bandwidth consumption and the elapsed time of the user.
 
 The above demonstrates a case where a specific configuration is beneficial 
 with respect to performance and resource consumption for a given set of 
