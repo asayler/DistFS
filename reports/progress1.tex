@@ -441,17 +441,20 @@ of applications. Typically, though not always, storage products are geared
 toward satisfying some general functionality in order to appeal to a larger 
 customer base. 
 
-Examining systems that offer general purpose functionality is useful. We 
-identified the following high level requirements as relevant for the 
-distributed storage system. They are typically qualitative requirements, 
-as these are sufficient to survey existing products and sufficient to make 
-initial product evaluations. We are aware that a WAN distributed storage 
-system may not be able to offer features in any combination, or that the 
-CAP theorem applies which states that only two out of the three properties 
-data consistency, system availability and partition tolerance can be 
-supported by a distributed system. Ideally, though, products should be able 
-to explicitly balance these requirements, such that in a future system a 
-property trade-off is easy to configure and evaluate.
+Examining systems that offer general purpose functionality is useful, 
+particularly if one wants to understand storage architecture at a high level 
+and the impact of various design choices on the architecture. We 
+identified the following high level requirements as pertinent for our review  
+of select distributed storage systems. They are typically qualitative 
+requirements, as these are sufficient to survey existing products and 
+sufficient to make initial product evaluations. We are aware that a WAN 
+distributed storage system may not be able to offer features in any 
+combination, or that the CAP theorem applies which states that only two 
+out of the three properties of data consistency, system availability and 
+partition tolerance can be supported by a distributed system. Ideally, 
+though, products should be able to explicitly balance these requirements, 
+such that in a future system a property trade-off is easy to configure 
+and evaluate.
 
 \begin{itemize}
 \item Scalable The system must be scalable in terms of capacity, performance 
@@ -516,18 +519,19 @@ collaboration between these parties over long distances on the same data.
 
 \end{itemize}
 
-In this project we wanted to understand competing products and to 
-implement two to three distributed storage systems with qualities as 
-described above in a networked environment and then execute a number of 
-tests to understand the performance characteristics of the individual 
+In this project we are interested in understanding the design differences 
+inherent in competing storage products and implementing two to three such 
+distributed storage systems with qualities as described above in a 
+networked environment. We then intend to execute a number of tests to 
+understand the performance characteristics of the individual 
 systems and their inherent trade-offs. For our systems we chose Tahoe, 
 Ceph and Lustre respectively, as they represent some of the relatively 
 new storage alternatives available and, yet, have divergent enough 
 features to provide an interesting dichotomy for our testing and 
 benchmarking purposes. In this section we provide a brief discussion 
 of each of the respective systems, their distinct architectural traits 
-and salient features and some comparative and contrasting of each of 
-the systems.  
+and salient features, and some comparative and contrasting of each of 
+the respective systems.  
 
 \subsection{Tahoe}
 Tahoe is an open source distributed file system that supports storing 
