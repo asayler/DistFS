@@ -435,7 +435,11 @@ the periphery  of the network.  Also, when data is stored in a distributed
 system, it is advantageous to position data where it is most often used, 
 and migrate less important or less frequently accessed data to areas with 
 cheap capacity. Such a system is likely to have different storage level 
-(or tiers) that form a storage hierarchy. 
+(or tiers) that form a storage hierarchy. These aaspects of storage systems 
+all represent design choices geared toward a particular application or set
+of applications. Typically, though not always, storage products are geared 
+toward satisfying some general functionality in order to appeal to a larger 
+customer base. 
 
 Examining systems that offer general purpose functionality is useful. We 
 identified the following high level requirements as relevant for the 
@@ -462,6 +466,7 @@ that keeps data available to applications and clients, even in the event of
 software or hardware errors. This implies that the system is capable of 
 replicating data at multiple locations. It also implies that capacity and 
 storage locations may be added or removed while the system is operating.
+
 \item Durability The system should support the storage of data in a durable 
 manner, so that if hardware or software failures occur, no data is lost. 
 Durability functionality includes maintenance to make sure that a minimum 
