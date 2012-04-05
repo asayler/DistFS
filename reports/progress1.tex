@@ -618,13 +618,7 @@ keys, integrity hashes, and location information. In this form, they look
 a lot like web URIs: a string that provides a reference to some piece of 
 data. The data for each DHT slot is distributed among some number of 
 storage servers, using encryption and erasure coding to provide 
-confidentiality and reliability. Key-Value store : in which each key 
-"capability" identifies a file/directory "value" on the grid. They provide 
-PUT and GET operations. 
-
-\subitem key = PUT(data) 
-
-\subitem data = GET(key)
+confidentiality and reliability. 
 
 \item The middle layer is the Virtual Drive, which organizes these slots 
 into directories. Each directory is just a table that maps a name to a 
@@ -636,7 +630,7 @@ query, then look up "README.txt" in the results of the second query, and
 finally present the contents of the file to the user. The table's child 
 entries can point to any file or directory object, even itself, therefore 
 allowing cycles. As a result, the virtual drive is shaped like an arbitrary 
-directed graph rather than being a strict tree. essentially, then, it keeps  
+directed graph rather than being a strict tree. Essentially, then, it keeps  
 track of directory nodes to maintain a graph of files and directories. 
 
 \item The top-most layer is an application or presentation service; 
@@ -658,8 +652,8 @@ cost and reliability as more redundancy requires more hard drives and more
 servers, but reduces the likelihood of data loss. The task of the designer 
 is to make an educated decision between the costs and the benefits and 
 choose accordingly. In addition, there are some other shortcomings of the 
-system that need to be considered as part of the design process. They are 
-discussed below.
+system that need to be considered as part of the design/choice process. They 
+are discussed in some detail below.
 
 Although Tahoe is a distributed file system, it is not entirely 
 decentralized in the strictest sense of the word. It needs a central node, 
@@ -667,14 +661,14 @@ called an Introducer, which is responsible for getting new nodes connected
 to existing nodes on the grid. Tahoe is designed to minimize its dependency 
 on the Introducer, but it's still a central point of failure. If the 
 Introducer fails for any reason, existing nodes will still be able to 
-communicate with each other and propagate data but the grid won't be able 
+communicate with each other and propagate data, but the grid won't be able 
 to connect new nodes. The developers hope to address this limitation in a 
 future version.
 
-Also, Tahoe provides very little control over on which nodes data is stored, 
-which makes it unsuitable for tiered functionality applications. 
-Furthermore, Tahoe assumes a flat local network environment and 
-therefore is not suitable to run in a WAN. 
+Also, Tahoe provides very little control over on which nodes data is 
+stored, which makes it unsuitable for tiered functionality applications. 
+Furthermore, Tahoe assumes a flat local network environment and, 
+therefore, is not suitable to run in a WAN. 
 
 Tahoe is currently being used in a number of different ways. A common 
 configuration that is documented at the project's wiki is described as a 
