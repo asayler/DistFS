@@ -384,7 +384,11 @@ access control model.
 The Google File System is designed for massive amounts of data and is 
 optimized for scalability. It's relevance to this project is in some 
 of the techniques it uses to approach issues arisen from the use of 
-commodity hardware and software.
+commodity hardware and software. The GFS is designed to support fault
+tolerance in commodity hardware. Also employed are various atomicity
+techniques which ensure the integrity of data written to the system.
+While GFS has the primary focus of scalability, it is these other 
+contributions which will make an impact on the project we work on.
 
 \subsection{Dynamo Data Store}
 Amazon's Dynamo is a highly scalable distributed data store custom
