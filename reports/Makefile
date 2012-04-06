@@ -22,14 +22,14 @@ vpath %.c   $(INCLUDE_DIR)
 
 .PHONY: all clean cleanall
 
-all: proposal.pdf progress1.pdf clean
+all: proposal.pdf report.pdf clean
 
 clean:
 	$(RM) *.aux *.bbl *.blg *.dvi *.log *.out *.nav *.snm *.toc *.vrb *~
 	$(RM) $(INCLUDE_DIR)/*.png
 
 cleanall: clean
-	$(RM) proposal.pdf progress1.pdf
+	$(RM) proposal.pdf report.pdf
 
 .PHONY: proposal
 
@@ -46,17 +46,17 @@ proposal.bbl: proposal.aux refs.bib
 proposal.aux: proposal.tex $(PAPER_INCLUDES)
 	$(LATEX) $(LATEXFIRST) proposal.tex
 
-.PHONY: progress1
+.PHONY: report
 
-progress1: progress1.pdf clean
+report: report.pdf clean
 
-progress1.pdf: progress1.aux progress1.bbl
-	$(LATEX) $(LATEXFIRST) progress1.tex
-	$(LATEX) $(LATEXLAST) progress1.tex
+report.pdf: report.aux report.bbl
+	$(LATEX) $(LATEXFIRST) report.tex
+	$(LATEX) $(LATEXLAST) report.tex
 	@touch $^ $@
 
-progress1.bbl: progress1.aux refs.bib
-	$(BIBTEX) progress1.aux
+report.bbl: report.aux refs.bib
+	$(BIBTEX) report.aux
 
-progress1.aux: progress1.tex $(PAPER_INCLUDES)
-	$(LATEX) $(LATEXFIRST) progress1.tex
+report.aux: report.tex $(PAPER_INCLUDES)
+	$(LATEX) $(LATEXFIRST) report.tex
