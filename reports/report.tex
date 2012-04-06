@@ -996,10 +996,10 @@ partitioned in the following manner using an MBR partition table:
 \begin{packed_item}
 \item {\bf sdX1} - 1 GB - primary - Swap partition
 \item {\bf sdX2} - 60 GB - primary - ext4 OS partition
-\item {\bf sdX3} - Extended partition table
-\item {\bf sdX4} - 30 GB - logical - ext4 - Tahoe Data partition
-\item {\bf sdX5} - 30 GB - logical - TBD - Ceph Data partition
-\item {\bf sdX6} - 30 GB - logical - ext4 - Lustre Data partition
+\item {\bf sdX3} - 100 GB - Extended partition table for LBA partitions
+\item {\bf sdX5} - 30 GB - logical - ext4 - Tahoe Data partition
+\item {\bf sdX6} - 30 GB - logical - TBD - Ceph Data partition
+\item {\bf sdX7} - 30 GB - logical - ext4 - Lustre Data partition
 \end{packed_item}
 
 All machines are connected to
