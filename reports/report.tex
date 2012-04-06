@@ -13,6 +13,7 @@
 \usepackage{url}
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{tabularx}
 
 \bibliographystyle{plain}
 
@@ -968,10 +969,65 @@ discussed.
 \subsection{Environment Setup}
 %This section is for how the computers were initially configured/setup/etc
 
+\begin{table}
+  \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+      \hline
+      {\bf Name} & {\bf CPU} & {\bf Memory} & {\bf HD} & {\bf OS} \\ \hline
+      xpc1 & Intel P4 3.00 GHz & 512MB DDR400
+      & DiamondMax10 160GB SATA & Ubuntu 11.10 x64 \\ \hline
+      xpc2 & Intel Celeron D 2.93 GHz & 512MB DDR400
+      & DiamondMax10 160GB SATA & Ubuntu 11.10 x64 \\ \hline
+      xpc3 & AMD Semperon 3000+ & 512MB DDR400
+      & DiamondMax10 160GB SATA & Ubuntu 11.10 x64 \\ \hline
+    \end{tabularx}
+    \caption{Testbed Machines}
+    \label{tbl:testbed}
+  \end{center}
+\end{table}
 
+The test environment consist of three micro-ATX PCs. Their
+characteristics are available in Table \ref{tbl:testbed}. Each machine
+is running the latest desktop version of Ubuntu 11.04 as of the time
+of this writing (Early April, 2012).
+Each machine has an identical 160GB SATA 3.0 Gb/s hard disk
+partitioned in the following manner using an MBR partition table:
+
+\begin{packed_item}
+\item {\bf sdX1} - 1 GB - primary - Swap partition
+\item {\bf sdX2} - 60 GB - primary - ext4 OS partition
+\item {\bf sdX3} - Extended partition table
+\item {\bf sdX4} - 30 GB - logical - ext4 - Tahoe Data partition
+\item {\bf sdX5} - 30 GB - logical - TBD - Ceph Data partition
+\item {\bf sdX6} - 30 GB - logical - ext4 - Lustre Data partition
+\end{packed_item}
+
+All machines are connected to
+each other via a 10/100 IPv4 Ethernet network connected to a
+Cisco Linksys WRT110 Router. The network is local and shared only by
+the three test machines and the router. The router also acts as a
+gateway and firewall, regulating traffic to and from the Internet.
+The machines use static IP addresses:
+
+\begin{packed_item}
+\item {\bf xpc1} - 192.168.1.10
+\item {\bf xpc2} - 192.168.1.11
+\item {\bf xpc3} - 192.168.1.12
+\item {\bf Router} - 192.168.1.1
+\end{packed_item}
+
+When running tests, we attempted to insure that each machine was
+performing no extra work other than the work required to run the
+benchmark and the backing file system under test. We also attempted to
+separate the behavior and performance of the various file systems
+under test to avoid cross-effects between the systems. Thus, only one
+file system was tested at a time, and all other file system were
+isolated to their own partition and shutdown while these tests were
+occurring. 
 
 \subsection{Tahoe - Installation and Configuration}
 %This section discusses installing/configuring Tahoe
+
 Using our environment setup of three computers all running Ubuntu
 11.10 with a partition mounted for use by the Tahoe Filesystem at
 /Tahoe we could begin to setup the Tahoe Least Authority File System.
@@ -1343,7 +1399,7 @@ nodes to meet the scale of testing task.
 
 \section{Conclusions}
 %section to be completed after testing is done
-
+TODO: Complete section after testing.
 
 \nocite{*}
 \bibliography{refs}
