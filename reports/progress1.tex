@@ -1035,8 +1035,8 @@ is intended to provide scalability not currently available from block-
 based Linux cluster file systems. Ceph provides some new features for 
 Linux-based users. Directory snapshots provide users with the means to 
 create read-only snapshots of directories and their nested contents using 
-the command 'mkdir .snap/my_snapshot'.  Deletion is also a simple task 
-using the command 'rmdir .snap/old_snapshot'.  Ceph also provides 
+the command 'mkdir .snap/my\_snapshot'.  Deletion is also a simple task 
+using the command 'rmdir .snap/old\_snapshot'.  Ceph also provides 
 statistics on the number of nested files, directories, and file sizes 
 for each directory. This makes it fairly easy to manage usage in the 
 system.
@@ -1048,7 +1048,7 @@ shared unmodified on all hosts in the cluster. Hence, no per-node
 configuration file changes should be necessary. The default location 
 for the configuration file is /etc/ceph/ceph.conf. A single master 
 ceph.conf file that contains configuration information for the entire 
-cluster can be maintained, and then configured by  a 'fetch_config' 
+cluster can be maintained, and then configured by  a 'fetch\_config' 
 script on each node that will pull down the configuration when it is 
 needed. For command line user tools (e.g., 'ceph'), you can define an 
 /etc/ceph/ceph.conf that contains at a minimum the monitor ip addresses, 
@@ -1069,7 +1069,7 @@ the 'btrfs devs' and 'btrfs are specified. Since no safety checks are
 made, one needs to be careful with the 'btrfs devs' option. To use ext4 
 instead of btrfs, comment out "btrfs devs" in ceph.conf, point "osd data" 
 to an already mounted ext4 partition and use mkcephfs without --mkbtrfs. 
-The ext4 partition must be mounted with -o user_xattr or else mkcephfs 
+The ext4 partition must be mounted with -o user\_xattr or else mkcephfs 
 will fail. Also using noatime, nodiratime boosts performance at no cost. 
 When using ext4, you should disable the ext4 journal, because Ceph writes 
 its own journals. This step can enhance performance.  Creating a new file 
@@ -1083,7 +1083,7 @@ later.
 
 Ssh keys need to be setup so that the machine running mkcephfs (the master) 
 can ssh in to other nodes as root. The usual way to do this, assuming no 
-authorized_keys are set up, is to generated the public/private key pair and 
+authorized\_keys are set up, is to generated the public/private key pair and 
 then ssh it to other slaves as the root. Once the file system is created and 
 the Ceph daemon is running, it must be mounted. This done using the kernel 
 driver or with fuse. The monitor is always mounted. From there, getting a 
