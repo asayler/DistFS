@@ -367,6 +367,15 @@ Ceph lacks strong encryption an a built-in option. It is possible that
 encryption could be applied by the client prior to storing their files 
 to add a level of security over the default POSIX access control model.
 
+\subsection{Lustre}
+The Lustre File System is a distributed file system originally designed
+to provide storage for large-scale, multi-site clusters
+\cite{Braam:LustreWhite}. It thus
+places an emphasis on high performance, QOS guaranteed
+operation. Lustre is widely displayed at super-computing sites around
+the world. It serves as both a site-to-site interconnect as well as a
+local high-speed file system.
+
 \subsection{Google File System}
 The Google File System is designed for massive amounts of data and is 
 optimized for scalability. It's relevance to this project is in some 
@@ -812,8 +821,6 @@ which depicts the Lustre high level architecture is presented below.
 
 % diagram on Lustre architecture here
 
-
-
 Lustre presents all clients with a unified namespace for all of the 
 files and data in the filesystem that allow concurrent and coherent 
 read and write access to the files in the filesystem. When a client 
@@ -864,30 +871,36 @@ in clusters that stretch over large distances.
 The chart below provides a feature comparison of the three systems.
 
 \begin{center}
-    \begin{tabular}{ | l | p{3cm} | p{3cm} | p{3cm} |}
-    \hline
-    Attribute & Tahoe & Ceph & Lustre \\ \hline
-    License & GNU GPL & GNU LGPL & GNU GPL \\ \hline
-    Data Primitive & object (file) & object (file) &
-    object (file) \\ \hline\
-    Data Placement & random & placement groups, pseudo-random mapping &   
-    based on round robin and free space heuristics \\ \hline
-    Metadata Handling & flat & multiple metadata servers & 
-    max of two  metadata servers  \\ \hline
-    Storage Tiers & none & through CRUSH rules & pools of object storage
-    targets \\ \hline
-    Failure Handling & assuming unreliable nodes & assuming unreliable
-    nodes & assuming reliable nodes \\ \hline
-    Replication & server side & server side & server side \\ \hline
-    WAN Deployment & numerous & no known deployment & TeraGrid (scientific
-    data) \\ \hline
-    Client Interfacing &  The API exposes standard GET, PUT, POST, and
-    DELETE methods, supports JSON and HTML output & native client file
-    system, FUSE & native client file system, FUSE, clients may export
-    NFS, CIFS \\ \hline
-    Node Types & client/server, an introducer, a key generator & client,
-    metadata, object & client, metadata, object \\ \hline
+  \begin{table}
+    \begin{tabular}{
+        | p{0.2\textwidth} | p{0.2\textwidth} | p{0.2\textwidth} | p{0.2\textwidth} |
+      }
+      \hline
+      Attribute & Tahoe & Ceph & Lustre \\ \hline
+      License & GNU GPL & GNU LGPL & GNU GPL \\ \hline
+      Data Primitive & object (file) & object (file) &
+      object (file) \\ \hline\
+      Data Placement & random & placement groups, pseudo-random mapping &   
+      based on round robin and free space heuristics \\ \hline
+      Metadata Handling & flat & multiple metadata servers & 
+      max of two  metadata servers  \\ \hline
+      Storage Tiers & none & through CRUSH rules & pools of object storage
+      targets \\ \hline
+      Failure Handling & assuming unreliable nodes & assuming unreliable
+      nodes & assuming reliable nodes \\ \hline
+      Replication & server side & server side & server side \\ \hline
+      WAN Deployment & numerous & no known deployment & TeraGrid (scientific
+      data) \\ \hline
+      Client Interfacing &  The API exposes standard GET, PUT, POST, and
+      DELETE methods, supports JSON and HTML output & native client file
+      system, FUSE & native client file system, FUSE, clients may export
+      NFS, CIFS \\ \hline
+      Node Types & client/server, an introducer, a key generator & client,
+      metadata, object & client, metadata, object \\ \hline
     \end{tabular}
+    \caption{System Comparison}
+    \label{tbl:syscomp}
+  \end{table}
 \end{center}
 
 While the features contrasted above provide a view across markedly different 
@@ -1251,3 +1264,5 @@ nodes to meet the scale of testing task.
 \bibliography{refs}
 
 \end{document}
+
+%%  LocalWords:  erperfromcne
