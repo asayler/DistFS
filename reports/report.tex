@@ -1496,7 +1496,7 @@ That is, users need to be able to dynamically add or remove test
 nodes to meet the scale of testing task. 
 
 \subsection{Tahoe Tests}
-% Andy and Bryan
+% Andy
 
 To test the throughput and latency of the Tahoe system, we used a
 combination of the Unix \texttt{dd} utility. Timing instrumentation
@@ -1555,8 +1555,112 @@ throughput.
 \section{Results}
 % All
 
+Here we discuss the relevant results from each of our three tests
+systems. Full test results are available in Appendices
+\ref{sec:TahoeData} through \ref{sec:LustreData}.
+
 \subsection{Tahoe Results}
-% Andy and Bryan
+% Andy
+
+The full set of Tahoe read and write results are available in Appendix
+\ref{sec:TahoeData}. We present a illustrative subset of the results
+here.
+
+Table \ref{tbl:TahoeWriteRandom} shows write throughput speeds for files
+composed of random data. The average end-to-end write throughput using
+random data is 0.52 MiB/s.
+
+\begin{table}
+  \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+      \hline
+      {\bf Data} & {\bf Size} & {\bf Base} & {\bf Overhead} & {\bf End-to-End} \\ \hline
+      random & 1 MiB & 1.02 MiB/s & 1.00 MiB/s & 0.51 MiB/s \\ \hline
+      random & 10 MiB & 0.99 MiB/s & 1.11 MiB/s & 0.53 MiB/s \\ \hline
+      random & 100 MiB & 0.98 MiB/s & 1.39 MiB/s & 0.57 MiB/s \\ \hline
+      random & 1 GiB & 1.05 MiB/s & 1.48 MiB/s & 0.61 MiB/s \\ \hline
+      random & 2 GiB & 1.03 MiB/s & 1.49 MiB/s & 0.61 MiB/s \\ \hline
+      random & 3 GiB & 1.03 MiB/s & 0.41 MiB/s & 0.29 MiB/s \\ \hline
+    \end{tabularx}
+    \caption{'random' Write Throughput by File Size}
+    \label{tbl:TahoeWriteRandom}
+  \end{center}
+\end{table}
+
+Table \ref{tbl:TahoeWriteZeros} shows write throughput speeds for files
+composed of zeros data. The average end-to-end write throughput using
+zeros data is 0.69 MiB/s.
+
+\begin{table}
+  \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+      \hline
+      {\bf Data} & {\bf Size} & {\bf Base} & {\bf Overhead} & {\bf End-to-End} \\ \hline
+      zeros & 1 MiB & 1.11 MiB/s & 1.00 MiB/s & 0.50 MiB/s \\ \hline
+      zeros & 10 MiB & 1.20 MiB/s & 1.43 MiB/s & 0.63 MiB/s \\ \hline
+      zeros & 100 MiB & 1.15 MiB/s & 1.35 MiB/s & 0.62 MiB/s \\ \hline
+      zeros & 1 GiB & 1.17 MiB/s & 7.64 MiB/s & 1.01 MiB/s \\ \hline
+      zeros & 2 GiB & 1.15 MiB/s & 7.56 MiB/s & 0.99 MiB/s \\ \hline
+      zeros & 3 GiB & 1.15 MiB/s & 0.65 MiB/s & 0.41 MiB/s \\ \hline
+    \end{tabularx}
+    \caption{'zeros' Write Throughput by File Size}
+    \label{tbl:TahoeWriteZeros}
+  \end{center}
+\end{table}
+
+As we can see from the write data, it appears that Tahoe's compression
+capabilities are kicking on for the larger 'zeros' files. Random files
+are not generally compressible, so no such effect is seen there.
+Files exceeding 2 GiB
+also seem to suffer a significant performance hit. This may be due to
+limits imposed by the amount of RAM available on our test
+machines. The large files may be forcing the SSHFS system to use a lot of
+swap-space since each machine was only equipped with 1GB of RAM, leading
+to a performance crash above a certain file size.
+
+Table \ref{tbl:TahoeReadRandom} shows read throughput speeds for files
+composed of random data. The average read throughput using
+random data is 1.32 MiB/s.
+
+\begin{table}
+  \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|}
+      \hline
+      {\bf Data} & {\bf Size} & {\bf Base} \\ \hline
+      random & 1 MiB & 1.54 MiB/s \\ \hline
+      random & 10 MiB & 1.32 MiB/s \\ \hline
+      random & 100 MiB & 1.11 MiB/s \\ \hline
+    \end{tabularx}
+    \caption{Random Read Throughput by File Size}
+    \label{tbl:TahoeReadRandom}
+  \end{center}
+\end{table}
+
+Table \ref{tbl:TahoeReadZeros} shows read throughput speeds for files
+composed of zeros data. The average read throughput using
+zeros data is 1.42 MiB/s.
+
+\begin{table}
+  \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|}
+      \hline
+      {\bf Data} & {\bf Size} & {\bf Base} \\ \hline
+      zeros & 1 MiB & 1.61 MiB/s \\ \hline
+      zeros & 10 MiB & 1.53 MiB/s \\ \hline
+      zeros & 100 MiB & 1.13 MiB/s \\ \hline
+    \end{tabularx}
+    \caption{'zeros' Read Throughput by File Size}
+    \label{tbl:TahoeReadZeros}
+  \end{center}
+\end{table}
+
+Tahoe read throughput tends to be about twice that of write
+throughput. This is likely due to a combination of the fact that Tahoe
+must propagate write changes across the network, as well as the fact
+that the SSHFS interface must cache the file before uploading it. No
+read data was collected for files larger than 100 MiB. The system
+became unstable when we attempted to read files of this size. Again,
+this may be a limitation of the system RAM size and the SSHFS interface.
 
 \subsection{Ceph Results}
 % Mark
@@ -1568,10 +1672,14 @@ throughput.
 % All
 
 \subsection{Tahoe Conclusions}
+<<<<<<< HEAD
 % Andy and Bryan
 Tahoe claims to offer a way to securely store your files on untrusted storage nodes as its key selling point. To this end we examined how the files allocated when stored on Tahoe appeared to the user of one of the storage nodes in its encrypted form. This allowed us to conclude that Tahoe succeeds in its claim of being secure even on untrusted hardware as the stored files were effectively gibberish. And as they used a provably secure method to encrypt them without the malicious user compromising the trusted entry point to the Tahoe system the files encrypted would be safe even if they were on a malicious storage node. 
 
 From the evaluation data we saw significant delays in the writes as compared to the reads in terms of speed. We are unsure if this slowdown was due to an implementation issue in the SSHFS interface we used to provide us a FUSE mechanism to access Tahoe or if this is a normal behavior for Tahoe; however, the likelihood that one wouldn't opt for the SSHFS approach to using Tahoe is unlikely as it provides a more usable interface than the web interface. As such we concluded that Tahoe would likely be excellent for securely storing files that wouldn't likely be read regularly or changed. Tahoe would make a great system for archive storage of sensitive documents, such as Tax and other such documents that once the year ends would be filed away only to be available in case of an audit or other such need. 
+=======
+% Bryan
+>>>>>>> origin/master
 
 \subsection{Ceph Conclusions}
 % Mark
