@@ -331,7 +331,6 @@ away from centralized to more decentralized approaches, primarily as a
 result of the need for scalability as well as the challenges
 encountered in operating across a dynamic global network.
 
-
 \subsection{Tahoe File System}
 The Tahoe-LAFS (Tahoe Least-Authority Filesystem) is a secure,
 distributed filesystem designed by Zooko Wolcox-O'Hearn and Brain
@@ -381,7 +380,8 @@ local high-speed file system.
 
 \subsection{Google File System}
 The Google File System is designed for massive amounts of data and is 
-optimized for scalability. It's relevance to this project is in some 
+optimized for scalability \cite{Ghemawat:2003}.
+It's relevance to this project is in some 
 of the techniques it uses to approach issues arisen from the use of 
 commodity hardware and software. The GFS is designed to support fault
 tolerance in commodity hardware. Also employed are various atomicity
@@ -599,7 +599,16 @@ are compromised or fail. The system uses AES encryption to protect file
 contents from tampering and scrutiny. Tahoe can be used to establish a 
 relatively fault-tolerant storage pool that spans a number of conventional 
 computers over a local network or, conversely, over the Internet. This 
-approach to cloud storage is often described as "crowd" storage.
+approach to cloud storage is often described as "crowd"
+storage. Figure \ref{fig:TahoeTopology} shoes an overview of the Tahoe
+topology.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=.75\textwidth]{include/TahoeTopology.pdf}
+  \caption{The Tahoe Topology}
+  \label{fig:TahoeTopology}
+\end{figure}
 
 Tahoe could be thought of quite simply as collection of three layers: 
 
@@ -716,7 +725,15 @@ object storage interface. It also forms the basis for a distributed file
 system, managed by a distributed metadata server cluster, which similarly 
 provides advanced features like per-directory granularity snapshots, and a 
 recursive accounting feature that provides a convenient view of how much 
-data is stored beneath any directory in the system.
+data is stored beneath any directory in the system. Figure
+\ref{fig:CephTopology} shows the basic Ceph topology.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=.9\textwidth]{include/CephTopology.pdf}
+  \caption{The Ceph Topology}
+  \label{fig:CephTopology}
+\end{figure}
 
 The primary goals of the architecture are scalability to hundreds of 
 petabytes and beyond, performance, and reliability. Scalability is 
@@ -823,9 +840,15 @@ targets or OST. An OST is a dedicated object-base filesystem exported
 for read/write operations. The capacity of a Lustre filesystem is 
 determined by the sum of the total capacities of the OSTs. Finally, 
 there's the client(s) that accesses and uses the file data. A diagram 
-which depicts the Lustre high level architecture is presented below.
+which depicts the Lustre high level architecture is presented in
+figure \ref{fig:LustreTopology}.
 
-% diagram on Lustre architecture here
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.75\textwidth]{include/LustreTopology.pdf}
+  \caption{The Lustre Topology}
+  \label{fig:LustreTopology}
+\end{figure}
 
 Lustre presents all clients with a unified namespace for all of the 
 files and data in the filesystem that allow concurrent and coherent 
@@ -1007,6 +1030,14 @@ partitioned in the following manner using an MBR partition table:
 \item {\bf sdX7} - 30 GB - logical - ext4 - Unused
 \end{packed_item}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{include/TahoeTestbed.pdf}
+  \caption{Our Tahoe Testbed Setup}
+  \label{fig:TahoeTestbed}
+\end{figure}
+
+Figure \ref{fig:TahoeTestbed} shows our testbed setup.
 All machines are connected to
 each other via a 10/100 IPv4 Ethernet network connected to a
 Cisco Linksys WRT110 Router. The network is local and shared only by
@@ -1018,7 +1049,7 @@ The machines use static IP addresses:
 \item {\bf xpc1} - 192.168.1.10
 \item {\bf xpc2} - 192.168.1.11
 \item {\bf xpc3} - 192.168.1.12
-\item {\bf Router} - 192.168.1.1
+\item {\bf Switch} - 192.168.1.1
 \end{packed_item}
 
 When running tests, we attempted to insure that each machine was
