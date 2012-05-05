@@ -1,6 +1,8 @@
 #Temporary Editor Files#
 *~
 \#*\#
+\#*
+.\#*
 *.swp
 
 #Build Files#
