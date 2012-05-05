@@ -1,5 +1,8 @@
-PAPER_INCLUDES = TahoeTestbed.pdf
-INCLUDE_DIR    = include
+PAPER_INCLUDES := TahoeTestbed.pdf
+PAPER_INCLUDES += TahoeWriteData.pdf
+PAPER_INCLUDES += CephTopology.pdf  LustreTopology.pdf  TahoeTopology.pdf
+
+INCLUDE_DIR    := include
 
 BIBTEX     ?= bibtex -terse
 LATEX      ?= pdflatex -file-line-error
@@ -8,7 +11,7 @@ LATEXLAST  ?= -halt-on-error
 INKSCAPE   ?= inkscape
 CONVERT    ?= convert
 
-VPATH = $(INCLUDE_DIR)/svg
+VPATH = $(INCLUDE_DIR)/svg:$(INCLUDE_DIR)/pdf:$(INCLUDE_DIR)/png
 
 .PHONY: all clean cleanall
 
@@ -53,3 +56,9 @@ report.aux: report.tex $(PAPER_INCLUDES)
 
 %.pdf:%.svg
 	$(INKSCAPE) $< -D --export-pdf=$(INCLUDE_DIR)/$@
+
+%.pdf:%.pdf
+	$(CP) $< $(INCLUDE_DIR)/$@
+
+%.pdf:%.png
+	$(CONVERT) $< $(INCLUDE_DIR)/$@
