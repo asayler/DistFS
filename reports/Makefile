@@ -1,5 +1,5 @@
 PAPER_INCLUDES := TahoeTestbed.pdf
-PAPER_INCLUDES += TahoeWriteData.pdf
+PAPER_INCLUDES += TahoeWriteData.pdf TahoeReadData.pdf
 PAPER_INCLUDES += CephTopology.pdf  LustreTopology.pdf  TahoeTopology.pdf
 
 INCLUDE_DIR    := include
