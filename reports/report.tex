@@ -9,11 +9,13 @@
 \documentclass[11pt]{article}
 
 \usepackage[text={6.5in, 9in}, centering]{geometry}
-\usepackage{graphicx}
 \usepackage{url}
+\usepackage{graphicx}
+\usepackage{verbatim}
 \usepackage{listings}
 \usepackage{hyperref}
 \usepackage{tabularx}
+\usepackage{pdfpages}
 
 \bibliographystyle{plain}
 
@@ -275,7 +277,7 @@ large- scale, peer-to-peer distributed storage systems. Redundancy
 management strategies for such systems have also been well evaluated
 in prior works.  Among these, several compared replication with
 erasure codes in the bandwidth -reliability tradeoff space. The
-analysis of Weatherspoon and Kubiatowicz demonstrated that erasure
+analysis of \cite{Weatherspoon:2002} demonstrated that erasure
 codes could reduce bandwidth use by an order of magnitude as compared
 with replication. The authors showed that in high- turnover scenarios
 erasure codes provide large storage benefits but the bandwidth cost is
@@ -303,7 +305,7 @@ have come into vogue in the past few years, and typically possess a
 unique set of functional requirements generally customized for a
 particular environment.  Systems in this category may fit into a
 combination of the above system categories and exhibit unique
-behavior. Google File System (GFS) \cite{Ghemawat:2003p1274} and
+behavior. Google File System (GFS) \cite{Ghemawat:2003} and
 OceanStore \cite{Kubiatowicz:2000,Rhea:2003}, are such
 systems. GFS was designed and built with a particular functional
 purpose which is reflected in that design. Similarly, OceanStore
@@ -341,7 +343,7 @@ to be fault-tolerant, and to run on commodity hardware where failures
 may occur frequently. Tahoe uses Reed-Solomon erasure coding to obtain
 redundancy across nodes. It uses convergent encryption in conjunction
 with a capability-based access control model, to obtain and maintain
-security \cite{WilcoxOHearn:2008p1275}.
+security \cite{WilcoxOHearn:2008}.
 
 Tahoe presents a web-API to users of the system that can be used to
 administrate the system, as well as to read, write, or verify files
@@ -358,7 +360,7 @@ systems \cite{tahoe-lafs.org}.
 Ceph is an object-based parallel file system with a scalable metadata
 implementation with data replication to allow for data recovery and
 recovery from hardware failures
-\cite{Weil:2012p1035,Weil:2012p1010,Weil:2006p1273}.
+\cite{Weil:2007,Maltzahn:2010,Weil:2006}.
 Ceph is similar to that of many other distributed file systems in it 
 has metadata servers that a client uses to determine where the file 
 objects live. The key designs for Ceph are providing the ability to 
@@ -1450,5 +1452,21 @@ TODO: Complete section after testing.
 
 \nocite{*}
 \bibliography{refs}
+
+\appendix
+
+\pagebreak
+\section{Tahoe Data}
+
+\emph{See Attached}
+
+\includepdf[pages={1}, landscape]{include/TahoeWriteData.pdf}
+\includepdf[pages={1}, landscape]{include/TahoeReadData.pdf}
+
+\pagebreak
+\section{Ceph Data}
+
+\pagebreak
+\section{Lustre Data}
 
 \end{document}
