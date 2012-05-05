@@ -8,7 +8,7 @@ LATEXLAST  ?= -halt-on-error
 INKSCAPE   ?= inkscape
 CONVERT    ?= convert
 
-VPATH = $(INCLUDE_DIR)
+VPATH = $(INCLUDE_DIR)/svg
 
 .PHONY: all clean cleanall
 
