@@ -10,6 +10,7 @@ LATEXFIRST ?= -interaction=batchmode
 LATEXLAST  ?= -halt-on-error
 INKSCAPE   ?= inkscape
 CONVERT    ?= convert
+CP	   ?= cp
 
 VPATH = $(INCLUDE_DIR)/svg:$(INCLUDE_DIR)/pdf:$(INCLUDE_DIR)/png
 
@@ -54,11 +55,11 @@ report.bbl: report.aux refs.bib
 report.aux: report.tex $(PAPER_INCLUDES)
 	$(LATEX) $(LATEXFIRST) report.tex
 
-%.pdf:%.svg
+%.pdf:%-src.svg
 	$(INKSCAPE) $< -D --export-pdf=$(INCLUDE_DIR)/$@
 
-%.pdf:%.pdf
+%.pdf:%-src.pdf
 	$(CP) $< $(INCLUDE_DIR)/$@
 
-%.pdf:%.png
+%.pdf:%-src.png
 	$(CONVERT) $< $(INCLUDE_DIR)/$@
