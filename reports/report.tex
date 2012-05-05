@@ -27,6 +27,25 @@
     urlcolor=black
 }
 
+\lstset{
+  language={bash},
+  morekeywords={},
+  basicstyle=\footnotesize,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=4,
+  captionpos=b,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=single,
+  frameround=tttt
+}
+
 \newenvironment{packed_enum}{
 \begin{enumerate}
   \setlength{\itemsep}{1pt}
@@ -1014,9 +1033,9 @@ discussed.
   \end{center}
 \end{table}
 
-The test environment consist of three micro-ATX PCs. Their
+The Tahoe test environment consist of three micro-ATX PCs. Their
 characteristics are available in Table \ref{tbl:testbed}. Each machine
-is running the latest desktop version of Ubuntu 11.04 as of the time
+is running the latest desktop version of Ubuntu 11.10 as of the time
 of this writing (Early April, 2012).
 Each machine has an identical 160GB SATA 3.0 Gb/s hard disk
 partitioned in the following manner using an MBR partition table:
@@ -1040,9 +1059,9 @@ partitioned in the following manner using an MBR partition table:
 Figure \ref{fig:TahoeTestbed} shows our testbed setup.
 All machines are connected to
 each other via a 10/100 IPv4 Ethernet network connected to a
-Cisco Linksys WRT110 Router. The network is local and shared only by
-the three test machines and the router. The router also acts as a
-gateway and firewall, regulating traffic to and from the Internet.
+Cisco Linksys WRT110 Switch. The network is local and shared only by
+the three test machines and the switch. The switch also acts as a
+router, gateway and firewall, regulating traffic to and from the Internet.
 The machines use static IP addresses:
 
 \begin{packed_item}
@@ -1061,6 +1080,13 @@ file system was tested at a time, and all other file system were
 isolated to their own partition and shutdown while these tests were
 occurring. 
 
+XPC1 is serves as both a Tahoe Introducer, and a Tahoe data node. XPC2
+and XPC3 serve only as headless data nodes. XPC1 also serves hosts our
+primary interface to the Tahoe system: the Fuse SSHFS filesystem. This
+system provides a POSIX VFS compatible mount point into teh Tahoe
+system, allowing us to run tests as though it were a standard Unix
+filesystem.
+
 \subsection{Lustre Test Environment}
 % Mark
 
@@ -1078,7 +1104,7 @@ Using our environment setup of three computers all running Ubuntu
 \item The first step for deploying Tahoe was to acquire the latest
   version of the Tahoe LAFS from their website for each of the
   computers. \cite{tahoe-lafs.org} At the time this was version
-  1.9.1. Once we had downloaded the allmydata-tahoe-1.9.1.zip file
+  1.9.1. Once we had downloaded the \texttt{allmydata-tahoe-1.9.1.zip} file
   from the Tahoe LAFS website, we could move onto the next step.
 \item The second step was to insure we had a compatible version of
   python installed on all the computers. \cite{python.org} For the
@@ -1087,13 +1113,14 @@ Using our environment setup of three computers all running Ubuntu
   2.7.2 was already installed on Ubuntu 11.10 so we could move onto
   the next step.
 \item We now extracted the Tahoe LAFS source files from the
-  allmydata-tahoe-1.9.1.zip file we acquired from their website. This
+  \texttt{allmydata-tahoe-1.9.1.zip} file we acquired from their website. This
   resulted in a folder in our home directory, which is where we
-  downloaded the file on each computer, called allmydata-tahoe-1.9.1.
+  downloaded the file on each computer, called \texttt{allmydata-tahoe-1.9.1}.
 \item Now that we had the Tahoe LAFS source extracted we could build
   the tahoe executable using the following command inside the
   allmydata-tahoe-1.9.1 folder to build the source via the python
-  setup file.  \subitem python setup.py build
+  setup file.
+  \begin{verbatim} python setup.py build \end{verbatim}
 \item After the build had finished we got a subdirectory called bin
   inside the source directory that contains the tahoe executable that
   is used to initialize and start, run, and stop the tahoe introducer
@@ -1114,7 +1141,7 @@ Using our environment setup of three computers all running Ubuntu
 \item The next step was to create subdirectories on XPC1 for the
   introducer and client to use as each will have their own
   configuration files. To this end an introducer and client directory
-  were created in the /Tahoe directory. The creation of a client
+  were created in the \texttt{/tahoe} directory. The creation of a client
   directory could be done on the other two computers could be done as
   well to make the commands used to get the Tahoe clients running
   consistent across all three computers; however, at this time this
@@ -1122,17 +1149,25 @@ Using our environment setup of three computers all running Ubuntu
 \item The next step was to get our introducer node created as we need
   it running before we can properly setup the client nodes. To create
   the introducer node we used the following command from the
-  ~/allmydata-tahoe-1.9.1/bin directory where the tahoe executable
-  lives: \subitem tahoe create-introducer
-  --node-directory=/tahoe/introducer
+  \texttt{~/allmydata-tahoe-1.9.1/bin} directory where the tahoe executable
+  lives: 
+\begin{verbatim}
+tahoe create-introducer --node-directory=/tahoe/introducer
+\end{verbatim}
 
 This creates the introducer configuration files inside the
-/tahoe/introducer folder and will allow us to edit the tahoe.cfg file
+/tahoe/introducer folder and will allow us to edit the \texttt{tahoe.cfg} file
 with the configuration tweaks we need to make for our small number of
 available nodes.
-\item The next step is to edit the /tahoe/introducer/tahoe.cfg file to
-  include the following changes: \subitem nickname = xpc1 \subitem
-  web.port = tcp:3457:interface=127.0.0.1 \subitem shares.happy = 2
+\item The next step is to edit the \texttt{/tahoe/introducer/tahoe.cfg} file to
+  include the following changes:
+\begin{verbatim}
+...
+nickname = xpc1
+web.port = tcp:3457:interface=127.0.0.1
+shares.happy = 2
+...
+\end{verbatim}
 
 These changes give the introducer a nickname that we can recognize and
 also provides us with a web interface port that is different from the
@@ -1452,6 +1487,7 @@ nodes to meet the scale of testing task.
 % Mark
 
 \section{Results}
+% All
 
 \subsection{Tahoe Results}
 % Andy and Bryan
@@ -1463,8 +1499,7 @@ nodes to meet the scale of testing task.
 % Mark
 
 \section{Conclusions}
-%section to be completed after testing is done
-TODO: Complete section after testing.
+% All
 
 \subsection{Tahoe Conclusions}
 % Andy and Bryan
@@ -1488,6 +1523,7 @@ TODO: Complete section after testing.
 
 \pagebreak
 \section{Tahoe Data}
+\label{sec:TahoeData}
 
 \emph{See Attached}
 
@@ -1496,8 +1532,76 @@ TODO: Complete section after testing.
 
 \pagebreak
 \section{Ceph Data}
+\label{sec:CephData}
 
 \pagebreak
 \section{Lustre Data}
+\label{sec:LustreData}
+
+\pagebreak
+\section{Tahoe Scripts}
+\label{sec:TahoeScripts}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A simple script to call ssh and read password from file.},
+  label=lst:sshpw
+]{../code/tahoe/sshpw.sh}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A script to start Tahoe on the Tahoe Testbed
+    (see Figure \ref{fig:TahoeTestbed})},
+  label=lst:start-tahoe
+]{../code/tahoe/start-tahoe-all.sh}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A script to stop Tahoe on the Tahoe Testbed
+    (see Figure \ref{fig:TahoeTestbed})},
+  label=lst:stop-tahoe
+]{../code/tahoe/stop-tahoe-all.sh}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A script to start Tahoe on XPC1
+    (see Figure \ref{fig:TahoeTestbed}},
+  label=lst:start-tahoe-xpc1
+]{../code/tahoe/tahoe-script/start-tahoe-xpc1.sh}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A script to start Tahoe on XPC2
+    (see Figure \ref{fig:TahoeTestbed}},
+  label=lst:start-tahoe-xpc2
+]{../code/tahoe/tahoe-script/start-tahoe-xpc2.sh}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A script to start Tahoe on XPC3
+    (see Figure \ref{fig:TahoeTestbed}},
+  label=lst:start-tahoe-xpc3
+]{../code/tahoe/tahoe-script/start-tahoe-xpc3.sh}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A script to stop Tahoe on XPC1
+    (see Figure \ref{fig:TahoeTestbed}},
+  label=lst:stop-tahoe-xpc1
+]{../code/tahoe/tahoe-script/stop-tahoe-xpc1.sh}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A script to stop Tahoe on XPC2
+    (see Figure \ref{fig:TahoeTestbed}},
+  label=lst:stop-tahoe-xpc2
+]{../code/tahoe/tahoe-script/stop-tahoe-xpc2.sh}
+
+\lstinputlisting[
+  float=htbp,
+  caption={A script to stop Tahoe on XPC3
+    (see Figure \ref{fig:TahoeTestbed}},
+  label=lst:stop-tahoe-xpc3
+]{../code/tahoe/tahoe-script/stop-tahoe-xpc3.sh}
 
 \end{document}
