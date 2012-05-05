@@ -1569,6 +1569,9 @@ throughput.
 
 \subsection{Tahoe Conclusions}
 % Andy and Bryan
+Tahoe claims to offer a way to securely store your files on untrusted storage nodes as its key selling point. To this end we examined how the files allocated when stored on Tahoe appeared to the user of one of the storage nodes in its encrypted form. This allowed us to conclude that Tahoe succeeds in its claim of being secure even on untrusted hardware as the stored files were effectively gibberish. And as they used a provably secure method to encrypt them without the malicious user compromising the trusted entry point to the Tahoe system the files encrypted would be safe even if they were on a malicious storage node. 
+
+From the evaluation data we saw significant delays in the writes as compared to the reads in terms of speed. We are unsure if this slowdown was due to an implementation issue in the SSHFS interface we used to provide us a FUSE mechanism to access Tahoe or if this is a normal behavior for Tahoe; however, the likelihood that one wouldn't opt for the SSHFS approach to using Tahoe is unlikely as it provides a more usable interface than the web interface. As such we concluded that Tahoe would likely be excellent for securely storing files that wouldn't likely be read regularly or changed. Tahoe would make a great system for archive storage of sensitive documents, such as Tax and other such documents that once the year ends would be filed away only to be available in case of an audit or other such need. 
 
 \subsection{Ceph Conclusions}
 % Mark
