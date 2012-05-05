@@ -93,7 +93,7 @@ in order to make astute technological and architectural choices.
 We intend to install, configure, and test several current 
 open source distributed storage file systems. We aim to evaluate their 
 performance across a series of accepted storage system metrics. In 
-doing so, we hope to gain a better understanding for the tradeoffs 
+doing so, we hope to gain a better understanding for the trade-offs 
 involved in the architectural design of such systems. We also hope to
 contribute to the state of the art in testing practices for accurately
 evaluating and comparing wildly differing distributed file systems.
@@ -1120,7 +1120,9 @@ Using our environment setup of three computers all running Ubuntu
   the tahoe executable using the following command inside the
   allmydata-tahoe-1.9.1 folder to build the source via the python
   setup file.
-  \begin{verbatim} python setup.py build \end{verbatim}
+\begin{verbatim}
+python setup.py build
+\end{verbatim}
 \item After the build had finished we got a subdirectory called bin
   inside the source directory that contains the tahoe executable that
   is used to initialize and start, run, and stop the tahoe introducer
@@ -1154,7 +1156,6 @@ Using our environment setup of three computers all running Ubuntu
 \begin{verbatim}
 tahoe create-introducer --node-directory=/tahoe/introducer
 \end{verbatim}
-
 This creates the introducer configuration files inside the
 /tahoe/introducer folder and will allow us to edit the \texttt{tahoe.cfg} file
 with the configuration tweaks we need to make for our small number of
@@ -1171,49 +1172,58 @@ shares.happy = 2
 
 These changes give the introducer a nickname that we can recognize and
 also provides us with a web interface port that is different from the
-default port for tahoe interfaces of 3456 so that eventually we will
+default port for tahoe interfaces of \texttt{3456} so that eventually we will
 be able to see both the introducer and client's web interface for XPC1
 with out them conflicting on the same port.
 
 \item After we had made the necessitated changes to the introducer's
-  tahoe.cfg file we saved it and could start the introducer
+  \texttt{tahoe.cfg} file we saved it and could start the introducer
   running. This is necessary for the clients to be able to connect to
   the introducer, but also because it needs to be started at least
-  once before the introducer.furl file is created. This is needed in
+  once before the \texttt{introducer.furl} file is created. This is needed in
   the client configuration as this is how the clients find the
   introducer and function as a group. To start the introducer running
   we use the following command assuming we have added the tahoe
-  executable to the path: \subitem tahoe start
-  --node-directory=/tahoe/introducer/
+  executable to the path:
+\begin{verbatim}
+tahoe start --node-directory=/tahoe/introducer/
+\end{verbatim}
 
 \item Now that we have the introducer running on XPC1 we are ready to
   create the client nodes. Instead of creating clients, we opted to
   just create nodes that share their storage vs only replicate their
   files across the available nodes as we only have three working
   computers. To create a node we used the following command on XPC2 \&
-  XPC3: \subitem tahoe create-node --node-directory=/tahoe/
-
+  XPC3:
+\begin{verbatim}
+tahoe create-node --node-directory=/tahoe/
+\end{verbatim}
 And we used this command on XPC1:
-
-\subitem tahoe create-node --node-directory=/tahoe/client/
-
+\begin{verbatim}
+tahoe create-node --node-directory=/tahoe/client/
+\end{verbatim}
 This created all the configuration files for the client nodes in their
 respective directories.
 
 \item Now that we have the client directories created we want to open
-  up the /tahoe/introducer/introducer.furl file and copy out the
+  up the \texttt{introducer.furl} file and copy out the
   enclosed furl in the file so that we can put it in the client
-  tahoe.cfg files. For our introducer we have the following contents
-  for the introducer.furl file:
-  \subitem
-  pb://6n56ctw77txdhrc2455jnwe3zzouho6n@192.168.1.10:57307,127.0.0.1:57307/introducer
+  \texttt{tahoe.cfg} files. For our introducer we have the following contents
+  for the \texttt{introducer.furl} file:
+\begin{verbatim}
+pb://6n56ctw77txdhrc2455jnwe3zzouho6n@192.168.1.10:57307,127.0.0.1:57307/introducer
+\end{verbatim}
 
-\item We now open up the clients tahoe.cfg file and edit it to reflect
+\item We now open up the clients \texttt{tahoe.cfg} file and edit it to reflect
   the following changes, with what is in the [ ] indicating a value
-  that varied between computers or is too long to fit below: \subitem
-  nickname = [name of computer] \subitem introducer.furl = [contents
-    of introducer.furl] \subitem shares.happy = 2
-
+  that varied between computers or is too long to fit below:
+\begin{verbatim}
+...
+nickname = [name of computer]
+introducer.furl = [contents of introducer.furl]
+shares.happy = 2
+...
+\end{verbatim}
 With these changes our clients are ready to be started and have been
 configured to be able to work on our extremely small grid.
 
@@ -1223,28 +1233,36 @@ configured to be able to work on our extremely small grid.
   run it in the foreground in a UNIX environment instead that was used
   during our initial test run to see if the Tahoe LAFS was working. To
   start the clients on XPC2 \& XPC3 the following command was used:
-  \subitem tahoe start /tahoe/
-
+\begin{verbatim}  
+tahoe start /tahoe/
+\end{verbatim}
 And on XPC1 the following command was used:
-
-\subitem tahoe start /tahoe/client/
-
+\begin{verbatim}
+tahoe start /tahoe/client/
+\end{verbatim}
 This started the client nodes running in the background and our Tahoe
 LAFS grid is now installed, configured, and running.
 \end{enumerate}
 
 Now that we had the Tahoe LAFS running we verified that it was working
-by navigating to 127.0.0.1:3457 on XPC1 to verify that the introducer
+by navigating to \texttt{127.0.0.1:3457} on XPC1 to verify that the introducer
 was working and check on its status. It showed us that it was running
 and that the three client nodes were connected. We then went to the
-web interface for the client node on XPC1 located at 127.0.0.1:3456
+web interface for the client node on XPC1 located at \texttt{127.0.0.1:3456}
 that provided us with an interface to upload \& download files, create
 directories, and showed us the status of the available storage
 nodes. We then uploaded an image file to verify that we could upload a
 file and then download it again. We were able to successfully retrieve
 the image file back out of the Tahoe LAFS. This was done to insure
 that we had in fact installed, configured, and gotten the Tahoe LAFS
-working. Further testing will happen in another section later on.
+working.
+
+To expedite starting and stopping the Tahoe cluster during testing, we
+wrote series of scripts that remotely start and stop all Tahoe nodes in the
+correct order. These scripts also take care of starting the Introducer
+and insuring that the SSHFS mount is up and running. Copies of the
+scripts are included in Appendix \ref{sec:TahoeScripts} in Listings
+\ref{lst:sshpw} through \ref{lst:stop-tahoe-xpc3}.
 
 \subsection{Ceph - Installation and Configuration}
 % Mark
@@ -1479,6 +1497,54 @@ nodes to meet the scale of testing task.
 
 \subsection{Tahoe Tests}
 % Andy and Bryan
+
+To test the throughput and latency of the Tahoe system, we used a
+combination of the Unix \texttt{dd} utility. Timing instrumentation
+was provided via GNU \texttt{time} and \texttt{date}, and the built-in Tahoe
+instrumentation. We ran a series of tests using various file sizes
+from 1 MiB to 3 GiB. We also tested the system using both random data
+(as provided via \texttt{/dev/urandom}) and zeros data (as provided
+via \texttt{/dev/zero}). We tested for read and write throughput, and
+write latency.
+
+To find the base read and write throughput, we used the \texttt{dd}
+utility with a 1024 byte block size. Calls to \texttt{date} were used
+to clock the start and end time of the test. For read tests, this looked like:
+\begin{verbatim}
+date;
+dd if=<Tahoe File> of=\dev\null bs=1024;
+date;
+\end{verbatim}
+For write tests, this looked like:
+\begin{verbatim}
+date;
+dd if=\dev\urandom of=<Tahoe File> bs=1024 count=<size>;
+date;
+\end{verbatim}
+
+These tests provided raw read and write speeds for specific file sizes
+and data types. On writing to Tahoe, however, files are not available
+immediately after the \texttt{dd} write completes. Instead, there is an
+additional latency between the completion of the \texttt{dd} write
+and the availability of the written data. This delay is due to the fact
+that Tahoe must propagate the written files to all necessary nodes
+before they are available for reading. This operation is not pipelined,
+instead it begins as soon as the \texttt{dd} write completes. Thus, we
+had to use the Tahoe file timestamps to record when the file became
+available on the Tahoe system, and thus how much time had elapsed
+since the completion of the \texttt{dd} write. This additional time
+metric was used to compute the write latency, or overhead throughput, of the
+Tahoe system.
+
+In addition to the base read throughput, the base write throughput, and the Tahoe write
+overhead throughput, we also calculated the end-to-end write
+throughput. This was calculated by simply dividing the size of the
+test file by the difference
+between when the \texttt{dd} write started and when the data became
+available via Tahoe. There is no relevant equivalent read metric, as data need
+not propagate across the Tahoe cluster when being read. Thus the
+end-to-end read throughput is always equal to the base \texttt{dd} read
+throughput.
 
 \subsection{Ceph Tests}
 % Mark
