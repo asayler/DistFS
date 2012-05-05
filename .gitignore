@@ -10,7 +10,6 @@
 
 
 #Paper/Presentation
-
 reports/*.pdf
 reports/inc/*.pdf
 *.aux
