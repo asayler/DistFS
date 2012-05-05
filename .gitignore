@@ -12,7 +12,6 @@
 #Paper/Presentation
 
 reports/*.pdf
-reports/inc/*.png
 reports/inc/*.pdf
 *.aux
 *.out
