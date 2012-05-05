@@ -1,6 +1,5 @@
-PRESENTATION_INCLUDES = 
-PAPER_INCLUDES        = 
-INCLUDE_DIR = inc
+PAPER_INCLUDES = TahoeTestbed.pdf
+INCLUDE_DIR    = include
 
 BIBTEX     ?= bibtex -terse
 LATEX      ?= pdflatex -file-line-error
@@ -9,16 +8,7 @@ LATEXLAST  ?= -halt-on-error
 INKSCAPE   ?= inkscape
 CONVERT    ?= convert
 
-export TEXINPUTS := .:./$(INCLUDE_DIR)/:$(TEXINPUTS)
-
-PRESENTATION_INCLUDES := $(PRESENTATION_INCLUDES:%.svg=%.png)
-PAPER_INCLUDES        := $(PAPER_INCLUDES:%.svg=%-g.png)
-
-VPATH = inc
-
-vpath %.png $(INCLUDE_DIR)
-vpath %.svg $(INCLUDE_DIR)
-vpath %.c   $(INCLUDE_DIR)
+VPATH = $(INCLUDE_DIR)
 
 .PHONY: all clean cleanall
 
@@ -26,7 +16,7 @@ all: proposal.pdf report.pdf clean
 
 clean:
 	$(RM) *.aux *.bbl *.blg *.dvi *.log *.out *.nav *.snm *.toc *.vrb *~
-	$(RM) $(INCLUDE_DIR)/*.png
+	$(RM) $(INCLUDE_DIR)/*.pdf
 
 cleanall: clean
 	$(RM) proposal.pdf report.pdf
@@ -60,3 +50,6 @@ report.bbl: report.aux refs.bib
 
 report.aux: report.tex $(PAPER_INCLUDES)
 	$(LATEX) $(LATEXFIRST) report.tex
+
+%.pdf:%.svg
+	$(INKSCAPE) $< -D --export-pdf=$(INCLUDE_DIR)/$@
