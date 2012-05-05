@@ -42,8 +42,8 @@
 \begin{document}
 
 \title{
-  Distributed File Storage Systems\\
-  Project Report 2
+  A Survey of Distributed File Storage Systems\\
+  Final Report
 }
 \author{
   Bryan Dixon \and Brendan Kelly \and Mark Lewis-Prazen \and Andy Sayler\\
@@ -533,6 +533,7 @@ and salient features, and some comparative and contrasting discussion of
 each in turn.  
 
 \subsection{Tahoe}
+% Andy and Bryan
 Tahoe is an open source distributed file system that supports storing 
 files into a network of peers. All data in a Tahoe configuration is 
 written in an encrypted manner to the storage nodes. It uses erasure 
@@ -687,6 +688,7 @@ at the project's web site.
 
 
 \subsection{Ceph}
+% Mark
 Ceph is a distributed file system originally designed by the Storage 
 Systems Research Center at the University of California, Santa Cruz. 
 It is developed as an open source project, with code under the GNU LGPL 
@@ -792,6 +794,7 @@ and failure detection) may be non-optimal or worse for a WAN Ceph
 configuration.
 
 \subsection{Lustre}
+% Mark and Brendan
 Lustre is a massively parallel distributed file system running on Linux 
 and used at many high-performance computing (HPC) centers worldwide. 
 Originally developed at CMU in 1999, it is now owned by Oracle and the 
@@ -910,7 +913,7 @@ robust mixture of recent, but both proven and experimental distributed file
 storage systems. As such, they illustrate many of the trade-offs we intend 
 to explore in our evaluation testing.
 
-\section{Implementation}
+\section{Test Setup}
 Distributed storage systems may operate over a dedicated set of machines 
 or may be used to acquire storage on user workstations. Potential 
 implementation challenges typically result from changing conditions to 
@@ -966,8 +969,8 @@ configuration setup for each of the systems being reviewed. Subsequent
 parameter adjustments, made either dynamically or statically, are not 
 discussed.  
 
-\subsection{Environment Setup}
-%This section is for how the computers were initially configured/setup/etc
+\subsection{Tahoe Test Environment}
+% Andy + Bryan
 
 \begin{table}
   \begin{center}
@@ -1025,8 +1028,14 @@ file system was tested at a time, and all other file system were
 isolated to their own partition and shutdown while these tests were
 occurring. 
 
+\subsection{Lustre Test Environment}
+% Mark
+
+\subsection{Ceph Test Environment}
+% Mark
+
 \subsection{Tahoe - Installation and Configuration}
-%This section discusses installing/configuring Tahoe
+% Andy + Bryan
 
 Using our environment setup of three computers all running Ubuntu
 11.10 with a partition mounted for use by the Tahoe Filesystem at
@@ -1170,6 +1179,8 @@ that we had in fact installed, configured, and gotten the Tahoe LAFS
 working. Further testing will happen in another section later on.
 
 \subsection{Ceph - Installation and Configuration}
+% Mark
+
 Most Ceph installation guides recommend that the storage daemons in Ceph 
 use btrfs for storing data and taking advantage of btrfs' internal 
 transactions to keep the local data set in a consistent state. The claim 
@@ -1268,7 +1279,8 @@ testing may require regular expressions. This is done by adding "(re)" at
 the end of the line.
 
 \subsection{Lustre - Installation and Configuration}
-%section on implementing Lustre
+% Mark + Brendan
+
 In building Lustre from source, one needs to ensure that they are using 
 Linux kernel 2.6.16 or greater. In all deployments of Lustre, the server 
 that runs on an MDS, MGS or OSS needs to utilize a patched kernel. 
@@ -1397,9 +1409,44 @@ all the test nodes, as well as monitor the performance of test nodes.
 That is, users need to be able to dynamically add or remove test 
 nodes to meet the scale of testing task. 
 
+\subsection{Tahoe Tests}
+% Andy and Bryan
+
+\subsection{Ceph Tests}
+% Mark
+
+\subsection{Lustre Tests}
+% Mark
+
+\section{Results}
+
+\subsection{Tahoe Results}
+% Andy and Bryan
+
+\subsection{Ceph Results}
+% Mark
+
+\subsection{Lustre Results}
+% Mark
+
 \section{Conclusions}
 %section to be completed after testing is done
 TODO: Complete section after testing.
+
+\subsection{Tahoe Conclusions}
+% Andy and Bryan
+
+\subsection{Ceph Conclusions}
+% Mark
+
+\subsection{Lustre Conclusions}
+% Mark
+
+\subsection{Comparison}
+% All
+
+\section{Future Work}
+% All
 
 \nocite{*}
 \bibliography{refs}
