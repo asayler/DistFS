@@ -1750,6 +1750,12 @@ to be available in case of an audit or other such need.
   \end{center}
 \end{table}
 
+One of the main deliverables for our project was a comparison of the three filesystems we chose to deploy and investigate. In Table \ref{tbl:compare} we have a breakdown side-by-side of the three systems and how they match up for a number of key features. This table simplifies some key characteristics that each system has that would need to be know if one was to choose a filesystem for deployment. 
+
+The characteristics not captured in the table would be the impact of not trusting the storage nodes your system exists on has. And this is seen more in the comparison of the evaluations of each system and the throughput/latency of Tahoe vs Ceph \& Lustre in this respect indicate the time to encrypt/decrypt the data plus handle the replications results in a significant slowdown in Tahoe, which isn't seen in the other two systems. 
+
+Tahoe is clearly the best choice if you don't trust the nodes your data is stored on. Lustre is best suited for scientific computing with large data sets. And Ceph is the best choice if you are wanting a POSIX compliant VFS interface and a newer system than Lustre for large data sets. 
+
 \section{Future Work}
 % All
 
