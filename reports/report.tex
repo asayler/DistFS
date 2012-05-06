@@ -1613,7 +1613,14 @@ present deployment was configured to store a single copy of each file stripe.
 Finally, it should be noted that experiments were conducted multiple times and 
 the average values are what is presented in all figures and tables.
 
-
+In order to produce these measurements, we configured the tool to first 
+sequentially write an entire file to the file system exported by the storage 
+system and then sequentially read the entire file back. Then, the tool writes 
+random parts of the file (128 KB each) in the storage system and, finally, 
+reads random parts of the same size. The request size that it passes to the 
+filesystem for the sequential part of the experiment was also 128 KB; this 
+size did not dramatically affect the results due to the asynchronous nature 
+of the I/O. 
 
 
 \section{Results}
@@ -1726,11 +1733,26 @@ read data was collected for files larger than 100 MiB. The system
 became unstable when we attempted to read files of this size. Again,
 this may be a limitation of the system RAM size and the SSHFS interface.
 
-\subsection{Ceph Results}
-% Mark
+\subsection{Ceph and Lustre Results}
 
-\subsection{Lustre Results}
-% Mark
+
+For all systems and workload types, we can see that as the size 
+of the file grows, measurements tend to reach a stable throughput value. This 
+is due to the caching effect fading out as the size of the data involved in 
+the experiment grows. We do not present measurements for file sizes less than 
+400 MB for write I/O and 600 MB for read I/O since for these sizes the 
+throughput rates are extremely large due to the fact that I/O is done almost 
+entirely in RAM. For all workload types we notice that other systems tend to 
+perform better than Tahoe, especially when large files that exceed RAM size 
+are involved in the I/O. It is worth noticing that Lustre write performance 
+without striping is bounded by the maximum I/O capacity of a single hard disk. 
+Ceph performs best overall since, as mentioned above, the supported file stripe 
+is much larger compared to all other systems
+
+
+
+
+
 
 \section{General Conclusions}
 Prevailing storage solutions still utilize a DFS which lets users share 
