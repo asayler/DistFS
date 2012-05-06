@@ -1707,8 +1707,52 @@ this may be a limitation of the system RAM size and the SSHFS interface.
 \subsection{Lustre Results}
 % Mark
 
-\section{Conclusions}
-% All
+\section{General Conclusions}
+Prevailing storage solutions still utilize a DFS which lets users share 
+files through the nodes which make up the infrastructure. While incremental 
+changes have occurred in recent years, the design of DFSs has not really 
+changed fundamentally and current mainstream solutions like Lustre, GoogleFS  
+and HDFS are all built on the metadata and I/O server model.  In these 
+systems files are segregated into chunks and dispersed across I/O servers and 
+a metadata server maintain the chunk locality. 
+
+However, in the age of big data applications, the single metadata model is no 
+longer adequate. While newer models, such as Ceph, which focusses on balancing 
+the management of both data and metadata across several nodes are more promising, 
+they too lack a key insight in their design strategy. Such systems push forward 
+the limits in terms of scalability and performance, but they still ignore the 
+network traffic inherent in their internal structure.
+
+It would seem that the design of DFSs should emphasize the infrastructure’s 
+physical topology and thus seek to limit expensive network communications as 
+much as possible. Future work might try to better understand the impact of the 
+network traffic and address research questions such as:
+
+- Why local applications should be penalized by having external server 
+communications in charge of managing either data or metadata?
+
+- Why data should be moved across a network only to be used by local nodes or 
+simply invalidated at the conclusion of the applications execution?  For instance, 
+might not on demand pulling models be a better approach?
+
+- Why is all data assigned the same level of reliability?
+
+New DFS designs should investigate architectural models which address the impact 
+on the performance implied by the physical topology. One thought is to keep both 
+data and metadata as close to the processes as possible. That is, they should be 
+placed along the locations where new content is being written. Loosely speaking this 
+might be viewed as a new striping strategy whereby files are split into chunks as 
+usual but their size and location are adapted according to the access pattern of a 
+particular application and the physical topology. Such a model is focused on 
+optimizing the local data placement in order to maximize a particular application’s 
+performance. This approach to both data and metadata management would allow designers 
+to limit the scope of DFS exchanges to the application’s scope. Thus, an application 
+that is LAN-wide would not be penalized to rely on remote entities to manage either 
+data or metadata. Lastly, several applications would be able to run simultaneously, 
+using their own scope of data and metadata management. This approach could also reduce 
+potential bottlenecks that might occur when several applications compete for the same 
+metadata or data nodes (the impact of an I/O intensive application should not be 
+significant on the performance of the others).
 
 \subsection{Tahoe Conclusions}
 % Bryan
