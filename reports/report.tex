@@ -1109,11 +1109,28 @@ system provides a POSIX VFS compatible mount point into teh Tahoe
 system, allowing us to run tests as though it were a standard Unix
 filesystem.
 
-\subsection{Lustre Test Environment}
-% Mark
+\subsection{Lustre Ceph Test Environment}
+The Lustre/Ceph tests were conducted in a separate test environment from
+Tahoe due to the need for xvery specific resources.The objective in the 
+evaluation was to evaluate a few straightforward use cases in a wide area 
+setup with a limited number of nodes. We realize that a limited test 
+environment as used here is not capable of supporting a broad number of 
+scenarios and limits the conclusions that can be drawn particularly with 
+respect to performance behavior across a more industrial strength 
+implementation as well as related issues like fault tolerance; such a test 
+would require a very large setup and considerably more resources to execute 
+than we could secure for this project. Notwithstanding that fact, the test 
+environment is briefly described below. 
 
-\subsection{Ceph Test Environment}
-% Mark
+The experimental evaluation of our system was conducted in a cluster of 14 
+identical PCs with dual core CPUs running at 1:2 GHz, 1 GB RAM, 1 HDD 
+spinning at 7200 rpm and 1 Gbps Ethernet cards. All PCs were directly 
+connected to a Gigabit Ethernet switch (HP ProCurve 1810g). The bandwidth 
+measure-ment benchmarks conducted in the evaluation environment using netperf 
+indicate a maximum data rate between two PCs (full-duplex) of about 800 Mbps. 
+For the Ceph system tests, we used the Ubuntu 10:04 distribution. For Lustre 
+tests we used Ubuntu 8:10 with the patched kernel provided at the Lustre 
+website.
 
 \subsection{Tahoe - Installation and Configuration}
 % Andy + Bryan
