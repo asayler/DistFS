@@ -1647,6 +1647,17 @@ noted above in the previous subsection, except here all  hosts are used
 as storage devices. The maximum number of clients is 14, in the rare case 
 where all physical hosts run a storage server as well as a client.
 
+Finally, we tested the performance of the systems when replication is 
+supported as well as during node failures and joins. Starting with 
+replication, out of the distributed file systems discussed in this study, 
+only Tahoe and Ceph support replication. With asynchronous sequential 
+writes Ceph saturates the uplink of the client. Since the Ceph stripe size 
+is two to four times larger than the chunk size supported by other 
+comparable PVFS systems with replication capabilities and by Tahoe, we 
+would expect that performance would be similar if two such comparable 
+systems grouped date in pieces of the same size. Apart from the 
+replication level, the system deployments are identical to the ones 
+presented in the beginning of this section.
 
 \section{Results}
 % All
