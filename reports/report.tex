@@ -1871,6 +1871,20 @@ aggregate bandwidth.
 
 % see Figure 4
 
+Finally, we examined the performance of our systems when replication is 
+supported. Figure 5 below shows that with asynchronous sequential writes 
+Ceph saturates the uplink of the client, with Tahoe performing slightly 
+worse. On the other hand, the performance of tahoe with asynchronous 
+direct writes is exceptional compared to Ceph.  In this case the client 
+needs to read a single replica of each chunk and the measured cost for 
+reading the versions first was negligible.  Obviously, Tahoe’s performance 
+drops when more replicas are stored since more bandwidth is required to 
+support the I/O operations. We do not provide measurements for the read 
+workloads since replication does not significantly affect the performance 
+results already presented in prior discussions above. In the diagram below, 
+refers to each system when X instances of each piece of data are stored.
+Figure 5: Input/Output Throughput for Select Replication Levels
+
 
 \section{General Conclusions}
 Prevailing storage solutions still utilize a DFS which lets users share 
