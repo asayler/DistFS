@@ -1630,6 +1630,23 @@ systems may not overtly support direct I/O, since they bypass the caching
 mechanism provided by the operating system, effectively they can be viewed 
 to emulate a direct I/O operation.
 
+We also evaluated the comparative scalability of the systems. This is 
+done by measuring total system throughput when multiple clients access 
+the storage system simultaneously as well as the I/O throughput of a 
+single client when accessing a much larger deployment of the core storage 
+layer. In order to measure total system throughput we used a tool (xdd) 
+which supports distributed I/O benchmarking when multiple synchronized 
+clients access the storage system simultaneously. We configured the tool 
+so that in each step of the experiment a number of clients which are 
+increasing stepwise by two, sequentially writes and, then, reads a file 
+for 30 seconds. All clients are synchronized to a timeserver in the 
+cluster. For each step we calculated the sum of the I/O throughput rates 
+for each client. Measurements shown represent the average values of 
+multiple runs per experiment. The deployment details for each system as 
+noted above in the previous subsection, except here all  hosts are used 
+as storage devices. The maximum number of clients is 14, in the rare case 
+where all physical hosts run a storage server as well as a client.
+
 
 \section{Results}
 % All
