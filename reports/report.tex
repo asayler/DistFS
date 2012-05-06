@@ -1585,11 +1585,36 @@ not propagate across the Tahoe cluster when being read. Thus the
 end-to-end read throughput is always equal to the base \texttt{dd} read
 throughput.
 
-\subsection{Ceph Tests}
-% Mark
+\subsection{Ceph and Lustre Tests}
+In this subsection we evaluate the I/O performance of the Ceph and 
+Lustre distributed file systems. In order to keep the measurements 
+as comparable as possible we used simple I/O workloads (i.e. sequential 
+and random access patterns). The comparison gives us general indications 
+regarding the potential advantages of each system and some of their 
+architectural constraints. The measurements were captured using the IOzone 
+tool. The Iozone benchmark tool generates and measures a variety of file 
+operations. For instance read, write, re-read, re-write operations can be 
+used to provide a broad analysis of filesystem performance. Iozone can work 
+in a single client mode and cluster mode where it is provided with a list of 
+nodes on which it will run. Iozone tests were run with a 1MB block size.  
+In order to make the results as comparable as possible, each system was 
+configured as follows. Our system used 13 storage nodes and a single VDD. 
+All nodes were aware of each other and no overlay routing was allowed. The 
+deployment did not support chunk replication. For all distributed filesystems, 
+we used 13 storage devices, 1 metadata server running on a host that also acts 
+as a storage device, and a single client. In all cases, clients ran in a 
+dedicated PC and no other network traffic was produced simultaneously. The 
+chunk size supported by our system was configured to be 256 KB, the same 
+as the file stripe size for Lustre. We also measured Lustre performance 
+with no file striping at all. Ceph’s current implementation does not support 
+stripe configuration, therefore we used the default of 1 MB. For that reason, 
+as observed below, in some cases Ceph outperforms all other systems. Ceph’s 
+present deployment was configured to store a single copy of each file stripe. 
+Finally, it should be noted that experiments were conducted multiple times and 
+the average values are what is presented in all figures and tables.
 
-\subsection{Lustre Tests}
-% Mark
+
+
 
 \section{Results}
 % All
