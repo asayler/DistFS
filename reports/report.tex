@@ -1964,7 +1964,38 @@ to be available in case of an audit or other such need.
 % Mark
 
 \subsection{Lustre Conclusions}
-% Mark
+Lustre is a relatively mature product and has a known track record as 
+a file system in high performance computing environments. Lustre has 
+been deployed on many of the world’s largest and fastest high performance 
+computing (HPC) clusters and supercomputers, such as the Jaguar 
+supercomputer at Oak Ridge National Laboratory (ORNL), and Big Red at 
+Indiana University. It has a comprehensive utilities package that allows 
+it to be configured in a number of ways depending on the underlying 
+applications environment it is intended to serve. It uses a highly 
+scalable distributed storage architecture and can support up to
+tens of thousands of client systems, scale to petabytes of storage, and 
+provide an aggregate I/O throughput of hundreds of gigabytes per second.
+
+The scalability of Lustre is good. The MDS is the only components that 
+can have a limiting factor since it can not be used multiple times. To 
+add performance or capacity multiple OSS nodes can be used. The Lustre 
+file system design typically uses two metadata servers sharing the same 
+meta-data target (MDT). In this way, Lustre doesn’t need to take care of 
+metadata consistency.
+
+Lustre supports strong file and metadata locking semantics to maintain 
+coherency of the file systems even under a high volume of concurrent 
+access. File locking is distributed across the Object Storage Targets 
+(OSTs) that constitute the file system, with each OST managing locks 
+for the objects that it stores.
+
+The major weaknesses typically cited regarding Lustre is: (1) the 
+metadata server as a single point of failure, and (2) its underlying 
+inability to replicate. While various modifications and projects have 
+addressed those needs to some extent, newer products syuch as Ceph 
+which are architecturally designed with those features in mind typically 
+exhibit better performance when running against Lustre-modified systems 
+that are meant to address these issues. 
 
 \subsection{Comparison}
 % All
