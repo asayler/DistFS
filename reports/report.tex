@@ -1706,6 +1706,27 @@ to be available in case of an audit or other such need.
 
 \subsection{Comparison}
 % All
+\begin{table}
+  \begin{center}
+    \begin{tabularx}{\textwidth}{|X|X|X|X|}
+      \hline
+      {\bf } & {\bf Tahoe} & {\bf Lustre} & {\bf Ceph} \\ \hline
+      {\bf Throughput} & Low & High & High \\ \hline
+      {\bf Latency} & High & Low & Low \\ \hline
+      {\bf Fault Tolerance} & User Defined & Failover & thru Replication \\ \hline
+       {\bf Security} & High & Moderate & High \\ \hline
+       {\bf Installation} & Distributed & Distributed & Distributed \\ \hline
+       {\bf Management} & Distributed & Distributed & Distributed \\ \hline
+       {\bf Compatibility} & Multi-OS & Linux & Linux \\ \hline
+       {\bf Data Placement} & Random & Free Space Heuristics & Placement Groups \\ \hline
+       {\bf Storage Tiers} & None & Pools of OSTs & CRUSH rules \\ \hline
+       {\bf Maintained} & Yes & Yes & Yes \\ \hline
+        {\bf Under Devel.} & Yes & Yes & Yes \\ \hline
+    \end{tabularx}
+    \caption{Comparison of Systems}
+    \label{tbl:compare}
+  \end{center}
+\end{table}
 
 \section{Future Work}
 % All
