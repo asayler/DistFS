@@ -1819,37 +1819,40 @@ Tahoe is clearly the best choice if you don't trust the nodes your data is store
 
 \section{Future Work}
 
-The system testing was done in environments of limited number of 
-nodes. It would have been instructive to scale up considerably and 
-re-run the tests in an expanded node environment to determine if 
-the same results can be observed. Also, the test environments were 
-both single site installations. To test many of the characteristics 
-of distributed systems under real world conditions, multiple site 
-tests should be secured and utilized if at all possible in any future 
-work. In terms of distribution, the evaluation environment should 
-consist of at least two sites, between which there is a reasonable 
-distance. Ideally the sites should not be part of the same 
-metropolitan area. A distance of at least 100 miles will introduce 
-a packet delay that cannot be ignored in any subsequent analysis when
-data is accessed and replicated between sites. The connection between 
-the sites should also have a considerable capacity.
+%The system testing was done in environments of limited number of 
+%nodes. It would have been instructive to scale up considerably and 
+%re-run the tests in an expanded node environment to determine if 
+%the same results can be observed. Also, the test environments were 
+%both single site installations. To test many of the characteristics 
+%of distributed systems under real world conditions, multiple site 
+%tests should be secured and utilized if at all possible in any future 
+%work. In terms of distribution, the evaluation environment should 
+%consist of at least two sites, between which there is a reasonable 
+%distance. Ideally the sites should not be part of the same 
+%metropolitan area. A distance of at least 100 miles will introduce 
+%a packet delay that cannot be ignored in any subsequent analysis when
+%data is accessed and replicated between sites. The connection between 
+%the sites should also have a considerable capacity.
+%
+%Each test site should also consist of multiple nodes that can take on 
+%different kinds of roles in the larger distributed storage system 
+%(object storage node, metadata node, client nodes, etc.). As is the 
+%case in data centers, the nodes within a site are connected through a 
+%high speed LAN. To explore system characteristics in different 
+%situations, multiple local interconnecting technologies should be 
+%considered (e.g. Gigabit Ethernet, Infiniband, etc.). Since nodes 
+%consist of different kinds of hardware, such testing would be more 
+%reflective of conditions in a heterogeneous setting, which is typical 
+%of many of today’s large data center environments. Also, within the 
+%nodes, different kinds of storage technologies such as SSD, SAS disks 
+%and RAID controllers should be available for different kinds of nodes. 
+%At each site, a sufficient amount of nodes should act as client nodes, 
+%to generate test load conditions that can stretch the system to its 
+%limits (e.g. stress testing).
 
-Each test site should also consist of multiple nodes that can take on 
-different kinds of roles in the larger distributed storage system 
-(object storage node, metadata node, client nodes, etc.). As is the 
-case in data centers, the nodes within a site are connected through a 
-high speed LAN. To explore system characteristics in different 
-situations, multiple local interconnecting technologies should be 
-considered (e.g. Gigabit Ethernet, Infiniband, etc.). Since nodes 
-consist of different kinds of hardware, such testing would be more 
-reflective of conditions in a heterogeneous setting, which is typical 
-of many of today’s large data center environments. Also, within the 
-nodes, different kinds of storage technologies such as SSD, SAS disks 
-and RAID controllers should be available for different kinds of nodes. 
-At each site, a sufficient amount of nodes should act as client nodes, 
-to generate test load conditions that can stretch the system to its 
-limits (e.g. stress testing).
+Due to the small scale and variance in testing platforms we used for this project it would be beneficial for future investigations to utilize a consistent testing platform so that better comparisons could be made. Additionally, being able to test how well these systems perform over distances larger than a LAN would be informative as well. 
 
+In addition to a more consistent and larger scale testing environment there are extensions or add-ons we felt could be added to each of the projects. For Tahoe, we would like to see work to integrate a FUSE interface natively as part of Tahoe would make it more usable and remove complications of going through a secondary FUSE interface that doesn't directly tie-in to Tahoe. For Lustre, we saw the MDS as a potential single point of failure that could likely be addressed as part of future work on Lustre. For Ceph, the need to improve how it's configured and deployed such that its more intuitive or better documented is something that could be worked on in further work with Ceph. 
 
 \nocite{*}
 \bibliography{refs}
