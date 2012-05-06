@@ -1961,7 +1961,46 @@ other such documents that once the year ends would be filed away only
 to be available in case of an audit or other such need.
 
 \subsection{Ceph Conclusions}
-% Mark
+Ceph is viewed by many as the successor to Lustre, as it addresses 
+some of Lustre's inherent design weaknesses. It is designed for 
+scalability, reliability, and performance. At the same time is assumes 
+that hardware will fail or have hardware added, so it has a design that 
+can adapt to these situations. Ceph breaks the file system into two 
+pieces: (1) metadata, and (2) data. This allows each piece to be 
+designed in the most efficient manner to achieve these three goals of 
+Ceph.
+
+One novel design approach in Ceph is that the metadata cluster 
+architecture supports dynamically distributed metadata. Using a 
+metadata cluster instead of single metadata server, allows Ceph to 
+potentially achieve workload balancing, thereby avoiding the single 
+point of failure problem in metadata management. Also, in contrast 
+to existing object-based file systems, Ceph clients don’t need to 
+request a metadata server to look up object location lists, but instead, 
+they calculate directly the name and location of objects comprising a 
+file’s contents thus eliminating the need to maintain and distribute 
+object lists, thereby reducing the metadata cluster workload.
+
+The concept of replication is used along with Object Server Devices 
+(OSD’s) so that all the space on all the drives is used (no parity 
+drives, no spare drives). During the writing of an object to Ceph, 
+it is automatically replicated to other OSD’s so that the loss of 
+an OSD(s) won’t result in the loss of data. If an OSD is lost, the 
+objects are again re-replicated so that the number of copies of the 
+objects is maintained.
+
+However, a major drawback is the relative immaturity of Ceph as a 
+platform to products like Lustre, which explains why it is not widely 
+deployed in production environments. similarly, the Ceph documentation 
+is sparse making configuration without direct Ceph support next to 
+impossible for all but the seasoned storage engineer. A further 
+concern is the uncertainty about the operation of Ceph in a WAN 
+environment (as with Lustre). The placement of the file data at OSDs 
+does not take into account that links between storage nodes have 
+variable quality (bandwidth, latency). Finally, the operation of the 
+mechanisms for automatic adaptation (adjustment of placement group to 
+OSD mapping, and failure detection) may be non-optimal or worse for a 
+WAN Ceph configuration.
 
 \subsection{Lustre Conclusions}
 Lustre is a relatively mature product and has a known track record as 
