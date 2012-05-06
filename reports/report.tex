@@ -866,6 +866,13 @@ storage servers (OSDs) and a failover pair of metadata servers (currently
 still a work in progress, metadata servers will in the future be able to 
 form a cluster comprising of dozens of nodes). Lustre assumes that OSDs 
 are reliable, i.e., use such techniques as RAID to prevent data loss.
+Lustre's advantages and disadvantages both stem from its complexity. 
+While the system is highly configurable, it is also prone to errors and
+difficulties in configuration. Documentation is also lacking as there is
+very little to be found in working with Lusre in an environment outside
+of Red Hat Linux. When we tried to set up Lustre in a Ubuntu setting, the
+many package dependencies and errors caused our system to never reach a
+working state. 
 
 \subsubsection{Lustre Architecture}
 Lustre has a somewhat unique architecture, comprised of three major 
