@@ -1810,7 +1810,7 @@ direct comparison between these two systems is not really possible.
 Figure 3 displays total system throughput when multiple clients 
 simultaneously write a file using asynchronous I/O.
 
-%Figure 3
+% see Figure 3
 
 In the above comparison most systems behave very well, sustaining 
 a write throughput of around 300 MB/s, while Ceph barely reaches 
@@ -1833,12 +1833,32 @@ and 330 MB/s for reads when the request size is 512 KB. The diagrams
 are not presented as they become fairly unreadable for larger 
 request sizes. 
 
-In all these measurements a single storage node runs in each physical host and, therefore, the maximum number of such nodes cannot exceed 14.  In our test environment each storage node is aware of all other nodes and no routing is required. However, in larger deployments the c ore storage layer may consist of hundreds or even thousands of nodes. In systems which are fully decentralized, each node does not have to be aware of all others. But, there is a cost for this decentralization. That is, there is the need to route the lookups sent by virtual disk drivers. A detailed evaluation of that cost is beyond the scope of our work.
-However, using the IOzone tool and the presented workloads we can simulate performance on a larger system. One can conclude that the performance of a single client does not change significantly when accessing a system over ten times larger. We do not provide the results for asynchronous Input/Output since they support the same conclusion noted above. It is not clear whether the slight performance decrease is due to the overlay routing in the larger system or to the extra overhead, in terms of CPU and memory, required to run additional virtual machines per each physical host. It is important to point out that this is the rare case: the system is over ten times larger but only a single client accesses it. Increasing system size translates to more storage space and processing resources and, possibly, more aggregate bandwidth.
-Figure 4: Input/Output Throughput in an Expanded Deployment
+In all these measurements a single storage node runs in each physical 
+host and, therefore, the maximum number of such nodes cannot exceed 
+14.  In our test environment each storage node is aware of all other 
+nodes and no routing is required. However, in larger deployments the 
+core storage layer may consist of hundreds or even thousands of nodes. 
+In systems which are fully decentralized, each node does not have to 
+be aware of all others. But, there is a cost for this decentralization. 
+That is, there is the need to route the lookups sent by virtual disk 
+drivers. A detailed evaluation of that cost is beyond the scope of our 
+work.
 
+However, using the IOzone tool and the presented workloads we can 
+simulate performance on a larger system. One can conclude that the 
+performance of a single client does not change significantly when 
+accessing a system over ten times larger. We do not provide the results 
+for asynchronous Input/Output since they support the same conclusion 
+noted above. It is not clear whether the slight performance decrease 
+is due to the overlay routing in the larger system or to the extra 
+overhead, in terms of CPU and memory, required to run additional 
+virtual machines per each physical host. It is important to point out 
+that this is the rare case: the system is over ten times larger but 
+only a single client accesses it. Increasing system size translates 
+to more storage space and processing resources and, possibly, more 
+aggregate bandwidth.
 
-
+% see Figure 4
 
 
 \section{General Conclusions}
