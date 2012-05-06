@@ -1838,24 +1838,25 @@ ands Ceph in WAN environments. To date such testing has been mixed with
 respect as to whether the performance of such DSSs suffers when such a 
 system is deployed across geographically disparate sites. 
 
-
-
-%
-%Each test site should also consist of multiple nodes that can take on 
-%different kinds of roles in the larger distributed storage system 
-%(object storage node, metadata node, client nodes, etc.). As is the 
-%case in data centers, the nodes within a site are connected through a 
-%high speed LAN. To explore system characteristics in different 
-%situations, multiple local interconnecting technologies should be 
-%considered (e.g. Gigabit Ethernet, Infiniband, etc.). Since nodes 
-%consist of different kinds of hardware, such testing would be more 
-%reflective of conditions in a heterogeneous setting, which is typical 
-%of many of today’s large data center environments. Also, within the 
-%nodes, different kinds of storage technologies such as SSD, SAS disks 
-%and RAID controllers should be available for different kinds of nodes. 
-%At each site, a sufficient amount of nodes should act as client nodes, 
-%to generate test load conditions that can stretch the system to its 
-%limits (e.g. stress testing).
+In addition, more diversity in test design should be a focus of future 
+work. For example, each test site should also consist of multiple nodes 
+that can take on different kinds of roles in the larger distributed 
+storage system (object storage node, metadata node, client nodes, etc.). 
+As is the case in data centers, the nodes within a site are connected 
+through a high speed LAN. To explore system characteristics in different 
+situations, multiple local interconnecting technologies should be 
+considered (e.g. Gigabit Ethernet, Infiniband, etc.). Since nodes 
+consist of different kinds of hardware, such testing would be more 
+reflective of conditions in a heterogeneous setting, which is typical 
+of many of today’s large data center environments. Also, within the 
+nodes, different kinds of storage technologies such as SSD, SAS disks 
+and RAID controllers should be available for different kinds of nodes. 
+At each site, a sufficient amount of nodes should act as client nodes, 
+to generate test load conditions that can stretch the system to its 
+limits (e.g. stress testing). Such testing would address performance 
+issues which hardware specific. For instance, several Lustre performance 
+studies have noted degraded Lustre performance across Ethernet connections,
+but not so across Infiniband connections.
 
 Due to the small scale and variance in testing platforms we used for this project it would be beneficial for future investigations to utilize a consistent testing platform so that better comparisons could be made. Additionally, being able to test how well these systems perform over distances larger than a LAN would be informative as well. 
 
