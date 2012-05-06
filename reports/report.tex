@@ -1734,7 +1734,15 @@ became unstable when we attempted to read files of this size. Again,
 this may be a limitation of the system RAM size and the SSHFS interface.
 
 \subsection{Ceph and Lustre Results}
+Figure 1 below presents performance with various asynchronous I/O 
+workloads. Lustre256 and Lustre0 represent Lustre with and without 
+striping, respectively. The X-axis represents the size of the file 
+used in each experiment, ranging from 400 MB to 2 GB, while the Y-axis 
+depicts the I/O throughput in MB/sec. Note that in asynchronous I/O 
+ode all systems take advantage of the caching provided by the operating 
+system.
 
+% see Figure 1
 
 For all systems and workload types, we can see that as the size 
 of the file grows, measurements tend to reach a stable throughput value. This 
