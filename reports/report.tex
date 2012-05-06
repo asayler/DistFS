@@ -828,6 +828,20 @@ nodes,  put Ceph-MDS and Ceph-MON together, and Ceph-OSD on the disk nodes.
 (3) For even more nodes, separate Ceph-MDS, Ceph-MON, and Ceph-OSD all 
 onto dedicated machines.
 
+Distributed file systems, such as  Lustre and Ceph  usually export a 
+single file namespace to multiple end-users. These systems tend to be very 
+complex, as they must support all file system related semantics in a 
+distributed environment. To control this complexity, they are built in a 
+hierarchical manner: a small number of servers store all file and directory 
+metadata and the physical location of every file block, while a potentially 
+large number of storage servers store the actual data. Most such systems 
+cannot take full advantage of the processing and memory resources of storage 
+servers, relying instead on very powerful metadata servers.  As a result, 
+they do not scale well, as the small number of metadata servers often 
+represents a single point of bottleneck and failure. In addition, their 
+hierarchical structure often dictates a static view of the computer cluster, 
+which also results in potential scaling problems. 
+
 A major drawback is the immaturity of Ceph as a platform: by all acccounts 
 in the published literature, it has not been widely used in a production 
 environment, and the Ceph documentation also explicitly warns of the beta 
