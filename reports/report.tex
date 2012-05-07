@@ -308,8 +308,9 @@ of features available from Freeloader, OceanStore and GFS all exhibit
 unique qualities for a specific set of functional and technical
 requirements.
 
-In the subsections below we summarize the recent literature with
-respect to some individual storage system architectures. The
+In the next section we examine three individual storage system architectures, 
+Tahoe-LAFS (Tahoe Least-Authority Filesystem) \cite{WilcoxOHearn:2008},
+Ceph \cite{Weil:2007,Maltzahn:2010,Weil:2006} and           .The
 architecture is important as it determines the application’s
 operational boundaries, ultimately driving both behavior and
 functionality. As well as functional qualities, the architecture also
@@ -320,43 +321,9 @@ away from centralized to more decentralized approaches, primarily as a
 result of the need for scalability as well as the challenges
 encountered in operating across a dynamic global network.
 
-\subsection{Tahoe File System}
-The Tahoe-LAFS (Tahoe Least-Authority Filesystem) is a secure,
-distributed filesystem designed by Zooko Wolcox-O'Hearn and Brain
-Warner of allmydata.com. Tahoe-LAFS (henceforth referred to as
-'Tahoe') is designed around the Principle of Least Authority, and aims
-to allow one to deploy a trusted distributed filesystem using
-untrusted, or even actively malicious, nodes. Tahoe is also designed
-to be fault-tolerant, and to run on commodity hardware where failures
-may occur frequently. Tahoe uses Reed-Solomon erasure coding to obtain
-redundancy across nodes. It uses convergent encryption in conjunction
-with a capability-based access control model, to obtain and maintain
-security \cite{WilcoxOHearn:2008}.
 
-Tahoe presents a web-API to users of the system that can be used to
-administrate the system, as well as to read, write, or verify files
-and directories on the system. This web-based API makes Tahoe suitable
-for use as the backend for various services and applications in
-domains such as backup and cloud storage. Tahoe is still actively
-maintained and is Free Software under the GPL and TGPL. It served as
-the backend for allmydata.com until allmydata.com went out of
-business. It is currently deployed for personal use be a number of
-individuals, and serves as the storage backend for several other
-systems \cite{tahoe-lafs.org}.
 
-\subsection{Ceph}
-Ceph is an object-based parallel file system with a scalable metadata
-implementation with data replication to allow for data recovery and
-recovery from hardware failures
-\cite{Weil:2007,Maltzahn:2010,Weil:2006}.
-Ceph is similar to that of many other distributed file systems in it 
-has metadata servers that a client uses to determine where the file 
-objects live. The key designs for Ceph are providing the ability to 
-scale easily which make it great for use in cloud storage or in cases 
-where hardware for the system may be added or removed. Unlike Tahoe, 
-Ceph lacks strong encryption as a built-in option. It is possible that 
-encryption could be applied by the client prior to storing their files 
-to add a level of security over the default POSIX access control model.
+
 
 \subsection{Lustre}
 The Lustre File System is a distributed file system originally designed
