@@ -1632,13 +1632,13 @@ filesystem for the sequential part of the experiment was also 128 KB; this
 size did not dramatically affect the results due to the asynchronous nature 
 of the I/O. 
 
-For direct I/O results, our measurements were produced using 
-the same process as noted above, though the file size was maintained at 
-a constant file size constant (200 MB) and measured performance for several 
-I/O request sizes was performed as noted in the X-axis. While certain file 
-systems may not overtly support direct I/O, since they bypass the caching 
-mechanism provided by the operating system, effectively they can be viewed 
-to emulate a direct I/O operation.
+For direct I/O results, our measurements were produced using the same process 
+as noted above, though the file size was maintained at a constant file size 
+constant (200 MB) and measured performance for several I/O request sizes was 
+performed as noted in the X-axis. While certain file systems may not overtly 
+support direct I/O, since they bypass the caching mechanism provided by the 
+operating system, effectively they can be viewed to emulate a direct I/O 
+operation.
 
 We also evaluated the comparative scalability of the systems. This is 
 done by measuring total system throughput when multiple clients access 
