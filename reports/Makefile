@@ -1,6 +1,7 @@
 PAPER_INCLUDES := TahoeTestbed.pdf
 PAPER_INCLUDES += TahoeWriteData.pdf TahoeReadData.pdf
-PAPER_INCLUDES += CephTopology.pdf  LustreTopology.pdf  TahoeTopology.pdf
+PAPER_INCLUDES += CLPerformance.pdf LusterModification.pdf
+PAPER_INCLUDES += CephTopology.pdf LustreTopology.pdf TahoeTopology.pdf
 
 INCLUDE_DIR    := include
 
@@ -37,7 +38,7 @@ proposal.pdf: proposal.aux proposal.bbl
 proposal.bbl: proposal.aux refs.bib
 	$(BIBTEX) proposal.aux
 
-proposal.aux: proposal.tex $(PAPER_INCLUDES)
+proposal.aux: proposal.tex $(PROPOSAL_INCLUDES)
 	$(LATEX) $(LATEXFIRST) proposal.tex
 
 .PHONY: report

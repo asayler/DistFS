@@ -1674,7 +1674,7 @@ presented in the beginning of this section.
 
 Here we discuss the relevant results from each of our three tests
 systems. Full test results are available in Appendices
-\ref{sec:TahoeData} through \ref{sec:LustreData}.
+\ref{sec:TahoeData} through \ref{sec:CLData}.
 
 \subsection{Tahoe Results}
 % Andy
@@ -2062,11 +2062,26 @@ that are meant to address these issues.
   \end{center}
 \end{table}
 
-One of the main deliverables for our project was a comparison of the three filesystems we chose to deploy and investigate. In Table \ref{tbl:compare} we have a breakdown side-by-side of the three systems and how they match up for a number of key features. This table simplifies some key characteristics that each system has that would need to be know if one was to choose a filesystem for deployment. 
+One of the main deliverables for our project was a comparison of the
+three filesystems we chose to deploy and investigate. In Table
+\ref{tbl:compare} we have a breakdown side-by-side of the three
+systems and how they match up for a number of key features. This table
+simplifies some key characteristics that each system has that would
+need to be know if one was to choose a filesystem for deployment.
 
-The characteristics not captured in the table would be the impact of not trusting the storage nodes your system exists on has. And this is seen more in the comparison of the evaluations of each system and the throughput/latency of Tahoe vs Ceph \& Lustre in this respect indicate the time to encrypt/decrypt the data plus handle the replications results in a significant slowdown in Tahoe, which isn't seen in the other two systems. 
+The characteristics not captured in the table would be the impact of
+not trusting the storage nodes your system exists on has. And this is
+seen more in the comparison of the evaluations of each system and the
+throughput/latency of Tahoe vs Ceph \& Lustre in this respect indicate
+the time to encrypt/decrypt the data plus handle the replications
+results in a significant slowdown in Tahoe, which isn't seen in the
+other two systems.
 
-Tahoe is clearly the best choice if you don't trust the nodes your data is stored on. Lustre is best suited for scientific computing with large data sets. And Ceph is the best choice if you are wanting a POSIX compliant VFS interface and a newer system than Lustre for large data sets. 
+Tahoe is clearly the best choice if you don't trust the nodes your
+data is stored on. Lustre is best suited for scientific computing with
+large data sets. And Ceph is the best choice if you are wanting a
+POSIX compliant VFS interface and a newer system than Lustre for large
+data sets.
 
 \section{Future Work}
 
@@ -2139,16 +2154,24 @@ reach its stated goal of being widely deployed in organizations.
 
 \emph{See Attached}
 
-\includepdf[pages={1}, landscape]{include/TahoeWriteData.pdf}
-\includepdf[pages={1}, landscape]{include/TahoeReadData.pdf}
+\includepdf[pages={-}, landscape]{include/TahoeWriteData.pdf}
+\includepdf[pages={-}, landscape]{include/TahoeReadData.pdf}
 
 \pagebreak
-\section{Ceph Data}
-\label{sec:CephData}
+\section{Ceph and Lustre Data}
+\label{sec:CLData}
+
+\emph{See Attached}
+
+\includepdf[pages={-}]{include/CLPerformance.pdf}
 
 \pagebreak
-\section{Lustre Data}
-\label{sec:LustreData}
+\section{Lustre Modifications}
+\label{sec:LustreMod}
+
+\emph{See Attached}
+
+\includepdf[pages={-}]{include/LusterModification.pdf}
 
 \pagebreak
 \section{Tahoe Scripts}
