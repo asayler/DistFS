@@ -308,32 +308,18 @@ of features available from Freeloader, OceanStore and GFS all exhibit
 unique qualities for a specific set of functional and technical
 requirements.
 
-In the next section we examine three individual storage system architectures, 
+In the next section we examine three individual storage system architectures: 
 Tahoe-LAFS (Tahoe Least-Authority Filesystem) \cite{WilcoxOHearn:2008},
-Ceph \cite{Weil:2007,Maltzahn:2010,Weil:2006} and           .The
-architecture is important as it determines the application’s
-operational boundaries, ultimately driving both behavior and
-functionality. As well as functional qualities, the architecture also
+Ceph \cite{Weil:2007,Maltzahn:2010,Weil:2006} and the Lustre File System 
+\cite{Braam:LustreWhite}. The architecture is important as it determines 
+the application’s operational boundaries, ultimately driving both behavior 
+and functionality. As well as functional qualities, the architecture also
 has an impact on the means a system may use to achieve consistency,
-routing and security. One can from the systems discussed below that
-the evolution of architectures adopted by DSSs have gradually moved
-away from centralized to more decentralized approaches, primarily as a
-result of the need for scalability as well as the challenges
-encountered in operating across a dynamic global network.
-
-
-
-
-
-\subsection{Lustre}
-The Lustre File System is a distributed file system originally designed
-to provide storage for large-scale, multi-site clusters
-\cite{Braam:LustreWhite}. It thus
-places an emphasis on high performance, QOS guaranteed
-operation. Lustre is widely displayed at super-computing sites around
-the world. It serves as both a site-to-site interconnect as well as a
-local high-speed file system.
-
+routing and security. One deduce can from the systems discussed below that
+the evolution of architectures adopted by DSSs have gradually moved away 
+from centralized to more decentralized approaches, primarily as a result 
+of the need for scalability as well as the challenges encountered in 
+operating across a dynamic global network.
 
 \section{Background}
 Cloud storage services are examples of a fully distributed storage 
