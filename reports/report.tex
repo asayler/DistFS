@@ -1825,23 +1825,20 @@ note that even though in some cases PVFS performs better than our
 systems, it does not actually support direct I/O and, therefore, a 
 direct comparison between these two systems is not really possible.
 
-Figure 3 displays total system throughput when multiple clients 
-simultaneously write a file using asynchronous I/O.
-
-% see Figure 3
-
-In the above comparison most systems behave very well, sustaining 
-a write throughput of around 300 MB/s, while Ceph barely reaches 
-the value of 180 MB/s. The most scalable deployment is that of 
-Lustre when no file striping is supported, since for each client 
-an idle storage device is assigned for file storage and, therefore, 
-system performance increases linearly. The above results show that 
-Lustre filesystem scales almost linearly with the number of clients 
-up to the point of saturation of the back-end storage performance. 
-Adding more clients doesn't cause much performance degradation and 
-overall performance remains at a fairly good level. We do not show 
-read performance, since local caching makes the results incomparable 
-among the respective systems.
+The figure entitled Asynchronous Sequential Write - Multiple Clients 
+displays total system throughput when multiple clients 
+simultaneously write a file using asynchronous I/O. In the above 
+comparison most systems behave very well, sustaining a write throughput 
+of around 300 MB/s, while Ceph barely reaches the value of 180 MB/s. 
+The most scalable deployment is that of Lustre when no file striping 
+is supported, since for each client an idle storage device is assigned 
+for file storage and, therefore, system performance increases linearly. 
+The above results show that Lustre filesystem scales almost linearly 
+with the number of clients up to the point of saturation of the back-end 
+storage performance. Adding more clients doesn't cause much performance 
+degradation and overall performance remains at a fairly good level. We 
+do not show read performance, since local caching makes the results 
+incomparable among the respective systems.
 
 We also performed analysis of the total throughput of each system 
 when performing direct sequential writes and reads for request sizes 
