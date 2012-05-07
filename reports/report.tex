@@ -944,7 +944,9 @@ better.
 The main advantage of Lustre is that it has very high parallel 
 performance, it also has good file I/O and can handle requests for 
 thousands of files. Lustre does not seem to be deployed frequently 
-in clusters that stretch over large distances.
+in clusters that stretch over large distances. The main issues with 
+Lustre design are the MDs as a single failure point and the inability of 
+the system to support tru replication.
 
 The chart below provides a feature comparison of the three systems.
 
