@@ -2117,8 +2117,6 @@ issues which hardware specific. For instance, several Lustre performance
 studies have noted degraded Lustre performance across Ethernet connections,
 but not so across Infiniband connections.
 
-Due to the small scale and variance in testing platforms we used for this project it would be beneficial for future investigations to utilize a consistent testing platform so that better comparisons could be made. Additionally, being able to test how well these systems perform over distances larger than a LAN would be informative as well. 
-
 In addition to a more consistent and larger scale testing environment there are extensions or add-ons we felt could be added to each of the projects. For Tahoe, we would like to see work to integrate a FUSE interface natively as part of Tahoe would make it more usable and remove complications of going through a secondary FUSE interface that doesn't directly tie-in to Tahoe. For Lustre, we saw the MDS as a potential single point of failure that could likely be addressed as part of future work on Lustre. For Ceph, the need to improve how it's configured and deployed such that its more intuitive or better documented is something that could be worked on in further work with Ceph. 
 
 \nocite{*}
