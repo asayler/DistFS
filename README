@@ -2,12 +2,13 @@ A Distributed Systems Analysis
 and Implementation Project
 
 Group Members:
-Andy Sayler - www.andysayler.com
 Bryan Dixon - www.bryancdixon.com
 Brendan Kelly
 Mark Lewis-Prazen
+Andy Sayler - www.andysayler.com
 
 File Tree:
 references - For storing pdf reference papers
  	     and materials
 reports    - LaTeX reports and documentation
+code       - Project related code and scripts
