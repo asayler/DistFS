@@ -1801,7 +1801,8 @@ without striping is bounded by the maximum I/O capacity of a single hard disk.
 Ceph performs best overall since, as mentioned above, the supported file stripe 
 is much larger compared to all other systems.
 
-In Figure 2 below we present the performance of each system considered when 
+In the two figures in the appendix entitled Direct Input output Throughput
+we present the performance of each system considered when 
 IOzone uses direct I/O. Direct I/O is preferred by applications such as 
 database systems that require control over the way data is written to the 
 back-end storage. For direct I/O, the size of the file does not affect 
@@ -1809,9 +1810,7 @@ performance, since no caching is provided by the operating system. The
 critical factor for the performance in this case is the request size that 
 the tool passes to the file system for reading or writing.
 
-% see Figure 2
-
-As observed in Figure 2, Lustre0 performs equally well as PVFS and much 
+As observed in these figures, Lustre0 performs equally well as PVFS and much 
 better than Ceph and Lustre when dealing with sequential write workloads. 
 The maximum throughput achieved for very large request sizes is bounded 
 by the maximum network throughput (about 95 MB/s). The performance of 
