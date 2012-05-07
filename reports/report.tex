@@ -1121,7 +1121,7 @@ filesystem.
 
 \subsection{Ceph and Lustre Test Environment}
 The Lustre/Ceph tests were conducted in a separate test environment from
-Tahoe due to the need for xvery specific resources.The objective in the 
+Tahoe due to the need for very specific resources.The objective in the 
 evaluation was to evaluate a few straightforward use cases in a wide area 
 setup with a limited number of nodes. We realize that a limited test 
 environment as used here is not capable of supporting a broad number of 
@@ -1477,7 +1477,7 @@ who sell bundled computing and Lustre storage systems. Many of these
 vendors also contribute to the open source community's Lustre Project. 
 
 \section{Evaluation}
-\subsection{Introduction}
+
 Storage technology is developing rapidly, but the corresponding 
 measurement technology is seriously lagging behind. Interestingly enough, 
 this impedes the development of storage industry. The absence of uniform 
@@ -1699,7 +1699,7 @@ random data is 0.52 MiB/s.
       random & 2 GiB & 1.03 MiB/s & 1.49 MiB/s & 0.61 MiB/s \\ \hline
       random & 3 GiB & 1.03 MiB/s & 0.41 MiB/s & 0.29 MiB/s \\ \hline
     \end{tabularx}
-    \caption{'random' Write Throughput by File Size}
+    \caption{Tahoe 'random' Write Throughput by File Size}
     \label{tbl:TahoeWriteRandom}
   \end{center}
 \end{table}
@@ -1720,7 +1720,7 @@ zeros data is 0.69 MiB/s.
       zeros & 2 GiB & 1.15 MiB/s & 7.56 MiB/s & 0.99 MiB/s \\ \hline
       zeros & 3 GiB & 1.15 MiB/s & 0.65 MiB/s & 0.41 MiB/s \\ \hline
     \end{tabularx}
-    \caption{'zeros' Write Throughput by File Size}
+    \caption{Tahoe 'zeros' Write Throughput by File Size}
     \label{tbl:TahoeWriteZeros}
   \end{center}
 \end{table}
@@ -1748,7 +1748,7 @@ random data is 1.32 MiB/s.
       random & 10 MiB & 1.32 MiB/s \\ \hline
       random & 100 MiB & 1.11 MiB/s \\ \hline
     \end{tabularx}
-    \caption{Random Read Throughput by File Size}
+    \caption{Tahoe Random Read Throughput by File Size}
     \label{tbl:TahoeReadRandom}
   \end{center}
 \end{table}
@@ -1766,7 +1766,7 @@ zeros data is 1.42 MiB/s.
       zeros & 10 MiB & 1.53 MiB/s \\ \hline
       zeros & 100 MiB & 1.13 MiB/s \\ \hline
     \end{tabularx}
-    \caption{'zeros' Read Throughput by File Size}
+    \caption{Tahoe 'zeros' Read Throughput by File Size}
     \label{tbl:TahoeReadZeros}
   \end{center}
 \end{table}
@@ -1780,7 +1780,7 @@ became unstable when we attempted to read files of this size. Again,
 this may be a limitation of the system RAM size and the SSHFS interface.
 
 \subsection{Ceph and Lustre Results}
-The four figures in appendix entitled Asynchronous Input Output Throughput
+The four figures in Appendix \ref{sec:CLData} entitled Asynchronous Input Output Throughput
 present performance with various asynchronous I/O workloads. Lustre256 
 and Lustre0 represent Lustre with and without striping, respectively. 
 The X-axis represents the size of the file used in each experiment, 
@@ -1801,7 +1801,7 @@ without striping is bounded by the maximum I/O capacity of a single hard disk.
 Ceph performs best overall since, as mentioned above, the supported file stripe 
 is much larger compared to all other systems.
 
-In the two figures in the appendix entitled Direct Input output Throughput
+In the two figures in Appendix \ref{sec:CLData} entitled Direct Input output Throughput
 we present the performance of each system considered when 
 IOzone uses direct I/O. Direct I/O is preferred by applications such as 
 database systems that require control over the way data is written to the 
@@ -1875,7 +1875,7 @@ to more storage space and processing resources and, possibly, more
 aggregate bandwidth.
 
 Finally, we examined the performance of our systems when replication is 
-supported. The figure in the appendix entitled Input Output Throughput 
+supported. The figure in Appendix \ref{sec:CLData} entitled Input Output Throughput 
 for Select Replication Levels that with asynchronous sequential writes 
 Ceph saturates the uplink of the client, with Tahoe performing slightly 
 worse. On the other hand, the performance of tahoe with asynchronous 
@@ -1909,14 +1909,14 @@ physical topology and thus seek to limit expensive network communications as
 much as possible. Future work might try to better understand the impact of the 
 network traffic and address research questions such as:
 
-- Why local applications should be penalized by having external server 
-communications in charge of managing either data or metadata?
-
-- Why data should be moved across a network only to be used by local nodes or 
-simply invalidated at the conclusion of the applications execution?  For instance, 
-might not on demand pulling models be a better approach?
-
-- Why is all data assigned the same level of reliability?
+\begin{packed_item}
+\item Why local applications should be penalized by having external server 
+  communications in charge of managing either data or metadata?
+\item Why data should be moved across a network only to be used by local nodes or 
+  simply invalidated at the conclusion of the applications execution?  For instance, 
+  might not on demand pulling models be a better approach?
+\item Why is all data assigned the same level of reliability?
+\end{packed_item}
 
 New DFS designs should investigate architectural models which address the impact 
 on the performance implied by the physical topology. One thought is to keep both 
@@ -2044,18 +2044,18 @@ that are meant to address these issues.
   \begin{center}
     \begin{tabularx}{\textwidth}{|X|X|X|X|}
       \hline
-      {\bf } & {\bf Tahoe} & {\bf Lustre} & {\bf Ceph} \\ \hline
-      {\bf Throughput} & Low & High & High \\ \hline
-      {\bf Latency} & High & Low & Low \\ \hline
-      {\bf Fault Tolerance} & User Defined & Failover & thru Replication \\ \hline
-       {\bf Security} & High & Moderate & High \\ \hline
-       {\bf Installation} & Distributed & Distributed & Distributed \\ \hline
-       {\bf Management} & Distributed & Distributed & Distributed \\ \hline
-       {\bf Compatibility} & Multi-OS & Linux & Linux \\ \hline
-       {\bf Data Placement} & Random & Free Space Heuristics & Placement Groups \\ \hline
-       {\bf Storage Tiers} & None & Pools of OSTs & CRUSH rules \\ \hline
-       {\bf Maintained} & Yes & Yes & Yes \\ \hline
-        {\bf Under Devel.} & Yes & Yes & Yes \\ \hline
+          {\bf } & {\bf Tahoe} & {\bf Lustre} & {\bf Ceph} \\ \hline
+          {\bf Throughput} & Low & High & High \\ \hline
+          {\bf Latency} & High & Low & Low \\ \hline
+          {\bf Fault Tolerance} & User Defined & Failover & thru Replication \\ \hline
+          {\bf Security} & High & Moderate & High \\ \hline
+          {\bf Installation} & Distributed & Distributed & Distributed \\ \hline
+          {\bf Management} & Distributed & Distributed & Distributed \\ \hline
+          {\bf Compatibility} & Multi-OS & Linux & Linux \\ \hline
+          {\bf Data Placement} & Random & Free Space Heuristics & Placement Groups \\ \hline
+          {\bf Storage Tiers} & None & Pools of OSTs & CRUSH rules \\ \hline
+          {\bf Maintained} & Yes & Yes & Yes \\ \hline
+          {\bf Under Devel.} & Yes & Yes & Yes \\ \hline
     \end{tabularx}
     \caption{Comparison of Systems}
     \label{tbl:compare}
@@ -2135,7 +2135,7 @@ With respect to Lustre, we noted the MDS as a potential single point of
 failure that could likely be addressed as part of future work on Lustre. A 
 modification design and implementation that used external replication was 
 developed and tested as part of this project. A brief summary of the results 
-are included in the Luster Modification section of the appendix.
+are included in Appendix \ref{sec:LustreMod}.
 
 Finally, in regards to Ceph, our experiences in installing and configuring 
 the product highlighted a number of inconsistencies in the configration and 
